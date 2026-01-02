@@ -1,0 +1,3212 @@
+{
+  "deck": {
+    "id": "quran_80_p2",
+    "title": "80% des Mots du Qour'ân - Part 2",
+    "version": 1
+  },
+  "cats": {
+    "pronouns_suffixes": "Pronouns (Suffixes)",
+    "pronouns_detached": "Pronouns (Detached)",
+    "prepositions_of_place_time": "Prepositions of Place & Time",
+    "interrogative_particles": "Interrogative Particles",
+    "ownership_relation": "Ownership & Relation",
+    "time_conjunctions": "Time & Conjunctions",
+    "prepositions_ma": "Prepositions + Ma",
+    "general_prepositions": "General Prepositions",
+    "prefixes_particles_i": "Prefixes & Particles I",
+    "prefixes_particles_ii": "Prefixes & Particles II",
+    "names_of_allah_attributes_i": "Names of Allah & Attributes I",
+    "names_of_allah_attributes_ii": "Names of Allah & Attributes II",
+    "names_of_allah_attributes_iii": "Names of Allah & Attributes III",
+    "superlatives": "Superlatives",
+    "creation_signs": "Creation & Signs",
+    "blessings_authority": "Blessings & Authority",
+    "world_life": "World & Life",
+    "resurrection_judgment_i": "Resurrection & Judgment I",
+    "resurrection_judgment_ii": "Resurrection & Judgment II",
+    "religion_concepts": "Religion Concepts",
+    "faith_unseen": "Faith & Unseen",
+    "actions_morality": "Actions & Morality",
+    "prophets_figures": "Prophets & Figures",
+    "family": "Family",
+    "body_soul": "Body & Soul",
+    "people_roles": "People & Roles",
+    "verbs_form_1_a": "Verbs Form 1 (A)",
+    "verbs_form_1_b": "Verbs Form 1 (B)",
+    "verbs_form_1_c": "Verbs Form 1 (C)",
+    "verbs_form_1_d": "Verbs Form 1 (D)",
+    "verbs_form_1_e": "Verbs Form 1 (E)",
+    "verbs_form_1_doubled": "Verbs Form 1 (Doubled)",
+    "verbs_form_1_weak_initial": "Verbs Form 1 (Weak Initial)",
+    "verbs_form_1_hollow": "Verbs Form 1 (Hollow)",
+    "verbs_form_1_weak_final": "Verbs Form 1 (Weak Final)",
+    "verbs_form_1_hamzated": "Verbs Form 1 (Hamzated)",
+    "augmented_verbs_form_2": "Augmented Verbs Form 2",
+    "augmented_verbs_form_2_3": "Augmented Verbs Form 2 & 3",
+    "augmented_verbs_form_4_a": "Augmented Verbs Form 4 (A)",
+    "augmented_verbs_form_4_b": "Augmented Verbs Form 4 (B)",
+    "augmented_verbs_form_4_c": "Augmented Verbs Form 4 (C)",
+    "augmented_verbs_form_4_d": "Augmented Verbs Form 4 (D)",
+    "augmented_verbs_forms_5_6_7": "Augmented Verbs Forms 5, 6, 7",
+    "augmented_verbs_form_8": "Augmented Verbs Form 8",
+    "augmented_verbs_forms_9_10": "Augmented Verbs Forms 9 & 10"
+  },
+  "items": [
+    {
+      "id": "pronouns_suffixes_001",
+      "cat": "pronouns_suffixes",
+      "fr": "Son, le, lui (masc. sg.)",
+      "ar": "هُ"
+    },
+    {
+      "id": "pronouns_suffixes_002",
+      "cat": "pronouns_suffixes",
+      "fr": "Leur, leurs (masc. pl.)",
+      "ar": "هُمْ"
+    },
+    {
+      "id": "pronouns_suffixes_003",
+      "cat": "pronouns_suffixes",
+      "fr": "Ton, ta, te (masc. sg.)",
+      "ar": "كَ"
+    },
+    {
+      "id": "pronouns_suffixes_004",
+      "cat": "pronouns_suffixes",
+      "fr": "Votre, vous (masc. pl.)",
+      "ar": "كُمْ"
+    },
+    {
+      "id": "pronouns_suffixes_005",
+      "cat": "pronouns_suffixes",
+      "fr": "Me, moi",
+      "ar": "نِي / ي"
+    },
+    {
+      "id": "pronouns_suffixes_006",
+      "cat": "pronouns_suffixes",
+      "fr": "Notre, nous",
+      "ar": "نَا"
+    },
+    {
+      "id": "pronouns_suffixes_007",
+      "cat": "pronouns_suffixes",
+      "fr": "Sa, la, lui (fém. sg.)",
+      "ar": "هَا"
+    },
+    {
+      "id": "pronouns_suffixes_008",
+      "cat": "pronouns_suffixes",
+      "fr": "Leur, leurs (fém. pl.)",
+      "ar": "هُنَّ"
+    },
+    {
+      "id": "pronouns_suffixes_009",
+      "cat": "pronouns_suffixes",
+      "fr": "Ton, ta, te (fém. sg.)",
+      "ar": "كِ"
+    },
+    {
+      "id": "pronouns_suffixes_010",
+      "cat": "pronouns_suffixes",
+      "fr": "Votre, vous (fém. pl.)",
+      "ar": "كُنَّ"
+    },
+    {
+      "id": "pronouns_suffixes_011",
+      "cat": "pronouns_suffixes",
+      "fr": "Leur, leurs (duel)",
+      "ar": "هُمَا"
+    },
+    {
+      "id": "pronouns_suffixes_012",
+      "cat": "pronouns_suffixes",
+      "fr": "Votre, vous (duel)",
+      "ar": "كُمَا"
+    },
+    {
+      "id": "pronouns_detached_001",
+      "cat": "pronouns_detached",
+      "fr": "Il",
+      "ar": "هُوَ"
+    },
+    {
+      "id": "pronouns_detached_002",
+      "cat": "pronouns_detached",
+      "fr": "Ils",
+      "ar": "هُمْ"
+    },
+    {
+      "id": "pronouns_detached_003",
+      "cat": "pronouns_detached",
+      "fr": "Tu (masc.)",
+      "ar": "أَنْتَ"
+    },
+    {
+      "id": "pronouns_detached_004",
+      "cat": "pronouns_detached",
+      "fr": "Vous (masc.)",
+      "ar": "أَنْتُمْ"
+    },
+    {
+      "id": "pronouns_detached_005",
+      "cat": "pronouns_detached",
+      "fr": "Je",
+      "ar": "أَنَا"
+    },
+    {
+      "id": "pronouns_detached_006",
+      "cat": "pronouns_detached",
+      "fr": "Nous",
+      "ar": "نَحْنُ"
+    },
+    {
+      "id": "pronouns_detached_007",
+      "cat": "pronouns_detached",
+      "fr": "Elle",
+      "ar": "هِيَ"
+    },
+    {
+      "id": "pronouns_detached_008",
+      "cat": "pronouns_detached",
+      "fr": "Elles",
+      "ar": "هُنَّ"
+    },
+    {
+      "id": "pronouns_detached_009",
+      "cat": "pronouns_detached",
+      "fr": "Tu (fém.)",
+      "ar": "أَنْتِ"
+    },
+    {
+      "id": "pronouns_detached_010",
+      "cat": "pronouns_detached",
+      "fr": "Ils/elles (pluriel inanimé)",
+      "ar": "هِيَ"
+    },
+    {
+      "id": "pronouns_detached_011",
+      "cat": "pronouns_detached",
+      "fr": "Eux deux (duel)",
+      "ar": "هُمَا"
+    },
+    {
+      "id": "pronouns_detached_012",
+      "cat": "pronouns_detached",
+      "fr": "Vous deux (duel)",
+      "ar": "أَنْتُمَا"
+    },
+    {
+      "id": "prepositions_of_place_time_001",
+      "cat": "prepositions_of_place_time",
+      "fr": "Au dessus de",
+      "ar": "فَوْقَ"
+    },
+    {
+      "id": "prepositions_of_place_time_002",
+      "cat": "prepositions_of_place_time",
+      "fr": "Sous",
+      "ar": "تَحْتَ"
+    },
+    {
+      "id": "prepositions_of_place_time_003",
+      "cat": "prepositions_of_place_time",
+      "fr": "Entre les mains, proche",
+      "ar": "بَيْنَ يَدَيْ"
+    },
+    {
+      "id": "prepositions_of_place_time_004",
+      "cat": "prepositions_of_place_time",
+      "fr": "Derrière, après, à la suite",
+      "ar": "خَلْفَ / وَرَاءَ"
+    },
+    {
+      "id": "prepositions_of_place_time_005",
+      "cat": "prepositions_of_place_time",
+      "fr": "Devant",
+      "ar": "أَمَامَ"
+    },
+    {
+      "id": "prepositions_of_place_time_006",
+      "cat": "prepositions_of_place_time",
+      "fr": "A droite",
+      "ar": "يَمِين"
+    },
+    {
+      "id": "prepositions_of_place_time_007",
+      "cat": "prepositions_of_place_time",
+      "fr": "A gauche",
+      "ar": "شِمَال"
+    },
+    {
+      "id": "prepositions_of_place_time_008",
+      "cat": "prepositions_of_place_time",
+      "fr": "Entre",
+      "ar": "بَيْنَ"
+    },
+    {
+      "id": "prepositions_of_place_time_009",
+      "cat": "prepositions_of_place_time",
+      "fr": "Autour",
+      "ar": "حَوْلَ"
+    },
+    {
+      "id": "prepositions_of_place_time_010",
+      "cat": "prepositions_of_place_time",
+      "fr": "Où, là où, lorsque",
+      "ar": "حَيْثُ"
+    },
+    {
+      "id": "prepositions_of_place_time_011",
+      "cat": "prepositions_of_place_time",
+      "fr": "Où / où que",
+      "ar": "أَيْنَ / أَيْنَمَا"
+    },
+    {
+      "id": "interrogative_particles_001",
+      "cat": "interrogative_particles",
+      "fr": "Quoi ? Ce que",
+      "ar": "مَا"
+    },
+    {
+      "id": "interrogative_particles_002",
+      "cat": "interrogative_particles",
+      "fr": "Qui ? Celui qui",
+      "ar": "مَنْ"
+    },
+    {
+      "id": "interrogative_particles_003",
+      "cat": "interrogative_particles",
+      "fr": "Quand ? Lorsque",
+      "ar": "مَتَى"
+    },
+    {
+      "id": "interrogative_particles_004",
+      "cat": "interrogative_particles",
+      "fr": "Où ?",
+      "ar": "أَيْنَ"
+    },
+    {
+      "id": "interrogative_particles_005",
+      "cat": "interrogative_particles",
+      "fr": "Comment ?",
+      "ar": "كَيْفَ"
+    },
+    {
+      "id": "interrogative_particles_006",
+      "cat": "interrogative_particles",
+      "fr": "Combien ?",
+      "ar": "كَمْ"
+    },
+    {
+      "id": "interrogative_particles_007",
+      "cat": "interrogative_particles",
+      "fr": "Lequel, laquelle",
+      "ar": "أَيُّ"
+    },
+    {
+      "id": "interrogative_particles_008",
+      "cat": "interrogative_particles",
+      "fr": "D'où, pourquoi ?",
+      "ar": "أَنَّى"
+    },
+    {
+      "id": "interrogative_particles_009",
+      "cat": "interrogative_particles",
+      "fr": "Est-ce que ?",
+      "ar": "أَ / هَلْ"
+    },
+    {
+      "id": "interrogative_particles_010",
+      "cat": "interrogative_particles",
+      "fr": "Qu'est-ce que ?",
+      "ar": "مَاذَا"
+    },
+    {
+      "id": "interrogative_particles_011",
+      "cat": "interrogative_particles",
+      "fr": "Pourquoi ?",
+      "ar": "لِمَ / لِمَاذَا"
+    },
+    {
+      "id": "interrogative_particles_012",
+      "cat": "interrogative_particles",
+      "fr": "Si... pas, sans",
+      "ar": "لَوْلَا"
+    },
+    {
+      "id": "ownership_relation_001",
+      "cat": "ownership_relation",
+      "fr": "Qui a, détenteur de (masc.)",
+      "ar": "ذُو"
+    },
+    {
+      "id": "ownership_relation_002",
+      "cat": "ownership_relation",
+      "fr": "Qui a, détentrice de (fém.)",
+      "ar": "ذَاتُ"
+    },
+    {
+      "id": "ownership_relation_003",
+      "cat": "ownership_relation",
+      "fr": "Qui ont, détenteurs de (pl.)",
+      "ar": "أُولُو / أُولِي"
+    },
+    {
+      "id": "ownership_relation_004",
+      "cat": "ownership_relation",
+      "fr": "Gens de, habitants, peuple",
+      "ar": "أَهْل"
+    },
+    {
+      "id": "ownership_relation_005",
+      "cat": "ownership_relation",
+      "fr": "Famille, proche, peuple",
+      "ar": "آل"
+    },
+    {
+      "id": "ownership_relation_006",
+      "cat": "ownership_relation",
+      "fr": "N'est ce pas ?",
+      "ar": "أَلَا"
+    },
+    {
+      "id": "ownership_relation_007",
+      "cat": "ownership_relation",
+      "fr": "Quel excellent...",
+      "ar": "نِعْمَ"
+    },
+    {
+      "id": "ownership_relation_008",
+      "cat": "ownership_relation",
+      "fr": "Quel mauvais...",
+      "ar": "بِئْسَ"
+    },
+    {
+      "id": "ownership_relation_009",
+      "cat": "ownership_relation",
+      "fr": "Combien il est mal/détestable",
+      "ar": "بِئْسَمَا"
+    },
+    {
+      "id": "ownership_relation_010",
+      "cat": "ownership_relation",
+      "fr": "Quelque chose semblable à",
+      "ar": "مِثْل"
+    },
+    {
+      "id": "ownership_relation_011",
+      "cat": "ownership_relation",
+      "fr": "Exemple, ressemblance",
+      "ar": "مَثَل"
+    },
+    {
+      "id": "ownership_relation_012",
+      "cat": "ownership_relation",
+      "fr": "De qui, à qui",
+      "ar": "مِمَّنْ"
+    },
+    {
+      "id": "time_conjunctions_001",
+      "cat": "time_conjunctions",
+      "fr": "Avant",
+      "ar": "قَبْلَ"
+    },
+    {
+      "id": "time_conjunctions_002",
+      "cat": "time_conjunctions",
+      "fr": "Après",
+      "ar": "بَعْدَ"
+    },
+    {
+      "id": "time_conjunctions_003",
+      "cat": "time_conjunctions",
+      "fr": "Temps, période",
+      "ar": "حِين"
+    },
+    {
+      "id": "time_conjunctions_004",
+      "cat": "time_conjunctions",
+      "fr": "Quand, lorsque (passé)",
+      "ar": "إِذْ"
+    },
+    {
+      "id": "time_conjunctions_005",
+      "cat": "time_conjunctions",
+      "fr": "Quand, lorsque (futur)",
+      "ar": "إِذَا"
+    },
+    {
+      "id": "time_conjunctions_006",
+      "cat": "time_conjunctions",
+      "fr": "Quand ? (futur)",
+      "ar": "أَيَّانَ"
+    },
+    {
+      "id": "time_conjunctions_007",
+      "cat": "time_conjunctions",
+      "fr": "Puis, ensuite, donc",
+      "ar": "ثُمَّ / فَ"
+    },
+    {
+      "id": "time_conjunctions_008",
+      "cat": "time_conjunctions",
+      "fr": "Bien plus, mais",
+      "ar": "بَلْ"
+    },
+    {
+      "id": "time_conjunctions_009",
+      "cat": "time_conjunctions",
+      "fr": "Auprès de, avec, chez",
+      "ar": "عِنْدَ / لَدَى / لَدُنْ"
+    },
+    {
+      "id": "time_conjunctions_010",
+      "cat": "time_conjunctions",
+      "fr": "Ce n'est que (Restriction)",
+      "ar": "إِنْ ... إِلَّا"
+    },
+    {
+      "id": "time_conjunctions_011",
+      "cat": "time_conjunctions",
+      "fr": "Ce n'est que (Restriction)",
+      "ar": "مَا ... إِلَّا"
+    },
+    {
+      "id": "time_conjunctions_012",
+      "cat": "time_conjunctions",
+      "fr": "Ne... pas, pour ne pas",
+      "ar": "أَلَّا"
+    },
+    {
+      "id": "prepositions_ma_001",
+      "cat": "prepositions_ma",
+      "fr": "Par quoi, avec quoi",
+      "ar": "بِمَا"
+    },
+    {
+      "id": "prepositions_ma_002",
+      "cat": "prepositions_ma",
+      "fr": "A propos de, au sujet de",
+      "ar": "عَمَّا"
+    },
+    {
+      "id": "prepositions_ma_003",
+      "cat": "prepositions_ma",
+      "fr": "Dans ce que",
+      "ar": "فِيمَا"
+    },
+    {
+      "id": "prepositions_ma_004",
+      "cat": "prepositions_ma",
+      "fr": "Comme, tel que",
+      "ar": "كَمَا"
+    },
+    {
+      "id": "prepositions_ma_005",
+      "cat": "prepositions_ma",
+      "fr": "Pour ce que, en raison de",
+      "ar": "لِمَا"
+    },
+    {
+      "id": "prepositions_ma_006",
+      "cat": "prepositions_ma",
+      "fr": "De ce que (provenance)",
+      "ar": "مِمَّا"
+    },
+    {
+      "id": "prepositions_ma_007",
+      "cat": "prepositions_ma",
+      "fr": "Quant à",
+      "ar": "أَمَّا"
+    },
+    {
+      "id": "prepositions_ma_008",
+      "cat": "prepositions_ma",
+      "fr": "Soit... soit",
+      "ar": "إِمَّا"
+    },
+    {
+      "id": "prepositions_ma_009",
+      "cat": "prepositions_ma",
+      "fr": "Que",
+      "ar": "أَنَّمَا"
+    },
+    {
+      "id": "prepositions_ma_010",
+      "cat": "prepositions_ma",
+      "fr": "Certainement",
+      "ar": "إِنَّمَا"
+    },
+    {
+      "id": "prepositions_ma_011",
+      "cat": "prepositions_ma",
+      "fr": "Comme si",
+      "ar": "كَأَنَّمَا"
+    },
+    {
+      "id": "prepositions_ma_012",
+      "cat": "prepositions_ma",
+      "fr": "A chaque fois",
+      "ar": "كُلَّمَا"
+    },
+    {
+      "id": "general_prepositions_001",
+      "cat": "general_prepositions",
+      "fr": "Avec, grâce à",
+      "ar": "بِ"
+    },
+    {
+      "id": "general_prepositions_002",
+      "cat": "general_prepositions",
+      "fr": "A propos de",
+      "ar": "عَنْ"
+    },
+    {
+      "id": "general_prepositions_003",
+      "cat": "general_prepositions",
+      "fr": "Dans",
+      "ar": "فِي"
+    },
+    {
+      "id": "general_prepositions_004",
+      "cat": "general_prepositions",
+      "fr": "Comme, semblable à",
+      "ar": "كَ"
+    },
+    {
+      "id": "general_prepositions_005",
+      "cat": "general_prepositions",
+      "fr": "Pour (que), afin de",
+      "ar": "لِ / لَ"
+    },
+    {
+      "id": "general_prepositions_006",
+      "cat": "general_prepositions",
+      "fr": "De (origine)",
+      "ar": "مِنْ"
+    },
+    {
+      "id": "general_prepositions_007",
+      "cat": "general_prepositions",
+      "fr": "Vers, en direction de",
+      "ar": "إِلَى"
+    },
+    {
+      "id": "general_prepositions_008",
+      "cat": "general_prepositions",
+      "fr": "Par (serment)",
+      "ar": "تَ (تَاللهِ)"
+    },
+    {
+      "id": "general_prepositions_009",
+      "cat": "general_prepositions",
+      "fr": "Jusqu'à ce que",
+      "ar": "حَتَّى"
+    },
+    {
+      "id": "general_prepositions_010",
+      "cat": "general_prepositions",
+      "fr": "Sur, dessus",
+      "ar": "عَلَى"
+    },
+    {
+      "id": "general_prepositions_011",
+      "cat": "general_prepositions",
+      "fr": "Avec",
+      "ar": "مَعَ"
+    },
+    {
+      "id": "general_prepositions_012",
+      "cat": "general_prepositions",
+      "fr": "Et",
+      "ar": "و"
+    },
+    {
+      "id": "prefixes_particles_i_001",
+      "cat": "prefixes_particles_i",
+      "fr": "Certes (avec verbe passé)",
+      "ar": "قَدْ"
+    },
+    {
+      "id": "prefixes_particles_i_002",
+      "cat": "prefixes_particles_i",
+      "fr": "Futur proche",
+      "ar": "سَ"
+    },
+    {
+      "id": "prefixes_particles_i_003",
+      "cat": "prefixes_particles_i",
+      "fr": "Futur lointain",
+      "ar": "سَوْفَ"
+    },
+    {
+      "id": "prefixes_particles_i_004",
+      "cat": "prefixes_particles_i",
+      "fr": "Futur certain",
+      "ar": "لَ...نَّ"
+    },
+    {
+      "id": "prefixes_particles_i_005",
+      "cat": "prefixes_particles_i",
+      "fr": "En effet, certes",
+      "ar": "لَقَدْ"
+    },
+    {
+      "id": "prefixes_particles_i_006",
+      "cat": "prefixes_particles_i",
+      "fr": "En effet, certainement",
+      "ar": "لَ"
+    },
+    {
+      "id": "prefixes_particles_i_007",
+      "cat": "prefixes_particles_i",
+      "fr": "Pour l'impératif",
+      "ar": "لِ / لْ"
+    },
+    {
+      "id": "prefixes_particles_i_008",
+      "cat": "prefixes_particles_i",
+      "fr": "Le, la, les (article)",
+      "ar": "ال"
+    },
+    {
+      "id": "prefixes_particles_i_009",
+      "cat": "prefixes_particles_i",
+      "fr": "Ou / ou bien",
+      "ar": "أَمْ"
+    },
+    {
+      "id": "prefixes_particles_i_010",
+      "cat": "prefixes_particles_i",
+      "fr": "Ou / ou bien",
+      "ar": "أَوْ"
+    },
+    {
+      "id": "prefixes_particles_i_011",
+      "cat": "prefixes_particles_i",
+      "fr": "Quelques, une partie de",
+      "ar": "بَعْض"
+    },
+    {
+      "id": "prefixes_particles_i_012",
+      "cat": "prefixes_particles_i",
+      "fr": "Tout, la totalité",
+      "ar": "كُلّ"
+    },
+    {
+      "id": "prefixes_particles_ii_001",
+      "cat": "prefixes_particles_ii",
+      "fr": "Certes, vraiment",
+      "ar": "إِنَّ"
+    },
+    {
+      "id": "prefixes_particles_ii_002",
+      "cat": "prefixes_particles_ii",
+      "fr": "Que (certitude)",
+      "ar": "أَنَّ"
+    },
+    {
+      "id": "prefixes_particles_ii_003",
+      "cat": "prefixes_particles_ii",
+      "fr": "Comme si",
+      "ar": "كَأَنَّ"
+    },
+    {
+      "id": "prefixes_particles_ii_004",
+      "cat": "prefixes_particles_ii",
+      "fr": "Mais, cependant",
+      "ar": "لَكِنَّ"
+    },
+    {
+      "id": "prefixes_particles_ii_005",
+      "cat": "prefixes_particles_ii",
+      "fr": "Peut-être, il se peut",
+      "ar": "لَعَلَّ"
+    },
+    {
+      "id": "prefixes_particles_ii_006",
+      "cat": "prefixes_particles_ii",
+      "fr": "Que",
+      "ar": "أَنْ"
+    },
+    {
+      "id": "prefixes_particles_ii_007",
+      "cat": "prefixes_particles_ii",
+      "fr": "Si (conditionnel)",
+      "ar": "إِنْ"
+    },
+    {
+      "id": "prefixes_particles_ii_008",
+      "cat": "prefixes_particles_ii",
+      "fr": "Pronom support (ex: C'est Toi que)",
+      "ar": "إِيَّا"
+    },
+    {
+      "id": "prefixes_particles_ii_009",
+      "cat": "prefixes_particles_ii",
+      "fr": "Peut-être, il est possible",
+      "ar": "عَسَى"
+    },
+    {
+      "id": "prefixes_particles_ii_010",
+      "cat": "prefixes_particles_ii",
+      "fr": "Lorsque, quand",
+      "ar": "لَمَّا"
+    },
+    {
+      "id": "prefixes_particles_ii_011",
+      "cat": "prefixes_particles_ii",
+      "fr": "Si (conditionnel)",
+      "ar": "لَوْ"
+    },
+    {
+      "id": "prefixes_particles_ii_012",
+      "cat": "prefixes_particles_ii",
+      "fr": "Ô ! (Appel)",
+      "ar": "يَا / يَا أَيُّهَا"
+    },
+    {
+      "id": "names_of_allah_attributes_i_001",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Parfaitement Informé",
+      "ar": "الخَبِيرُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_002",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Seigneur, maître",
+      "ar": "رَبّ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_003",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Miséricordieux",
+      "ar": "الرَّحْمَنُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_004",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Pacifique, La Paix",
+      "ar": "السَّلَامُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_005",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Celui qui entend tout",
+      "ar": "السَّمِيعُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_006",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Reconnaissant",
+      "ar": "الشَّكُورُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_007",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Tout-Puissant",
+      "ar": "العَزِيزُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_008",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Pardonneur",
+      "ar": "الغَفُورُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_009",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "L'Omnipotent",
+      "ar": "القَدِيرُ"
+    },
+    {
+      "id": "names_of_allah_attributes_i_010",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Avertisseur",
+      "ar": "نَذِير"
+    },
+    {
+      "id": "names_of_allah_attributes_i_011",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Secoureur",
+      "ar": "النَّصِير"
+    },
+    {
+      "id": "names_of_allah_attributes_i_012",
+      "cat": "names_of_allah_attributes_i",
+      "fr": "Le Garant Suprême",
+      "ar": "الوَكِيل"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_001",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Premier",
+      "ar": "أَوَّل"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_002",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Dernier",
+      "ar": "آخِر"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_003",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Autre",
+      "ar": "آخَر"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_004",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Digne de confiance",
+      "ar": "أَمِين"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_005",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Le Voyant, Clairvoyant",
+      "ar": "البَصِير"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_006",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Loin",
+      "ar": "بَعِيد"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_007",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Celui qui accueille le repentir",
+      "ar": "التَّوَّاب"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_008",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Le Gardien, Protecteur",
+      "ar": "الحَفِيظ"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_009",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Le Sage",
+      "ar": "الحَكِيم"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_010",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Le Longanime, Doux",
+      "ar": "الحَلِيم"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_011",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Digne d'éloges",
+      "ar": "الحَمِيد"
+    },
+    {
+      "id": "names_of_allah_attributes_ii_012",
+      "cat": "names_of_allah_attributes_ii",
+      "fr": "Bouillant, chaud",
+      "ar": "حَمِيم"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_001",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Sévère, dur",
+      "ar": "شَدِيد"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_002",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Le Très-Haut",
+      "ar": "العَلِيّ"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_003",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Le Très-Savant",
+      "ar": "العَلِيم"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_004",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Près, proche",
+      "ar": "قَرِيب"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_005",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Grand",
+      "ar": "كَبِير"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_006",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Beaucoup",
+      "ar": "كَثِير"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_007",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Rapide",
+      "ar": "سَرِيع"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_008",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Le Particulièrement Miséricordieux",
+      "ar": "الرَّحِيم"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_009",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Le Suprême, Immense",
+      "ar": "العَظِيم"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_010",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Peu",
+      "ar": "قَلِيل"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_011",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Le Généreux, Noble",
+      "ar": "الكَرِيم"
+    },
+    {
+      "id": "names_of_allah_attributes_iii_012",
+      "cat": "names_of_allah_attributes_iii",
+      "fr": "Le Doux, Subtil",
+      "ar": "اللَّطِيف"
+    },
+    {
+      "id": "superlatives_001",
+      "cat": "superlatives",
+      "fr": "Plus sévère, plus dur",
+      "ar": "أَشَدّ"
+    },
+    {
+      "id": "superlatives_002",
+      "cat": "superlatives",
+      "fr": "Plus haut, supérieur",
+      "ar": "أَعْلَى"
+    },
+    {
+      "id": "superlatives_003",
+      "cat": "superlatives",
+      "fr": "Plus savant",
+      "ar": "أَعْلَم"
+    },
+    {
+      "id": "superlatives_004",
+      "cat": "superlatives",
+      "fr": "Plus proche",
+      "ar": "أَقْرَب"
+    },
+    {
+      "id": "superlatives_005",
+      "cat": "superlatives",
+      "fr": "Plus grand",
+      "ar": "أَكْبَر"
+    },
+    {
+      "id": "superlatives_006",
+      "cat": "superlatives",
+      "fr": "Plus, le plus",
+      "ar": "أَكْثَر"
+    },
+    {
+      "id": "superlatives_007",
+      "cat": "superlatives",
+      "fr": "Meilleur",
+      "ar": "أَحْسَن / خَيْر"
+    },
+    {
+      "id": "superlatives_008",
+      "cat": "superlatives",
+      "fr": "Plus en droit, plus digne",
+      "ar": "أَحَقّ"
+    },
+    {
+      "id": "superlatives_009",
+      "cat": "superlatives",
+      "fr": "Plus près, inférieur",
+      "ar": "أَدْنَى"
+    },
+    {
+      "id": "superlatives_010",
+      "cat": "superlatives",
+      "fr": "Plus injuste",
+      "ar": "أَظْلَم"
+    },
+    {
+      "id": "superlatives_011",
+      "cat": "superlatives",
+      "fr": "Mieux guidé",
+      "ar": "أَهْدَى"
+    },
+    {
+      "id": "superlatives_012",
+      "cat": "superlatives",
+      "fr": "Plus près, plus proche",
+      "ar": "أَوْلَى"
+    },
+    {
+      "id": "creation_signs_001",
+      "cat": "creation_signs",
+      "fr": "Signe, preuve, verset",
+      "ar": "آيَة"
+    },
+    {
+      "id": "creation_signs_002",
+      "cat": "creation_signs",
+      "fr": "Evidence, preuve",
+      "ar": "بَيِّنَة"
+    },
+    {
+      "id": "creation_signs_003",
+      "cat": "creation_signs",
+      "fr": "Le Qour'ân",
+      "ar": "القُرْآن"
+    },
+    {
+      "id": "creation_signs_004",
+      "cat": "creation_signs",
+      "fr": "Bétail",
+      "ar": "نَعَم / أَنْعَام"
+    },
+    {
+      "id": "creation_signs_005",
+      "cat": "creation_signs",
+      "fr": "Montagne",
+      "ar": "جَبَل"
+    },
+    {
+      "id": "creation_signs_006",
+      "cat": "creation_signs",
+      "fr": "Mer",
+      "ar": "بَحْر"
+    },
+    {
+      "id": "creation_signs_007",
+      "cat": "creation_signs",
+      "fr": "Le Soleil",
+      "ar": "الشَّمْس"
+    },
+    {
+      "id": "creation_signs_008",
+      "cat": "creation_signs",
+      "fr": "La Lune",
+      "ar": "القَمَر"
+    },
+    {
+      "id": "creation_signs_009",
+      "cat": "creation_signs",
+      "fr": "Nuit",
+      "ar": "لَيْل"
+    },
+    {
+      "id": "creation_signs_010",
+      "cat": "creation_signs",
+      "fr": "Jour",
+      "ar": "نَهَار"
+    },
+    {
+      "id": "creation_signs_011",
+      "cat": "creation_signs",
+      "fr": "Terre",
+      "ar": "أَرْض"
+    },
+    {
+      "id": "creation_signs_012",
+      "cat": "creation_signs",
+      "fr": "Ciel",
+      "ar": "سَمَاء"
+    },
+    {
+      "id": "blessings_authority_001",
+      "cat": "blessings_authority",
+      "fr": "Faveurs, bienfaits",
+      "ar": "آلَاء"
+    },
+    {
+      "id": "blessings_authority_002",
+      "cat": "blessings_authority",
+      "fr": "Autorité",
+      "ar": "سُلْطَان"
+    },
+    {
+      "id": "blessings_authority_003",
+      "cat": "blessings_authority",
+      "fr": "Grâce, bienfait",
+      "ar": "فَضْل"
+    },
+    {
+      "id": "blessings_authority_004",
+      "cat": "blessings_authority",
+      "fr": "Eau",
+      "ar": "مَاء"
+    },
+    {
+      "id": "blessings_authority_005",
+      "cat": "blessings_authority",
+      "fr": "Royauté, règne",
+      "ar": "مُلْك"
+    },
+    {
+      "id": "blessings_authority_006",
+      "cat": "blessings_authority",
+      "fr": "Grâce, bienfait",
+      "ar": "نِعْمَة"
+    },
+    {
+      "id": "blessings_authority_007",
+      "cat": "blessings_authority",
+      "fr": "Tous (ensemble)",
+      "ar": "أَجْمَعُون"
+    },
+    {
+      "id": "blessings_authority_008",
+      "cat": "blessings_authority",
+      "fr": "Permission",
+      "ar": "إِذْن"
+    },
+    {
+      "id": "blessings_authority_009",
+      "cat": "blessings_authority",
+      "fr": "Puissance, colère",
+      "ar": "بَأْس"
+    },
+    {
+      "id": "blessings_authority_010",
+      "cat": "blessings_authority",
+      "fr": "Tout, tous",
+      "ar": "جَمِيع"
+    },
+    {
+      "id": "blessings_authority_011",
+      "cat": "blessings_authority",
+      "fr": "Même, égal",
+      "ar": "سَوَاء"
+    },
+    {
+      "id": "blessings_authority_012",
+      "cat": "blessings_authority",
+      "fr": "Partie, groupe",
+      "ar": "فَرِيق"
+    },
+    {
+      "id": "world_life_001",
+      "cat": "world_life",
+      "fr": "Maison",
+      "ar": "بَيْت"
+    },
+    {
+      "id": "world_life_002",
+      "cat": "world_life",
+      "fr": "Demeure, habitation",
+      "ar": "دَار"
+    },
+    {
+      "id": "world_life_003",
+      "cat": "world_life",
+      "fr": "Ici-bas, monde",
+      "ar": "الدُّنْيَا"
+    },
+    {
+      "id": "world_life_004",
+      "cat": "world_life",
+      "fr": "Chemin, voie",
+      "ar": "سَبِيل"
+    },
+    {
+      "id": "world_life_005",
+      "cat": "world_life",
+      "fr": "Chemin, voie",
+      "ar": "صِرَاط"
+    },
+    {
+      "id": "world_life_006",
+      "cat": "world_life",
+      "fr": "Monde, les mondes",
+      "ar": "عَالَم / عَالَمِين"
+    },
+    {
+      "id": "world_life_007",
+      "cat": "world_life",
+      "fr": "Epreuve, tentation",
+      "ar": "فِتْنَة"
+    },
+    {
+      "id": "world_life_008",
+      "cat": "world_life",
+      "fr": "Cité, ville",
+      "ar": "قَرْيَة"
+    },
+    {
+      "id": "world_life_009",
+      "cat": "world_life",
+      "fr": "Richesse, biens",
+      "ar": "مَال"
+    },
+    {
+      "id": "world_life_010",
+      "cat": "world_life",
+      "fr": "Plaisir, jouissance",
+      "ar": "مَتَاع"
+    },
+    {
+      "id": "world_life_011",
+      "cat": "world_life",
+      "fr": "Mosquée",
+      "ar": "مَسْجِد"
+    },
+    {
+      "id": "world_life_012",
+      "cat": "world_life",
+      "fr": "Place, endroit",
+      "ar": "مَكَان"
+    },
+    {
+      "id": "resurrection_judgment_i_001",
+      "cat": "resurrection_judgment_i",
+      "fr": "Compagnon",
+      "ar": "صَاحِب"
+    },
+    {
+      "id": "resurrection_judgment_i_002",
+      "cat": "resurrection_judgment_i",
+      "fr": "Fin, sort",
+      "ar": "عَاقِبَة"
+    },
+    {
+      "id": "resurrection_judgment_i_003",
+      "cat": "resurrection_judgment_i",
+      "fr": "Tourment",
+      "ar": "عَذَاب"
+    },
+    {
+      "id": "resurrection_judgment_i_004",
+      "cat": "resurrection_judgment_i",
+      "fr": "Châtiment",
+      "ar": "عِقَاب"
+    },
+    {
+      "id": "resurrection_judgment_i_005",
+      "cat": "resurrection_judgment_i",
+      "fr": "Résurrection",
+      "ar": "قِيَامَة"
+    },
+    {
+      "id": "resurrection_judgment_i_006",
+      "cat": "resurrection_judgment_i",
+      "fr": "Rencontre",
+      "ar": "لِقَاء"
+    },
+    {
+      "id": "resurrection_judgment_i_007",
+      "cat": "resurrection_judgment_i",
+      "fr": "Fixé, nommé",
+      "ar": "مُسَمَّى"
+    },
+    {
+      "id": "resurrection_judgment_i_008",
+      "cat": "resurrection_judgment_i",
+      "fr": "Feu",
+      "ar": "نَار"
+    },
+    {
+      "id": "resurrection_judgment_i_009",
+      "cat": "resurrection_judgment_i",
+      "fr": "Rivière",
+      "ar": "نَهَر"
+    },
+    {
+      "id": "resurrection_judgment_i_010",
+      "cat": "resurrection_judgment_i",
+      "fr": "Malheur à...",
+      "ar": "وَيْل"
+    },
+    {
+      "id": "resurrection_judgment_i_011",
+      "cat": "resurrection_judgment_i",
+      "fr": "Jour",
+      "ar": "يَوْم"
+    },
+    {
+      "id": "resurrection_judgment_i_012",
+      "cat": "resurrection_judgment_i",
+      "fr": "Ce jour-là",
+      "ar": "يَوْمَئِذٍ"
+    },
+    {
+      "id": "resurrection_judgment_ii_001",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Toujours, à jamais",
+      "ar": "أَبَدًا"
+    },
+    {
+      "id": "resurrection_judgment_ii_002",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Récompense",
+      "ar": "أَجْر"
+    },
+    {
+      "id": "resurrection_judgment_ii_003",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Terme, délai",
+      "ar": "أَجَل"
+    },
+    {
+      "id": "resurrection_judgment_ii_004",
+      "cat": "resurrection_judgment_ii",
+      "fr": "L'Au-delà",
+      "ar": "الآخِرَة"
+    },
+    {
+      "id": "resurrection_judgment_ii_005",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Douloureux",
+      "ar": "أَلِيم"
+    },
+    {
+      "id": "resurrection_judgment_ii_006",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Récompense",
+      "ar": "ثَوَاب"
+    },
+    {
+      "id": "resurrection_judgment_ii_007",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Enfer, fournaise",
+      "ar": "جَحِيم"
+    },
+    {
+      "id": "resurrection_judgment_ii_008",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Récompense, rétribution",
+      "ar": "جَزَاء"
+    },
+    {
+      "id": "resurrection_judgment_ii_009",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Le Paradis, jardin",
+      "ar": "الجَنَّة"
+    },
+    {
+      "id": "resurrection_judgment_ii_010",
+      "cat": "resurrection_judgment_ii",
+      "fr": "L'Enfer",
+      "ar": "جَهَنَّم"
+    },
+    {
+      "id": "resurrection_judgment_ii_011",
+      "cat": "resurrection_judgment_ii",
+      "fr": "Compte(s)",
+      "ar": "حِسَاب"
+    },
+    {
+      "id": "resurrection_judgment_ii_012",
+      "cat": "resurrection_judgment_ii",
+      "fr": "L'Heure",
+      "ar": "السَّاعَة"
+    },
+    {
+      "id": "religion_concepts_001",
+      "cat": "religion_concepts",
+      "fr": "Affaire, ordre",
+      "ar": "أَمْر"
+    },
+    {
+      "id": "religion_concepts_002",
+      "cat": "religion_concepts",
+      "fr": "Piété, crainte",
+      "ar": "تَقْوَى"
+    },
+    {
+      "id": "religion_concepts_003",
+      "cat": "religion_concepts",
+      "fr": "Vérité, vrai",
+      "ar": "حَقّ"
+    },
+    {
+      "id": "religion_concepts_004",
+      "cat": "religion_concepts",
+      "fr": "Faux, mensonge",
+      "ar": "بَاطِل"
+    },
+    {
+      "id": "religion_concepts_005",
+      "cat": "religion_concepts",
+      "fr": "Sagesse",
+      "ar": "حِكْمَة"
+    },
+    {
+      "id": "religion_concepts_006",
+      "cat": "religion_concepts",
+      "fr": "Louange",
+      "ar": "حَمْد"
+    },
+    {
+      "id": "religion_concepts_007",
+      "cat": "religion_concepts",
+      "fr": "Religion, loi",
+      "ar": "دِين"
+    },
+    {
+      "id": "religion_concepts_008",
+      "cat": "religion_concepts",
+      "fr": "Aumône purificatrice",
+      "ar": "زَكَاة"
+    },
+    {
+      "id": "religion_concepts_009",
+      "cat": "religion_concepts",
+      "fr": "Témoin",
+      "ar": "شَهِيد"
+    },
+    {
+      "id": "religion_concepts_010",
+      "cat": "religion_concepts",
+      "fr": "Prière",
+      "ar": "صَلَاة"
+    },
+    {
+      "id": "religion_concepts_011",
+      "cat": "religion_concepts",
+      "fr": "Clair, évident",
+      "ar": "مُبِين"
+    },
+    {
+      "id": "religion_concepts_012",
+      "cat": "religion_concepts",
+      "fr": "Lumière",
+      "ar": "نُور"
+    },
+    {
+      "id": "faith_unseen_001",
+      "cat": "faith_unseen",
+      "fr": "Un",
+      "ar": "أَحَد"
+    },
+    {
+      "id": "faith_unseen_002",
+      "cat": "faith_unseen",
+      "fr": "Divinité",
+      "ar": "إِلَه"
+    },
+    {
+      "id": "faith_unseen_003",
+      "cat": "faith_unseen",
+      "fr": "Partenaire, associé",
+      "ar": "شَرِيك"
+    },
+    {
+      "id": "faith_unseen_004",
+      "cat": "faith_unseen",
+      "fr": "Témoignage",
+      "ar": "شَهَادَة"
+    },
+    {
+      "id": "faith_unseen_005",
+      "cat": "faith_unseen",
+      "fr": "Trône",
+      "ar": "عَرْش"
+    },
+    {
+      "id": "faith_unseen_006",
+      "cat": "faith_unseen",
+      "fr": "Engagement, pacte",
+      "ar": "عَهْد"
+    },
+    {
+      "id": "faith_unseen_007",
+      "cat": "faith_unseen",
+      "fr": "Le monde de l'invisible",
+      "ar": "الغَيْب"
+    },
+    {
+      "id": "faith_unseen_008",
+      "cat": "faith_unseen",
+      "fr": "Livre, écrit",
+      "ar": "كِتَاب"
+    },
+    {
+      "id": "faith_unseen_009",
+      "cat": "faith_unseen",
+      "fr": "Mot, parole",
+      "ar": "كَلِمَة"
+    },
+    {
+      "id": "faith_unseen_010",
+      "cat": "faith_unseen",
+      "fr": "Ange",
+      "ar": "مَلَك"
+    },
+    {
+      "id": "faith_unseen_011",
+      "cat": "faith_unseen",
+      "fr": "Contrat, pacte",
+      "ar": "مِيثَاق"
+    },
+    {
+      "id": "faith_unseen_012",
+      "cat": "faith_unseen",
+      "fr": "Un, unique",
+      "ar": "وَاحِد"
+    },
+    {
+      "id": "actions_morality_001",
+      "cat": "actions_morality",
+      "fr": "Actions, actes",
+      "ar": "أَعْمَال"
+    },
+    {
+      "id": "actions_morality_002",
+      "cat": "actions_morality",
+      "fr": "Bonne action",
+      "ar": "حَسَنَة"
+    },
+    {
+      "id": "actions_morality_003",
+      "cat": "actions_morality",
+      "fr": "Mauvaise action",
+      "ar": "سَيِّئَة"
+    },
+    {
+      "id": "actions_morality_004",
+      "cat": "actions_morality",
+      "fr": "Bien, meilleur",
+      "ar": "خَيْر"
+    },
+    {
+      "id": "actions_morality_005",
+      "cat": "actions_morality",
+      "fr": "Mauvais, pire",
+      "ar": "شَرّ"
+    },
+    {
+      "id": "actions_morality_006",
+      "cat": "actions_morality",
+      "fr": "Péché, crime",
+      "ar": "إِثْم"
+    },
+    {
+      "id": "actions_morality_007",
+      "cat": "actions_morality",
+      "fr": "Péché, faute",
+      "ar": "ذَنْب"
+    },
+    {
+      "id": "actions_morality_008",
+      "cat": "actions_morality",
+      "fr": "Péché, faute",
+      "ar": "جُنَاح"
+    },
+    {
+      "id": "actions_morality_009",
+      "cat": "actions_morality",
+      "fr": "Interdit, sacré",
+      "ar": "حَرَام"
+    },
+    {
+      "id": "actions_morality_010",
+      "cat": "actions_morality",
+      "fr": "Nom",
+      "ar": "اسْم"
+    },
+    {
+      "id": "actions_morality_011",
+      "cat": "actions_morality",
+      "fr": "Discours, récit",
+      "ar": "حَدِيث"
+    },
+    {
+      "id": "actions_morality_012",
+      "cat": "actions_morality",
+      "fr": "Bonne chose",
+      "ar": "طَيِّبَة"
+    },
+    {
+      "id": "prophets_figures_001",
+      "cat": "prophets_figures",
+      "fr": "Messager",
+      "ar": "رَسُول"
+    },
+    {
+      "id": "prophets_figures_002",
+      "cat": "prophets_figures",
+      "fr": "Prophète",
+      "ar": "نَبِيّ"
+    },
+    {
+      "id": "prophets_figures_003",
+      "cat": "prophets_figures",
+      "fr": "Adam",
+      "ar": "آدَم"
+    },
+    {
+      "id": "prophets_figures_004",
+      "cat": "prophets_figures",
+      "fr": "Noé",
+      "ar": "نُوح"
+    },
+    {
+      "id": "prophets_figures_005",
+      "cat": "prophets_figures",
+      "fr": "Abraham",
+      "ar": "إِبْرَاهِيم"
+    },
+    {
+      "id": "prophets_figures_006",
+      "cat": "prophets_figures",
+      "fr": "Lot",
+      "ar": "لُوط"
+    },
+    {
+      "id": "prophets_figures_007",
+      "cat": "prophets_figures",
+      "fr": "Ismaël",
+      "ar": "إِسْمَاعِيل"
+    },
+    {
+      "id": "prophets_figures_008",
+      "cat": "prophets_figures",
+      "fr": "Isaac",
+      "ar": "إِسْحَاق"
+    },
+    {
+      "id": "prophets_figures_009",
+      "cat": "prophets_figures",
+      "fr": "Jacob",
+      "ar": "يَعْقُوب"
+    },
+    {
+      "id": "prophets_figures_010",
+      "cat": "prophets_figures",
+      "fr": "Joseph",
+      "ar": "يُوسُف"
+    },
+    {
+      "id": "prophets_figures_011",
+      "cat": "prophets_figures",
+      "fr": "Houd",
+      "ar": "هُود"
+    },
+    {
+      "id": "prophets_figures_012",
+      "cat": "prophets_figures",
+      "fr": "Chou'ayb",
+      "ar": "شُعَيْب"
+    },
+    {
+      "id": "prophets_figures_013",
+      "cat": "prophets_figures",
+      "fr": "Sâlih",
+      "ar": "صَالِح"
+    },
+    {
+      "id": "prophets_figures_014",
+      "cat": "prophets_figures",
+      "fr": "Moïse",
+      "ar": "مُوسَى"
+    },
+    {
+      "id": "prophets_figures_015",
+      "cat": "prophets_figures",
+      "fr": "Jésus",
+      "ar": "عِيسَى"
+    },
+    {
+      "id": "prophets_figures_016",
+      "cat": "prophets_figures",
+      "fr": "Satan",
+      "ar": "شَيْطَان"
+    },
+    {
+      "id": "prophets_figures_017",
+      "cat": "prophets_figures",
+      "fr": "Pharaon",
+      "ar": "فِرْعَوْن"
+    },
+    {
+      "id": "prophets_figures_018",
+      "cat": "prophets_figures",
+      "fr": "Ad (Peuple)",
+      "ar": "عَاد"
+    },
+    {
+      "id": "prophets_figures_019",
+      "cat": "prophets_figures",
+      "fr": "Thamoud (Peuple)",
+      "ar": "ثَمُود"
+    },
+    {
+      "id": "family_001",
+      "cat": "family",
+      "fr": "Mère",
+      "ar": "أُمّ"
+    },
+    {
+      "id": "family_002",
+      "cat": "family",
+      "fr": "Deux parents",
+      "ar": "وَالِدَيْن"
+    },
+    {
+      "id": "family_003",
+      "cat": "family",
+      "fr": "Père",
+      "ar": "أَب"
+    },
+    {
+      "id": "family_004",
+      "cat": "family",
+      "fr": "Epoux, épouse, paire",
+      "ar": "زَوْج"
+    },
+    {
+      "id": "family_005",
+      "cat": "family",
+      "fr": "Homme",
+      "ar": "رَجُل"
+    },
+    {
+      "id": "family_006",
+      "cat": "family",
+      "fr": "Femme",
+      "ar": "امْرَأَة / نِسَاء"
+    },
+    {
+      "id": "family_007",
+      "cat": "family",
+      "fr": "Enfant",
+      "ar": "وَلَد"
+    },
+    {
+      "id": "family_008",
+      "cat": "family",
+      "fr": "Géniteur, mère",
+      "ar": "وَالِد / وَالِدَة"
+    },
+    {
+      "id": "family_009",
+      "cat": "family",
+      "fr": "Descendants",
+      "ar": "ذُرِّيَّة"
+    },
+    {
+      "id": "family_010",
+      "cat": "family",
+      "fr": "Fils",
+      "ar": "ابْن"
+    },
+    {
+      "id": "family_011",
+      "cat": "family",
+      "fr": "Fille",
+      "ar": "ابْنَة / بَنَات"
+    },
+    {
+      "id": "family_012",
+      "cat": "family",
+      "fr": "Frère",
+      "ar": "أَخ"
+    },
+    {
+      "id": "family_013",
+      "cat": "family",
+      "fr": "Sœur",
+      "ar": "أُخْت"
+    },
+    {
+      "id": "body_soul_001",
+      "cat": "body_soul",
+      "fr": "Visage, face",
+      "ar": "وَجْه"
+    },
+    {
+      "id": "body_soul_002",
+      "cat": "body_soul",
+      "fr": "Œil",
+      "ar": "عَيْن"
+    },
+    {
+      "id": "body_soul_003",
+      "cat": "body_soul",
+      "fr": "Regards",
+      "ar": "أَبْصَار"
+    },
+    {
+      "id": "body_soul_004",
+      "cat": "body_soul",
+      "fr": "Bouches",
+      "ar": "أَفْوَاه"
+    },
+    {
+      "id": "body_soul_005",
+      "cat": "body_soul",
+      "fr": "Langue",
+      "ar": "لِسَان"
+    },
+    {
+      "id": "body_soul_006",
+      "cat": "body_soul",
+      "fr": "Cœur",
+      "ar": "قَلْب"
+    },
+    {
+      "id": "body_soul_007",
+      "cat": "body_soul",
+      "fr": "Poitrine",
+      "ar": "صَدْر"
+    },
+    {
+      "id": "body_soul_008",
+      "cat": "body_soul",
+      "fr": "Main",
+      "ar": "يَد"
+    },
+    {
+      "id": "body_soul_009",
+      "cat": "body_soul",
+      "fr": "Pied",
+      "ar": "رِجْل"
+    },
+    {
+      "id": "body_soul_010",
+      "cat": "body_soul",
+      "fr": "Âme",
+      "ar": "نَفْس"
+    },
+    {
+      "id": "body_soul_011",
+      "cat": "body_soul",
+      "fr": "Esprit",
+      "ar": "رُوح"
+    },
+    {
+      "id": "body_soul_012",
+      "cat": "body_soul",
+      "fr": "Force",
+      "ar": "قُوَّة"
+    },
+    {
+      "id": "people_roles_001",
+      "cat": "people_roles",
+      "fr": "Communauté",
+      "ar": "أُمَّة"
+    },
+    {
+      "id": "people_roles_002",
+      "cat": "people_roles",
+      "fr": "Peuple",
+      "ar": "قَوْم"
+    },
+    {
+      "id": "people_roles_003",
+      "cat": "people_roles",
+      "fr": "Etre humain",
+      "ar": "إِنْسَان / إِنْس"
+    },
+    {
+      "id": "people_roles_004",
+      "cat": "people_roles",
+      "fr": "Gens",
+      "ar": "نَاس"
+    },
+    {
+      "id": "people_roles_005",
+      "cat": "people_roles",
+      "fr": "Mâle",
+      "ar": "ذَكَر"
+    },
+    {
+      "id": "people_roles_006",
+      "cat": "people_roles",
+      "fr": "Femelle",
+      "ar": "أُنْثَى"
+    },
+    {
+      "id": "people_roles_007",
+      "cat": "people_roles",
+      "fr": "Serviteur",
+      "ar": "عَبْد"
+    },
+    {
+      "id": "people_roles_008",
+      "cat": "people_roles",
+      "fr": "Ennemi",
+      "ar": "عَدُوّ"
+    },
+    {
+      "id": "people_roles_009",
+      "cat": "people_roles",
+      "fr": "Mécréant",
+      "ar": "كَافِر"
+    },
+    {
+      "id": "people_roles_010",
+      "cat": "people_roles",
+      "fr": "Criminel",
+      "ar": "مُجْرِم"
+    },
+    {
+      "id": "people_roles_011",
+      "cat": "people_roles",
+      "fr": "Notables, chefs",
+      "ar": "مَلَأ"
+    },
+    {
+      "id": "people_roles_012",
+      "cat": "people_roles",
+      "fr": "Allié, protecteur",
+      "ar": "وَلِيّ"
+    },
+    {
+      "id": "verbs_form_1_a_001",
+      "cat": "verbs_form_1_a",
+      "fr": "Faire",
+      "ar": "فَعَلَ"
+    },
+    {
+      "id": "verbs_form_1_a_002",
+      "cat": "verbs_form_1_a",
+      "fr": "Ouvrir",
+      "ar": "فَتَحَ"
+    },
+    {
+      "id": "verbs_form_1_a_003",
+      "cat": "verbs_form_1_a",
+      "fr": "Envoyer, ressusciter",
+      "ar": "بَعَثَ"
+    },
+    {
+      "id": "verbs_form_1_a_004",
+      "cat": "verbs_form_1_a",
+      "fr": "Faire, mettre",
+      "ar": "جَعَلَ"
+    },
+    {
+      "id": "verbs_form_1_a_005",
+      "cat": "verbs_form_1_a",
+      "fr": "Rassembler",
+      "ar": "جَمَعَ"
+    },
+    {
+      "id": "verbs_form_1_a_006",
+      "cat": "verbs_form_1_a",
+      "fr": "Aller",
+      "ar": "ذَهَبَ"
+    },
+    {
+      "id": "verbs_form_1_a_007",
+      "cat": "verbs_form_1_a",
+      "fr": "Elever",
+      "ar": "رَفَعَ"
+    },
+    {
+      "id": "verbs_form_1_a_008",
+      "cat": "verbs_form_1_a",
+      "fr": "Ensorceler",
+      "ar": "سَحَرَ"
+    },
+    {
+      "id": "verbs_form_1_a_009",
+      "cat": "verbs_form_1_a",
+      "fr": "Agir avec droiture",
+      "ar": "صَلَحَ"
+    },
+    {
+      "id": "verbs_form_1_a_010",
+      "cat": "verbs_form_1_a",
+      "fr": "Maudire",
+      "ar": "لَعَنَ"
+    },
+    {
+      "id": "verbs_form_1_a_011",
+      "cat": "verbs_form_1_a",
+      "fr": "Profiter",
+      "ar": "نَفَعَ"
+    },
+    {
+      "id": "verbs_form_1_a_012",
+      "cat": "verbs_form_1_a",
+      "fr": "Etre fait (passif)",
+      "ar": "فُعِلَ"
+    },
+    {
+      "id": "verbs_form_1_b_001",
+      "cat": "verbs_form_1_b",
+      "fr": "Secourir",
+      "ar": "نَصَرَ"
+    },
+    {
+      "id": "verbs_form_1_b_002",
+      "cat": "verbs_form_1_b",
+      "fr": "Atteindre",
+      "ar": "بَلَغَ"
+    },
+    {
+      "id": "verbs_form_1_b_003",
+      "cat": "verbs_form_1_b",
+      "fr": "Laisser, délaisser",
+      "ar": "تَرَكَ"
+    },
+    {
+      "id": "verbs_form_1_b_004",
+      "cat": "verbs_form_1_b",
+      "fr": "Rassembler",
+      "ar": "حَشَرَ"
+    },
+    {
+      "id": "verbs_form_1_b_005",
+      "cat": "verbs_form_1_b",
+      "fr": "Juger",
+      "ar": "حَكَمَ"
+    },
+    {
+      "id": "verbs_form_1_b_006",
+      "cat": "verbs_form_1_b",
+      "fr": "Sortir",
+      "ar": "خَرَجَ"
+    },
+    {
+      "id": "verbs_form_1_b_007",
+      "cat": "verbs_form_1_b",
+      "fr": "Vivre éternellement",
+      "ar": "خَلَدَ"
+    },
+    {
+      "id": "verbs_form_1_b_008",
+      "cat": "verbs_form_1_b",
+      "fr": "Créer",
+      "ar": "خَلَقَ"
+    },
+    {
+      "id": "verbs_form_1_b_009",
+      "cat": "verbs_form_1_b",
+      "fr": "Entrer",
+      "ar": "دَخَلَ"
+    },
+    {
+      "id": "verbs_form_1_b_010",
+      "cat": "verbs_form_1_b",
+      "fr": "Se souvenir",
+      "ar": "ذَكَرَ"
+    },
+    {
+      "id": "verbs_form_1_b_011",
+      "cat": "verbs_form_1_b",
+      "fr": "Pourvoir, donner subsistance",
+      "ar": "رَزَقَ"
+    },
+    {
+      "id": "verbs_form_1_c_001",
+      "cat": "verbs_form_1_c",
+      "fr": "Se prosterner",
+      "ar": "سَجَدَ"
+    },
+    {
+      "id": "verbs_form_1_c_002",
+      "cat": "verbs_form_1_c",
+      "fr": "Ressentir",
+      "ar": "شَعَرَ"
+    },
+    {
+      "id": "verbs_form_1_c_003",
+      "cat": "verbs_form_1_c",
+      "fr": "Remercier",
+      "ar": "شَكَرَ"
+    },
+    {
+      "id": "verbs_form_1_c_004",
+      "cat": "verbs_form_1_c",
+      "fr": "Etre vrai, dire la vérité",
+      "ar": "صَدَقَ"
+    },
+    {
+      "id": "verbs_form_1_c_005",
+      "cat": "verbs_form_1_c",
+      "fr": "Adorer",
+      "ar": "عَبَدَ"
+    },
+    {
+      "id": "verbs_form_1_c_006",
+      "cat": "verbs_form_1_c",
+      "fr": "Transgresser",
+      "ar": "فَسَقَ"
+    },
+    {
+      "id": "verbs_form_1_c_007",
+      "cat": "verbs_form_1_c",
+      "fr": "Tuer",
+      "ar": "قَتَلَ"
+    },
+    {
+      "id": "verbs_form_1_c_008",
+      "cat": "verbs_form_1_c",
+      "fr": "S'asseoir",
+      "ar": "قَعَدَ"
+    },
+    {
+      "id": "verbs_form_1_c_009",
+      "cat": "verbs_form_1_c",
+      "fr": "Ecrire",
+      "ar": "كَتَبَ"
+    },
+    {
+      "id": "verbs_form_1_c_010",
+      "cat": "verbs_form_1_c",
+      "fr": "Mécroire",
+      "ar": "كَفَرَ"
+    },
+    {
+      "id": "verbs_form_1_c_011",
+      "cat": "verbs_form_1_c",
+      "fr": "Comploter",
+      "ar": "مَكَرَ"
+    },
+    {
+      "id": "verbs_form_1_c_012",
+      "cat": "verbs_form_1_c",
+      "fr": "Regarder",
+      "ar": "نَظَرَ"
+    },
+    {
+      "id": "verbs_form_1_d_001",
+      "cat": "verbs_form_1_d",
+      "fr": "Frapper",
+      "ar": "ضَرَبَ"
+    },
+    {
+      "id": "verbs_form_1_d_002",
+      "cat": "verbs_form_1_d",
+      "fr": "Porter",
+      "ar": "حَمَلَ"
+    },
+    {
+      "id": "verbs_form_1_d_003",
+      "cat": "verbs_form_1_d",
+      "fr": "Patienter",
+      "ar": "صَبَرَ"
+    },
+    {
+      "id": "verbs_form_1_d_004",
+      "cat": "verbs_form_1_d",
+      "fr": "Etre injuste",
+      "ar": "ظَلَمَ"
+    },
+    {
+      "id": "verbs_form_1_d_005",
+      "cat": "verbs_form_1_d",
+      "fr": "Connaitre",
+      "ar": "عَرَفَ"
+    },
+    {
+      "id": "verbs_form_1_d_006",
+      "cat": "verbs_form_1_d",
+      "fr": "Comprendre",
+      "ar": "عَقَلَ"
+    },
+    {
+      "id": "verbs_form_1_d_007",
+      "cat": "verbs_form_1_d",
+      "fr": "Pardonner",
+      "ar": "غَفَرَ"
+    },
+    {
+      "id": "verbs_form_1_d_008",
+      "cat": "verbs_form_1_d",
+      "fr": "Décreter",
+      "ar": "قَدَرَ"
+    },
+    {
+      "id": "verbs_form_1_d_009",
+      "cat": "verbs_form_1_d",
+      "fr": "Mentir",
+      "ar": "كَذَبَ"
+    },
+    {
+      "id": "verbs_form_1_d_010",
+      "cat": "verbs_form_1_d",
+      "fr": "Acquérir",
+      "ar": "كَسَبَ"
+    },
+    {
+      "id": "verbs_form_1_d_011",
+      "cat": "verbs_form_1_d",
+      "fr": "Posséder",
+      "ar": "مَلَكَ"
+    },
+    {
+      "id": "verbs_form_1_e_001",
+      "cat": "verbs_form_1_e",
+      "fr": "Entendre",
+      "ar": "سَمِعَ"
+    },
+    {
+      "id": "verbs_form_1_e_002",
+      "cat": "verbs_form_1_e",
+      "fr": "Etre triste",
+      "ar": "حَزِنَ"
+    },
+    {
+      "id": "verbs_form_1_e_003",
+      "cat": "verbs_form_1_e",
+      "fr": "Penser",
+      "ar": "حَسِبَ"
+    },
+    {
+      "id": "verbs_form_1_e_004",
+      "cat": "verbs_form_1_e",
+      "fr": "Préserver",
+      "ar": "حَفِظَ"
+    },
+    {
+      "id": "verbs_form_1_e_005",
+      "cat": "verbs_form_1_e",
+      "fr": "Perdre",
+      "ar": "خَسِرَ"
+    },
+    {
+      "id": "verbs_form_1_e_006",
+      "cat": "verbs_form_1_e",
+      "fr": "Etre miséricordieux",
+      "ar": "رَحِمَ"
+    },
+    {
+      "id": "verbs_form_1_e_007",
+      "cat": "verbs_form_1_e",
+      "fr": "Témoigner",
+      "ar": "شَهِدَ"
+    },
+    {
+      "id": "verbs_form_1_e_008",
+      "cat": "verbs_form_1_e",
+      "fr": "Savoir",
+      "ar": "عَلِمَ"
+    },
+    {
+      "id": "verbs_form_1_e_009",
+      "cat": "verbs_form_1_e",
+      "fr": "Œuvrer",
+      "ar": "عَمِلَ"
+    },
+    {
+      "id": "verbs_form_1_e_010",
+      "cat": "verbs_form_1_e",
+      "fr": "Détester",
+      "ar": "كَرِهَ"
+    },
+    {
+      "id": "verbs_form_1_e_011",
+      "cat": "verbs_form_1_e",
+      "fr": "Voir, être clairvoyant",
+      "ar": "أَبْصَرَ"
+    },
+    {
+      "id": "verbs_form_1_doubled_001",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Vivre",
+      "ar": "حَيِيَ"
+    },
+    {
+      "id": "verbs_form_1_doubled_002",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Retourner",
+      "ar": "رَدَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_003",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Détourner",
+      "ar": "صَدَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_004",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Nuire",
+      "ar": "ضَرَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_005",
+      "cat": "verbs_form_1_doubled",
+      "fr": "S'égarer",
+      "ar": "ضَلَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_006",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Penser",
+      "ar": "ظَنَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_007",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Compter",
+      "ar": "عَدَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_008",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Tromper",
+      "ar": "غَرَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_009",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Etendre",
+      "ar": "مَدَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_010",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Toucher",
+      "ar": "مَسَّ"
+    },
+    {
+      "id": "verbs_form_1_doubled_011",
+      "cat": "verbs_form_1_doubled",
+      "fr": "Aimer",
+      "ar": "وَدَّ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_001",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Délaisser",
+      "ar": "وَذَرَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_002",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Poser",
+      "ar": "وَضَعَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_003",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Tomber, survenir",
+      "ar": "وَقَعَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_004",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Donner",
+      "ar": "وَهَبَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_005",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Trouver",
+      "ar": "وَجَدَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_006",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Hériter",
+      "ar": "وَرِثَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_007",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Porter (fardeau)",
+      "ar": "وَزَرَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_008",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Décrire",
+      "ar": "وَصَفَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_009",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Promettre",
+      "ar": "وَعَدَ"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_010",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Protéger",
+      "ar": "وَقَى"
+    },
+    {
+      "id": "verbs_form_1_weak_initial_011",
+      "cat": "verbs_form_1_weak_initial",
+      "fr": "Englober",
+      "ar": "وَسِعَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_001",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Se repentir",
+      "ar": "تَابَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_002",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Goûter",
+      "ar": "ذَاقَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_003",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Gagner, réussir",
+      "ar": "فَازَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_004",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Dire",
+      "ar": "قَالَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_005",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Se lever",
+      "ar": "قَامَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_006",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Etre",
+      "ar": "كَانَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_007",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Mourir",
+      "ar": "مَاتَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_008",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Avoir peur",
+      "ar": "خَافَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_009",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Faillir",
+      "ar": "كَادَ"
+    },
+    {
+      "id": "verbs_form_1_hollow_010",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Comploter",
+      "ar": "كَادَ (يَكِيد)"
+    },
+    {
+      "id": "verbs_form_1_hollow_011",
+      "cat": "verbs_form_1_hollow",
+      "fr": "Augmenter",
+      "ar": "زَادَ"
+    },
+    {
+      "id": "verbs_form_1_weak_final_001",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Réciter",
+      "ar": "تَلَا"
+    },
+    {
+      "id": "verbs_form_1_weak_final_002",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Invoquer",
+      "ar": "دَعَا"
+    },
+    {
+      "id": "verbs_form_1_weak_final_003",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Effacer, gracier",
+      "ar": "عَفَا"
+    },
+    {
+      "id": "verbs_form_1_weak_final_004",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Vouloir, envier",
+      "ar": "بَغَى"
+    },
+    {
+      "id": "verbs_form_1_weak_final_005",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Couler",
+      "ar": "جَرَى"
+    },
+    {
+      "id": "verbs_form_1_weak_final_006",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Rétribuer",
+      "ar": "جَزَى"
+    },
+    {
+      "id": "verbs_form_1_weak_final_007",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Décreter",
+      "ar": "قَضَى"
+    },
+    {
+      "id": "verbs_form_1_weak_final_008",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Suffire",
+      "ar": "كَفَى"
+    },
+    {
+      "id": "verbs_form_1_weak_final_009",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Guider",
+      "ar": "هَدَى"
+    },
+    {
+      "id": "verbs_form_1_weak_final_010",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Craindre",
+      "ar": "خَشِيَ"
+    },
+    {
+      "id": "verbs_form_1_weak_final_011",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Agréer",
+      "ar": "رَضِيَ"
+    },
+    {
+      "id": "verbs_form_1_weak_final_012",
+      "cat": "verbs_form_1_weak_final",
+      "fr": "Oublier",
+      "ar": "نَسِيَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_001",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Demander",
+      "ar": "سَأَلَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_002",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Lire",
+      "ar": "قَرَأَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_003",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Prendre",
+      "ar": "أَخَذَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_004",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Manger",
+      "ar": "أَكَلَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_005",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Ordonner",
+      "ar": "أَمَرَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_006",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Etre en sécurité",
+      "ar": "أَمِنَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_007",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Refuser",
+      "ar": "أَبَى"
+    },
+    {
+      "id": "verbs_form_1_hamzated_008",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Voir",
+      "ar": "رَأَى"
+    },
+    {
+      "id": "verbs_form_1_hamzated_009",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Venir",
+      "ar": "أَتَى"
+    },
+    {
+      "id": "verbs_form_1_hamzated_010",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Vouloir",
+      "ar": "شَاءَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_011",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Etre mauvais",
+      "ar": "سَاءَ"
+    },
+    {
+      "id": "verbs_form_1_hamzated_012",
+      "cat": "verbs_form_1_hamzated",
+      "fr": "Venir",
+      "ar": "جَاءَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_001",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Echanger",
+      "ar": "بَدَّلَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_002",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Annoncer bonne nouvelle",
+      "ar": "بَشَّرَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_003",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Eclaircir",
+      "ar": "بَيَّنَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_004",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Embellir",
+      "ar": "زَيَّنَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_005",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Glorifier",
+      "ar": "سَبَّحَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_006",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Soumettre",
+      "ar": "سَخَّرَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_007",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Confirmer, croire",
+      "ar": "صَدَّقَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_008",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Punir",
+      "ar": "عَذَّبَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_009",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Enseigner",
+      "ar": "عَلَّمَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_010",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Faire passer devant",
+      "ar": "قَدَّمَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_011",
+      "cat": "augmented_verbs_form_2",
+      "fr": "Démentir",
+      "ar": "كَذَّبَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_001",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Avertir",
+      "ar": "نَبَّأَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_002",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Faire descendre",
+      "ar": "نَزَّلَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_003",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Délivrer",
+      "ar": "نَجَّى"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_004",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Se détourner",
+      "ar": "وَلَّى"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_005",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Lutter",
+      "ar": "جَاهَدَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_006",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Combattre",
+      "ar": "قَاتَلَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_007",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Appeler",
+      "ar": "نَادَى"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_008",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Etre hypocrite",
+      "ar": "نَافَقَ"
+    },
+    {
+      "id": "augmented_verbs_form_2_3_009",
+      "cat": "augmented_verbs_form_2_3",
+      "fr": "Emigrer",
+      "ar": "هَاجَرَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_001",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Apercevoir",
+      "ar": "أَبْصَرَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_002",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Bien faire",
+      "ar": "أَحْسَنَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_003",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Faire sortir",
+      "ar": "أَخْرَجَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_004",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Faire entrer",
+      "ar": "أَدْخَلَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_005",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Faire revenir",
+      "ar": "أَرْجَعَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_006",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Envoyer",
+      "ar": "أَرْسَلَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_007",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Gaspiller",
+      "ar": "أَسْرَفَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_008",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Soumettre",
+      "ar": "أَسْلَمَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_009",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Associer",
+      "ar": "أَشْرَكَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_010",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Devenir (matin)",
+      "ar": "أَصْبَحَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_a_011",
+      "cat": "augmented_verbs_form_4_a",
+      "fr": "Réformer",
+      "ar": "أَصْلَحَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_001",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Se détourner",
+      "ar": "أَعْرَضَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_002",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Noyer",
+      "ar": "أَغْرَقَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_003",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Corrompre",
+      "ar": "أَفْسَدَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_004",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Réussir",
+      "ar": "أَفْلَحَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_005",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Faire pousser",
+      "ar": "أَنْبَتَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_006",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Avertir",
+      "ar": "أَنْذَرَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_007",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Faire descendre",
+      "ar": "أَنْزَلَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_008",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Créer",
+      "ar": "أَنْشَأَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_009",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Combler de bienfaits",
+      "ar": "أَنْعَمَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_010",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Dépenser",
+      "ar": "أَنْفَقَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_011",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Nier",
+      "ar": "أَنْكَرَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_b_012",
+      "cat": "augmented_verbs_form_4_b",
+      "fr": "Faire périr",
+      "ar": "أَهْلَكَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_001",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Parachever",
+      "ar": "أَتَمَّ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_002",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Aimer",
+      "ar": "أَحَبَّ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_003",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Rendre licite",
+      "ar": "أَحَلَّ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_004",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Cacher",
+      "ar": "أَسَرَّ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_005",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Egarer",
+      "ar": "أَضَلَّ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_006",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Préparer",
+      "ar": "أَعَدَّ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_007",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Faire goûter",
+      "ar": "أَذَاقَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_008",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Vouloir",
+      "ar": "أَرَادَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_009",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Atteindre",
+      "ar": "أَصَابَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_010",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Obéir",
+      "ar": "أَطَاعَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_011",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Accomplir",
+      "ar": "أَقَامَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_c_012",
+      "cat": "augmented_verbs_form_4_c",
+      "fr": "Faire mourir",
+      "ar": "أَمَاتَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_001",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Faire vivre",
+      "ar": "أَحْيَا"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_002",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Cacher",
+      "ar": "أَخْفَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_003",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Montrer",
+      "ar": "أَرَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_004",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Enrichir",
+      "ar": "أَغْنَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_005",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Jeter",
+      "ar": "أَلْقَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_006",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Sauver",
+      "ar": "أَنْجَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_007",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Révéler",
+      "ar": "أَوْحَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_008",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Expier, tenir promesse",
+      "ar": "أَوْفَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_009",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Croire",
+      "ar": "آمَنَ"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_010",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Donner",
+      "ar": "آتَى"
+    },
+    {
+      "id": "augmented_verbs_form_4_d_011",
+      "cat": "augmented_verbs_form_4_d",
+      "fr": "Blesser",
+      "ar": "آذَى"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_001",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "Réfléchir",
+      "ar": "تَفَكَّرَ"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_002",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "Se souvenir",
+      "ar": "تَذَكَّرَ"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_003",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "S'en remettre",
+      "ar": "تَوَكَّلَ"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_004",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "Se clarifier",
+      "ar": "تَبَيَّنَ"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_005",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "Attendre",
+      "ar": "تَرَبَّصَ"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_006",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "Se détourner",
+      "ar": "تَوَلَّى"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_007",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "Mettre fin à la vie",
+      "ar": "تَوَفَّى"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_008",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "Etre béni",
+      "ar": "تَبَارَكَ"
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_009",
+      "cat": "augmented_verbs_forms_5_6_7",
+      "fr": "S'interroger",
+      "ar": "تَسَاءَلَ"
+    },
+    {
+      "id": "augmented_verbs_form_8_001",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Diverger",
+      "ar": "اخْتَلَفَ"
+    },
+    {
+      "id": "augmented_verbs_form_8_002",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Suivre",
+      "ar": "اتَّبَعَ"
+    },
+    {
+      "id": "augmented_verbs_form_8_003",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Prendre",
+      "ar": "اتَّخَذَ"
+    },
+    {
+      "id": "augmented_verbs_form_8_004",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Craindre",
+      "ar": "اتَّقَى"
+    },
+    {
+      "id": "augmented_verbs_form_8_005",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Inventer",
+      "ar": "افْتَرَى"
+    },
+    {
+      "id": "augmented_verbs_form_8_006",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Etre guidé",
+      "ar": "اهْتَدَى"
+    },
+    {
+      "id": "augmented_verbs_form_8_007",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Désirer",
+      "ar": "ابْتَغَى"
+    },
+    {
+      "id": "augmented_verbs_form_8_008",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Se retourner",
+      "ar": "انْقَلَبَ"
+    },
+    {
+      "id": "augmented_verbs_form_8_009",
+      "cat": "augmented_verbs_form_8",
+      "fr": "Se terminer",
+      "ar": "انْتَهَى"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_001",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "S'assombrir",
+      "ar": "اسْوَدَّ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_002",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "S'éclaircir",
+      "ar": "ابْيَضَّ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_003",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "Se dépêcher",
+      "ar": "اسْتَعْجَلَ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_004",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "Demander pardon",
+      "ar": "اسْتَغْفَرَ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_005",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "S'enorgueillir",
+      "ar": "اسْتَكْبَرَ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_006",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "Se moquer",
+      "ar": "اسْتَهْزَأَ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_007",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "Répondre",
+      "ar": "اسْتَجَابَ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_008",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "Pouvoir",
+      "ar": "اسْتَطَاعَ"
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_009",
+      "cat": "augmented_verbs_forms_9_10",
+      "fr": "Se tenir droit",
+      "ar": "اسْتَقَامَ"
+    }
+  ]
+}
