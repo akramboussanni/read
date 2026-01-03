@@ -56,14 +56,16 @@ func LoadEmbeddedDeck(filename string) (*ParsedDeck, error) {
 		return nil, fmt.Errorf("failed to read embedded file %s: %w", filename, err)
 	}
 
-	// Try each importer until one can handle it
-	for _, importer := range importers {
-		if importer.CanHandle(filename, rawData) {
-			return importer.Parse(rawData)
-		}
+	// Create a temporary registry to find the right importer
+	registry := NewDataSourceRegistry()
+	registry.Register(&QuranWordsImporter{})
+
+	dataSource := registry.FindImporter(filename, rawData)
+	if dataSource == nil {
+		return nil, fmt.Errorf("no importer found for file %s", filename)
 	}
 
-	return nil, fmt.Errorf("no importer found for file %s", filename)
+	return dataSource.Parse(rawData)
 }
 
 // SeedAllDecks imports all embedded JSON files into the database

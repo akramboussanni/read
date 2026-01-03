@@ -54,6 +54,7 @@ func NewAuthRouter(userRepo *repo.UserRepo, tokenRepo *repo.TokenRepo, lockoutRe
 		middleware.AddRatelimit(r, 30, 1*time.Minute)
 		middleware.AddAuth(r, ar.UserRepo, ar.TokenRepo)
 		r.Get("/me", ar.HandleProfile)
+		r.Post("/me/email", ar.HandleAddEmail)
 	})
 
 	//15/min

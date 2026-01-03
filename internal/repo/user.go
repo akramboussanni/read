@@ -62,6 +62,13 @@ func (r *UserRepo) GetUserByEmail(ctx context.Context, email string) (*model.Use
 	return &user, err
 }
 
+func (r *UserRepo) GetUserByUsername(ctx context.Context, username string) (*model.User, error) {
+	var user model.User
+	query := fmt.Sprintf("SELECT %s FROM users WHERE username=$1", r.AllRaw)
+	err := r.db.GetContext(ctx, &user, query, username)
+	return &user, err
+}
+
 func (r *UserRepo) DeleteUser(ctx context.Context, id int64) error {
 	query := `DELETE FROM users WHERE id = $1`
 	_, err := r.db.ExecContext(ctx, query, id)
@@ -141,5 +148,58 @@ func (r *UserRepo) ChangeJwtSessionID(ctx context.Context, userID int64, newID i
 		WHERE id = $2
 	`
 	_, err := r.db.ExecContext(ctx, query, newID, userID)
+	return err
+}
+
+// GetAllUsers retrieves all users with pagination
+func (r *UserRepo) GetAllUsers(ctx context.Context, limit, offset int) ([]*model.User, error) {
+	var users []*model.User
+	query := fmt.Sprintf("SELECT %s FROM users ORDER BY created_at DESC LIMIT $1 OFFSET $2", r.AllRaw)
+	err := r.db.SelectContext(ctx, &users, query, limit, offset)
+	return users, err
+}
+
+// UpdatePassword updates user password and session ID
+func (r *UserRepo) UpdatePassword(ctx context.Context, userID int64, passwordHash string, sessionID int64) error {
+	query := `
+		UPDATE users
+		SET password_hash = $1,
+		    jwt_session_id = $2
+		WHERE id = $3
+	`
+	_, err := r.db.ExecContext(ctx, query, passwordHash, sessionID, userID)
+	return err
+}
+
+// CountTotalUsers counts all users in the system
+func (r *UserRepo) CountTotalUsers(ctx context.Context) (int, error) {
+	var count int
+	err := r.db.GetContext(ctx, &count, "SELECT COUNT(*) FROM users")
+	return count, err
+}
+
+// CountActiveUsers counts users active within the last N days
+func (r *UserRepo) CountActiveUsers(ctx context.Context, days int) (int, error) {
+	var count int
+	query := `
+		SELECT COUNT(DISTINCT user_id)
+		FROM user_progression
+		WHERE last_activity_date >= DATE('now', '-' || $1 || ' days')
+	`
+	err := r.db.GetContext(ctx, &count, query, days)
+	return count, err
+}
+
+// UpdateEmail updates user's email and resets email confirmation
+func (r *UserRepo) UpdateEmail(ctx context.Context, userID int64, email string) error {
+	query := `
+		UPDATE users
+		SET email = $1,
+		    email_confirmed = FALSE,
+		    email_confirm_token = '',
+		    email_confirm_issuedat = 0
+		WHERE id = $2
+	`
+	_, err := r.db.ExecContext(ctx, query, email, userID)
 	return err
 }

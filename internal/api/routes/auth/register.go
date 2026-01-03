@@ -12,16 +12,16 @@ import (
 )
 
 // @Summary Register new user account
-// @Description Register a new user account with email confirmation. The system will validate credentials, check for duplicates, hash the password, and send a confirmation email. Username cannot contain '@' symbol.
+// @Description Register a new user account with username and password. Email is optional - only needed for quiz creation. If email is provided, a verification email will be sent.
 // @Tags Authentication
 // @Accept json
 // @Produce json
 // @Param X-Recaptcha-Token header string false "reCAPTCHA verification token (optional if reCAPTCHA is not configured)"
-// @Param request body RegisterRequest true "User registration credentials including confirmation URL"
-// @Success 200 {object} api.SuccessResponse "User account created successfully - confirmation email sent"
-// @Failure 400 {object} api.ErrorResponse "Invalid credentials, duplicate username, or validation errors"
+// @Param request body RegisterRequest true "User registration credentials (email optional)"
+// @Success 200 {object} api.SuccessResponse "User account created successfully"
+// @Failure 400 {object} api.ErrorResponse "Invalid credentials, duplicate username/email, or validation errors"
 // @Failure 429 {object} api.ErrorResponse "Rate limit exceeded (2 requests per minute)"
-// @Failure 500 {object} api.ErrorResponse "Internal server error or email sending failure"
+// @Failure 500 {object} api.ErrorResponse "Internal server error"
 // @Router /auth/register [post]
 func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 	applog.Info("HandleRegister called", "remoteAddr:", utils.GetClientIP(r))
@@ -31,14 +31,21 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if req.Username == "" || req.Email == "" || req.Password == "" {
-		applog.Warn("Missing registration fields", "username:", req.Username, "email:", req.Email)
+	if req.Username == "" || req.Password == "" {
+		applog.Warn("Missing registration fields", "username:", req.Username)
 		http.Error(w, "invalid credentials", http.StatusBadRequest)
 		return
 	}
 
-	if strings.Contains(req.Username, "@") || !utils.IsValidEmail(req.Email) || !utils.IsValidPassword(req.Password) {
-		applog.Warn("Invalid registration credentials", "username:", req.Username, "email:", req.Email)
+	// Validate email only if provided
+	if req.Email != "" && !utils.IsValidEmail(req.Email) {
+		applog.Warn("Invalid email format", "email:", req.Email)
+		http.Error(w, "invalid email format", http.StatusBadRequest)
+		return
+	}
+
+	if strings.Contains(req.Username, "@") || !utils.IsValidPassword(req.Password) {
+		applog.Warn("Invalid registration credentials", "username:", req.Username)
 		http.Error(w, "invalid credentials", http.StatusBadRequest)
 		return
 	}
@@ -56,6 +63,21 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Check duplicate email only if provided
+	if req.Email != "" {
+		emailDuplicate, err := ar.UserRepo.DuplicateEmail(r.Context(), req.Email)
+		if err != nil {
+			applog.Error("Failed to check duplicate email:", err)
+			api.WriteInternalError(w)
+			return
+		}
+		if emailDuplicate {
+			applog.Warn("Duplicate email registration attempt", "email:", req.Email)
+			http.Error(w, "email already in use", http.StatusBadRequest)
+			return
+		}
+	}
+
 	hash, err := utils.HashPassword(req.Password)
 	if err != nil {
 		applog.Error("Failed to hash password:", err)
@@ -63,7 +85,9 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	user := &model.User{ID: utils.GenerateSnowflakeID(), Username: req.Username, PasswordHash: hash, Email: req.Email, CreatedAt: time.Now().UTC().Unix(), Role: "user", EmailConfirmed: false}
+	// If no email provided, mark as confirmed (no verification needed)
+	emailConfirmed := req.Email == ""
+	user := &model.User{ID: utils.GenerateSnowflakeID(), Username: req.Username, PasswordHash: hash, Email: req.Email, CreatedAt: time.Now().UTC().Unix(), Role: "user", EmailConfirmed: emailConfirmed}
 
 	if err := ar.UserRepo.CreateUser(r.Context(), user); err != nil {
 		applog.Error("Failed to create user:", err)
@@ -71,20 +95,23 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	expiryStr := utils.ExpiryToString(24 * 3600)
-	token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Email confirmation", req.Url, map[string]any{"Expiry": expiryStr, "Url": req.Url})
-	if err != nil {
-		applog.Error("Failed to send confirmation email:", err)
-		api.WriteInternalError(w)
-		return
+	// Only send confirmation email if email was provided
+	if req.Email != "" {
+		expiryStr := utils.ExpiryToString(24 * 3600)
+		token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Email confirmation", "", map[string]any{"Expiry": expiryStr})
+		if err != nil {
+			applog.Error("Failed to send confirmation email:", err)
+			// Don't fail registration if email fails, just warn
+			applog.Warn("User created but email sending failed", "userID:", user.ID)
+		} else {
+			if err := ar.UserRepo.AssignUserConfirmToken(r.Context(), token.Hash, time.Now().UTC().Unix(), user.ID); err != nil {
+				applog.Error("Failed to assign confirmation token:", err)
+			}
+		}
+		applog.Info("User registered successfully with email", "userID:", user.ID, "email:", user.Email)
+		api.WriteMessage(w, 200, "message", "user created - confirmation email sent")
+	} else {
+		applog.Info("User registered successfully without email", "userID:", user.ID)
+		api.WriteMessage(w, 200, "message", "user created")
 	}
-
-	if err := ar.UserRepo.AssignUserConfirmToken(r.Context(), token.Hash, time.Now().UTC().Unix(), user.ID); err != nil {
-		applog.Error("Failed to assign confirmation token:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	applog.Info("User registered successfully", "userID:", user.ID, "email:", user.Email)
-	api.WriteMessage(w, 200, "message", "user created")
 }

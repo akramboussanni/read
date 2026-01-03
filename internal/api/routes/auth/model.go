@@ -1,17 +1,22 @@
 package auth
 
-// @Description User registration request with email confirmation
+// @Description User registration request - email is optional, only needed for quiz creation
 type RegisterRequest struct {
 	Username string `json:"username" example:"johndoe" binding:"required" minLength:"3" maxLength:"30" pattern:"^[a-zA-Z0-9_-]+$"`
-	Email    string `json:"email" example:"john@example.com" binding:"required" format:"email"`
+	Email    string `json:"email" example:"john@example.com" format:"email" description:"Optional - only needed for quiz creation"`
 	Password string `json:"password" example:"SecurePass123!" binding:"required" minLength:"8"`
-	Url      string `json:"url" example:"https://example.com/confirm" binding:"required" format:"uri"`
 }
 
-// @Description User login credentials
+// @Description User login credentials - uses username, not email
 type LoginRequest struct {
-	Email    string `json:"email" example:"john@example.com" binding:"required" format:"email"`
+	Username string `json:"username" example:"johndoe" binding:"required"`
 	Password string `json:"password" example:"SecurePass123!" binding:"required"`
+}
+
+// @Description Add or update email address
+type AddEmailRequest struct {
+	Email string `json:"email" example:"john@example.com" binding:"required" format:"email"`
+	Url   string `json:"url" example:"https://example.com/confirm" format:"uri" description:"Confirmation URL for email verification"`
 }
 
 // @Description Email-based request for password reset and email confirmation resend

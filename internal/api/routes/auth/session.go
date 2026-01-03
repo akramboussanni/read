@@ -15,15 +15,16 @@ import (
 )
 
 // @Summary Authenticate user and set session cookies
-// @Description Authenticate user with email and password, setting session and refresh cookies. User must have confirmed their email address.
+// @Description Authenticate user with username and password, setting session and refresh cookies. Email verification is not required for login.
 // @Tags Authentication
 // @Accept json
 // @Produce json
 // @Param X-Recaptcha-Token header string false "reCAPTCHA verification token (optional if reCAPTCHA is not configured)"
-// @Param request body LoginRequest true "User login credentials"
+// @Param request body LoginRequest true "User login credentials (username and password)"
 // @Success 200 {object} api.SuccessResponse "Authentication successful - session and refresh cookies set"
 // @Failure 400 {object} api.ErrorResponse "Invalid request format or missing required fields"
-// @Failure 401 {object} api.ErrorResponse "Invalid credentials or email not confirmed"
+// @Failure 401 {object} api.ErrorResponse "Invalid credentials"
+// @Failure 423 {object} api.ErrorResponse "Account locked due to failed login attempts"
 // @Failure 429 {object} api.ErrorResponse "Rate limit exceeded (8 requests per minute)"
 // @Failure 500 {object} api.ErrorResponse "Internal server error"
 // @Router /auth/login [post]
@@ -36,9 +37,9 @@ func (ar *AuthRouter) HandleLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	user, err := ar.UserRepo.GetUserByEmail(r.Context(), cred.Email)
+	user, err := ar.UserRepo.GetUserByUsername(r.Context(), cred.Username)
 	if err != nil || user == nil {
-		applog.Warn("Login failed: user not found or db error", "email:", cred.Email, "err:", err)
+		applog.Warn("Login failed: user not found or db error", "username:", cred.Username, "err:", err)
 		api.WriteInvalidCredentials(w)
 		return
 	}
@@ -96,12 +97,6 @@ func (ar *AuthRouter) HandleLogin(w http.ResponseWriter, r *http.Request) {
 		}
 
 		applog.Warn("Invalid password for user", "userID:", user.ID)
-		api.WriteInvalidCredentials(w)
-		return
-	}
-
-	if !user.EmailConfirmed {
-		applog.Warn("Login attempt with unconfirmed email", "userID:", user.ID)
 		api.WriteInvalidCredentials(w)
 		return
 	}

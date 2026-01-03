@@ -34,3 +34,15 @@ func WriteInternalError(w http.ResponseWriter) {
 func WriteInvalidCredentials(w http.ResponseWriter) {
 	http.Error(w, "invalid credentials", http.StatusUnauthorized)
 }
+
+func WriteUnauthorized(w http.ResponseWriter) {
+	http.Error(w, "unauthorized", http.StatusUnauthorized)
+}
+
+func WriteBadRequest(w http.ResponseWriter, msg string) {
+	http.Error(w, msg, http.StatusBadRequest)
+}
+
+func WriteNotFound(w http.ResponseWriter, msg string) {
+	http.Error(w, msg, http.StatusNotFound)
+}

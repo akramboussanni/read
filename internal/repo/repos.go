@@ -8,12 +8,19 @@ import (
 )
 
 type Repos struct {
-	User     *UserRepo
-	Token    *TokenRepo
-	Lockout  *LockoutRepo
-	Deck     *DeckRepo
-	Category *CategoryRepo
-	Question *QuestionRepo
+	User                  *UserRepo
+	Token                 *TokenRepo
+	Lockout               *LockoutRepo
+	Deck                  *DeckRepo
+	Category              *CategoryRepo
+	Question              *QuestionRepo
+	QuestionOption        *QuestionOptionRepo
+	Quiz                  *QuizRepo
+	QuizCategorySelection *QuizCategorySelectionRepo
+	QuizAttempt           *QuizAttemptRepo
+	UserAnswer            *UserAnswerRepo
+	Progression           *ProgressionRepo
+	Coin                  *CoinRepo
 }
 
 type Columns struct {
@@ -27,12 +34,19 @@ type Columns struct {
 
 func NewRepos(db *sqlx.DB) *Repos {
 	return &Repos{
-		User:     NewUserRepo(db),
-		Token:    NewTokenRepo(db),
-		Lockout:  NewLockoutRepo(db),
-		Deck:     NewDeckRepo(db),
-		Category: NewCategoryRepo(db),
-		Question: NewQuestionRepo(db),
+		User:                  NewUserRepo(db),
+		Token:                 NewTokenRepo(db),
+		Lockout:               NewLockoutRepo(db),
+		Deck:                  NewDeckRepo(db),
+		Category:              NewCategoryRepo(db),
+		Question:              NewQuestionRepo(db),
+		QuestionOption:        NewQuestionOptionRepo(db),
+		Quiz:                  NewQuizRepo(db),
+		QuizCategorySelection: NewQuizCategorySelectionRepo(db),
+		QuizAttempt:           NewQuizAttemptRepo(db),
+		UserAnswer:            NewUserAnswerRepo(db),
+		Progression:           NewProgressionRepo(db),
+		Coin:                  NewCoinRepo(db),
 	}
 }
 
