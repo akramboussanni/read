@@ -1,0 +1,250 @@
+# Quiz System Warnings and TODOs
+
+This file documents temporary/mock implementations and features that need to be improved for production use.
+
+## ✅ COMPLETED IMPROVEMENTS
+
+### 1. Database Persistence for Decks
+**Status**: ✅ IMPLEMENTED
+**Location**: `internal/repo/quiz.go`, `internal/model/quiz.go`
+**Changes**:
+- Universal deck schema with JSON fields for flexible metadata
+- Proper repo layer with Columns pattern for optimized queries
+- DeckEntryRepo for flexible data storage
+- DeckCacheRepo for performance optimization
+- Runtime seeding from JSON files
+
+### 2. Intelligent Caching Strategy
+**Status**: ✅ IMPLEMENTED
+**Location**: `internal/quiz/deck_service.go`
+**Features**:
+- Multi-level caching (memory LRU + database cache)
+- 30-minute memory TTL, 1-hour database TTL
+- Automatic cache invalidation and cleanup
+- Performance optimization for frequently accessed decks
+
+### 3. Modular Architecture
+**Status**: ✅ IMPLEMENTED
+**Location**: `internal/quiz/`, `internal/repo/`
+**Improvements**:
+- Clean separation between data access (repos), business logic (services), API
+- Universal importer supporting any language pair
+- Extensible question generator interfaces
+- Proper error handling and logging
+
+### 4. Universal Deck Support
+**Status**: ✅ IMPLEMENTED
+**Features**:
+- JSON schema supporting any language pair
+- Flexible metadata and question types
+- Runtime deck discovery and loading
+- Versioned deck management
+
+## Critical Issues (Still Pending)
+
+### 1. In-Memory Session Storage
+**Location**: `internal/api/routes/quiz/routes.go` and `internal/api/routes/quiz/handlers.go`
+**Issue**: Quiz sessions are stored in a simple in-memory map with basic mutex locking
+**Problems**:
+- Sessions are lost on server restart
+- No persistence across deployments
+- Memory leaks if sessions aren't cleaned up
+- No session expiration
+- Not scalable across multiple server instances
+**Solution**: Implement proper session storage using Redis, database, or distributed cache
+
+### 2. No Authentication/Authorization Checks
+**Location**: Various handlers
+**Issue**: Basic user context checking but no role-based permissions
+**Problems**:
+- No admin-only features properly protected
+- No rate limiting per user for quiz operations
+- No audit logging
+**Solution**: Implement proper RBAC and enhanced security
+
+### 3. No Error Handling for Concurrent Access
+**Location**: Session management in handlers
+**Issue**: Basic mutex locking but no proper transaction handling
+**Problems**:
+- Race conditions possible in complex scenarios
+- No rollback on failures
+- Memory corruption risks
+**Solution**: Use proper database transactions and optimistic locking
+
+## Performance Issues (Partially Resolved)
+
+### 4. Synchronous File Loading
+**Status**: ✅ PARTIALLY RESOLVED
+**Location**: `deck_service.go` GetDeck method
+**Current State**: Intelligent caching prevents repeated file I/O
+**Remaining Issues**:
+- Initial load still synchronous
+- No async preloading of popular decks
+**Solution**: Implement async deck preloading and background refresh
+
+### 5. No Request Validation
+**Location**: API request models
+**Issue**: Basic struct validation but no comprehensive input sanitization
+**Problems**:
+- Potential for malformed data
+- No size limits on arrays/strings
+- No business logic validation
+**Solution**: Add comprehensive validation using libraries like go-playground/validator
+
+## Data Integrity Issues
+
+### 6. No Data Validation on Deck Loading
+**Location**: `importer.go` and data source implementations
+**Issue**: JSON parsing with basic error handling
+**Problems**:
+- Malformed deck files could cause panics
+- No schema validation
+- No data consistency checks
+**Solution**: Implement JSON schema validation and data integrity checks
+
+### 7. Session ID Generation
+**Location**: `handlers.go` HandleCreateQuiz
+**Issue**: Using Unix nanoseconds as session ID
+**Problems**:
+- Predictable IDs (security risk)
+- Potential collisions in high-concurrency scenarios
+- Not URL-safe
+**Solution**: Use cryptographically secure random UUIDs
+
+## Missing Features
+
+### 8. No Quiz Persistence
+**Issue**: Quizzes are not saved to database
+**Impact**: No quiz history, statistics, or user progress tracking
+**Solution**: Implement quiz session persistence in database
+
+### 9. No User Progress Tracking
+**Issue**: No long-term learning analytics
+**Impact**: Cannot provide personalized difficulty adjustment or progress reports
+**Solution**: Implement user quiz history and analytics
+
+### 10. No Quiz Templates/Presets
+**Issue**: Users must manually configure every quiz
+**Impact**: Poor user experience for common quiz types
+**Solution**: Implement quiz templates and presets
+
+### 11. No Multiplayer/Collaborative Features
+**Issue**: Single-user only
+**Impact**: Limited social/learning features
+**Solution**: Design multiplayer quiz architecture
+
+### 12. Missing LLM-Powered Question Types
+**Issue**: No AI-powered question generation or validation
+**Missing Features**:
+- Sentence-based translation questions (contextual translation)
+- Grammar correction exercises
+- Verb conjugation questions
+- Tense identification
+- Contextual vocabulary in sentences
+- LLM-powered answer validation with explanations
+- Dynamic difficulty adjustment based on user performance
+- Personalized question generation
+**Impact**: Limited to basic rule-based questions only
+**Solution**: Implement LLM integration with:
+- OpenAI/Anthropic API clients
+- Prompt engineering for different question types
+- LLM-based answer checking with feedback
+- Model selection (GPT-4 for complex tasks, GPT-3.5 for simple)
+- Cost optimization and rate limiting
+
+## Scalability Concerns
+
+### 13. No Pagination for Large Responses
+**Location**: Various list endpoints
+**Issue**: Returns all items at once
+**Problems**:
+- Large response payloads
+- Memory usage on client and server
+- Slow loading times
+**Solution**: Implement proper pagination with cursor-based navigation
+
+## Security Issues
+
+### 14. No Input Sanitization
+**Location**: All API endpoints
+**Issue**: User input not properly sanitized
+**Problems**:
+- Potential XSS attacks
+- SQL injection risks (when database is added)
+- Malformed data attacks
+**Solution**: Implement comprehensive input validation and sanitization
+
+### 15. No Rate Limiting per User
+**Location**: Route middleware
+**Issue**: Basic rate limiting but not user-specific
+**Problems**:
+- Users can bypass limits with multiple accounts
+- No protection against targeted abuse
+**Solution**: Implement user-based rate limiting with Redis
+
+## Testing Gaps
+
+### 16. No Integration Tests
+**Issue**: Only basic unit tests
+**Problems**:
+- No end-to-end API testing
+- No concurrent access testing
+- No load testing
+**Solution**: Implement comprehensive integration and load tests
+
+### 17. No Error Scenario Testing
+**Issue**: Limited error handling testing
+**Problems**:
+- Unknown failure modes in production
+- Poor error messages for users
+**Solution**: Implement chaos engineering and comprehensive error testing
+
+## Monitoring and Observability
+
+### 18. No Metrics/Logging
+**Issue**: Basic error logging only
+**Problems**:
+- No performance monitoring
+- No user behavior analytics
+- Difficult to debug production issues
+**Solution**: Implement structured logging, metrics, and tracing
+
+### 19. No Health Checks
+**Issue**: No service health monitoring
+**Problems**:
+- Cannot detect service degradation
+- No automated recovery
+**Solution**: Implement health check endpoints and monitoring
+
+## Future Architecture Considerations
+
+### 20. Microservices Split
+**Consideration**: Quiz service could be split into separate services
+- Quiz generation service
+- Session management service
+- Analytics service
+- Deck management service
+
+### 21. Event-Driven Architecture
+**Consideration**: Implement event sourcing for quiz actions
+- Better audit trails
+- Analytics capabilities
+- Real-time features
+
+### 22. CDN for Static Assets
+**Consideration**: Deck files and question media should be served via CDN
+- Faster loading
+- Reduced server load
+- Global distribution
+
+## Migration Notes
+
+When moving to production:
+1. Replace in-memory sessions with Redis/database ✅ PARTIALLY DONE (database persistence implemented)
+2. Implement proper deck file management ✅ DONE
+3. Add comprehensive validation
+4. Implement user authentication enhancements
+5. Add monitoring and alerting
+6. Implement backup and disaster recovery
+7. Add performance optimization ✅ PARTIALLY DONE (caching implemented)
+8. Implement A/B testing framework

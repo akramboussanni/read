@@ -1,13 +1,16 @@
 package admin
 
 import (
+	"encoding/json"
 	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/akramboussanni/gocode/internal/api"
+	"github.com/akramboussanni/gocode/internal/api/routes/quiz"
 	"github.com/akramboussanni/gocode/internal/applog"
 	"github.com/akramboussanni/gocode/internal/model"
+	quizpkg "github.com/akramboussanni/gocode/internal/quiz"
 	"github.com/akramboussanni/gocode/internal/utils"
 	"github.com/go-chi/chi/v5"
 )
@@ -219,7 +222,7 @@ func (ar *AdminRouter) HandleDeleteUser(w http.ResponseWriter, r *http.Request) 
 }
 
 // @Summary Create quiz
-// @Description Create a new quiz with category selections (admin only)
+// @Description Create a new quiz (admin can set all fields)
 // @Tags Admin
 // @Accept json
 // @Produce json
@@ -240,27 +243,139 @@ func (ar *AdminRouter) HandleCreateQuiz(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	// Validate
+	// Validate basic requirements
 	if req.Title == "" {
 		api.WriteBadRequest(w, "Title is required")
 		return
 	}
-	if len(req.CategorySelections) == 0 {
-		api.WriteBadRequest(w, "At least one category selection is required")
+
+	if len(req.ManualQuestions) == 0 && req.AutoGenerate == nil {
+		api.WriteBadRequest(w, "Either manual questions or auto-generation config is required")
 		return
 	}
 
-	// Create quiz
+	// Start building the quiz questions
+	var allQuestions []quizpkg.QuizQuestion
+
+	// Process manual questions
+	for _, mq := range req.ManualQuestions {
+		question := quizpkg.QuizQuestion{
+			QuestionText:  mq.QuestionText,
+			CorrectAnswer: mq.CorrectAnswer,
+			Options:       mq.Options,
+		}
+
+		// Set question type
+		switch mq.QuestionType {
+		case "mcq":
+			question.QuestionType = quizpkg.QuestionTypeMCQ
+		case "write_word":
+			question.QuestionType = quizpkg.QuestionTypeWriteWord
+		case "translate":
+			question.QuestionType = quizpkg.QuestionTypeTranslate
+		default:
+			api.WriteBadRequest(w, "Invalid question type: "+mq.QuestionType)
+			return
+		}
+
+		// Set direction
+		switch mq.Direction {
+		case "source_to_target":
+			question.Direction = quizpkg.DirectionSourceToTarget
+		case "target_to_source":
+			question.Direction = quizpkg.DirectionTargetToSource
+		default:
+			api.WriteBadRequest(w, "Invalid direction: "+mq.Direction)
+			return
+		}
+
+		allQuestions = append(allQuestions, question)
+	}
+
+	// Process auto-generated questions if specified
+	if req.AutoGenerate != nil {
+		// Load decks for auto-generation
+		var parsedDecks []*quizpkg.ParsedDeck
+		deckMap := make(map[int64]*quizpkg.ParsedDeck)
+
+		for _, sel := range req.AutoGenerate.DeckSelections {
+			if _, exists := deckMap[sel.DeckID]; !exists {
+				deck, err := ar.DeckService.GetDeck(r.Context(), sel.DeckID)
+				if err != nil {
+					applog.Error("Failed to load deck %d: %v", sel.DeckID, err)
+					api.WriteInternalError(w)
+					return
+				}
+				parsedDecks = append(parsedDecks, deck)
+				deckMap[sel.DeckID] = deck
+			}
+		}
+
+		// Convert auto-generate config to service types
+		var deckSelections []quizpkg.DeckSelection
+		var questionTypes []quizpkg.QuestionType
+		var directions []quizpkg.Direction
+
+		for _, sel := range req.AutoGenerate.DeckSelections {
+			deckSelections = append(deckSelections, quizpkg.DeckSelection{
+				DeckID:     sel.DeckID,
+				Categories: sel.Categories,
+			})
+		}
+
+		for _, qt := range req.AutoGenerate.QuestionTypes {
+			switch qt {
+			case "mcq":
+				questionTypes = append(questionTypes, quizpkg.QuestionTypeMCQ)
+			case "write_word":
+				questionTypes = append(questionTypes, quizpkg.QuestionTypeWriteWord)
+			case "translate":
+				questionTypes = append(questionTypes, quizpkg.QuestionTypeTranslate)
+			}
+		}
+
+		for _, dir := range req.AutoGenerate.Directions {
+			switch dir {
+			case "source_to_target":
+				directions = append(directions, quizpkg.DirectionSourceToTarget)
+			case "target_to_source":
+				directions = append(directions, quizpkg.DirectionTargetToSource)
+			}
+		}
+
+		config := quizpkg.QuizConfig{
+			DeckSelections:  deckSelections,
+			QuestionTypes:   questionTypes,
+			Directions:      directions,
+			QuestionCount:   req.AutoGenerate.QuestionCount,
+			Difficulty:      req.AutoGenerate.Difficulty,
+			CustomQuestions: nil, // No custom questions for auto-generation
+		}
+
+		autoQuiz, err := ar.QuizService.CreateQuiz(r.Context(), config, parsedDecks)
+		if err != nil {
+			applog.Error("Failed to auto-generate quiz questions:", err)
+			api.WriteInternalError(w)
+			return
+		}
+
+		// Add auto-generated questions to the list
+		allQuestions = append(allQuestions, autoQuiz.Questions...)
+	}
+
+	// Generate quiz ID
 	quizID := utils.GenerateSnowflakeID()
-	quiz := &model.Quiz{
+
+	// Create quiz record
+	quizModel := &model.Quiz{
 		ID:                 quizID,
 		Title:              req.Title,
 		Description:        req.Description,
-		DeckID:             req.DeckID,
-		TimeLimit:          req.TimeLimit,
+		DeckID:             nil, // Multi-deck, so no single deck
+		TimeLimit:          nil, // Always nil as requested
 		PassPercentage:     req.PassPercentage,
-		ShuffleQuestions:   req.ShuffleQuestions,
-		QuestionMode:       req.QuestionMode,
+		ShuffleQuestions:   true,
+		QuestionMode:       "source_to_target",
 		GivesCoins:         req.GivesCoins,
 		CoinReward:         req.CoinReward,
 		LevelOrder:         req.LevelOrder,
@@ -272,26 +387,138 @@ func (ar *AdminRouter) HandleCreateQuiz(w http.ResponseWriter, r *http.Request) 
 		IsActive:           true,
 	}
 
-	if err := ar.Repos.Quiz.Create(r.Context(), quiz); err != nil {
+	// Begin transaction
+	tx, err := ar.Repos.Quiz.BeginTx(r.Context())
+	if err != nil {
+		applog.Error("Failed to begin transaction:", err)
+		api.WriteInternalError(w)
+		return
+	}
+	defer tx.Rollback()
+
+	// Create quiz
+	if err := ar.Repos.Quiz.CreateWithTx(r.Context(), tx, quizModel); err != nil {
 		applog.Error("Failed to create quiz:", err)
 		api.WriteInternalError(w)
 		return
 	}
 
-	// Create category selections
-	for _, sel := range req.CategorySelections {
-		selection := &model.QuizCategorySelection{
-			QuizID:        quizID,
-			CategoryID:    sel.CategoryID,
-			QuestionCount: sel.QuestionCount,
-		}
-		if err := ar.Repos.QuizCategorySelection.Create(r.Context(), selection); err != nil {
-			applog.Error("Failed to create category selection:", err)
-			// Continue anyway
+	// Store deck selections if auto-generation was used
+	if req.AutoGenerate != nil {
+		for _, sel := range req.AutoGenerate.DeckSelections {
+			// Get categories for this deck
+			categories, err := ar.Repos.Category.GetByDeckID(r.Context(), sel.DeckID)
+			if err != nil {
+				applog.Error("Failed to get categories for deck %d: %v", sel.DeckID, err)
+				api.WriteInternalError(w)
+				return
+			}
+
+			// If specific categories selected, only include those
+			if len(sel.Categories) > 0 {
+				filteredCategories := make([]*model.Category, 0)
+				for _, cat := range categories {
+					for _, selCat := range sel.Categories {
+						if cat.CategoryKey == selCat {
+							filteredCategories = append(filteredCategories, cat)
+							break
+						}
+					}
+				}
+				categories = filteredCategories
+			}
+
+			// Calculate question count per category
+			questionCount := req.AutoGenerate.QuestionCount / len(categories)
+			if questionCount == 0 {
+				questionCount = 1
+			}
+
+			for _, cat := range categories {
+				selection := &model.QuizCategorySelection{
+					QuizID:        quizID,
+					CategoryID:    cat.ID,
+					QuestionCount: questionCount,
+				}
+				if err := ar.Repos.QuizCategorySelection.CreateWithTx(r.Context(), tx, selection); err != nil {
+					applog.Error("Failed to create quiz category selection:", err)
+					api.WriteInternalError(w)
+					return
+				}
+			}
 		}
 	}
 
-	api.WriteJSON(w, 201, quiz)
+	// Store quiz questions
+	for i, q := range allQuestions {
+		// Convert options to JSON
+		optionsJSON := "[]"
+		if len(q.Options) > 0 {
+			if jsonData, err := json.Marshal(q.Options); err == nil {
+				optionsJSON = string(jsonData)
+			}
+		}
+
+		direction := ""
+		if q.Direction != "" {
+			direction = string(q.Direction)
+		}
+
+		quizQuestion := &model.QuizQuestion{
+			ID:            utils.GenerateSnowflakeID(),
+			QuizID:        quizID,
+			QuestionID:    nil, // For now, not linking to original questions
+			QuestionText:  q.QuestionText,
+			CorrectAnswer: q.CorrectAnswer,
+			Options:       optionsJSON,
+			QuestionType:  string(q.QuestionType),
+			Direction:     &direction,
+			DisplayOrder:  i + 1,
+			CreatedAt:     time.Now().Unix(),
+		}
+
+		if err := ar.Repos.QuizQuestion.CreateWithTx(r.Context(), tx, quizQuestion); err != nil {
+			applog.Error("Failed to create quiz question:", err)
+			api.WriteInternalError(w)
+			return
+		}
+	}
+
+	// Commit transaction
+	if err := tx.Commit(); err != nil {
+		applog.Error("Failed to commit transaction:", err)
+		api.WriteInternalError(w)
+		return
+	}
+
+	// Convert to API response
+	var questions []quiz.QuizQuestionResponse
+	for _, q := range allQuestions {
+		questions = append(questions, quiz.QuizQuestionResponse{
+			ID:           q.ID,
+			QuestionText: q.QuestionText,
+			Options:      q.Options,
+			QuestionType: string(q.QuestionType),
+			Direction:    string(q.Direction),
+		})
+	}
+
+	response := quiz.QuizDetailResponse{
+		ID:           quizID,
+		Title:        req.Title,
+		Description:  req.Description,
+		Config:       quizpkg.QuizConfig{}, // Empty config for response
+		Questions:    questions,
+		CurrentIndex: 0,
+		StartedAt:    nil,
+		Progress: quiz.QuizProgress{
+			Answered:   0,
+			Total:      len(allQuestions),
+			Percentage: 0,
+		},
+	}
+
+	api.WriteJSON(w, 201, response)
 }
 
 // @Summary Get quiz statistics

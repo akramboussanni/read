@@ -30,8 +30,9 @@ func SetupRouter(repos *repo.Repos) http.Handler {
 
 	api.AddSwaggerRoutes(r)
 
-	// Initialize quiz service
+	// Initialize services
 	quizService := quizpkg.NewQuizService(repos)
+	deckService := quizpkg.NewDeckService(repos)
 
 	// Mount routers
 	r.Mount("/auth", auth.NewAuthRouter(repos.User, repos.Token, repos.Lockout))
@@ -41,7 +42,7 @@ func SetupRouter(repos *repo.Repos) http.Handler {
 	// Admin routes (requires authentication and admin role)
 	r.Route("/admin", func(r chi.Router) {
 		middleware.AddAuth(r, repos.User, repos.Token)
-		r.Mount("/", admin.NewAdminRouter(repos).Routes())
+		r.Mount("/", admin.NewAdminRouter(repos, quizService, deckService).Routes())
 	})
 
 	return r

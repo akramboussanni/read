@@ -29,3 +29,8 @@ func (l *StdLogger) Error(args ...any) {
 	l.logger.SetPrefix("ERROR: ")
 	l.logger.Println(args...)
 }
+
+func (l *StdLogger) Debug(args ...any) {
+	l.logger.SetPrefix("DEBUG: ")
+	l.logger.Println(args...)
+}

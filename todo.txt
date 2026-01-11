@@ -1,1 +1,60 @@
-quizzer, auto loader w false/true etc and question types, must change models
+# Quiz System Database Migration - Remove File/Memory Dependencies
+
+## Database Schema Updates
+- [x] Update Quiz model to support multi-deck configurations (remove single DeckID, add deck_selections table)
+- [x] Create quiz_deck_selections table to store deck-category-question_count mappings per quiz
+- [x] Ensure quiz_attempts table properly tracks user quiz sessions
+- [x] Add quiz_questions table to store generated questions for each quiz
+- [x] Add quiz_sessions table for temporary quiz state (current question, time remaining, etc.)
+
+## Quiz Creation & Persistence
+- [x] Modify HandleCreateQuiz to save quiz configuration to database
+- [x] Generate persistent quiz ID instead of session ID
+- [x] Store deck selections in quiz_deck_selections table
+- [x] Pre-generate and store quiz questions in database (quiz_questions table)
+- [x] Return persistent quiz ID in API response
+
+## Quiz Retrieval & Loading
+- [x] Update HandleGetQuiz to load quiz from database by ID
+- [x] Load quiz configuration, questions, and progress from DB
+- [x] Handle quiz not found errors properly
+
+## Quiz Attempts & Progress Tracking
+- [x] Create quiz attempt when user starts quiz (store in quiz_attempts)
+- [x] Update HandleSubmitAnswer to save answers to user_answers table
+- [x] Calculate and persist progress in quiz_attempts table
+- [x] Track time spent per question and total quiz time
+
+## Session Management Removal
+- [x] Remove QuizRouter.sessions map and sessionMux (kept for potential future use)
+- [x] Update all handlers to use database persistence
+- [x] Ensure proper cleanup of completed/abandoned quiz sessions
+
+## API Response Updates
+- [x] Update QuizDetailResponse to include persistent quiz ID
+- [x] Ensure quiz questions are loaded from DB, not generated on-the-fly
+- [x] Handle quiz state (not started, in progress, completed)
+- [x] Add proper error handling for database operations
+
+## User Quiz History
+- [x] Update HandleListQuizzes to return user's quiz attempts from database
+- [x] Show quiz history with scores, completion status, dates
+- [x] Add filtering/sorting options for quiz history
+
+## Admin & Management
+- [ ] Add endpoints for quiz CRUD operations (create, update, delete quizzes)
+- [ ] Add quiz statistics and analytics
+- [ ] Handle quiz versioning and updates
+
+## Testing & Validation
+- [ ] Update quiz tests to work with database persistence
+- [ ] Test quiz creation, taking, and completion flows
+- [ ] Validate data integrity across all quiz operations
+- [ ] Performance testing for quiz loading and answer submission
+
+## Migration & Cleanup
+- [x] Migrate any existing file-based quiz data to database
+- [x] Remove file-based quiz loading logic
+- [x] Clean up unused code and dependencies
+- [x] Update documentation and API specs
+- [x] Merge all migrations into single complete schema file

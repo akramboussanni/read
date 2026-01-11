@@ -2,6 +2,7 @@ package quiz
 
 import (
 	"net/http"
+	"sync"
 	"time"
 
 	"github.com/akramboussanni/gocode/internal/middleware"
@@ -14,7 +15,12 @@ type QuizRouter struct {
 	UserRepo    *repo.UserRepo
 	TokenRepo   *repo.TokenRepo
 	QuizService *quizpkg.QuizService
+	DeckService *quizpkg.DeckService
 	Repos       *repo.Repos
+	// Simple in-memory session store for demo purposes
+	// In production, this would be a database or Redis
+	sessions   map[string]*quizpkg.Quiz
+	sessionMux sync.RWMutex
 }
 
 func NewQuizRouter(repos *repo.Repos, quizService *quizpkg.QuizService) http.Handler {
@@ -22,7 +28,9 @@ func NewQuizRouter(repos *repo.Repos, quizService *quizpkg.QuizService) http.Han
 		UserRepo:    repos.User,
 		TokenRepo:   repos.Token,
 		QuizService: quizService,
+		DeckService: quizpkg.NewDeckService(repos),
 		Repos:       repos,
+		sessions:    make(map[string]*quizpkg.Quiz),
 	}
 	r := chi.NewRouter()
 
@@ -49,13 +57,9 @@ func NewQuizRouter(repos *repo.Repos, quizService *quizpkg.QuizService) http.Han
 		middleware.AddAuth(r, qr.UserRepo, qr.TokenRepo)
 		middleware.AddRatelimit(r, 30, 1*time.Minute)
 
-		r.Get("/my", qr.HandleGetMyQuizzes)
-		r.Post("/", qr.HandleCreateQuiz)
-		r.Post("/generate", qr.HandleGenerateQuiz)
-		r.Put("/{quizID}", qr.HandleUpdateQuiz)
-		r.Delete("/{quizID}", qr.HandleDeleteQuiz)
-		r.Post("/{quizID}/start", qr.HandleStartQuiz)
-		r.Post("/{quizID}/submit", qr.HandleSubmitQuiz)
+		r.Post("/", qr.HandleCreateQuiz) // Create quiz
+		r.Post("/{quizID}/answers", qr.HandleSubmitAnswer)
+		r.Get("/{quizID}/progress", qr.HandleGetQuizProgress)
 	})
 
 	// Question management (authenticated)

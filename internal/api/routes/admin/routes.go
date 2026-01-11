@@ -4,16 +4,23 @@ import (
 	"time"
 
 	"github.com/akramboussanni/gocode/internal/middleware"
+	quiz "github.com/akramboussanni/gocode/internal/quiz"
 	"github.com/akramboussanni/gocode/internal/repo"
 	"github.com/go-chi/chi/v5"
 )
 
 type AdminRouter struct {
-	Repos *repo.Repos
+	Repos       *repo.Repos
+	QuizService *quiz.QuizService
+	DeckService *quiz.DeckService
 }
 
-func NewAdminRouter(repos *repo.Repos) *AdminRouter {
-	return &AdminRouter{Repos: repos}
+func NewAdminRouter(repos *repo.Repos, quizService *quiz.QuizService, deckService *quiz.DeckService) *AdminRouter {
+	return &AdminRouter{
+		Repos:       repos,
+		QuizService: quizService,
+		DeckService: deckService,
+	}
 }
 
 func (ar *AdminRouter) Routes() chi.Router {

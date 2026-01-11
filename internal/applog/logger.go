@@ -13,6 +13,7 @@ type Logger interface {
 	Info(args ...any)
 	Warn(args ...any)
 	Error(args ...any)
+	Debug(args ...any)
 }
 
 func Init(config LoggerConfig) {
@@ -34,6 +35,10 @@ func Warn(args ...any) {
 
 func Error(args ...any) {
 	globalLogger.Error(args...)
+}
+
+func Debug(args ...any) {
+	globalLogger.Debug(args...)
 }
 
 func Fatal(v ...any) {

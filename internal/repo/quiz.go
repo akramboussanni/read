@@ -2,26 +2,28 @@ package repo
 
 import (
 	"context"
+	"fmt"
+	"time"
 
 	"github.com/akramboussanni/gocode/internal/model"
 	"github.com/jmoiron/sqlx"
 )
 
 type DeckRepo struct {
+	Columns
 	db *sqlx.DB
 }
 
 func NewDeckRepo(db *sqlx.DB) *DeckRepo {
-	return &DeckRepo{db: db}
+	repo := &DeckRepo{db: db}
+	repo.Columns = ExtractColumns[model.Deck]()
+	return repo
 }
 
 func (r *DeckRepo) GetByKey(ctx context.Context, deckKey string) (*model.Deck, error) {
 	var deck model.Deck
-	err := r.db.GetContext(ctx, &deck, `
-		SELECT id, deck_key, title, version, source_file, is_system, created_at
-		FROM quiz_decks
-		WHERE deck_key = $1
-	`, deckKey)
+	query := fmt.Sprintf("SELECT %s FROM quiz_decks WHERE deck_key = $1", r.AllRaw)
+	err := r.db.GetContext(ctx, &deck, query, deckKey)
 	if err != nil {
 		return nil, err
 	}
@@ -29,48 +31,78 @@ func (r *DeckRepo) GetByKey(ctx context.Context, deckKey string) (*model.Deck, e
 }
 
 func (r *DeckRepo) Create(ctx context.Context, deck *model.Deck) error {
-	_, err := r.db.NamedExecContext(ctx, `
-		INSERT INTO quiz_decks (id, deck_key, title, version, source_file, is_system, created_at)
-		VALUES (:id, :deck_key, :title, :version, :source_file, :is_system, :created_at)
-	`, deck)
+	query := fmt.Sprintf(
+		"INSERT INTO quiz_decks (%s) VALUES (%s)",
+		r.AllRaw,
+		r.AllPrefixed,
+	)
+	_, err := r.db.NamedExecContext(ctx, query, deck)
 	return err
 }
 
 func (r *DeckRepo) GetAll(ctx context.Context) ([]*model.Deck, error) {
 	var decks []*model.Deck
-	err := r.db.SelectContext(ctx, &decks, `
-		SELECT id, deck_key, title, version, source_file, is_system, created_at
-		FROM quiz_decks
-		ORDER BY title
-	`)
+	query := fmt.Sprintf("SELECT %s FROM quiz_decks ORDER BY title", r.AllRaw)
+	err := r.db.SelectContext(ctx, &decks, query)
 	return decks, err
 }
 
+func (r *DeckRepo) GetByKeyAndVersion(ctx context.Context, deckKey string, version int) (*model.Deck, error) {
+	var deck model.Deck
+	query := fmt.Sprintf("SELECT %s FROM quiz_decks WHERE deck_key = $1 AND version = $2", r.AllRaw)
+	err := r.db.GetContext(ctx, &deck, query, deckKey, version)
+	if err != nil {
+		return nil, err
+	}
+	return &deck, nil
+}
+
+func (r *DeckRepo) GetByID(ctx context.Context, id int64) (*model.Deck, error) {
+	var deck model.Deck
+	query := fmt.Sprintf("SELECT %s FROM quiz_decks WHERE id = $1", r.AllRaw)
+	err := r.db.GetContext(ctx, &deck, query, id)
+	if err != nil {
+		return nil, err
+	}
+	return &deck, nil
+}
+
 type CategoryRepo struct {
+	Columns
 	db *sqlx.DB
 }
 
 func NewCategoryRepo(db *sqlx.DB) *CategoryRepo {
-	return &CategoryRepo{db: db}
+	repo := &CategoryRepo{db: db}
+	repo.Columns = ExtractColumns[model.Category]()
+	return repo
 }
 
 func (r *CategoryRepo) Create(ctx context.Context, category *model.Category) error {
-	_, err := r.db.NamedExecContext(ctx, `
-		INSERT INTO quiz_categories (id, deck_id, category_key, title, display_order, created_at)
-		VALUES (:id, :deck_id, :category_key, :title, :display_order, :created_at)
-	`, category)
+	query := fmt.Sprintf(
+		"INSERT INTO quiz_categories (%s) VALUES (%s)",
+		r.AllRaw,
+		r.AllPrefixed,
+	)
+	_, err := r.db.NamedExecContext(ctx, query, category)
 	return err
 }
 
 func (r *CategoryRepo) GetByDeckID(ctx context.Context, deckID int64) ([]*model.Category, error) {
 	var categories []*model.Category
-	err := r.db.SelectContext(ctx, &categories, `
-		SELECT id, deck_id, category_key, title, display_order, created_at
-		FROM quiz_categories
-		WHERE deck_id = $1
-		ORDER BY display_order
-	`, deckID)
+	query := fmt.Sprintf("SELECT %s FROM quiz_categories WHERE deck_id = $1 ORDER BY display_order", r.AllRaw)
+	err := r.db.SelectContext(ctx, &categories, query, deckID)
 	return categories, err
+}
+
+func (r *CategoryRepo) GetByID(ctx context.Context, id int64) (*model.Category, error) {
+	var category model.Category
+	query := fmt.Sprintf("SELECT %s FROM quiz_categories WHERE id = $1", r.AllRaw)
+	err := r.db.GetContext(ctx, &category, query, id)
+	if err != nil {
+		return nil, err
+	}
+	return &category, nil
 }
 
 func (r *CategoryRepo) CountByDeckID(ctx context.Context, deckID int64) (int, error) {
@@ -79,6 +111,79 @@ func (r *CategoryRepo) CountByDeckID(ctx context.Context, deckID int64) (int, er
 		SELECT COUNT(*) FROM quiz_categories WHERE deck_id = $1
 	`, deckID)
 	return count, err
+}
+
+type DeckEntryRepo struct {
+	Columns
+	db *sqlx.DB
+}
+
+func NewDeckEntryRepo(db *sqlx.DB) *DeckEntryRepo {
+	repo := &DeckEntryRepo{db: db}
+	repo.Columns = ExtractColumns[model.DeckEntry]()
+	return repo
+}
+
+func (r *DeckEntryRepo) Create(ctx context.Context, entry *model.DeckEntry) error {
+	query := fmt.Sprintf(
+		"INSERT INTO deck_entries (%s) VALUES (%s)",
+		r.AllRaw,
+		r.AllPrefixed,
+	)
+	_, err := r.db.NamedExecContext(ctx, query, entry)
+	return err
+}
+
+func (r *DeckEntryRepo) GetByDeckID(ctx context.Context, deckID int64) ([]*model.DeckEntry, error) {
+	var entries []*model.DeckEntry
+	query := fmt.Sprintf("SELECT %s FROM deck_entries WHERE deck_id = $1 ORDER BY created_at", r.AllRaw)
+	err := r.db.SelectContext(ctx, &entries, query, deckID)
+	return entries, err
+}
+
+func (r *DeckEntryRepo) GetByDeckAndCategoryID(ctx context.Context, deckID, categoryID int64) ([]*model.DeckEntry, error) {
+	var entries []*model.DeckEntry
+	query := fmt.Sprintf("SELECT %s FROM deck_entries WHERE deck_id = $1 AND category_id = $2 ORDER BY created_at", r.AllRaw)
+	err := r.db.SelectContext(ctx, &entries, query, deckID, categoryID)
+	return entries, err
+}
+
+type DeckCacheRepo struct {
+	Columns
+	db *sqlx.DB
+}
+
+func NewDeckCacheRepo(db *sqlx.DB) *DeckCacheRepo {
+	repo := &DeckCacheRepo{db: db}
+	repo.Columns = ExtractColumns[model.DeckCache]()
+	return repo
+}
+
+func (r *DeckCacheRepo) Upsert(ctx context.Context, cache *model.DeckCache) error {
+	query := fmt.Sprintf(`
+		INSERT INTO deck_cache (%s) VALUES (%s)
+		ON CONFLICT (deck_id) DO UPDATE SET
+			cached_data = EXCLUDED.cached_data,
+			cache_version = EXCLUDED.cache_version,
+			last_updated = EXCLUDED.last_updated
+	`, r.AllRaw, r.AllPrefixed)
+	_, err := r.db.NamedExecContext(ctx, query, cache)
+	return err
+}
+
+func (r *DeckCacheRepo) GetByDeckID(ctx context.Context, deckID int64) (*model.DeckCache, error) {
+	var cache model.DeckCache
+	query := fmt.Sprintf("SELECT %s FROM deck_cache WHERE deck_id = $1", r.AllRaw)
+	err := r.db.GetContext(ctx, &cache, query, deckID)
+	if err != nil {
+		return nil, err
+	}
+	return &cache, nil
+}
+
+func (r *DeckCacheRepo) DeleteByDeckID(ctx context.Context, deckID int64) error {
+	_, err := r.db.ExecContext(ctx, "DELETE FROM deck_cache WHERE deck_id = $1", deckID)
+	return err
 }
 
 type QuestionRepo struct {
@@ -241,6 +346,11 @@ func NewQuizRepo(db *sqlx.DB) *QuizRepo {
 	return &QuizRepo{db: db}
 }
 
+// BeginTx begins a transaction
+func (r *QuizRepo) BeginTx(ctx context.Context) (*sqlx.Tx, error) {
+	return r.db.BeginTxx(ctx, nil)
+}
+
 // GetByID retrieves a quiz by ID
 func (r *QuizRepo) GetByID(ctx context.Context, quizID int64) (*model.Quiz, error) {
 	var quiz model.Quiz
@@ -327,6 +437,24 @@ func (r *QuizRepo) GetQuizzesByCreator(ctx context.Context, userID int64) ([]*mo
 // Create creates a new quiz
 func (r *QuizRepo) Create(ctx context.Context, quiz *model.Quiz) error {
 	_, err := r.db.NamedExecContext(ctx, `
+		INSERT INTO quizzes (
+			id, title, description, deck_id, time_limit, pass_percentage,
+			shuffle_questions, question_mode, gives_coins, coin_reward,
+			level_order, prerequisite_quiz_id, is_public, is_system,
+			created_by, created_at, is_active
+		) VALUES (
+			:id, :title, :description, :deck_id, :time_limit, :pass_percentage,
+			:shuffle_questions, :question_mode, :gives_coins, :coin_reward,
+			:level_order, :prerequisite_quiz_id, :is_public, :is_system,
+			:created_by, :created_at, :is_active
+		)
+	`, quiz)
+	return err
+}
+
+// CreateWithTx creates a new quiz within a transaction
+func (r *QuizRepo) CreateWithTx(ctx context.Context, tx *sqlx.Tx, quiz *model.Quiz) error {
+	_, err := tx.NamedExecContext(ctx, `
 		INSERT INTO quizzes (
 			id, title, description, deck_id, time_limit, pass_percentage,
 			shuffle_questions, question_mode, gives_coins, coin_reward,
@@ -496,6 +624,14 @@ func (r *QuizCategorySelectionRepo) Create(ctx context.Context, selection *model
 	return err
 }
 
+func (r *QuizCategorySelectionRepo) CreateWithTx(ctx context.Context, tx *sqlx.Tx, selection *model.QuizCategorySelection) error {
+	_, err := tx.NamedExecContext(ctx, `
+		INSERT INTO quiz_category_selections (quiz_id, category_id, question_count)
+		VALUES (:quiz_id, :category_id, :question_count)
+	`, selection)
+	return err
+}
+
 func (r *QuizCategorySelectionRepo) GetByQuizID(ctx context.Context, quizID int64) ([]*model.QuizCategorySelection, error) {
 	var selections []*model.QuizCategorySelection
 	err := r.db.SelectContext(ctx, &selections, `
@@ -504,4 +640,125 @@ func (r *QuizCategorySelectionRepo) GetByQuizID(ctx context.Context, quizID int6
 		WHERE quiz_id = $1
 	`, quizID)
 	return selections, err
+}
+
+type QuizQuestionRepo struct {
+	db *sqlx.DB
+}
+
+func NewQuizQuestionRepo(db *sqlx.DB) *QuizQuestionRepo {
+	return &QuizQuestionRepo{db: db}
+}
+
+func (r *QuizQuestionRepo) Create(ctx context.Context, question *model.QuizQuestion) error {
+	_, err := r.db.NamedExecContext(ctx, `
+		INSERT INTO quiz_questions (
+			id, quiz_id, question_id, question_text, correct_answer,
+			options, question_type, direction, display_order, created_at
+		) VALUES (
+			:id, :quiz_id, :question_id, :question_text, :correct_answer,
+			:options, :question_type, :direction, :display_order, :created_at
+		)
+	`, question)
+	return err
+}
+
+func (r *QuizQuestionRepo) CreateWithTx(ctx context.Context, tx *sqlx.Tx, question *model.QuizQuestion) error {
+	_, err := tx.NamedExecContext(ctx, `
+		INSERT INTO quiz_questions (
+			id, quiz_id, question_id, question_text, correct_answer,
+			options, question_type, direction, display_order, created_at
+		) VALUES (
+			:id, :quiz_id, :question_id, :question_text, :correct_answer,
+			:options, :question_type, :direction, :display_order, :created_at
+		)
+	`, question)
+	return err
+}
+
+func (r *QuizQuestionRepo) GetByQuizID(ctx context.Context, quizID int64) ([]*model.QuizQuestion, error) {
+	var questions []*model.QuizQuestion
+	err := r.db.SelectContext(ctx, &questions, `
+		SELECT id, quiz_id, question_id, question_text, correct_answer,
+		       options, question_type, direction, display_order, created_at
+		FROM quiz_questions
+		WHERE quiz_id = $1
+		ORDER BY display_order
+	`, quizID)
+	return questions, err
+}
+
+func (r *QuizQuestionRepo) GetByID(ctx context.Context, questionID int64) (*model.QuizQuestion, error) {
+	var question model.QuizQuestion
+	err := r.db.GetContext(ctx, &question, `
+		SELECT id, quiz_id, question_id, question_text, correct_answer,
+		       options, question_type, direction, display_order, created_at
+		FROM quiz_questions
+		WHERE id = $1
+	`, questionID)
+	if err != nil {
+		return nil, err
+	}
+	return &question, nil
+}
+
+func (r *QuizQuestionRepo) CountByQuizID(ctx context.Context, quizID int64) (int, error) {
+	var count int
+	err := r.db.GetContext(ctx, &count, `
+		SELECT COUNT(*) FROM quiz_questions WHERE quiz_id = $1
+	`, quizID)
+	return count, err
+}
+
+type QuizSessionRepo struct {
+	db *sqlx.DB
+}
+
+func NewQuizSessionRepo(db *sqlx.DB) *QuizSessionRepo {
+	return &QuizSessionRepo{db: db}
+}
+
+func (r *QuizSessionRepo) Create(ctx context.Context, session *model.QuizSession) error {
+	_, err := r.db.NamedExecContext(ctx, `
+		INSERT INTO quiz_sessions (
+			id, quiz_id, user_id, current_question_index, started_at, last_activity, is_completed
+		) VALUES (
+			:id, :quiz_id, :user_id, :current_question_index, :started_at, :last_activity, :is_completed
+		)
+	`, session)
+	return err
+}
+
+func (r *QuizSessionRepo) GetByID(ctx context.Context, sessionID string) (*model.QuizSession, error) {
+	var session model.QuizSession
+	err := r.db.GetContext(ctx, &session, `
+		SELECT id, quiz_id, user_id, current_question_index, started_at, last_activity, is_completed
+		FROM quiz_sessions
+		WHERE id = $1
+	`, sessionID)
+	if err != nil {
+		return nil, err
+	}
+	return &session, nil
+}
+
+func (r *QuizSessionRepo) UpdateActivity(ctx context.Context, sessionID string) error {
+	_, err := r.db.ExecContext(ctx, `
+		UPDATE quiz_sessions SET last_activity = $1 WHERE id = $2
+	`, time.Now().Unix(), sessionID)
+	return err
+}
+
+func (r *QuizSessionRepo) UpdateProgress(ctx context.Context, sessionID string, currentIndex int) error {
+	_, err := r.db.ExecContext(ctx, `
+		UPDATE quiz_sessions SET current_question_index = $1, last_activity = $2 WHERE id = $3
+	`, currentIndex, time.Now().Unix(), sessionID)
+	return err
+}
+
+func (r *QuizSessionRepo) Complete(ctx context.Context, sessionID string) error {
+	_, err := r.db.ExecContext(ctx, `
+		UPDATE quiz_sessions SET is_completed = 1, last_activity = $1 WHERE id = $2
+	`, time.Now().Unix(), sessionID)
+	return err
 }

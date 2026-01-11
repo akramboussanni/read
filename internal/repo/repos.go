@@ -13,10 +13,14 @@ type Repos struct {
 	Lockout               *LockoutRepo
 	Deck                  *DeckRepo
 	Category              *CategoryRepo
+	DeckEntry             *DeckEntryRepo
+	DeckCache             *DeckCacheRepo
 	Question              *QuestionRepo
 	QuestionOption        *QuestionOptionRepo
 	Quiz                  *QuizRepo
 	QuizCategorySelection *QuizCategorySelectionRepo
+	QuizQuestion          *QuizQuestionRepo
+	QuizSession           *QuizSessionRepo
 	QuizAttempt           *QuizAttemptRepo
 	UserAnswer            *UserAnswerRepo
 	Progression           *ProgressionRepo
@@ -39,10 +43,14 @@ func NewRepos(db *sqlx.DB) *Repos {
 		Lockout:               NewLockoutRepo(db),
 		Deck:                  NewDeckRepo(db),
 		Category:              NewCategoryRepo(db),
+		DeckEntry:             NewDeckEntryRepo(db),
+		DeckCache:             NewDeckCacheRepo(db),
 		Question:              NewQuestionRepo(db),
 		QuestionOption:        NewQuestionOptionRepo(db),
 		Quiz:                  NewQuizRepo(db),
 		QuizCategorySelection: NewQuizCategorySelectionRepo(db),
+		QuizQuestion:          NewQuizQuestionRepo(db),
+		QuizSession:           NewQuizSessionRepo(db),
 		QuizAttempt:           NewQuizAttemptRepo(db),
 		UserAnswer:            NewUserAnswerRepo(db),
 		Progression:           NewProgressionRepo(db),

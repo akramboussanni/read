@@ -24,3 +24,7 @@ func (l *ZapLogger) Warn(args ...any) {
 func (l *ZapLogger) Error(args ...any) {
 	l.logger.Errorw("", args...)
 }
+
+func (l *ZapLogger) Debug(args ...any) {
+	l.logger.Debugw("", args...)
+}

@@ -90,7 +90,7 @@ func main() {
 	}
 
 	// Seed quiz data from embedded files on first run
-	if err := quiz.SeedAllDecks(ctx, db.DB, repos); err != nil {
+	if err := quiz.SeedAllDecks(ctx, repos); err != nil {
 		log.Printf("Warning: Failed to seed quiz data: %v", err)
 	}
 

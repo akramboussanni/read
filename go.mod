@@ -6,6 +6,7 @@ require (
 	github.com/go-chi/chi/v5 v5.2.1
 	github.com/go-chi/httprate v0.15.0
 	github.com/google/go-querystring v1.1.0
+	github.com/resend/resend-go/v2 v2.21.0
 	github.com/swaggo/http-swagger v1.3.4
 	github.com/swaggo/swag v1.16.5
 	go.uber.org/zap v1.27.0
@@ -23,7 +24,6 @@ require (
 	github.com/klauspost/cpuid/v2 v2.2.10 // indirect
 	github.com/mailru/easyjson v0.9.0 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
-	github.com/resend/resend-go/v2 v2.21.0 // indirect
 	github.com/swaggo/files v1.0.1 // indirect
 	github.com/zeebo/xxh3 v1.0.2 // indirect
 	go.uber.org/multierr v1.10.0 // indirect

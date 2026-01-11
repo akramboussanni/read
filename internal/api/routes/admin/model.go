@@ -1,16 +1,19 @@
 package admin
 
-import "github.com/akramboussanni/gocode/internal/model"
+import (
+	"github.com/akramboussanni/gocode/internal/api/routes/quiz"
+	"github.com/akramboussanni/gocode/internal/model"
+)
 
 // UserListResponse represents a user in the admin list
 type UserListResponse struct {
-	ID             int64  `json:"id"`
+	ID             int64  `json:"id,string"`
 	Username       string `json:"username"`
 	Email          string `json:"email"`
 	Role           string `json:"role"`
 	IsAdmin        bool   `json:"is_admin"`
 	EmailConfirmed bool   `json:"email_confirmed"`
-	CreatedAt      int64  `json:"created_at"`
+	CreatedAt      int64  `json:"created_at,string"`
 }
 
 // UserDetailResponse includes progression and stats
@@ -26,57 +29,55 @@ type UserDetailResponse struct {
 
 // ChangePasswordRequest for admin to change user password
 type ChangePasswordRequest struct {
-	UserID      int64  `json:"user_id"`
+	UserID      int64  `json:"user_id,string"`
 	NewPassword string `json:"new_password"`
 }
 
-// CreateQuizRequest for admin quiz creation
+// CreateQuizRequest for admin quiz creation (same as regular quiz creation)
 type CreateQuizRequest struct {
-	Title              string              `json:"title"`
-	Description        string              `json:"description"`
-	DeckID             int64               `json:"deck_id"`
-	CategorySelections []CategorySelection `json:"category_selections"`
-	TimeLimit          *int                `json:"time_limit,omitempty"`
-	PassPercentage     *int                `json:"pass_percentage,omitempty"`
-	ShuffleQuestions   bool                `json:"shuffle_questions"`
-	QuestionMode       string              `json:"question_mode"` // 'ar_to_fr', 'fr_to_ar'
-	GivesCoins         bool                `json:"gives_coins"`
-	CoinReward         int                 `json:"coin_reward"`
-	LevelOrder         int                 `json:"level_order"`
-	PrerequisiteQuizID *int64              `json:"prerequisite_quiz_id,omitempty"`
-	IsPublic           bool                `json:"is_public"`
-	IsSystem           bool                `json:"is_system"`
+	Title           string                       `json:"title"`
+	Description     string                       `json:"description,omitempty"`
+	ManualQuestions []quiz.ManualQuestionRequest `json:"manual_questions,omitempty"` // User-created questions
+	AutoGenerate    *quiz.AutoGenerateRequest    `json:"auto_generate,omitempty"`    // Auto-generation config
+	IsPublic        bool                         `json:"is_public"`
+	// Admin-only fields
+	PassPercentage     *int   `json:"pass_percentage,omitempty"`             // Admin only
+	GivesCoins         bool   `json:"gives_coins"`                           // Admin only (default false)
+	CoinReward         int    `json:"coin_reward"`                           // Admin only (default 0)
+	LevelOrder         int    `json:"level_order"`                           // Admin only (default 0)
+	PrerequisiteQuizID *int64 `json:"prerequisite_quiz_id,string,omitempty"` // Admin only
+	IsSystem           bool   `json:"is_system"`                             // Admin only (default false)
 }
 
 // CategorySelection for quiz creation
 type CategorySelection struct {
-	CategoryID    int64 `json:"category_id"`
+	CategoryID    int64 `json:"category_id,string"`
 	QuestionCount int   `json:"question_count"`
 }
 
 // QuizStatsResponse shows quiz statistics
 type QuizStatsResponse struct {
-	QuizID          int64   `json:"quiz_id"`
+	QuizID          int64   `json:"quiz_id,string"`
 	Title           string  `json:"title"`
-	CreatedBy       *int64  `json:"created_by,omitempty"`
+	CreatedBy       *int64  `json:"created_by,string,omitempty"`
 	CreatorUsername *string `json:"creator_username,omitempty"`
 	IsSystem        bool    `json:"is_system"`
 	TotalAttempts   int     `json:"total_attempts"`
 	AverageScore    float64 `json:"average_score"`
 	PassRate        float64 `json:"pass_rate"`
-	CreatedAt       int64   `json:"created_at"`
+	CreatedAt       int64   `json:"created_at,string"`
 }
 
 // UserQuizResponse for user-generated quizzes list
 type UserQuizResponse struct {
-	ID              int64  `json:"id"`
+	ID              int64  `json:"id,string"`
 	Title           string `json:"title"`
 	Description     string `json:"description"`
-	CreatedBy       int64  `json:"created_by"`
+	CreatedBy       int64  `json:"created_by,string"`
 	CreatorUsername string `json:"creator_username"`
 	IsPublic        bool   `json:"is_public"`
 	TotalAttempts   int    `json:"total_attempts"`
-	CreatedAt       int64  `json:"created_at"`
+	CreatedAt       int64  `json:"created_at,string"`
 }
 
 // ToUserListResponse converts model.User to response

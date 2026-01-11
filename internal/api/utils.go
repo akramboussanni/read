@@ -46,3 +46,7 @@ func WriteBadRequest(w http.ResponseWriter, msg string) {
 func WriteNotFound(w http.ResponseWriter, msg string) {
 	http.Error(w, msg, http.StatusNotFound)
 }
+
+func WriteError(w http.ResponseWriter, status int, msg string) {
+	http.Error(w, msg, status)
+}

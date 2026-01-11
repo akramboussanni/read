@@ -45,6 +45,23 @@ func (r *QuizAttemptRepo) GetByID(ctx context.Context, attemptID int64) (*model.
 	return &attempt, nil
 }
 
+// GetByUserAndQuiz retrieves the latest attempt by a user for a specific quiz
+func (r *QuizAttemptRepo) GetByUserAndQuiz(ctx context.Context, userID, quizID int64) (*model.QuizAttempt, error) {
+	var attempt model.QuizAttempt
+	err := r.db.GetContext(ctx, &attempt, `
+		SELECT id, user_id, quiz_id, started_at, completed_at,
+		       score, max_score, percentage, passed, time_taken, coins_earned
+		FROM quiz_attempts
+		WHERE user_id = $1 AND quiz_id = $2
+		ORDER BY started_at DESC
+		LIMIT 1
+	`, userID, quizID)
+	if err != nil {
+		return nil, err
+	}
+	return &attempt, nil
+}
+
 // Update updates a quiz attempt (typically when completing)
 func (r *QuizAttemptRepo) Update(ctx context.Context, attempt *model.QuizAttempt) error {
 	_, err := r.db.NamedExecContext(ctx, `
@@ -189,6 +206,39 @@ func (r *UserAnswerRepo) GetByAttemptID(ctx context.Context, attemptID int64) ([
 		ORDER BY answered_at
 	`, attemptID)
 	return answers, err
+}
+
+// GetByAttemptAndQuestion retrieves a specific answer
+func (r *UserAnswerRepo) GetByAttemptAndQuestion(ctx context.Context, attemptID, questionID int64) (*model.UserAnswer, error) {
+	var answer model.UserAnswer
+	err := r.db.GetContext(ctx, &answer, `
+		SELECT id, attempt_id, question_id, user_answer,
+		       is_correct, points_earned, answered_at
+		FROM user_answers
+		WHERE attempt_id = $1 AND question_id = $2
+	`, attemptID, questionID)
+	if err != nil {
+		return nil, err
+	}
+	return &answer, nil
+}
+
+// CountByAttemptID counts answers for an attempt
+func (r *UserAnswerRepo) CountByAttemptID(ctx context.Context, attemptID int64) (int, error) {
+	var count int
+	err := r.db.GetContext(ctx, &count, `
+		SELECT COUNT(*) FROM user_answers WHERE attempt_id = $1
+	`, attemptID)
+	return count, err
+}
+
+// CountCorrectByAttemptID counts correct answers for an attempt
+func (r *UserAnswerRepo) CountCorrectByAttemptID(ctx context.Context, attemptID int64) (int, error) {
+	var count int
+	err := r.db.GetContext(ctx, &count, `
+		SELECT COUNT(*) FROM user_answers WHERE attempt_id = $1 AND is_correct = 1
+	`, attemptID)
+	return count, err
 }
 
 // BatchCreate creates multiple user answers in a transaction
