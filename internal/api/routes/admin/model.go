@@ -32,20 +32,20 @@ type ChangePasswordRequest struct {
 
 // CreateQuizRequest for admin quiz creation
 type CreateQuizRequest struct {
-	Title              string  `json:"title"`
-	Description        string  `json:"description"`
-	DeckID             int64   `json:"deck_id"`
+	Title              string              `json:"title"`
+	Description        string              `json:"description"`
+	DeckID             int64               `json:"deck_id"`
 	CategorySelections []CategorySelection `json:"category_selections"`
-	TimeLimit          *int    `json:"time_limit,omitempty"`
-	PassPercentage     *int    `json:"pass_percentage,omitempty"`
-	ShuffleQuestions   bool    `json:"shuffle_questions"`
-	QuestionMode       string  `json:"question_mode"` // 'ar_to_fr', 'fr_to_ar'
-	GivesCoins         bool    `json:"gives_coins"`
-	CoinReward         int     `json:"coin_reward"`
-	LevelOrder         int     `json:"level_order"`
-	PrerequisiteQuizID *int64  `json:"prerequisite_quiz_id,omitempty"`
-	IsPublic           bool    `json:"is_public"`
-	IsSystem           bool    `json:"is_system"`
+	TimeLimit          *int                `json:"time_limit,omitempty"`
+	PassPercentage     *int                `json:"pass_percentage,omitempty"`
+	ShuffleQuestions   bool                `json:"shuffle_questions"`
+	QuestionMode       string              `json:"question_mode"` // 'ar_to_fr', 'fr_to_ar'
+	GivesCoins         bool                `json:"gives_coins"`
+	CoinReward         int                 `json:"coin_reward"`
+	LevelOrder         int                 `json:"level_order"`
+	PrerequisiteQuizID *int64              `json:"prerequisite_quiz_id,omitempty"`
+	IsPublic           bool                `json:"is_public"`
+	IsSystem           bool                `json:"is_system"`
 }
 
 // CategorySelection for quiz creation
@@ -69,14 +69,14 @@ type QuizStatsResponse struct {
 
 // UserQuizResponse for user-generated quizzes list
 type UserQuizResponse struct {
-	ID               int64  `json:"id"`
-	Title            string `json:"title"`
-	Description      string `json:"description"`
-	CreatedBy        int64  `json:"created_by"`
-	CreatorUsername  string `json:"creator_username"`
-	IsPublic         bool   `json:"is_public"`
-	TotalAttempts    int    `json:"total_attempts"`
-	CreatedAt        int64  `json:"created_at"`
+	ID              int64  `json:"id"`
+	Title           string `json:"title"`
+	Description     string `json:"description"`
+	CreatedBy       int64  `json:"created_by"`
+	CreatorUsername string `json:"creator_username"`
+	IsPublic        bool   `json:"is_public"`
+	TotalAttempts   int    `json:"total_attempts"`
+	CreatedAt       int64  `json:"created_at"`
 }
 
 // ToUserListResponse converts model.User to response

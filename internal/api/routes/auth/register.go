@@ -5,6 +5,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/akramboussanni/gocode/config"
 	"github.com/akramboussanni/gocode/internal/api"
 	"github.com/akramboussanni/gocode/internal/applog"
 	"github.com/akramboussanni/gocode/internal/model"
@@ -36,6 +37,9 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "invalid credentials", http.StatusBadRequest)
 		return
 	}
+
+	// Trim email whitespace
+	req.Email = strings.TrimSpace(req.Email)
 
 	// Validate email only if provided
 	if req.Email != "" && !utils.IsValidEmail(req.Email) {
@@ -98,7 +102,11 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 	// Only send confirmation email if email was provided
 	if req.Email != "" {
 		expiryStr := utils.ExpiryToString(24 * 3600)
-		token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Email confirmation", "", map[string]any{"Expiry": expiryStr})
+		confirmUrl := req.Url
+		if confirmUrl == "" {
+			confirmUrl = config.App.FrontendCors + "/confirm-email"
+		}
+		token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Email confirmation", confirmUrl, map[string]any{"Expiry": expiryStr, "Url": confirmUrl})
 		if err != nil {
 			applog.Error("Failed to send confirmation email:", err)
 			// Don't fail registration if email fails, just warn

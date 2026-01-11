@@ -87,16 +87,16 @@ type QuizAttempt struct {
 
 // UserProgression tracks user's progress through system quizzes
 type UserProgression struct {
-	UserID               int64   `json:"user_id" db:"user_id"`
-	CurrentLevel         int     `json:"current_level" db:"current_level"`
-	UnlockedQuizIDs      string  `json:"unlocked_quiz_ids" db:"unlocked_quiz_ids"` // JSON array
-	LastCompletedQuizID  *int64  `json:"last_completed_quiz_id,omitempty" db:"last_completed_quiz_id"`
-	TotalQuizzesCompleted int    `json:"total_quizzes_completed" db:"total_quizzes_completed"`
-	TotalCoinsEarned     int     `json:"total_coins_earned" db:"total_coins_earned"`
-	StreakDays           int     `json:"streak_days" db:"streak_days"`
-	LastActivityDate     *string `json:"last_activity_date,omitempty" db:"last_activity_date"` // DATE
-	CreatedAt            int64   `json:"created_at" db:"created_at"`
-	UpdatedAt            *int64  `json:"updated_at,omitempty" db:"updated_at"`
+	UserID                int64   `json:"user_id" db:"user_id"`
+	CurrentLevel          int     `json:"current_level" db:"current_level"`
+	UnlockedQuizIDs       string  `json:"unlocked_quiz_ids" db:"unlocked_quiz_ids"` // JSON array
+	LastCompletedQuizID   *int64  `json:"last_completed_quiz_id,omitempty" db:"last_completed_quiz_id"`
+	TotalQuizzesCompleted int     `json:"total_quizzes_completed" db:"total_quizzes_completed"`
+	TotalCoinsEarned      int     `json:"total_coins_earned" db:"total_coins_earned"`
+	StreakDays            int     `json:"streak_days" db:"streak_days"`
+	LastActivityDate      *string `json:"last_activity_date,omitempty" db:"last_activity_date"` // DATE
+	CreatedAt             int64   `json:"created_at" db:"created_at"`
+	UpdatedAt             *int64  `json:"updated_at,omitempty" db:"updated_at"`
 }
 
 // UserAnswer represents a user's answer to a question

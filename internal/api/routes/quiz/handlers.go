@@ -12,7 +12,54 @@ import (
 )
 
 func (qr *QuizRouter) HandleListQuizzes(w http.ResponseWriter, r *http.Request) {
-	api.WriteMessage(w, 501, "error", "Not implemented yet")
+	page := 1
+	limit := 20
+
+	if pageStr := r.URL.Query().Get("page"); pageStr != "" {
+		if p, err := strconv.Atoi(pageStr); err == nil && p > 0 {
+			page = p
+		}
+	}
+
+	if limitStr := r.URL.Query().Get("limit"); limitStr != "" {
+		if l, err := strconv.Atoi(limitStr); err == nil && l > 0 && l <= 100 {
+			limit = l
+		}
+	}
+
+	offset := (page - 1) * limit
+
+	quizzes, err := qr.Repos.Quiz.GetAllQuizzes(r.Context(), limit, offset)
+	if err != nil {
+		applog.Error("Failed to get quizzes:", err)
+		api.WriteInternalError(w)
+		return
+	}
+
+	response := []QuizListItem{}
+	for _, quiz := range quizzes {
+		questionCount, _ := qr.Repos.Question.CountByQuizID(r.Context(), quiz.ID)
+
+		var creatorName string
+		if quiz.CreatedBy != nil {
+			creator, err := qr.Repos.User.GetUserByID(r.Context(), *quiz.CreatedBy)
+			if err == nil {
+				creatorName = creator.Username
+			}
+		}
+
+		response = append(response, QuizListItem{
+			ID:            quiz.ID,
+			Title:         quiz.Title,
+			Description:   quiz.Description,
+			CreatorName:   creatorName,
+			QuestionCount: questionCount,
+			IsPublic:      quiz.IsPublic,
+			CreatedAt:     quiz.CreatedAt,
+		})
+	}
+
+	api.WriteJSON(w, 200, response)
 }
 
 func (qr *QuizRouter) HandleGetQuiz(w http.ResponseWriter, r *http.Request) {
@@ -31,8 +78,29 @@ func (qr *QuizRouter) HandleGetMyQuizzes(w http.ResponseWriter, r *http.Request)
 		api.WriteUnauthorized(w)
 		return
 	}
-	_ = user
-	api.WriteMessage(w, 501, "error", "Not implemented yet")
+
+	quizzes, err := qr.Repos.Quiz.GetQuizzesByCreator(r.Context(), user.ID)
+	if err != nil {
+		applog.Error("Failed to get user quizzes:", err)
+		api.WriteInternalError(w)
+		return
+	}
+
+	response := []QuizListItem{}
+	for _, quiz := range quizzes {
+		questionCount, _ := qr.Repos.Question.CountByQuizID(r.Context(), quiz.ID)
+
+		response = append(response, QuizListItem{
+			ID:            quiz.ID,
+			Title:         quiz.Title,
+			Description:   quiz.Description,
+			QuestionCount: questionCount,
+			IsPublic:      quiz.IsPublic,
+			CreatedAt:     quiz.CreatedAt,
+		})
+	}
+
+	api.WriteJSON(w, 200, response)
 }
 
 func (qr *QuizRouter) HandleCreateQuiz(w http.ResponseWriter, r *http.Request) {
@@ -43,9 +111,14 @@ func (qr *QuizRouter) HandleCreateQuiz(w http.ResponseWriter, r *http.Request) {
 	}
 	userID := user.ID
 
-	// Require verified email for quiz creation
+	// Require email to exist and be verified for quiz creation
+	if user.Email == "" {
+		api.WriteMessage(w, 403, "error", "Email address required to create quizzes. Please add an email to your account.")
+		return
+	}
+
 	if !user.EmailConfirmed {
-		api.WriteMessage(w, 403, "error", "Email verification required to create quizzes. Please add and verify your email.")
+		api.WriteMessage(w, 403, "error", "Email verification required to create quizzes. Please verify your email address.")
 		return
 	}
 
@@ -193,7 +266,29 @@ func (qr *QuizRouter) HandleListDecks(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	_ = user
-	api.WriteMessage(w, 501, "error", "Not implemented yet")
+
+	decks, err := qr.Repos.Deck.GetAll(r.Context())
+	if err != nil {
+		applog.Error("Failed to get decks:", err)
+		api.WriteInternalError(w)
+		return
+	}
+
+	response := []DeckListItem{}
+	for _, deck := range decks {
+		categoryCount, _ := qr.Repos.Category.CountByDeckID(r.Context(), deck.ID)
+		questionCount, _ := qr.Repos.Question.CountByDeckID(r.Context(), deck.ID)
+
+		response = append(response, DeckListItem{
+			ID:            deck.ID,
+			DeckKey:       deck.DeckKey,
+			Title:         deck.Title,
+			CategoryCount: categoryCount,
+			QuestionCount: questionCount,
+		})
+	}
+
+	api.WriteJSON(w, 200, response)
 }
 
 func (qr *QuizRouter) HandleGetCategories(w http.ResponseWriter, r *http.Request) {
@@ -203,5 +298,31 @@ func (qr *QuizRouter) HandleGetCategories(w http.ResponseWriter, r *http.Request
 		return
 	}
 	_ = user
-	api.WriteMessage(w, 501, "error", "Not implemented yet")
+
+	deckID, err := strconv.ParseInt(chi.URLParam(r, "deckID"), 10, 64)
+	if err != nil {
+		api.WriteBadRequest(w, "Invalid deck ID")
+		return
+	}
+
+	categories, err := qr.Repos.Category.GetByDeckID(r.Context(), deckID)
+	if err != nil {
+		applog.Error("Failed to get categories:", err)
+		api.WriteInternalError(w)
+		return
+	}
+
+	response := []CategoryListItem{}
+	for _, cat := range categories {
+		questionCount, _ := qr.Repos.Question.CountByCategoryID(r.Context(), cat.ID)
+
+		response = append(response, CategoryListItem{
+			ID:            cat.ID,
+			CategoryKey:   cat.CategoryKey,
+			Title:         cat.Title,
+			QuestionCount: questionCount,
+		})
+	}
+
+	api.WriteJSON(w, 200, response)
 }

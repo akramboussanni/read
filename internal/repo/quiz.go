@@ -36,6 +36,16 @@ func (r *DeckRepo) Create(ctx context.Context, deck *model.Deck) error {
 	return err
 }
 
+func (r *DeckRepo) GetAll(ctx context.Context) ([]*model.Deck, error) {
+	var decks []*model.Deck
+	err := r.db.SelectContext(ctx, &decks, `
+		SELECT id, deck_key, title, version, source_file, is_system, created_at
+		FROM quiz_decks
+		ORDER BY title
+	`)
+	return decks, err
+}
+
 type CategoryRepo struct {
 	db *sqlx.DB
 }
@@ -61,6 +71,14 @@ func (r *CategoryRepo) GetByDeckID(ctx context.Context, deckID int64) ([]*model.
 		ORDER BY display_order
 	`, deckID)
 	return categories, err
+}
+
+func (r *CategoryRepo) CountByDeckID(ctx context.Context, deckID int64) (int, error) {
+	var count int
+	err := r.db.GetContext(ctx, &count, `
+		SELECT COUNT(*) FROM quiz_categories WHERE deck_id = $1
+	`, deckID)
+	return count, err
 }
 
 type QuestionRepo struct {
@@ -168,6 +186,22 @@ func (r *QuestionRepo) GetRandomAnswers(ctx context.Context, excludeQuestionID i
 		LIMIT $2
 	`, excludeQuestionID, limit)
 	return answers, err
+}
+
+func (r *QuestionRepo) CountByDeckID(ctx context.Context, deckID int64) (int, error) {
+	var count int
+	err := r.db.GetContext(ctx, &count, `
+		SELECT COUNT(*) FROM questions WHERE deck_id = $1 AND is_active = 1
+	`, deckID)
+	return count, err
+}
+
+func (r *QuestionRepo) CountByCategoryID(ctx context.Context, categoryID int64) (int, error) {
+	var count int
+	err := r.db.GetContext(ctx, &count, `
+		SELECT COUNT(*) FROM questions WHERE category_id = $1 AND is_active = 1
+	`, categoryID)
+	return count, err
 }
 
 // CountByQuizID counts questions for a quiz

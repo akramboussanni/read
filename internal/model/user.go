@@ -8,7 +8,8 @@ type User struct {
 	PasswordHash          string `db:"password_hash" json:"-"`
 	CreatedAt             int64  `db:"created_at" safe:"true" json:"created_at" example:"1640995200"`
 	Role                  string `db:"user_role" safe:"true" json:"role" example:"user"`
-	EmailConfirmed        bool   `db:"email_confirmed" json:"-"`
+	EmailConfirmed        bool   `db:"email_confirmed" safe:"true" json:"email_confirmed" example:"false"`
+	PendingEmail          string `db:"pending_email" json:"-"`
 	EmailConfirmToken     string `db:"email_confirm_token" json:"-"`
 	EmailConfirmIssuedAt  int64  `db:"email_confirm_issuedat" json:"-"`
 	PasswordResetToken    string `db:"password_reset_token" json:"-"`

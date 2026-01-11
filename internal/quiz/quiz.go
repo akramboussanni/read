@@ -171,7 +171,22 @@ func (s *QuizService) CreateQuiz(ctx context.Context, req CreateQuizRequest, isA
 		quiz.CoinReward = 10 // Default: 10 coins per correct answer
 	}
 
-	// TODO: Save quiz and category selections to database
+	// Save quiz to database
+	if err := s.repos.Quiz.Create(ctx, quiz); err != nil {
+		return nil, fmt.Errorf("failed to create quiz: %w", err)
+	}
+
+	// Save category selections
+	for _, cs := range req.CategorySelections {
+		selection := &model.QuizCategorySelection{
+			QuizID:        quiz.ID,
+			CategoryID:    cs.CategoryID,
+			QuestionCount: cs.QuestionCount,
+		}
+		if err := s.repos.QuizCategorySelection.Create(ctx, selection); err != nil {
+			return nil, fmt.Errorf("failed to create category selection: %w", err)
+		}
+	}
 
 	return quiz, nil
 }

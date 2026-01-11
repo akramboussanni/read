@@ -1,0 +1,6524 @@
+{
+  "metadata": {
+    "title": "80% des Mots du Qour'ân - Part 2",
+    "version": 1,
+    "deck_type": "vocabulary",
+    "language_pair": [
+      "arabic",
+      "french"
+    ],
+    "description": "Quranic vocabulary with categories, classes, and difficulties for quiz generation",
+    "supported_question_types": [
+      "mcq",
+      "write_word",
+      "translate",
+      "custom"
+    ],
+    "default_direction": "source_to_target"
+  },
+  "categories": {
+    "pronouns_suffixes": {
+      "title": "Pronouns (Suffixes)",
+      "difficulty": "beginner"
+    },
+    "pronouns_detached": {
+      "title": "Pronouns (Detached)",
+      "difficulty": "beginner"
+    },
+    "prepositions_of_place_time": {
+      "title": "Prepositions of Place & Time",
+      "difficulty": "beginner"
+    },
+    "interrogative_particles": {
+      "title": "Interrogative Particles",
+      "difficulty": "intermediate"
+    },
+    "ownership_relation": {
+      "title": "Ownership & Relation",
+      "difficulty": "intermediate"
+    },
+    "time_conjunctions": {
+      "title": "Time & Conjunctions",
+      "difficulty": "intermediate"
+    },
+    "prepositions_ma": {
+      "title": "Prepositions + Ma",
+      "difficulty": "beginner"
+    },
+    "general_prepositions": {
+      "title": "General Prepositions",
+      "difficulty": "intermediate"
+    },
+    "prefixes_particles_i": {
+      "title": "Prefixes & Particles I",
+      "difficulty": "intermediate"
+    },
+    "prefixes_particles_ii": {
+      "title": "Prefixes & Particles II",
+      "difficulty": "intermediate"
+    },
+    "names_of_allah_attributes_i": {
+      "title": "Names of Allah & Attributes I",
+      "difficulty": "advanced"
+    },
+    "names_of_allah_attributes_ii": {
+      "title": "Names of Allah & Attributes II",
+      "difficulty": "advanced"
+    },
+    "names_of_allah_attributes_iii": {
+      "title": "Names of Allah & Attributes III",
+      "difficulty": "advanced"
+    },
+    "superlatives": {
+      "title": "Superlatives",
+      "difficulty": "intermediate"
+    },
+    "creation_signs": {
+      "title": "Creation & Signs",
+      "difficulty": "intermediate"
+    },
+    "blessings_authority": {
+      "title": "Blessings & Authority",
+      "difficulty": "intermediate"
+    },
+    "world_life": {
+      "title": "World & Life",
+      "difficulty": "intermediate"
+    },
+    "resurrection_judgment_i": {
+      "title": "Resurrection & Judgment I",
+      "difficulty": "intermediate"
+    },
+    "resurrection_judgment_ii": {
+      "title": "Resurrection & Judgment II",
+      "difficulty": "intermediate"
+    },
+    "religion_concepts": {
+      "title": "Religion Concepts",
+      "difficulty": "intermediate"
+    },
+    "faith_unseen": {
+      "title": "Faith & Unseen",
+      "difficulty": "intermediate"
+    },
+    "actions_morality": {
+      "title": "Actions & Morality",
+      "difficulty": "intermediate"
+    },
+    "prophets_figures": {
+      "title": "Prophets & Figures",
+      "difficulty": "intermediate"
+    },
+    "family": {
+      "title": "Family",
+      "difficulty": "intermediate"
+    },
+    "body_soul": {
+      "title": "Body & Soul",
+      "difficulty": "intermediate"
+    },
+    "people_roles": {
+      "title": "People & Roles",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_a": {
+      "title": "Verbs Form 1 (A)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_b": {
+      "title": "Verbs Form 1 (B)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_c": {
+      "title": "Verbs Form 1 (C)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_d": {
+      "title": "Verbs Form 1 (D)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_e": {
+      "title": "Verbs Form 1 (E)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_doubled": {
+      "title": "Verbs Form 1 (Doubled)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_weak_initial": {
+      "title": "Verbs Form 1 (Weak Initial)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_hollow": {
+      "title": "Verbs Form 1 (Hollow)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_weak_final": {
+      "title": "Verbs Form 1 (Weak Final)",
+      "difficulty": "intermediate"
+    },
+    "verbs_form_1_hamzated": {
+      "title": "Verbs Form 1 (Hamzated)",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_form_2": {
+      "title": "Augmented Verbs Form 2",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_form_2_3": {
+      "title": "Augmented Verbs Form 2 & 3",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_form_4_a": {
+      "title": "Augmented Verbs Form 4 (A)",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_form_4_b": {
+      "title": "Augmented Verbs Form 4 (B)",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_form_4_c": {
+      "title": "Augmented Verbs Form 4 (C)",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_form_4_d": {
+      "title": "Augmented Verbs Form 4 (D)",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_forms_5_6_7": {
+      "title": "Augmented Verbs Forms 5, 6, 7",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_form_8": {
+      "title": "Augmented Verbs Form 8",
+      "difficulty": "intermediate"
+    },
+    "augmented_verbs_forms_9_10": {
+      "title": "Augmented Verbs Forms 9 & 10",
+      "difficulty": "intermediate"
+    }
+  },
+  "classes": [
+    "pronoun",
+    "preposition",
+    "verb",
+    "noun",
+    "particle",
+    "conjunction",
+    "adjective"
+  ],
+  "entries": [
+    {
+      "id": "pronouns_suffixes_001",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "هُ",
+        "target_text": "Son, le, lui (masc. sg.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_002",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "هُمْ",
+        "target_text": "Leur, leurs (masc. pl.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_003",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "كَ",
+        "target_text": "Ton, ta, te (masc. sg.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_004",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "كُمْ",
+        "target_text": "Votre, vous (masc. pl.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_005",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "نِي / ي",
+        "target_text": "Me, moi",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_006",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "نَا",
+        "target_text": "Notre, nous",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_007",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "هَا",
+        "target_text": "Sa, la, lui (fém. sg.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_008",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "هُنَّ",
+        "target_text": "Leur, leurs (fém. pl.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_009",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "كِ",
+        "target_text": "Ton, ta, te (fém. sg.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_010",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "كُنَّ",
+        "target_text": "Votre, vous (fém. pl.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_011",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "هُمَا",
+        "target_text": "Leur, leurs (duel)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_suffixes_012",
+      "category": "pronouns_suffixes",
+      "data": {
+        "source_text": "كُمَا",
+        "target_text": "Votre, vous (duel)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_001",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "هُوَ",
+        "target_text": "Il",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_002",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "هُمْ",
+        "target_text": "Ils",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_003",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "أَنْتَ",
+        "target_text": "Tu (masc.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_004",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "أَنْتُمْ",
+        "target_text": "Vous (masc.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_005",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "أَنَا",
+        "target_text": "Je",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_006",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "نَحْنُ",
+        "target_text": "Nous",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_007",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "هِيَ",
+        "target_text": "Elle",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_008",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "هُنَّ",
+        "target_text": "Elles",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_009",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "أَنْتِ",
+        "target_text": "Tu (fém.)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_010",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "هِيَ",
+        "target_text": "Ils/elles (pluriel inanimé)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_011",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "هُمَا",
+        "target_text": "Eux deux (duel)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "pronouns_detached_012",
+      "category": "pronouns_detached",
+      "data": {
+        "source_text": "أَنْتُمَا",
+        "target_text": "Vous deux (duel)",
+        "class": "pronoun"
+      },
+      "tags": [
+        "pronoun"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_001",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "فَوْقَ",
+        "target_text": "Au dessus de",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_002",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "تَحْتَ",
+        "target_text": "Sous",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_003",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "بَيْنَ يَدَيْ",
+        "target_text": "Entre les mains, proche",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_004",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "خَلْفَ / وَرَاءَ",
+        "target_text": "Derrière, après, à la suite",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_005",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "أَمَامَ",
+        "target_text": "Devant",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_006",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "يَمِين",
+        "target_text": "A droite",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_007",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "شِمَال",
+        "target_text": "A gauche",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_008",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "بَيْنَ",
+        "target_text": "Entre",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_009",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "حَوْلَ",
+        "target_text": "Autour",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_010",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "حَيْثُ",
+        "target_text": "Où, là où, lorsque",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_of_place_time_011",
+      "category": "prepositions_of_place_time",
+      "data": {
+        "source_text": "أَيْنَ / أَيْنَمَا",
+        "target_text": "Où / où que",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "interrogative_particles_001",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "مَا",
+        "target_text": "Quoi ? Ce que",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_002",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "مَنْ",
+        "target_text": "Qui ? Celui qui",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_003",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "مَتَى",
+        "target_text": "Quand ? Lorsque",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_004",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "أَيْنَ",
+        "target_text": "Où ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_005",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "كَيْفَ",
+        "target_text": "Comment ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_006",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "كَمْ",
+        "target_text": "Combien ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_007",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "أَيُّ",
+        "target_text": "Lequel, laquelle",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_008",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "أَنَّى",
+        "target_text": "D'où, pourquoi ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_009",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "أَ / هَلْ",
+        "target_text": "Est-ce que ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_010",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "مَاذَا",
+        "target_text": "Qu'est-ce que ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_011",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "لِمَ / لِمَاذَا",
+        "target_text": "Pourquoi ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "interrogative_particles_012",
+      "category": "interrogative_particles",
+      "data": {
+        "source_text": "لَوْلَا",
+        "target_text": "Si... pas, sans",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_001",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "ذُو",
+        "target_text": "Qui a, détenteur de (masc.)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_002",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "ذَاتُ",
+        "target_text": "Qui a, détentrice de (fém.)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_003",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "أُولُو / أُولِي",
+        "target_text": "Qui ont, détenteurs de (pl.)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_004",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "أَهْل",
+        "target_text": "Gens de, habitants, peuple",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_005",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "آل",
+        "target_text": "Famille, proche, peuple",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_006",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "أَلَا",
+        "target_text": "N'est ce pas ?",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_007",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "نِعْمَ",
+        "target_text": "Quel excellent...",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_008",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "بِئْسَ",
+        "target_text": "Quel mauvais...",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_009",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "بِئْسَمَا",
+        "target_text": "Combien il est mal/détestable",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_010",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "مِثْل",
+        "target_text": "Quelque chose semblable à",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_011",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "مَثَل",
+        "target_text": "Exemple, ressemblance",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "ownership_relation_012",
+      "category": "ownership_relation",
+      "data": {
+        "source_text": "مِمَّنْ",
+        "target_text": "De qui, à qui",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_001",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "قَبْلَ",
+        "target_text": "Avant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_002",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "بَعْدَ",
+        "target_text": "Après",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_003",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "حِين",
+        "target_text": "Temps, période",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_004",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "إِذْ",
+        "target_text": "Quand, lorsque (passé)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_005",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "إِذَا",
+        "target_text": "Quand, lorsque (futur)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_006",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "أَيَّانَ",
+        "target_text": "Quand ? (futur)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_007",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "ثُمَّ / فَ",
+        "target_text": "Puis, ensuite, donc",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_008",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "بَلْ",
+        "target_text": "Bien plus, mais",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_009",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "عِنْدَ / لَدَى / لَدُنْ",
+        "target_text": "Auprès de, avec, chez",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_010",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "إِنْ ... إِلَّا",
+        "target_text": "Ce n'est que (Restriction)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_011",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "مَا ... إِلَّا",
+        "target_text": "Ce n'est que (Restriction)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "time_conjunctions_012",
+      "category": "time_conjunctions",
+      "data": {
+        "source_text": "أَلَّا",
+        "target_text": "Ne... pas, pour ne pas",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prepositions_ma_001",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "بِمَا",
+        "target_text": "Par quoi, avec quoi",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_002",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "عَمَّا",
+        "target_text": "A propos de, au sujet de",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_003",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "فِيمَا",
+        "target_text": "Dans ce que",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_004",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "كَمَا",
+        "target_text": "Comme, tel que",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_005",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "لِمَا",
+        "target_text": "Pour ce que, en raison de",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_006",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "مِمَّا",
+        "target_text": "De ce que (provenance)",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_007",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "أَمَّا",
+        "target_text": "Quant à",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_008",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "إِمَّا",
+        "target_text": "Soit... soit",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_009",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "أَنَّمَا",
+        "target_text": "Que",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_010",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "إِنَّمَا",
+        "target_text": "Certainement",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_011",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "كَأَنَّمَا",
+        "target_text": "Comme si",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "prepositions_ma_012",
+      "category": "prepositions_ma",
+      "data": {
+        "source_text": "كُلَّمَا",
+        "target_text": "A chaque fois",
+        "class": "preposition"
+      },
+      "tags": [
+        "preposition"
+      ]
+    },
+    {
+      "id": "general_prepositions_001",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "بِ",
+        "target_text": "Avec, grâce à",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_002",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "عَنْ",
+        "target_text": "A propos de",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_003",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "فِي",
+        "target_text": "Dans",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_004",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "كَ",
+        "target_text": "Comme, semblable à",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_005",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "لِ / لَ",
+        "target_text": "Pour (que), afin de",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_006",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "مِنْ",
+        "target_text": "De (origine)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_007",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "إِلَى",
+        "target_text": "Vers, en direction de",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_008",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "تَ (تَاللهِ)",
+        "target_text": "Par (serment)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_009",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "حَتَّى",
+        "target_text": "Jusqu'à ce que",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_010",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "عَلَى",
+        "target_text": "Sur, dessus",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_011",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "مَعَ",
+        "target_text": "Avec",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "general_prepositions_012",
+      "category": "general_prepositions",
+      "data": {
+        "source_text": "و",
+        "target_text": "Et",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_001",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "قَدْ",
+        "target_text": "Certes (avec verbe passé)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_002",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "سَ",
+        "target_text": "Futur proche",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_003",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "سَوْفَ",
+        "target_text": "Futur lointain",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_004",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "لَ...نَّ",
+        "target_text": "Futur certain",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_005",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "لَقَدْ",
+        "target_text": "En effet, certes",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_006",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "لَ",
+        "target_text": "En effet, certainement",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_007",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "لِ / لْ",
+        "target_text": "Pour l'impératif",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_008",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "ال",
+        "target_text": "Le, la, les (article)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_009",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "أَمْ",
+        "target_text": "Ou / ou bien",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_010",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "أَوْ",
+        "target_text": "Ou / ou bien",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_011",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "بَعْض",
+        "target_text": "Quelques, une partie de",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_i_012",
+      "category": "prefixes_particles_i",
+      "data": {
+        "source_text": "كُلّ",
+        "target_text": "Tout, la totalité",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_001",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "إِنَّ",
+        "target_text": "Certes, vraiment",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_002",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "أَنَّ",
+        "target_text": "Que (certitude)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_003",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "كَأَنَّ",
+        "target_text": "Comme si",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_004",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "لَكِنَّ",
+        "target_text": "Mais, cependant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_005",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "لَعَلَّ",
+        "target_text": "Peut-être, il se peut",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_006",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "أَنْ",
+        "target_text": "Que",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_007",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "إِنْ",
+        "target_text": "Si (conditionnel)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_008",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "إِيَّا",
+        "target_text": "Pronom support (ex: C'est Toi que)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_009",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "عَسَى",
+        "target_text": "Peut-être, il est possible",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_010",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "لَمَّا",
+        "target_text": "Lorsque, quand",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_011",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "لَوْ",
+        "target_text": "Si (conditionnel)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prefixes_particles_ii_012",
+      "category": "prefixes_particles_ii",
+      "data": {
+        "source_text": "يَا / يَا أَيُّهَا",
+        "target_text": "Ô ! (Appel)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_001",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "الخَبِيرُ",
+        "target_text": "Le Parfaitement Informé",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_002",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "رَبّ",
+        "target_text": "Seigneur, maître",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_003",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "الرَّحْمَنُ",
+        "target_text": "Le Miséricordieux",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_004",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "السَّلَامُ",
+        "target_text": "Le Pacifique, La Paix",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_005",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "السَّمِيعُ",
+        "target_text": "Celui qui entend tout",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_006",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "الشَّكُورُ",
+        "target_text": "Le Reconnaissant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_007",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "العَزِيزُ",
+        "target_text": "Le Tout-Puissant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_008",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "الغَفُورُ",
+        "target_text": "Le Pardonneur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_009",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "القَدِيرُ",
+        "target_text": "L'Omnipotent",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_010",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "نَذِير",
+        "target_text": "Avertisseur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_011",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "النَّصِير",
+        "target_text": "Le Secoureur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_i_012",
+      "category": "names_of_allah_attributes_i",
+      "data": {
+        "source_text": "الوَكِيل",
+        "target_text": "Le Garant Suprême",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_001",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "أَوَّل",
+        "target_text": "Premier",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_002",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "آخِر",
+        "target_text": "Dernier",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_003",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "آخَر",
+        "target_text": "Autre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_004",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "أَمِين",
+        "target_text": "Digne de confiance",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_005",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "البَصِير",
+        "target_text": "Le Voyant, Clairvoyant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_006",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "بَعِيد",
+        "target_text": "Loin",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_007",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "التَّوَّاب",
+        "target_text": "Celui qui accueille le repentir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_008",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "الحَفِيظ",
+        "target_text": "Le Gardien, Protecteur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_009",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "الحَكِيم",
+        "target_text": "Le Sage",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_010",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "الحَلِيم",
+        "target_text": "Le Longanime, Doux",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_011",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "الحَمِيد",
+        "target_text": "Digne d'éloges",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_ii_012",
+      "category": "names_of_allah_attributes_ii",
+      "data": {
+        "source_text": "حَمِيم",
+        "target_text": "Bouillant, chaud",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_001",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "شَدِيد",
+        "target_text": "Sévère, dur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_002",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "العَلِيّ",
+        "target_text": "Le Très-Haut",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_003",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "العَلِيم",
+        "target_text": "Le Très-Savant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_004",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "قَرِيب",
+        "target_text": "Près, proche",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_005",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "كَبِير",
+        "target_text": "Grand",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_006",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "كَثِير",
+        "target_text": "Beaucoup",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_007",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "سَرِيع",
+        "target_text": "Rapide",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_008",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "الرَّحِيم",
+        "target_text": "Le Particulièrement Miséricordieux",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_009",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "العَظِيم",
+        "target_text": "Le Suprême, Immense",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_010",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "قَلِيل",
+        "target_text": "Peu",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_011",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "الكَرِيم",
+        "target_text": "Le Généreux, Noble",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "names_of_allah_attributes_iii_012",
+      "category": "names_of_allah_attributes_iii",
+      "data": {
+        "source_text": "اللَّطِيف",
+        "target_text": "Le Doux, Subtil",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_001",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَشَدّ",
+        "target_text": "Plus sévère, plus dur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_002",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَعْلَى",
+        "target_text": "Plus haut, supérieur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_003",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَعْلَم",
+        "target_text": "Plus savant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_004",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَقْرَب",
+        "target_text": "Plus proche",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_005",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَكْبَر",
+        "target_text": "Plus grand",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_006",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَكْثَر",
+        "target_text": "Plus, le plus",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_007",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَحْسَن / خَيْر",
+        "target_text": "Meilleur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_008",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَحَقّ",
+        "target_text": "Plus en droit, plus digne",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_009",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَدْنَى",
+        "target_text": "Plus près, inférieur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_010",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَظْلَم",
+        "target_text": "Plus injuste",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_011",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَهْدَى",
+        "target_text": "Mieux guidé",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "superlatives_012",
+      "category": "superlatives",
+      "data": {
+        "source_text": "أَوْلَى",
+        "target_text": "Plus près, plus proche",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_001",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "آيَة",
+        "target_text": "Signe, preuve, verset",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_002",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "بَيِّنَة",
+        "target_text": "Evidence, preuve",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_003",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "القُرْآن",
+        "target_text": "Le Qour'ân",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_004",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "نَعَم / أَنْعَام",
+        "target_text": "Bétail",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_005",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "جَبَل",
+        "target_text": "Montagne",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_006",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "بَحْر",
+        "target_text": "Mer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_007",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "الشَّمْس",
+        "target_text": "Le Soleil",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_008",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "القَمَر",
+        "target_text": "La Lune",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_009",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "لَيْل",
+        "target_text": "Nuit",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_010",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "نَهَار",
+        "target_text": "Jour",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_011",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "أَرْض",
+        "target_text": "Terre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "creation_signs_012",
+      "category": "creation_signs",
+      "data": {
+        "source_text": "سَمَاء",
+        "target_text": "Ciel",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_001",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "آلَاء",
+        "target_text": "Faveurs, bienfaits",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_002",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "سُلْطَان",
+        "target_text": "Autorité",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_003",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "فَضْل",
+        "target_text": "Grâce, bienfait",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_004",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "مَاء",
+        "target_text": "Eau",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_005",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "مُلْك",
+        "target_text": "Royauté, règne",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_006",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "نِعْمَة",
+        "target_text": "Grâce, bienfait",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_007",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "أَجْمَعُون",
+        "target_text": "Tous (ensemble)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_008",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "إِذْن",
+        "target_text": "Permission",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_009",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "بَأْس",
+        "target_text": "Puissance, colère",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_010",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "جَمِيع",
+        "target_text": "Tout, tous",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_011",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "سَوَاء",
+        "target_text": "Même, égal",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "blessings_authority_012",
+      "category": "blessings_authority",
+      "data": {
+        "source_text": "فَرِيق",
+        "target_text": "Partie, groupe",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_001",
+      "category": "world_life",
+      "data": {
+        "source_text": "بَيْت",
+        "target_text": "Maison",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_002",
+      "category": "world_life",
+      "data": {
+        "source_text": "دَار",
+        "target_text": "Demeure, habitation",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_003",
+      "category": "world_life",
+      "data": {
+        "source_text": "الدُّنْيَا",
+        "target_text": "Ici-bas, monde",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_004",
+      "category": "world_life",
+      "data": {
+        "source_text": "سَبِيل",
+        "target_text": "Chemin, voie",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_005",
+      "category": "world_life",
+      "data": {
+        "source_text": "صِرَاط",
+        "target_text": "Chemin, voie",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_006",
+      "category": "world_life",
+      "data": {
+        "source_text": "عَالَم / عَالَمِين",
+        "target_text": "Monde, les mondes",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_007",
+      "category": "world_life",
+      "data": {
+        "source_text": "فِتْنَة",
+        "target_text": "Epreuve, tentation",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_008",
+      "category": "world_life",
+      "data": {
+        "source_text": "قَرْيَة",
+        "target_text": "Cité, ville",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_009",
+      "category": "world_life",
+      "data": {
+        "source_text": "مَال",
+        "target_text": "Richesse, biens",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_010",
+      "category": "world_life",
+      "data": {
+        "source_text": "مَتَاع",
+        "target_text": "Plaisir, jouissance",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_011",
+      "category": "world_life",
+      "data": {
+        "source_text": "مَسْجِد",
+        "target_text": "Mosquée",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "world_life_012",
+      "category": "world_life",
+      "data": {
+        "source_text": "مَكَان",
+        "target_text": "Place, endroit",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_001",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "صَاحِب",
+        "target_text": "Compagnon",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_002",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "عَاقِبَة",
+        "target_text": "Fin, sort",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_003",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "عَذَاب",
+        "target_text": "Tourment",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_004",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "عِقَاب",
+        "target_text": "Châtiment",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_005",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "قِيَامَة",
+        "target_text": "Résurrection",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_006",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "لِقَاء",
+        "target_text": "Rencontre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_007",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "مُسَمَّى",
+        "target_text": "Fixé, nommé",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_008",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "نَار",
+        "target_text": "Feu",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_009",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "نَهَر",
+        "target_text": "Rivière",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_010",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "وَيْل",
+        "target_text": "Malheur à...",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_011",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "يَوْم",
+        "target_text": "Jour",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_i_012",
+      "category": "resurrection_judgment_i",
+      "data": {
+        "source_text": "يَوْمَئِذٍ",
+        "target_text": "Ce jour-là",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_001",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "أَبَدًا",
+        "target_text": "Toujours, à jamais",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_002",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "أَجْر",
+        "target_text": "Récompense",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_003",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "أَجَل",
+        "target_text": "Terme, délai",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_004",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "الآخِرَة",
+        "target_text": "L'Au-delà",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_005",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "أَلِيم",
+        "target_text": "Douloureux",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_006",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "ثَوَاب",
+        "target_text": "Récompense",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_007",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "جَحِيم",
+        "target_text": "Enfer, fournaise",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_008",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "جَزَاء",
+        "target_text": "Récompense, rétribution",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_009",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "الجَنَّة",
+        "target_text": "Le Paradis, jardin",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_010",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "جَهَنَّم",
+        "target_text": "L'Enfer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_011",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "حِسَاب",
+        "target_text": "Compte(s)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "resurrection_judgment_ii_012",
+      "category": "resurrection_judgment_ii",
+      "data": {
+        "source_text": "السَّاعَة",
+        "target_text": "L'Heure",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_001",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "أَمْر",
+        "target_text": "Affaire, ordre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_002",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "تَقْوَى",
+        "target_text": "Piété, crainte",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_003",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "حَقّ",
+        "target_text": "Vérité, vrai",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_004",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "بَاطِل",
+        "target_text": "Faux, mensonge",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_005",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "حِكْمَة",
+        "target_text": "Sagesse",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_006",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "حَمْد",
+        "target_text": "Louange",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_007",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "دِين",
+        "target_text": "Religion, loi",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_008",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "زَكَاة",
+        "target_text": "Aumône purificatrice",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_009",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "شَهِيد",
+        "target_text": "Témoin",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_010",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "صَلَاة",
+        "target_text": "Prière",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_011",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "مُبِين",
+        "target_text": "Clair, évident",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "religion_concepts_012",
+      "category": "religion_concepts",
+      "data": {
+        "source_text": "نُور",
+        "target_text": "Lumière",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_001",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "أَحَد",
+        "target_text": "Un",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_002",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "إِلَه",
+        "target_text": "Divinité",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_003",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "شَرِيك",
+        "target_text": "Partenaire, associé",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_004",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "شَهَادَة",
+        "target_text": "Témoignage",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_005",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "عَرْش",
+        "target_text": "Trône",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_006",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "عَهْد",
+        "target_text": "Engagement, pacte",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_007",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "الغَيْب",
+        "target_text": "Le monde de l'invisible",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_008",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "كِتَاب",
+        "target_text": "Livre, écrit",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_009",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "كَلِمَة",
+        "target_text": "Mot, parole",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_010",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "مَلَك",
+        "target_text": "Ange",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_011",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "مِيثَاق",
+        "target_text": "Contrat, pacte",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "faith_unseen_012",
+      "category": "faith_unseen",
+      "data": {
+        "source_text": "وَاحِد",
+        "target_text": "Un, unique",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_001",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "أَعْمَال",
+        "target_text": "Actions, actes",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_002",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "حَسَنَة",
+        "target_text": "Bonne action",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_003",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "سَيِّئَة",
+        "target_text": "Mauvaise action",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_004",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "خَيْر",
+        "target_text": "Bien, meilleur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_005",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "شَرّ",
+        "target_text": "Mauvais, pire",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_006",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "إِثْم",
+        "target_text": "Péché, crime",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_007",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "ذَنْب",
+        "target_text": "Péché, faute",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_008",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "جُنَاح",
+        "target_text": "Péché, faute",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_009",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "حَرَام",
+        "target_text": "Interdit, sacré",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_010",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "اسْم",
+        "target_text": "Nom",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_011",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "حَدِيث",
+        "target_text": "Discours, récit",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "actions_morality_012",
+      "category": "actions_morality",
+      "data": {
+        "source_text": "طَيِّبَة",
+        "target_text": "Bonne chose",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_001",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "رَسُول",
+        "target_text": "Messager",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_002",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "نَبِيّ",
+        "target_text": "Prophète",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_003",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "آدَم",
+        "target_text": "Adam",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_004",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "نُوح",
+        "target_text": "Noé",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_005",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "إِبْرَاهِيم",
+        "target_text": "Abraham",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_006",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "لُوط",
+        "target_text": "Lot",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_007",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "إِسْمَاعِيل",
+        "target_text": "Ismaël",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_008",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "إِسْحَاق",
+        "target_text": "Isaac",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_009",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "يَعْقُوب",
+        "target_text": "Jacob",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_010",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "يُوسُف",
+        "target_text": "Joseph",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_011",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "هُود",
+        "target_text": "Houd",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_012",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "شُعَيْب",
+        "target_text": "Chou'ayb",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_013",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "صَالِح",
+        "target_text": "Sâlih",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_014",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "مُوسَى",
+        "target_text": "Moïse",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_015",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "عِيسَى",
+        "target_text": "Jésus",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_016",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "شَيْطَان",
+        "target_text": "Satan",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_017",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "فِرْعَوْن",
+        "target_text": "Pharaon",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_018",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "عَاد",
+        "target_text": "Ad (Peuple)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "prophets_figures_019",
+      "category": "prophets_figures",
+      "data": {
+        "source_text": "ثَمُود",
+        "target_text": "Thamoud (Peuple)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_001",
+      "category": "family",
+      "data": {
+        "source_text": "أُمّ",
+        "target_text": "Mère",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_002",
+      "category": "family",
+      "data": {
+        "source_text": "وَالِدَيْن",
+        "target_text": "Deux parents",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_003",
+      "category": "family",
+      "data": {
+        "source_text": "أَب",
+        "target_text": "Père",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_004",
+      "category": "family",
+      "data": {
+        "source_text": "زَوْج",
+        "target_text": "Epoux, épouse, paire",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_005",
+      "category": "family",
+      "data": {
+        "source_text": "رَجُل",
+        "target_text": "Homme",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_006",
+      "category": "family",
+      "data": {
+        "source_text": "امْرَأَة / نِسَاء",
+        "target_text": "Femme",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_007",
+      "category": "family",
+      "data": {
+        "source_text": "وَلَد",
+        "target_text": "Enfant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_008",
+      "category": "family",
+      "data": {
+        "source_text": "وَالِد / وَالِدَة",
+        "target_text": "Géniteur, mère",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_009",
+      "category": "family",
+      "data": {
+        "source_text": "ذُرِّيَّة",
+        "target_text": "Descendants",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_010",
+      "category": "family",
+      "data": {
+        "source_text": "ابْن",
+        "target_text": "Fils",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_011",
+      "category": "family",
+      "data": {
+        "source_text": "ابْنَة / بَنَات",
+        "target_text": "Fille",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_012",
+      "category": "family",
+      "data": {
+        "source_text": "أَخ",
+        "target_text": "Frère",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "family_013",
+      "category": "family",
+      "data": {
+        "source_text": "أُخْت",
+        "target_text": "Sœur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_001",
+      "category": "body_soul",
+      "data": {
+        "source_text": "وَجْه",
+        "target_text": "Visage, face",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_002",
+      "category": "body_soul",
+      "data": {
+        "source_text": "عَيْن",
+        "target_text": "Œil",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_003",
+      "category": "body_soul",
+      "data": {
+        "source_text": "أَبْصَار",
+        "target_text": "Regards",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_004",
+      "category": "body_soul",
+      "data": {
+        "source_text": "أَفْوَاه",
+        "target_text": "Bouches",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_005",
+      "category": "body_soul",
+      "data": {
+        "source_text": "لِسَان",
+        "target_text": "Langue",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_006",
+      "category": "body_soul",
+      "data": {
+        "source_text": "قَلْب",
+        "target_text": "Cœur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_007",
+      "category": "body_soul",
+      "data": {
+        "source_text": "صَدْر",
+        "target_text": "Poitrine",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_008",
+      "category": "body_soul",
+      "data": {
+        "source_text": "يَد",
+        "target_text": "Main",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_009",
+      "category": "body_soul",
+      "data": {
+        "source_text": "رِجْل",
+        "target_text": "Pied",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_010",
+      "category": "body_soul",
+      "data": {
+        "source_text": "نَفْس",
+        "target_text": "Âme",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_011",
+      "category": "body_soul",
+      "data": {
+        "source_text": "رُوح",
+        "target_text": "Esprit",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "body_soul_012",
+      "category": "body_soul",
+      "data": {
+        "source_text": "قُوَّة",
+        "target_text": "Force",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_001",
+      "category": "people_roles",
+      "data": {
+        "source_text": "أُمَّة",
+        "target_text": "Communauté",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_002",
+      "category": "people_roles",
+      "data": {
+        "source_text": "قَوْم",
+        "target_text": "Peuple",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_003",
+      "category": "people_roles",
+      "data": {
+        "source_text": "إِنْسَان / إِنْس",
+        "target_text": "Etre humain",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_004",
+      "category": "people_roles",
+      "data": {
+        "source_text": "نَاس",
+        "target_text": "Gens",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_005",
+      "category": "people_roles",
+      "data": {
+        "source_text": "ذَكَر",
+        "target_text": "Mâle",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_006",
+      "category": "people_roles",
+      "data": {
+        "source_text": "أُنْثَى",
+        "target_text": "Femelle",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_007",
+      "category": "people_roles",
+      "data": {
+        "source_text": "عَبْد",
+        "target_text": "Serviteur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_008",
+      "category": "people_roles",
+      "data": {
+        "source_text": "عَدُوّ",
+        "target_text": "Ennemi",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_009",
+      "category": "people_roles",
+      "data": {
+        "source_text": "كَافِر",
+        "target_text": "Mécréant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_010",
+      "category": "people_roles",
+      "data": {
+        "source_text": "مُجْرِم",
+        "target_text": "Criminel",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_011",
+      "category": "people_roles",
+      "data": {
+        "source_text": "مَلَأ",
+        "target_text": "Notables, chefs",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "people_roles_012",
+      "category": "people_roles",
+      "data": {
+        "source_text": "وَلِيّ",
+        "target_text": "Allié, protecteur",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_001",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "فَعَلَ",
+        "target_text": "Faire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_002",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "فَتَحَ",
+        "target_text": "Ouvrir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_003",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "بَعَثَ",
+        "target_text": "Envoyer, ressusciter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_004",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "جَعَلَ",
+        "target_text": "Faire, mettre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_005",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "جَمَعَ",
+        "target_text": "Rassembler",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_006",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "ذَهَبَ",
+        "target_text": "Aller",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_007",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "رَفَعَ",
+        "target_text": "Elever",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_008",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "سَحَرَ",
+        "target_text": "Ensorceler",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_009",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "صَلَحَ",
+        "target_text": "Agir avec droiture",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_010",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "لَعَنَ",
+        "target_text": "Maudire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_011",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "نَفَعَ",
+        "target_text": "Profiter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_a_012",
+      "category": "verbs_form_1_a",
+      "data": {
+        "source_text": "فُعِلَ",
+        "target_text": "Etre fait (passif)",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_001",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "نَصَرَ",
+        "target_text": "Secourir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_002",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "بَلَغَ",
+        "target_text": "Atteindre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_003",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "تَرَكَ",
+        "target_text": "Laisser, délaisser",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_004",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "حَشَرَ",
+        "target_text": "Rassembler",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_005",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "حَكَمَ",
+        "target_text": "Juger",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_006",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "خَرَجَ",
+        "target_text": "Sortir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_007",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "خَلَدَ",
+        "target_text": "Vivre éternellement",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_008",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "خَلَقَ",
+        "target_text": "Créer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_009",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "دَخَلَ",
+        "target_text": "Entrer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_010",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "ذَكَرَ",
+        "target_text": "Se souvenir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_b_011",
+      "category": "verbs_form_1_b",
+      "data": {
+        "source_text": "رَزَقَ",
+        "target_text": "Pourvoir, donner subsistance",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_001",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "سَجَدَ",
+        "target_text": "Se prosterner",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_002",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "شَعَرَ",
+        "target_text": "Ressentir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_003",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "شَكَرَ",
+        "target_text": "Remercier",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_004",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "صَدَقَ",
+        "target_text": "Etre vrai, dire la vérité",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_005",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "عَبَدَ",
+        "target_text": "Adorer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_006",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "فَسَقَ",
+        "target_text": "Transgresser",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_007",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "قَتَلَ",
+        "target_text": "Tuer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_008",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "قَعَدَ",
+        "target_text": "S'asseoir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_009",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "كَتَبَ",
+        "target_text": "Ecrire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_010",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "كَفَرَ",
+        "target_text": "Mécroire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_011",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "مَكَرَ",
+        "target_text": "Comploter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_c_012",
+      "category": "verbs_form_1_c",
+      "data": {
+        "source_text": "نَظَرَ",
+        "target_text": "Regarder",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_001",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "ضَرَبَ",
+        "target_text": "Frapper",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_002",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "حَمَلَ",
+        "target_text": "Porter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_003",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "صَبَرَ",
+        "target_text": "Patienter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_004",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "ظَلَمَ",
+        "target_text": "Etre injuste",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_005",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "عَرَفَ",
+        "target_text": "Connaitre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_006",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "عَقَلَ",
+        "target_text": "Comprendre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_007",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "غَفَرَ",
+        "target_text": "Pardonner",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_008",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "قَدَرَ",
+        "target_text": "Décreter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_009",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "كَذَبَ",
+        "target_text": "Mentir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_010",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "كَسَبَ",
+        "target_text": "Acquérir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_d_011",
+      "category": "verbs_form_1_d",
+      "data": {
+        "source_text": "مَلَكَ",
+        "target_text": "Posséder",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_001",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "سَمِعَ",
+        "target_text": "Entendre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_002",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "حَزِنَ",
+        "target_text": "Etre triste",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_003",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "حَسِبَ",
+        "target_text": "Penser",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_004",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "حَفِظَ",
+        "target_text": "Préserver",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_005",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "خَسِرَ",
+        "target_text": "Perdre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_006",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "رَحِمَ",
+        "target_text": "Etre miséricordieux",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_007",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "شَهِدَ",
+        "target_text": "Témoigner",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_008",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "عَلِمَ",
+        "target_text": "Savoir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_009",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "عَمِلَ",
+        "target_text": "Œuvrer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_010",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "كَرِهَ",
+        "target_text": "Détester",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_e_011",
+      "category": "verbs_form_1_e",
+      "data": {
+        "source_text": "أَبْصَرَ",
+        "target_text": "Voir, être clairvoyant",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_001",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "حَيِيَ",
+        "target_text": "Vivre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_002",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "رَدَّ",
+        "target_text": "Retourner",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_003",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "صَدَّ",
+        "target_text": "Détourner",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_004",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "ضَرَّ",
+        "target_text": "Nuire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_005",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "ضَلَّ",
+        "target_text": "S'égarer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_006",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "ظَنَّ",
+        "target_text": "Penser",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_007",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "عَدَّ",
+        "target_text": "Compter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_008",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "غَرَّ",
+        "target_text": "Tromper",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_009",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "مَدَّ",
+        "target_text": "Etendre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_010",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "مَسَّ",
+        "target_text": "Toucher",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_doubled_011",
+      "category": "verbs_form_1_doubled",
+      "data": {
+        "source_text": "وَدَّ",
+        "target_text": "Aimer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_001",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَذَرَ",
+        "target_text": "Délaisser",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_002",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَضَعَ",
+        "target_text": "Poser",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_003",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَقَعَ",
+        "target_text": "Tomber, survenir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_004",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَهَبَ",
+        "target_text": "Donner",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_005",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَجَدَ",
+        "target_text": "Trouver",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_006",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَرِثَ",
+        "target_text": "Hériter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_007",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَزَرَ",
+        "target_text": "Porter (fardeau)",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_008",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَصَفَ",
+        "target_text": "Décrire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_009",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَعَدَ",
+        "target_text": "Promettre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_010",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَقَى",
+        "target_text": "Protéger",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_initial_011",
+      "category": "verbs_form_1_weak_initial",
+      "data": {
+        "source_text": "وَسِعَ",
+        "target_text": "Englober",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_001",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "تَابَ",
+        "target_text": "Se repentir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_002",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "ذَاقَ",
+        "target_text": "Goûter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_003",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "فَازَ",
+        "target_text": "Gagner, réussir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_004",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "قَالَ",
+        "target_text": "Dire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_005",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "قَامَ",
+        "target_text": "Se lever",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_006",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "كَانَ",
+        "target_text": "Etre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_007",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "مَاتَ",
+        "target_text": "Mourir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_008",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "خَافَ",
+        "target_text": "Avoir peur",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_009",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "كَادَ",
+        "target_text": "Faillir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_010",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "كَادَ (يَكِيد)",
+        "target_text": "Comploter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hollow_011",
+      "category": "verbs_form_1_hollow",
+      "data": {
+        "source_text": "زَادَ",
+        "target_text": "Augmenter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_001",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "تَلَا",
+        "target_text": "Réciter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_002",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "دَعَا",
+        "target_text": "Invoquer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_003",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "عَفَا",
+        "target_text": "Effacer, gracier",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_004",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "بَغَى",
+        "target_text": "Vouloir, envier",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_005",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "جَرَى",
+        "target_text": "Couler",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_006",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "جَزَى",
+        "target_text": "Rétribuer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_007",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "قَضَى",
+        "target_text": "Décreter",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_008",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "كَفَى",
+        "target_text": "Suffire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_009",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "هَدَى",
+        "target_text": "Guider",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_010",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "خَشِيَ",
+        "target_text": "Craindre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_011",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "رَضِيَ",
+        "target_text": "Agréer",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_weak_final_012",
+      "category": "verbs_form_1_weak_final",
+      "data": {
+        "source_text": "نَسِيَ",
+        "target_text": "Oublier",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_001",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "سَأَلَ",
+        "target_text": "Demander",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_002",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "قَرَأَ",
+        "target_text": "Lire",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_003",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "أَخَذَ",
+        "target_text": "Prendre",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_004",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "أَكَلَ",
+        "target_text": "Manger",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_005",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "أَمَرَ",
+        "target_text": "Ordonner",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_006",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "أَمِنَ",
+        "target_text": "Etre en sécurité",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_007",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "أَبَى",
+        "target_text": "Refuser",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_008",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "رَأَى",
+        "target_text": "Voir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_009",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "أَتَى",
+        "target_text": "Venir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_010",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "شَاءَ",
+        "target_text": "Vouloir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_011",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "سَاءَ",
+        "target_text": "Etre mauvais",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "verbs_form_1_hamzated_012",
+      "category": "verbs_form_1_hamzated",
+      "data": {
+        "source_text": "جَاءَ",
+        "target_text": "Venir",
+        "class": "verb"
+      },
+      "tags": [
+        "verb"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_001",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "بَدَّلَ",
+        "target_text": "Echanger",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_002",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "بَشَّرَ",
+        "target_text": "Annoncer bonne nouvelle",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_003",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "بَيَّنَ",
+        "target_text": "Eclaircir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_004",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "زَيَّنَ",
+        "target_text": "Embellir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_005",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "سَبَّحَ",
+        "target_text": "Glorifier",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_006",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "سَخَّرَ",
+        "target_text": "Soumettre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_007",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "صَدَّقَ",
+        "target_text": "Confirmer, croire",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_008",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "عَذَّبَ",
+        "target_text": "Punir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_009",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "عَلَّمَ",
+        "target_text": "Enseigner",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_010",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "قَدَّمَ",
+        "target_text": "Faire passer devant",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_011",
+      "category": "augmented_verbs_form_2",
+      "data": {
+        "source_text": "كَذَّبَ",
+        "target_text": "Démentir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_001",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "نَبَّأَ",
+        "target_text": "Avertir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_002",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "نَزَّلَ",
+        "target_text": "Faire descendre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_003",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "نَجَّى",
+        "target_text": "Délivrer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_004",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "وَلَّى",
+        "target_text": "Se détourner",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_005",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "جَاهَدَ",
+        "target_text": "Lutter",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_006",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "قَاتَلَ",
+        "target_text": "Combattre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_007",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "نَادَى",
+        "target_text": "Appeler",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_008",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "نَافَقَ",
+        "target_text": "Etre hypocrite",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_2_3_009",
+      "category": "augmented_verbs_form_2_3",
+      "data": {
+        "source_text": "هَاجَرَ",
+        "target_text": "Emigrer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_001",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَبْصَرَ",
+        "target_text": "Apercevoir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_002",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَحْسَنَ",
+        "target_text": "Bien faire",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_003",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَخْرَجَ",
+        "target_text": "Faire sortir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_004",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَدْخَلَ",
+        "target_text": "Faire entrer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_005",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَرْجَعَ",
+        "target_text": "Faire revenir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_006",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَرْسَلَ",
+        "target_text": "Envoyer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_007",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَسْرَفَ",
+        "target_text": "Gaspiller",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_008",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَسْلَمَ",
+        "target_text": "Soumettre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_009",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَشْرَكَ",
+        "target_text": "Associer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_010",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَصْبَحَ",
+        "target_text": "Devenir (matin)",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_a_011",
+      "category": "augmented_verbs_form_4_a",
+      "data": {
+        "source_text": "أَصْلَحَ",
+        "target_text": "Réformer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_001",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَعْرَضَ",
+        "target_text": "Se détourner",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_002",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَغْرَقَ",
+        "target_text": "Noyer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_003",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَفْسَدَ",
+        "target_text": "Corrompre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_004",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَفْلَحَ",
+        "target_text": "Réussir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_005",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَنْبَتَ",
+        "target_text": "Faire pousser",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_006",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَنْذَرَ",
+        "target_text": "Avertir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_007",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَنْزَلَ",
+        "target_text": "Faire descendre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_008",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَنْشَأَ",
+        "target_text": "Créer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_009",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَنْعَمَ",
+        "target_text": "Combler de bienfaits",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_010",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَنْفَقَ",
+        "target_text": "Dépenser",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_011",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَنْكَرَ",
+        "target_text": "Nier",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_b_012",
+      "category": "augmented_verbs_form_4_b",
+      "data": {
+        "source_text": "أَهْلَكَ",
+        "target_text": "Faire périr",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_001",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَتَمَّ",
+        "target_text": "Parachever",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_002",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَحَبَّ",
+        "target_text": "Aimer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_003",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَحَلَّ",
+        "target_text": "Rendre licite",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_004",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَسَرَّ",
+        "target_text": "Cacher",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_005",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَضَلَّ",
+        "target_text": "Egarer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_006",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَعَدَّ",
+        "target_text": "Préparer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_007",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَذَاقَ",
+        "target_text": "Faire goûter",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_008",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَرَادَ",
+        "target_text": "Vouloir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_009",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَصَابَ",
+        "target_text": "Atteindre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_010",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَطَاعَ",
+        "target_text": "Obéir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_011",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَقَامَ",
+        "target_text": "Accomplir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_c_012",
+      "category": "augmented_verbs_form_4_c",
+      "data": {
+        "source_text": "أَمَاتَ",
+        "target_text": "Faire mourir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_001",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَحْيَا",
+        "target_text": "Faire vivre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_002",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَخْفَى",
+        "target_text": "Cacher",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_003",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَرَى",
+        "target_text": "Montrer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_004",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَغْنَى",
+        "target_text": "Enrichir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_005",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَلْقَى",
+        "target_text": "Jeter",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_006",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَنْجَى",
+        "target_text": "Sauver",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_007",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَوْحَى",
+        "target_text": "Révéler",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_008",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "أَوْفَى",
+        "target_text": "Expier, tenir promesse",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_009",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "آمَنَ",
+        "target_text": "Croire",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_010",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "آتَى",
+        "target_text": "Donner",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_4_d_011",
+      "category": "augmented_verbs_form_4_d",
+      "data": {
+        "source_text": "آذَى",
+        "target_text": "Blesser",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_001",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَفَكَّرَ",
+        "target_text": "Réfléchir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_002",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَذَكَّرَ",
+        "target_text": "Se souvenir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_003",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَوَكَّلَ",
+        "target_text": "S'en remettre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_004",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَبَيَّنَ",
+        "target_text": "Se clarifier",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_005",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَرَبَّصَ",
+        "target_text": "Attendre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_006",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَوَلَّى",
+        "target_text": "Se détourner",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_007",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَوَفَّى",
+        "target_text": "Mettre fin à la vie",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_008",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَبَارَكَ",
+        "target_text": "Etre béni",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_5_6_7_009",
+      "category": "augmented_verbs_forms_5_6_7",
+      "data": {
+        "source_text": "تَسَاءَلَ",
+        "target_text": "S'interroger",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_001",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "اخْتَلَفَ",
+        "target_text": "Diverger",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_002",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "اتَّبَعَ",
+        "target_text": "Suivre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_003",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "اتَّخَذَ",
+        "target_text": "Prendre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_004",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "اتَّقَى",
+        "target_text": "Craindre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_005",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "افْتَرَى",
+        "target_text": "Inventer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_006",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "اهْتَدَى",
+        "target_text": "Etre guidé",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_007",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "ابْتَغَى",
+        "target_text": "Désirer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_008",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "انْقَلَبَ",
+        "target_text": "Se retourner",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_form_8_009",
+      "category": "augmented_verbs_form_8",
+      "data": {
+        "source_text": "انْتَهَى",
+        "target_text": "Se terminer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_001",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْوَدَّ",
+        "target_text": "S'assombrir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_002",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "ابْيَضَّ",
+        "target_text": "S'éclaircir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_003",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْتَعْجَلَ",
+        "target_text": "Se dépêcher",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_004",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْتَغْفَرَ",
+        "target_text": "Demander pardon",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_005",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْتَكْبَرَ",
+        "target_text": "S'enorgueillir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_006",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْتَهْزَأَ",
+        "target_text": "Se moquer",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_007",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْتَجَابَ",
+        "target_text": "Répondre",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_008",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْتَطَاعَ",
+        "target_text": "Pouvoir",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    },
+    {
+      "id": "augmented_verbs_forms_9_10_009",
+      "category": "augmented_verbs_forms_9_10",
+      "data": {
+        "source_text": "اسْتَقَامَ",
+        "target_text": "Se tenir droit",
+        "class": "noun"
+      },
+      "tags": [
+        "noun"
+      ]
+    }
+  ]
+}

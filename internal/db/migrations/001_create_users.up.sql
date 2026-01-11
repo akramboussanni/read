@@ -1,7 +1,7 @@
 CREATE TABLE users (
     id BIGINT PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
-    email TEXT NOT NULL UNIQUE,
+    email TEXT DEFAULT '',
     password_hash TEXT NOT NULL,
     created_at BIGINT NOT NULL,
     user_role TEXT NOT NULL,
@@ -13,6 +13,8 @@ CREATE TABLE users (
     jwt_session_id BIGINT,
     is_admin BOOLEAN NOT NULL DEFAULT false
 );
+
+CREATE UNIQUE INDEX users_email_key ON users(email) WHERE email != '';
 
 CREATE TABLE jwt_blacklist (
     jti VARCHAR(255) PRIMARY KEY,

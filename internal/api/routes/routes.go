@@ -36,7 +36,7 @@ func SetupRouter(repos *repo.Repos) http.Handler {
 	// Mount routers
 	r.Mount("/auth", auth.NewAuthRouter(repos.User, repos.Token, repos.Lockout))
 	r.Mount("/progression", progression.NewProgressionRouter(repos, quizService))
-	r.Mount("/quizzes", quiz.NewQuizRouter(repos, quizService))
+	r.Mount("/quiz", quiz.NewQuizRouter(repos, quizService))
 
 	// Admin routes (requires authentication and admin role)
 	r.Route("/admin", func(r chi.Router) {

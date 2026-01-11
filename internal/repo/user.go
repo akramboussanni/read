@@ -50,6 +50,10 @@ func (r *UserRepo) DuplicateName(ctx context.Context, username string) (bool, er
 }
 
 func (r *UserRepo) DuplicateEmail(ctx context.Context, email string) (bool, error) {
+	// Empty emails are not considered duplicates
+	if email == "" {
+		return false, nil
+	}
 	var exists bool
 	err := r.db.GetContext(ctx, &exists, "SELECT EXISTS(SELECT 1 FROM users WHERE email=$1)", email)
 	return exists, err
@@ -99,7 +103,12 @@ func (r *UserRepo) AssignUserConfirmToken(ctx context.Context, token string, iat
 func (r *UserRepo) MarkUserConfirmed(ctx context.Context, userID int64) error {
 	query := `
 		UPDATE users
-		SET email_confirmed = TRUE,
+		SET email = CASE 
+			WHEN pending_email != '' THEN pending_email 
+			ELSE email 
+		END,
+		    email_confirmed = TRUE,
+		    pending_email = '',
 		    email_confirm_token = '',
 		    email_confirm_issuedat = 0
 		WHERE id = $1
@@ -201,5 +210,18 @@ func (r *UserRepo) UpdateEmail(ctx context.Context, userID int64, email string) 
 		WHERE id = $2
 	`
 	_, err := r.db.ExecContext(ctx, query, email, userID)
+	return err
+}
+
+// UpdatePendingEmail stores a pending email change (for verified emails)
+func (r *UserRepo) UpdatePendingEmail(ctx context.Context, userID int64, pendingEmail string) error {
+	query := `
+		UPDATE users
+		SET pending_email = $1,
+		    email_confirm_token = '',
+		    email_confirm_issuedat = 0
+		WHERE id = $2
+	`
+	_, err := r.db.ExecContext(ctx, query, pendingEmail, userID)
 	return err
 }
