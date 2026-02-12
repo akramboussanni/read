@@ -371,6 +371,7 @@ func (ar *AdminRouter) HandleCreateQuiz(w http.ResponseWriter, r *http.Request) 
 		ID:                 quizID,
 		Title:              req.Title,
 		Description:        req.Description,
+		Version:            1,   // Start at version 1
 		DeckID:             nil, // Multi-deck, so no single deck
 		TimeLimit:          nil, // Always nil as requested
 		PassPercentage:     req.PassPercentage,
@@ -553,36 +554,43 @@ func (ar *AdminRouter) HandleGetQuizStats(w http.ResponseWriter, r *http.Request
 
 	response := make([]QuizStatsResponse, 0, len(quizzes))
 	for _, quiz := range quizzes {
-		stats := QuizStatsResponse{
-			QuizID:    quiz.ID,
-			Title:     quiz.Title,
-			CreatedBy: quiz.CreatedBy,
-			IsSystem:  quiz.IsSystem,
-			CreatedAt: quiz.CreatedAt,
+		// Get attempt count
+		totalAttempts, _ := ar.Repos.QuizAttempt.CountAttemptsByQuiz(r.Context(), quiz.ID)
+
+		// Get average score
+		avgScore, _ := ar.Repos.QuizAttempt.GetAverageScoreByQuiz(r.Context(), quiz.ID)
+		averageScore := 0.0
+		if avgScore != nil {
+			averageScore = *avgScore
+		}
+
+		// Calculate pass rate
+		passedCount, _ := ar.Repos.QuizAttempt.CountPassedAttempts(r.Context(), quiz.ID)
+		passRate := 0.0
+		if totalAttempts > 0 {
+			passRate = float64(passedCount) / float64(totalAttempts) * 100.0
 		}
 
 		// Get creator username if available
+		var creatorUsername *string
 		if quiz.CreatedBy != nil {
-			creator, err := ar.Repos.User.GetUserByID(r.Context(), *quiz.CreatedBy)
-			if err == nil && creator != nil {
-				stats.CreatorUsername = &creator.Username
+			user, err := ar.Repos.User.GetUserByID(r.Context(), *quiz.CreatedBy)
+			if err == nil && user != nil {
+				creatorUsername = &user.Username
 			}
 		}
 
-		// Get attempt stats
-		totalAttempts, _ := ar.Repos.QuizAttempt.CountAttemptsByQuiz(r.Context(), quiz.ID)
-		stats.TotalAttempts = totalAttempts
-
-		if totalAttempts > 0 {
-			avgScore, _ := ar.Repos.QuizAttempt.GetAverageScoreByQuiz(r.Context(), quiz.ID)
-			if avgScore != nil {
-				stats.AverageScore = *avgScore
-			}
-
-			passCount, _ := ar.Repos.QuizAttempt.CountPassedAttempts(r.Context(), quiz.ID)
-			stats.PassRate = (float64(passCount) / float64(totalAttempts)) * 100
+		stats := QuizStatsResponse{
+			QuizID:          quiz.ID,
+			Title:           quiz.Title,
+			CreatedBy:       quiz.CreatedBy,
+			CreatorUsername: creatorUsername,
+			IsSystem:        quiz.IsSystem,
+			TotalAttempts:   totalAttempts,
+			AverageScore:    averageScore,
+			PassRate:        passRate,
+			CreatedAt:       quiz.CreatedAt,
 		}
-
 		response = append(response, stats)
 	}
 
@@ -661,6 +669,79 @@ func (ar *AdminRouter) HandleListUserQuizzes(w http.ResponseWriter, r *http.Requ
 // @Failure 500 {object} api.ErrorResponse "Internal server error"
 // @Router /admin/quizzes/{quizID} [delete]
 // @Security BearerAuth
+// @Summary Update quiz
+// @Description Update a quiz (admin only)
+// @Tags Admin
+// @Accept json
+// @Produce json
+// @Param quizID path int true "Quiz ID"
+// @Param request body UpdateQuizRequest true "Update quiz request"
+// @Success 200 {object} api.MessageResponse
+// @Failure 400 {object} api.ErrorResponse "Bad request"
+// @Failure 401 {object} api.ErrorResponse "Unauthorized"
+// @Failure 403 {object} api.ErrorResponse "Forbidden"
+// @Failure 404 {object} api.ErrorResponse "Quiz not found"
+// @Failure 500 {object} api.ErrorResponse "Internal server error"
+// @Router /admin/quizzes/{quizID} [put]
+// @Security BearerAuth
+func (ar *AdminRouter) HandleUpdateQuiz(w http.ResponseWriter, r *http.Request) {
+	quizID, err := strconv.ParseInt(chi.URLParam(r, "quizID"), 10, 64)
+	if err != nil {
+		api.WriteBadRequest(w, "Invalid quiz ID")
+		return
+	}
+
+	req, err := api.DecodeJSON[UpdateQuizRequest](w, r)
+	if err != nil {
+		return
+	}
+
+	// Get existing quiz
+	quiz, err := ar.Repos.Quiz.GetByID(r.Context(), quizID)
+	if err != nil || quiz == nil {
+		api.WriteNotFound(w, "Quiz not found")
+		return
+	}
+
+	// Update fields
+	if req.Title != nil {
+		quiz.Title = *req.Title
+	}
+	if req.Description != nil {
+		quiz.Description = *req.Description
+	}
+	if req.PassPercentage != nil {
+		quiz.PassPercentage = req.PassPercentage
+	}
+	if req.ShuffleQuestions != nil {
+		quiz.ShuffleQuestions = *req.ShuffleQuestions
+	}
+	if req.GivesCoins != nil {
+		quiz.GivesCoins = *req.GivesCoins
+	}
+	if req.CoinReward != nil {
+		quiz.CoinReward = *req.CoinReward
+	}
+	if req.LevelOrder != nil {
+		quiz.LevelOrder = *req.LevelOrder
+	}
+	if req.PrerequisiteQuizID != nil {
+		quiz.PrerequisiteQuizID = req.PrerequisiteQuizID
+	}
+	if req.IsPublic != nil {
+		quiz.IsPublic = *req.IsPublic
+	}
+
+	// Update quiz in database
+	if err := ar.Repos.Quiz.UpdateQuiz(r.Context(), quiz); err != nil {
+		applog.Error("Failed to update quiz:", err)
+		api.WriteInternalError(w)
+		return
+	}
+
+	api.WriteMessage(w, 200, "message", "Quiz updated successfully")
+}
+
 func (ar *AdminRouter) HandleDeleteQuiz(w http.ResponseWriter, r *http.Request) {
 	quizID, err := strconv.ParseInt(chi.URLParam(r, "quizID"), 10, 64)
 	if err != nil {

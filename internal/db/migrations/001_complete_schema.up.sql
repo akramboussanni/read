@@ -149,6 +149,7 @@ CREATE TABLE quizzes (
     id BIGINT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
+    version INT NOT NULL DEFAULT 1,
     deck_id BIGINT,
 
     time_limit INT,

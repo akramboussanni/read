@@ -318,6 +318,7 @@ func (qr *QuizRouter) HandleCreateQuiz(w http.ResponseWriter, r *http.Request) {
 		ID:                 quizID,
 		Title:              req.Title,
 		Description:        req.Description,
+		Version:            1,   // Start at version 1
 		DeckID:             nil, // Multi-deck, so no single deck
 		TimeLimit:          nil, // Always nil as requested
 		PassPercentage:     req.PassPercentage,

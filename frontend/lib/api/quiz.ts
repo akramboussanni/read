@@ -79,3 +79,10 @@ export const quizApi = {
     return response.data;
   },
 };
+
+// Helper functions for direct import
+export const getQuizDetail = (quizId: string) => quizApi.getQuiz(parseInt(quizId));
+export const startQuizAttempt = (quizId: string) => quizApi.startQuiz(parseInt(quizId));
+export const submitQuizAnswers = (quizId: string, data: SubmitQuizRequest) => 
+  quizApi.submitQuiz(parseInt(quizId), data);
+

@@ -505,8 +505,34 @@ func (r *QuizRepo) GetUserGeneratedQuizzes(ctx context.Context, limit, offset in
 // DeactivateQuiz soft deletes a quiz
 func (r *QuizRepo) DeactivateQuiz(ctx context.Context, quizID int64) error {
 	_, err := r.db.ExecContext(ctx, `
-		UPDATE quizzes SET is_active = 0 WHERE id = $1
-	`, quizID)
+		UPDATE quizzes SET is_active = 0, updated_at = $1 WHERE id = $2
+	`, time.Now().Unix(), quizID)
+	return err
+}
+
+// UpdateQuiz updates a quiz's metadata and increments version
+func (r *QuizRepo) UpdateQuiz(ctx context.Context, quiz *model.Quiz) error {
+	quiz.UpdatedAt = new(int64)
+	*quiz.UpdatedAt = time.Now().Unix()
+	quiz.Version++ // Increment version on each update
+
+	_, err := r.db.ExecContext(ctx, `
+		UPDATE quizzes SET
+			title = $1,
+			description = $2,
+			version = $3,
+			pass_percentage = $4,
+			shuffle_questions = $5,
+			gives_coins = $6,
+			coin_reward = $7,
+			level_order = $8,
+			prerequisite_quiz_id = $9,
+			is_public = $10,
+			updated_at = $11
+		WHERE id = $12
+	`, quiz.Title, quiz.Description, quiz.Version, quiz.PassPercentage, quiz.ShuffleQuestions,
+		quiz.GivesCoins, quiz.CoinReward, quiz.LevelOrder, quiz.PrerequisiteQuizID,
+		quiz.IsPublic, quiz.UpdatedAt, quiz.ID)
 	return err
 }
 

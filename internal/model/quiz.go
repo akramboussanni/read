@@ -53,6 +53,7 @@ type Quiz struct {
 	ID                 int64  `json:"id,string" db:"id"`
 	Title              string `json:"title" db:"title"`
 	Description        string `json:"description" db:"description"`
+	Version            int    `json:"version" db:"version"`                  // Incremented on each update
 	DeckID             *int64 `json:"deck_id,string,omitempty" db:"deck_id"` // Nullable for multi-deck user quizzes
 	TimeLimit          *int   `json:"time_limit,omitempty" db:"time_limit"`  // Always nil
 	PassPercentage     *int   `json:"pass_percentage,omitempty" db:"pass_percentage"`

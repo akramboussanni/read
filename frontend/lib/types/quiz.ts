@@ -45,6 +45,7 @@ export interface Quiz {
   id: number;
   title: string;
   description: string;
+  version?: number;
   deck_id: number;
   time_limit?: number;
   pass_percentage?: number;

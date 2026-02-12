@@ -92,3 +92,27 @@ func ToUserListResponse(user *model.User) UserListResponse {
 		CreatedAt:      user.CreatedAt,
 	}
 }
+
+// UpdateQuizRequest for updating quiz properties
+type UpdateQuizRequest struct {
+	Title              *string `json:"title,omitempty"`
+	Description        *string `json:"description,omitempty"`
+	PassPercentage     *int    `json:"pass_percentage,omitempty"`
+	ShuffleQuestions   *bool   `json:"shuffle_questions,omitempty"`
+	GivesCoins         *bool   `json:"gives_coins,omitempty"`
+	CoinReward         *int    `json:"coin_reward,omitempty"`
+	LevelOrder         *int    `json:"level_order,omitempty"`
+	PrerequisiteQuizID *int64  `json:"prerequisite_quiz_id,string,omitempty"`
+	IsPublic           *bool   `json:"is_public,omitempty"`
+}
+
+// SystemStatsResponse for system statistics
+type SystemStatsResponse struct {
+	TotalUsers     int     `json:"total_users"`
+	TotalQuizzes   int     `json:"total_quizzes"`
+	TotalAttempts  int     `json:"total_attempts"`
+	ActiveUsers7d  int     `json:"active_users_7d"`
+	AverageScore   float64 `json:"average_score"`
+	CompletionRate float64 `json:"completion_rate"`
+	TotalQuestions int     `json:"total_questions"`
+}

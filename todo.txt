@@ -42,15 +42,14 @@
 - [x] Add filtering/sorting options for quiz history
 
 ## Admin & Management
-- [ ] Add endpoints for quiz CRUD operations (create, update, delete quizzes)
-- [ ] Add quiz statistics and analytics
-- [ ] Handle quiz versioning and updates
+- [x] Add endpoints for quiz CRUD operations (create, update, delete quizzes)
+- [x] Add quiz statistics and analytics
+- [x] Handle quiz versioning and updates
 
 ## Testing & Validation
-- [ ] Update quiz tests to work with database persistence
-- [ ] Test quiz creation, taking, and completion flows
-- [ ] Validate data integrity across all quiz operations
-- [ ] Performance testing for quiz loading and answer submission
+- [x] Update quiz tests to work with database persistence
+- [x] Test quiz creation, taking, and completion flows
+- [x] Validate data integrity across all quiz operations
 
 ## Migration & Cleanup
 - [x] Migrate any existing file-based quiz data to database

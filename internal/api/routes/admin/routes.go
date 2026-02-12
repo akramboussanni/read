@@ -40,6 +40,7 @@ func (ar *AdminRouter) Routes() chi.Router {
 	r.Post("/quizzes", ar.HandleCreateQuiz)
 	r.Get("/quizzes/stats", ar.HandleGetQuizStats)
 	r.Get("/quizzes/user-generated", ar.HandleListUserQuizzes)
+	r.Put("/quizzes/{quizID}", ar.HandleUpdateQuiz)
 	r.Delete("/quizzes/{quizID}", ar.HandleDeleteQuiz)
 
 	// System statistics
