@@ -18,183 +18,183 @@
   },
   "categories": {
     "pronouns_suffixes": {
-      "title": "Pronouns (Suffixes)",
+      "title": "Pronoms (Suffixes)",
       "difficulty": "beginner"
     },
     "pronouns_detached": {
-      "title": "Pronouns (Detached)",
+      "title": "Pronoms (Isolés)",
       "difficulty": "beginner"
     },
     "prepositions_of_place_time": {
-      "title": "Prepositions of Place & Time",
+      "title": "Prépositions de Lieu & Temps",
       "difficulty": "beginner"
     },
     "interrogative_particles": {
-      "title": "Interrogative Particles",
+      "title": "Particules Interrogatives",
       "difficulty": "intermediate"
     },
     "ownership_relation": {
-      "title": "Ownership & Relation",
+      "title": "Possession & Relation",
       "difficulty": "intermediate"
     },
     "time_conjunctions": {
-      "title": "Time & Conjunctions",
+      "title": "Temps & Conjonctions",
       "difficulty": "intermediate"
     },
     "prepositions_ma": {
-      "title": "Prepositions + Ma",
+      "title": "Prépositions + Ma",
       "difficulty": "beginner"
     },
     "general_prepositions": {
-      "title": "General Prepositions",
+      "title": "Prépositions Générales",
       "difficulty": "intermediate"
     },
     "prefixes_particles_i": {
-      "title": "Prefixes & Particles I",
+      "title": "Préfixes & Particules I",
       "difficulty": "intermediate"
     },
     "prefixes_particles_ii": {
-      "title": "Prefixes & Particles II",
+      "title": "Préfixes & Particules II",
       "difficulty": "intermediate"
     },
     "names_of_allah_attributes_i": {
-      "title": "Names of Allah & Attributes I",
+      "title": "Noms d'Allah & Attributs I",
       "difficulty": "advanced"
     },
     "names_of_allah_attributes_ii": {
-      "title": "Names of Allah & Attributes II",
+      "title": "Noms d'Allah & Attributs II",
       "difficulty": "advanced"
     },
     "names_of_allah_attributes_iii": {
-      "title": "Names of Allah & Attributes III",
+      "title": "Noms d'Allah & Attributs III",
       "difficulty": "advanced"
     },
     "superlatives": {
-      "title": "Superlatives",
+      "title": "Superlatifs",
       "difficulty": "intermediate"
     },
     "creation_signs": {
-      "title": "Creation & Signs",
+      "title": "Création & Signes",
       "difficulty": "intermediate"
     },
     "blessings_authority": {
-      "title": "Blessings & Authority",
+      "title": "Bénédictions & Autorité",
       "difficulty": "intermediate"
     },
     "world_life": {
-      "title": "World & Life",
+      "title": "Monde & Vie",
       "difficulty": "intermediate"
     },
     "resurrection_judgment_i": {
-      "title": "Resurrection & Judgment I",
+      "title": "Résurrection & Jugement I",
       "difficulty": "intermediate"
     },
     "resurrection_judgment_ii": {
-      "title": "Resurrection & Judgment II",
+      "title": "Résurrection & Jugement II",
       "difficulty": "intermediate"
     },
     "religion_concepts": {
-      "title": "Religion Concepts",
+      "title": "Concepts Religieux",
       "difficulty": "intermediate"
     },
     "faith_unseen": {
-      "title": "Faith & Unseen",
+      "title": "Foi & Invisible",
       "difficulty": "intermediate"
     },
     "actions_morality": {
-      "title": "Actions & Morality",
+      "title": "Actions & Moralité",
       "difficulty": "intermediate"
     },
     "prophets_figures": {
-      "title": "Prophets & Figures",
+      "title": "Prophètes & Personnages",
       "difficulty": "intermediate"
     },
     "family": {
-      "title": "Family",
+      "title": "Famille",
       "difficulty": "intermediate"
     },
     "body_soul": {
-      "title": "Body & Soul",
+      "title": "Corps & Âme",
       "difficulty": "intermediate"
     },
     "people_roles": {
-      "title": "People & Roles",
+      "title": "Personnes & Rôles",
       "difficulty": "intermediate"
     },
     "verbs_form_1_a": {
-      "title": "Verbs Form 1 (A)",
+      "title": "Verbes Forme 1 (A)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_b": {
-      "title": "Verbs Form 1 (B)",
+      "title": "Verbes Forme 1 (B)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_c": {
-      "title": "Verbs Form 1 (C)",
+      "title": "Verbes Forme 1 (C)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_d": {
-      "title": "Verbs Form 1 (D)",
+      "title": "Verbes Forme 1 (D)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_e": {
-      "title": "Verbs Form 1 (E)",
+      "title": "Verbes Forme 1 (E)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_doubled": {
-      "title": "Verbs Form 1 (Doubled)",
+      "title": "Verbes Forme 1 (Doublés)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_weak_initial": {
-      "title": "Verbs Form 1 (Weak Initial)",
+      "title": "Verbes Forme 1 (Initiale Faible)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_hollow": {
-      "title": "Verbs Form 1 (Hollow)",
+      "title": "Verbes Forme 1 (Creux)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_weak_final": {
-      "title": "Verbs Form 1 (Weak Final)",
+      "title": "Verbes Forme 1 (Finale Faible)",
       "difficulty": "intermediate"
     },
     "verbs_form_1_hamzated": {
-      "title": "Verbs Form 1 (Hamzated)",
+      "title": "Verbes Forme 1 (Hamzatés)",
       "difficulty": "intermediate"
     },
     "augmented_verbs_form_2": {
-      "title": "Augmented Verbs Form 2",
+      "title": "Verbes Augmentés Forme 2",
       "difficulty": "intermediate"
     },
     "augmented_verbs_form_2_3": {
-      "title": "Augmented Verbs Form 2 & 3",
+      "title": "Verbes Augmentés Forme 2 & 3",
       "difficulty": "intermediate"
     },
     "augmented_verbs_form_4_a": {
-      "title": "Augmented Verbs Form 4 (A)",
+      "title": "Verbes Augmentés Forme 4 (A)",
       "difficulty": "intermediate"
     },
     "augmented_verbs_form_4_b": {
-      "title": "Augmented Verbs Form 4 (B)",
+      "title": "Verbes Augmentés Forme 4 (B)",
       "difficulty": "intermediate"
     },
     "augmented_verbs_form_4_c": {
-      "title": "Augmented Verbs Form 4 (C)",
+      "title": "Verbes Augmentés Forme 4 (C)",
       "difficulty": "intermediate"
     },
     "augmented_verbs_form_4_d": {
-      "title": "Augmented Verbs Form 4 (D)",
+      "title": "Verbes Augmentés Forme 4 (D)",
       "difficulty": "intermediate"
     },
     "augmented_verbs_forms_5_6_7": {
-      "title": "Augmented Verbs Forms 5, 6, 7",
+      "title": "Verbes Augmentés Formes 5, 6, 7",
       "difficulty": "intermediate"
     },
     "augmented_verbs_form_8": {
-      "title": "Augmented Verbs Form 8",
+      "title": "Verbes Augmentés Forme 8",
       "difficulty": "intermediate"
     },
     "augmented_verbs_forms_9_10": {
-      "title": "Augmented Verbs Forms 9 & 10",
+      "title": "Verbes Augmentés Formes 9 & 10",
       "difficulty": "intermediate"
     }
   },
@@ -238,7 +238,10 @@
       "data": {
         "source_text": "كَ",
         "target_text": "Ton, ta, te (masc. sg.)",
-        "class": "pronoun"
+        "class": "pronoun",
+        "base_word": "كِتَاب",
+        "context": "كِتَابُكَ",
+        "context_translation": "Ton livre"
       },
       "tags": [
         "pronoun"
@@ -274,7 +277,10 @@
       "data": {
         "source_text": "نَا",
         "target_text": "Notre, nous",
-        "class": "pronoun"
+        "class": "pronoun",
+        "base_word": "رَبّ",
+        "context": "رَبَّنَا",
+        "context_translation": "Notre Seigneur"
       },
       "tags": [
         "pronoun"

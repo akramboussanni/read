@@ -3,6 +3,7 @@ package repo
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/akramboussanni/gocode/internal/model"
 	"github.com/jmoiron/sqlx"
@@ -20,25 +21,41 @@ func NewUserRepo(db *sqlx.DB) *UserRepo {
 }
 
 func (r *UserRepo) CreateUser(ctx context.Context, user *model.User) error {
+	tx, err := r.db.BeginTxx(ctx, nil)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
+
 	query := fmt.Sprintf(
 		"INSERT INTO users (%s) VALUES (%s)",
 		r.AllRaw,
 		r.AllPrefixed,
 	)
-	_, err := r.db.NamedExecContext(ctx, query, user)
-	return err
+	_, err = tx.NamedExecContext(ctx, query, user)
+	if err != nil {
+		return err
+	}
+
+	// Initialize coins record
+	_, err = tx.ExecContext(ctx, "INSERT INTO user_coins (user_id, balance, lifetime_earned, last_updated) VALUES ($1, 0, 0, $2)", user.ID, time.Now().Unix())
+	if err != nil {
+		return err
+	}
+
+	return tx.Commit()
 }
 
 func (r *UserRepo) GetUserByID(ctx context.Context, id int64) (*model.User, error) {
 	var user model.User
-	query := fmt.Sprintf("SELECT %s FROM users WHERE id = $1", r.AllRaw)
+	query := fmt.Sprintf("SELECT u.*, COALESCE(uc.balance, 0) as balance FROM users u LEFT JOIN user_coins uc ON u.id = uc.user_id WHERE u.id = $1")
 	err := r.db.GetContext(ctx, &user, query, id)
 	return &user, err
 }
 
 func (r *UserRepo) GetUserByIDSafe(ctx context.Context, id int64) (*model.User, error) {
 	var user model.User
-	query := fmt.Sprintf("SELECT %s FROM users WHERE id = $1", r.SafeRaw)
+	query := fmt.Sprintf("SELECT u.id, u.username, u.email, u.display_name, u.avatar_url, u.onboarding_completed, u.active_course_id, u.created_at, u.user_role, u.email_confirmed, u.is_admin, COALESCE(uc.balance, 0) as balance FROM users u LEFT JOIN user_coins uc ON u.id = uc.user_id WHERE u.id = $1")
 	err := r.db.GetContext(ctx, &user, query, id)
 	return &user, err
 }
@@ -61,14 +78,14 @@ func (r *UserRepo) DuplicateEmail(ctx context.Context, email string) (bool, erro
 
 func (r *UserRepo) GetUserByEmail(ctx context.Context, email string) (*model.User, error) {
 	var user model.User
-	query := fmt.Sprintf("SELECT %s FROM users WHERE email=$1", r.AllRaw)
+	query := fmt.Sprintf("SELECT u.*, COALESCE(uc.balance, 0) as balance FROM users u LEFT JOIN user_coins uc ON u.id = uc.user_id WHERE u.email=$1")
 	err := r.db.GetContext(ctx, &user, query, email)
 	return &user, err
 }
 
 func (r *UserRepo) GetUserByUsername(ctx context.Context, username string) (*model.User, error) {
 	var user model.User
-	query := fmt.Sprintf("SELECT %s FROM users WHERE username=$1", r.AllRaw)
+	query := fmt.Sprintf("SELECT u.*, COALESCE(uc.balance, 0) as balance FROM users u LEFT JOIN user_coins uc ON u.id = uc.user_id WHERE u.username=$1")
 	err := r.db.GetContext(ctx, &user, query, username)
 	return &user, err
 }
@@ -192,11 +209,29 @@ func (r *UserRepo) CountActiveUsers(ctx context.Context, days int) (int, error) 
 	var count int
 	query := `
 		SELECT COUNT(DISTINCT user_id)
-		FROM user_progression
-		WHERE last_activity_date >= DATE('now', '-' || $1 || ' days')
+		FROM user_enrollments
+		WHERE last_accessed_at >= EXTRACT(EPOCH FROM NOW() - ($1 || ' days')::INTERVAL)
 	`
 	err := r.db.GetContext(ctx, &count, query, days)
 	return count, err
+}
+
+// SetOnboardingCompleted marks onboarding as done for a user
+func (r *UserRepo) SetOnboardingCompleted(ctx context.Context, userID int64) error {
+	_, err := r.db.ExecContext(ctx, `UPDATE users SET onboarding_completed = TRUE WHERE id = $1`, userID)
+	return err
+}
+
+// SetActiveCourse sets the user's currently active course
+func (r *UserRepo) SetActiveCourse(ctx context.Context, userID int64, courseID *string) error {
+	_, err := r.db.ExecContext(ctx, `UPDATE users SET active_course_id = $1 WHERE id = $2`, courseID, userID)
+	return err
+}
+
+// UpdateDisplayName updates the display name
+func (r *UserRepo) UpdateDisplayName(ctx context.Context, userID int64, name string) error {
+	_, err := r.db.ExecContext(ctx, `UPDATE users SET display_name = $1 WHERE id = $2`, name, userID)
+	return err
 }
 
 // UpdateEmail updates user's email and resets email confirmation

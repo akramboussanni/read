@@ -2,8 +2,6 @@ package quiz
 
 import (
 	"net/http"
-	"sync"
-	"time"
 
 	"github.com/akramboussanni/gocode/internal/middleware"
 	quizpkg "github.com/akramboussanni/gocode/internal/quiz"
@@ -12,62 +10,43 @@ import (
 )
 
 type QuizRouter struct {
-	UserRepo    *repo.UserRepo
-	TokenRepo   *repo.TokenRepo
-	QuizService *quizpkg.QuizService
-	DeckService *quizpkg.DeckService
 	Repos       *repo.Repos
-	// Simple in-memory session store for demo purposes
-	// In production, this would be a database or Redis
-	sessions   map[string]*quizpkg.Quiz
-	sessionMux sync.RWMutex
+	QuizService *quizpkg.QuizService
 }
 
 func NewQuizRouter(repos *repo.Repos, quizService *quizpkg.QuizService) http.Handler {
 	qr := &QuizRouter{
-		UserRepo:    repos.User,
-		TokenRepo:   repos.Token,
-		QuizService: quizService,
-		DeckService: quizpkg.NewDeckService(repos),
 		Repos:       repos,
-		sessions:    make(map[string]*quizpkg.Quiz),
+		QuizService: quizService,
 	}
+
 	r := chi.NewRouter()
-
-	r.Use(middleware.MaxBytesMiddleware(1 << 20))
-
-	// Authenticated deck/category browsing (must come before /{quizID} route)
 	r.Group(func(r chi.Router) {
-		middleware.AddAuth(r, qr.UserRepo, qr.TokenRepo)
-		middleware.AddRatelimit(r, 30, 1*time.Minute)
+		middleware.AddAuth(r, repos.User, repos.Token)
+		r.Use(middleware.RequireEmailConfirmed)
 
-		r.Get("/decks", qr.HandleListDecks)
-		r.Get("/decks/{deckID}/categories", qr.HandleGetCategories)
-	})
+		// Quiz CRUD
+		r.Get("/", qr.ListQuizzes)
+		r.Post("/", qr.CreateQuiz)
+		r.Get("/my", qr.MyQuizzes)
+		r.Get("/{quizID}", qr.GetQuiz)
+		r.Put("/{quizID}", qr.UpdateQuiz)
+		r.Delete("/{quizID}", qr.DeleteQuiz)
 
-	// Public quiz browsing (light rate limit)
-	r.Group(func(r chi.Router) {
-		middleware.AddRatelimit(r, 60, 1*time.Minute)
-		r.Get("/", qr.HandleListQuizzes)
-		r.Get("/{quizID}", qr.HandleGetQuiz)
-	})
+		// Deck browsing (for quiz creation UI)
+		r.Get("/decks", qr.ListDecks)
+		r.Get("/decks/{deckID}/categories", qr.GetDeckCategories)
 
-	// Authenticated quiz operations
-	r.Group(func(r chi.Router) {
-		middleware.AddAuth(r, qr.UserRepo, qr.TokenRepo)
-		middleware.AddRatelimit(r, 30, 1*time.Minute)
+		// Question preview (generate sample questions for manual review)
+		r.Post("/preview", qr.PreviewQuestions)
 
-		r.Post("/", qr.HandleCreateQuiz) // Create quiz
-		r.Post("/{quizID}/answers", qr.HandleSubmitAnswer)
-		r.Get("/{quizID}/progress", qr.HandleGetQuizProgress)
-	})
-
-	// Question management (authenticated)
-	r.Group(func(r chi.Router) {
-		middleware.AddAuth(r, qr.UserRepo, qr.TokenRepo)
-		middleware.AddRatelimit(r, 20, 1*time.Minute)
-
-		r.Post("/questions", qr.HandleCreateQuestion)
+		// Quiz execution
+		r.Post("/start", qr.StartQuiz)
+		r.Post("/answer", qr.SubmitAnswer)
+		r.Post("/complete", qr.CompleteQuiz)
+		r.Get("/attempt/{attemptID}", qr.GetAttempt)
+		r.Get("/my/history", qr.MyHistory)
+		r.Post("/nodes/complete", qr.CompleteNode)
 	})
 
 	return r

@@ -1,0 +1,208 @@
+[
+  {
+    "name": "Prophètes & Société",
+    "categories": [
+      "prophets_figures",
+      "people_roles"
+    ],
+    "reference": {
+      "title": "Prophètes & Personnages",
+      "content": [
+        {
+          "type": "text",
+          "content": "Le Coran nomme **25 prophètes** par leur nom. Mais il mentionne des centaines d'autres personnages — rois, savants, croyants ordinaires, incroyants — dont les histoires forment plus d'un tiers du texte coranique. Ces récits ne sont pas des contes. Allah dit explicitement : **لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ** — 'dans leurs récits il y a une leçon'. Chaque prophète que tu apprends à connaître te donne un outil pour ta propre vie."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "النَّبِيُّ",
+              "french": "Le prophète",
+              "tip": "Reçoit une révélation — de نَبَأَ = nouvelle, information"
+            },
+            {
+              "arabic": "الرَّسُولُ",
+              "french": "Le messager",
+              "tip": "Envoyé avec un message universel — tout رَسُول est نَبِيّ mais pas l'inverse"
+            },
+            {
+              "arabic": "الْمَلَكُ",
+              "french": "L'ange",
+              "tip": "De أَلَكَ = transmettre un message. Ils obéissent toujours."
+            },
+            {
+              "arabic": "الْعَبْدُ",
+              "french": "Le serviteur / l'esclave",
+              "tip": "عَبْدُ اللَّهِ = serviteur d'Allah — titre d'honneur dans l'Islam"
+            },
+            {
+              "arabic": "الْقَوْمُ",
+              "french": "Le peuple / la tribu",
+              "tip": "Chaque prophète est envoyé vers son قَوْم — son peuple particulier"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "La différence entre النَّبِيُّ et الرَّسُولُ est subtile mais importante. Tout رَسُول est نَبِيّ, mais pas l'inverse. Le رَسُول est envoyé avec une رِسَالَة (message) vers un peuple ou l'humanité entière. Le نَبِيّ reçoit une révélation mais sa mission peut être plus locale. إبراهيم, موسى, محمد ﷺ — des رُسُل. D'autres prophètes ont reçu la révélation sans être envoyés universellement."
+        },
+        {
+          "type": "quran",
+          "arabic": "وَلَقَدْ أَرْسَلْنَا نُوحًا إِلَىٰ قَوْمِهِ",
+          "translation": "Et en vérité, Nous avons envoyé Noé vers son peuple",
+          "highlight": "أَرْسَلْنَا",
+          "source": "Hûd, 11:25",
+          "context": "Vois la structure : Allah dit 'Nous *avons envoyé*' (أَرْسَلْنَا) — c'est Lui l'expéditeur, Noé est le messager. Et إِلَى قَوْمِهِ — 'vers SON peuple'. Chaque messager reçoit une mission précise, un peuple précis, un contexte précis. Mais le message est toujours le même : إِلَهَ واحِد."
+        },
+        {
+          "type": "tip",
+          "title": "عَبْدُ اللَّهِ — la noblesse de la servitude",
+          "content": "Dans l'Islam, être appelé عَبْدُ اللَّهِ (serviteur d'Allah) est un honneur. Allah s'adresse aux croyants par يَا عِبَادِي (Ô Mes serviteurs) — termes de proximité et d'amour. Et le Prophète ﷺ lui-même est décrit dans le Coran par ce titre en premier : وَأَنَّهُ لَمَّا قَامَ عَبْدُ اللَّهِ..."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Famille & Corps",
+    "categories": [
+      "family",
+      "body_soul"
+    ],
+    "reference": {
+      "title": "Famille, Corps & Âme",
+      "content": [
+        {
+          "type": "text",
+          "content": "Le Coran parle à l'être humain dans sa totalité — son corps, son âme, ses relations. Le mot **النَّفْسُ** (l'âme, le soi) apparaît plus de **300 fois**. Plus que أَرْضٌ (la terre), plus que جَنَّة (paradis). Pourquoi ? Parce qu'Allah s'adresse directement à *toi*, à ce qui t'habite. Et la famille — الأُسْرَة, الْأَبُ, الْأُمُّ — est abordée avec une précision et une délicatesse remarquables dans les versets coraniques."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "الْأُمُّ",
+              "french": "La mère",
+              "tip": "Le Paradis est sous ses pieds — statut inégalé dans l'Islam"
+            },
+            {
+              "arabic": "الْأَبُ",
+              "french": "Le père",
+              "tip": "Respect obligatoire — وَبِالْوَالِدَيْنِ إِحْسَانًا"
+            },
+            {
+              "arabic": "الْوَلَدُ",
+              "french": "L'enfant / le fils",
+              "tip": "Désigne la progéniture en général, masculin ou féminin"
+            },
+            {
+              "arabic": "الْقَلْبُ",
+              "french": "Le cœur",
+              "tip": "Siège de la foi et de la compréhension dans le Coran"
+            },
+            {
+              "arabic": "الرُّوحُ",
+              "french": "L'esprit / l'âme",
+              "tip": "وَيَسْأَلُونَكَ عَنِ الرُّوحِ — 'ils te questionnent sur l'esprit' — son mystère est réservé à Allah"
+            },
+            {
+              "arabic": "النَّفْسُ",
+              "french": "L'âme / le soi",
+              "tip": "+300x dans le Coran. Siège de la responsabilité morale."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Le Coran décrit **3 états** de la نَفْس : النَّفْسُ الْأَمَّارَةُ (qui pousse au mal — l'état de base), النَّفْسُ اللَّوَّامَةُ (qui se reproche — la conscience), et النَّفْسُ الْمُطْمَئِنَّةُ (l'âme apaisée — le sommet). Cette dernière, Allah l'appelle au Paradis : يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ ارْجِعِي إِلَى رَبِّكِ رَاضِيَةً مَرْضِيَّةً. Quel appel."
+        },
+        {
+          "type": "quran",
+          "arabic": "وَوَصَّيْنَا الْإِنسَانَ بِوَالِدَيْهِ حُسْنًا",
+          "translation": "Et Nous avons enjoint à l'être humain d'être bon envers ses parents",
+          "highlight": "بِوَالِدَيْهِ",
+          "source": "Al-'Ankabût, 29:8",
+          "context": "Allah parle directement : 'Nous avons *commandé*' — c'est fort. Et قَالَ بِوَالِدَيْهِ حُسْنًا — non pas 'obéis à tes parents' mais 'sois *bon* envers eux'. حُسْنًا vient de حَسَنٌ (beau, bien). Être beau dans ta relation avec eux. La forme compte autant que l'acte."
+        },
+        {
+          "type": "tip",
+          "title": "الْقَلْبُ — le vrai récepteur",
+          "content": "Dans le Coran, c'est le قَلْب qui comprend, qui croit, qui doute ou qui se ferme — pas le cerveau. أَفَلَا تَعْقِلُونَ (ne raisonnez-vous pas ?) et أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ (ne méditent-ils pas le Coran ?) s'adressent au قَلْب autant qu'à l'intellect. La foi commence dans le cœur, pas dans la tête."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Verbes Trilitères A–C",
+    "categories": [
+      "verbs_form_1_a",
+      "verbs_form_1_b",
+      "verbs_form_1_c"
+    ],
+    "reference": {
+      "title": "Verbes Trilitères Réguliers (A–C)",
+      "content": [
+        {
+          "type": "text",
+          "content": "L'arabe est une langue de **racines**. Presque chaque mot vient d'une racine de 3 lettres. **ك-ت-ب** donne كَتَبَ (écrire), كِتَابٌ (livre), كَاتِبٌ (écrivain), مَكْتُوبٌ (écrit), كِتَابَةٌ (écriture)... Une seule racine, 5 mots différents. C'est pour ça que l'arabe est si efficace — et si beau. La Forme 1 (المجرد) est la forme de base du verbe, sans aucune augmentation."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "قَالَ",
+              "french": "Il a dit",
+              "tip": "Racine ق-و-ل — le verbe de communication le plus fréquent du Coran"
+            },
+            {
+              "arabic": "عَلِمَ",
+              "french": "Il a su / connu",
+              "tip": "Racine ع-ل-م → الْعِلْمُ (la science) — fondamental !"
+            },
+            {
+              "arabic": "كَتَبَ",
+              "french": "Il a écrit",
+              "tip": "Racine ك-ت-ب → الْكِتَابُ (le livre, le Coran)"
+            },
+            {
+              "arabic": "خَلَقَ",
+              "french": "Il a créé",
+              "tip": "Racine خ-ل-ق — seul Allah خَلَقَ vraiment"
+            },
+            {
+              "arabic": "دَخَلَ",
+              "french": "Il est entré",
+              "tip": "دَخَلَ الْجَنَّةَ = il est entré au Paradis"
+            },
+            {
+              "arabic": "عَمِلَ",
+              "french": "Il a fait / agi",
+              "tip": "Racine ع-م-ل → الْعَمَلُ (l'acte) — essentiel dans la foi"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Le verbe le plus fréquent du Coran est **قَالَ** (il a dit). Normal — le Coran est rempli de dialogues : Allah qui parle, les prophètes qui parlent, les incroyants qui répondent. Apprendre قَالَ, c'est débloquer immédiatement des centaines de versets narratifs. Et جَعَلَ (il a fait, il a rendu) est le deuxième verbe de création le plus fréquent après خَلَقَ."
+        },
+        {
+          "type": "quran",
+          "arabic": "عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ",
+          "translation": "Il a enseigné à l'être humain ce qu'il ne savait pas",
+          "highlight": "يَعْلَمْ",
+          "source": "Al-'Alaq, 96:5",
+          "context": "C'est la toute première révélation ! اقْرَأْ — lis. وَرَبُّكَ الْأَكْرَمُ الَّذِي عَلَّمَ بِالْقَلَمِ — ton Seigneur est le plus Généreux, Celui qui a enseigné par le calame. يَعْلَمْ vient de la racine ع-ل-م. La première chose qu'Allah révèle, c'est l'enseignement. La science avant tout."
+        },
+        {
+          "type": "tip",
+          "title": "Comment mémoriser une racine",
+          "content": "Pour chaque nouveau verbe, cherche sa racine (3 lettres). Puis demande-toi : quels autres mots de cette racine tu connais déjà ? Ex : tu sais الْكِتَابُ (livre) → racine ك-ت-ب → كَتَبَ (écrire), مَكْتُوبٌ (écrit), كَاتِبٌ (écrivain)... La racine, c'est le fil qui connecte des dizaines de mots."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  }
+]

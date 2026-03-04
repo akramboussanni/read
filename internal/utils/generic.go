@@ -1,10 +1,29 @@
 package utils
 
 import (
+	"math/rand"
 	"reflect"
 	"strconv"
 	"time"
 )
+
+func GenerateID() int64 {
+	return GenerateSnowflakeID()
+}
+
+func GenerateJoinCode() string {
+	const charset = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+	b := make([]byte, 6)
+	for i := range b {
+		b[i] = charset[rand.Intn(len(charset))]
+	}
+	return string(b)
+}
+
+// CurrentTimestamp returns the current Unix timestamp
+func CurrentTimestamp() int64 {
+	return time.Now().Unix()
+}
 
 func IfNil[T any](val *T, defaultVal T) *T {
 	if val == nil {
@@ -59,4 +78,12 @@ func ExpiryToString(seconds int) string {
 	default:
 		return strconv.Itoa(days) + " " + pluralize(days, "day", "days")
 	}
+}
+
+// IfElse returns trueVal if condition is true, else falseVal
+func IfElse[T any](condition bool, trueVal, falseVal T) T {
+	if condition {
+		return trueVal
+	}
+	return falseVal
 }

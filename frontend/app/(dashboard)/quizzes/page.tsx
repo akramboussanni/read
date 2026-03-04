@@ -2,16 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { progressionApi } from '@/lib/api/progression';
-import { ProgressionStatus, QuizPreview } from '@/lib/types/progression';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { quizApi } from '@/lib/api/quiz';
+import { Quiz } from '@/lib/types/quiz';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Lock, CheckCircle, Trophy, Coins, Flame } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { CheckCircle, Trophy, Star, Gamepad2, Palette, ArrowLeft, ArrowRight, BookOpen, Plus, Sparkles } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 export default function QuizzesPage() {
   const router = useRouter();
-  const [status, setStatus] = useState<ProgressionStatus | null>(null);
-  const [quizzes, setQuizzes] = useState<QuizPreview[]>([]);
+  const [publicQuizzes, setPublicQuizzes] = useState<Quiz[]>([]);
+  const [createdQuizzes, setCreatedQuizzes] = useState<Quiz[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,208 +25,196 @@ export default function QuizzesPage() {
   const loadData = async () => {
     try {
       setLoading(true);
-      const [statusData, quizzesData] = await Promise.all([
-        progressionApi.getStatus(),
-        progressionApi.listQuizzes(),
+      const [listData, createdData] = await Promise.all([
+        quizApi.listQuizzes().catch(() => ({ quizzes: [], total: 0, page: 1, page_size: 20 })),
+        quizApi.getMyQuizzes().catch(() => []),
       ]);
-      setStatus(statusData);
-      setQuizzes(quizzesData);
+      setPublicQuizzes(listData.quizzes || []);
+      setCreatedQuizzes(createdData);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to load quizzes');
+      setError(err.response?.data?.message || 'Échec du chargement des quiz');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleStartQuiz = (quizId: number) => {
+  const handleStartQuiz = (quizId: string) => {
     router.push(`/quizzes/${quizId}`);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
-        <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+      <div className="min-h-screen bg-background flex items-center justify-center pt-20">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+          <p className="text-primary font-mono text-sm animate-pulse tracking-widest">CHARGEMENT DU CONTENU...</p>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
-          <Button onClick={loadData}>Retry</Button>
-        </div>
+      <div className="min-h-screen bg-background flex items-center justify-center pt-20">
+        <Card className="max-w-md mx-4 bg-white border-red-200 shadow-xl">
+          <CardContent className="pt-6 text-center space-y-4">
+            <p className="text-red-600 font-bold text-lg">{error}</p>
+            <Button onClick={loadData} size="lg" variant="outline" className="border-red-200 text-red-600 hover:bg-red-50">
+              Réessayer
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      <main className="container mx-auto px-4 py-8">
-        {/* Progression Status Header */}
-        {status && (
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="text-2xl">Your Progress</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div className="flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-yellow-500" />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Level</p>
-                    <p className="text-xl font-bold">{status.current_level}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Completed</p>
-                    <p className="text-xl font-bold">{status.total_quizzes_completed}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Coins className="w-5 h-5 text-amber-500" />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Coins</p>
-                    <p className="text-xl font-bold">{status.coin_balance}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Coins className="w-5 h-5 text-amber-600" />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Total Earned</p>
-                    <p className="text-xl font-bold">{status.total_coins_earned}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Flame className="w-5 h-5 text-orange-500" />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Streak</p>
-                    <p className="text-xl font-bold">{status.streak_days} days</p>
-                  </div>
-                </div>
-              </div>
+    <div className="min-h-screen bg-background text-foreground font-sans pb-20">
+      <main className="container mx-auto px-4 py-8 pt-24 space-y-8">
 
-              {status.next_quiz && (
-                <div className="mt-6 pt-6 border-t">
-                  <h3 className="text-lg font-semibold mb-2">Next Recommended Quiz</h3>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">{status.next_quiz.title}</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {status.next_quiz.description}
-                      </p>
-                    </div>
-                    <Button onClick={() => handleStartQuiz(status.next_quiz!.id)}>
-                      Start Quiz
-                    </Button>
-                  </div>
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="space-y-1">
+            <Button
+              variant="ghost"
+              className="text-muted-foreground hover:text-foreground pl-0 hover:bg-transparent"
+              onClick={() => router.push('/')}
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Retour au Tableau de Bord
+            </Button>
+            <h1 className="text-4xl font-black text-foreground tracking-tight">Sélection de Mission</h1>
+            <p className="text-muted-foreground">Choisissez votre prochain défi ou gérez vos créations</p>
+          </div>
+        </div>
+
+        {/* Content Tabs */}
+        <Tabs defaultValue="available" className="w-full space-y-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <TabsList className="bg-muted p-1 border border-border h-auto rounded-xl">
+              <TabsTrigger value="available" className="px-6 py-3 rounded-lg text-sm font-bold data-[state=active]:bg-primary data-[state=active]:text-white transition-all text-muted-foreground">
+                <Gamepad2 className="w-4 h-4 mr-2" />
+                Quiz Disponibles
+              </TabsTrigger>
+              <TabsTrigger value="created" className="px-6 py-3 rounded-lg text-sm font-bold data-[state=active]:bg-secondary data-[state=active]:text-white transition-all text-muted-foreground">
+                <Palette className="w-4 h-4 mr-2" />
+                Mes Créations
+              </TabsTrigger>
+            </TabsList>
+
+            <Button onClick={() => router.push('/quizzes/create')} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-lg shadow-emerald-500/20">
+              <Plus className="w-4 h-4 mr-2" />
+              Créer Nouveau
+            </Button>
+          </div>
+
+          {/* Available Quizzes Tab */}
+          <TabsContent value="available" className="space-y-6 mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {publicQuizzes.map((quiz, i) => (
+                <QuizCard
+                  key={quiz.id}
+                  quiz={quiz}
+                  index={i}
+                  onClick={() => handleStartQuiz(quiz.id)}
+                />
+              ))}
+              {publicQuizzes.length === 0 && (
+                <div className="col-span-full py-20 text-center border-2 border-dashed border-border rounded-3xl bg-white/50">
+                  <Trophy className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-foreground">Aucun Quiz Disponible</h3>
+                  <p className="text-muted-foreground mt-2">Revenez plus tard pour de nouveaux défis !</p>
                 </div>
               )}
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Quizzes List */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold">All Quizzes</h2>
-            <div className="flex gap-2">
-              <Button variant="outline" onClick={() => router.push('/quizzes/my')}>
-                My Quizzes
-              </Button>
-              <Button onClick={() => router.push('/quizzes/create')}>
-                Create Quiz
-              </Button>
             </div>
-          </div>
-          
-          {quizzes.length === 0 ? (
-            <Card>
-              <CardContent className="py-8 text-center">
-                <p className="text-gray-600 dark:text-gray-400">No quizzes available yet.</p>
-              </CardContent>
-            </Card>
-          ) : (
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {quizzes.map((quiz) => (
-                <Card
+          </TabsContent>
+
+          {/* Created Quizzes Tab */}
+          <TabsContent value="created" className="space-y-6 mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {createdQuizzes.map((quiz, i) => (
+                <QuizCard
                   key={quiz.id}
-                  className={`relative ${
-                    quiz.is_locked ? 'opacity-60' : 'hover:shadow-lg transition-shadow'
-                  }`}
-                >
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <CardTitle className="flex items-center gap-2">
-                          {quiz.title}
-                          {quiz.is_completed && (
-                            <CheckCircle className="w-5 h-5 text-green-500" />
-                          )}
-                          {quiz.is_locked && <Lock className="w-5 h-5 text-gray-400" />}
-                        </CardTitle>
-                        <CardDescription className="mt-1">
-                          {quiz.description}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">Level</span>
-                        <span className="font-medium">{quiz.level}</span>
-                      </div>
-                      
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">Questions</span>
-                        <span className="font-medium">{quiz.question_count}</span>
-                      </div>
-
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">Reward</span>
-                        <span className="font-medium flex items-center gap-1">
-                          <Coins className="w-4 h-4 text-amber-500" />
-                          {quiz.coin_reward}
-                        </span>
-                      </div>
-
-                      {quiz.is_completed && quiz.best_percentage !== undefined && (
-                        <div className="flex items-center justify-between text-sm pt-2 border-t">
-                          <span className="text-gray-600 dark:text-gray-400">Best Score</span>
-                          <span className="font-medium text-green-600 dark:text-green-400">
-                            {quiz.best_percentage.toFixed(1)}%
-                          </span>
-                        </div>
-                      )}
-
-                      <Button
-                        className="w-full mt-4"
-                        onClick={() => handleStartQuiz(quiz.id)}
-                        disabled={quiz.is_locked}
-                      >
-                        {quiz.is_locked ? (
-                          <>
-                            <Lock className="w-4 h-4 mr-2" />
-                            Locked
-                          </>
-                        ) : quiz.is_completed ? (
-                          'Retake Quiz'
-                        ) : (
-                          'Start Quiz'
-                        )}
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                  quiz={quiz}
+                  index={i}
+                  onClick={() => handleStartQuiz(quiz.id)}
+                  isCreator
+                />
               ))}
+              {createdQuizzes.length === 0 && (
+                <div className="col-span-full py-20 text-center border-2 border-dashed border-border rounded-3xl bg-white/50">
+                  <Palette className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-foreground">Aucun Quiz Créé</h3>
+                  <p className="text-muted-foreground mt-2 mb-6">Vous n'avez pas encore créé de quiz.</p>
+                  <Button onClick={() => router.push('/quizzes/create')}>Créer Votre Premier Quiz</Button>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </TabsContent>
+        </Tabs>
+
       </main>
     </div>
+  );
+}
+
+function QuizCard({ quiz, index, onClick, isCreator }: { quiz: Quiz, index: number, onClick: () => void, isCreator?: boolean }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.05 }}
+      onClick={onClick}
+      className="group relative bg-white border border-border hover:border-primary/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-pointer flex flex-col h-full"
+    >
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+
+      <div className="p-6 flex-1 relative z-10">
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex gap-2">
+            <span className={cn(
+              "text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded border",
+              isCreator
+                ? "bg-secondary/10 border-secondary/20 text-secondary"
+                : "bg-muted border-border text-muted-foreground"
+            )}>
+              {isCreator ? 'Créateur' : (quiz.is_public ? 'Public' : 'Privé')}
+            </span>
+            {quiz.is_dynamic && (
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded border bg-amber-500/10 border-amber-500/20 text-amber-600 flex items-center gap-1">
+                <Sparkles className="w-2.5 h-2.5" /> Dynamique
+              </span>
+            )}
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+          {quiz.title}
+        </h3>
+        <p className="text-muted-foreground text-sm line-clamp-2 mb-4 leading-relaxed">
+          {quiz.description || "Aucune description fournie."}
+        </p>
+      </div>
+
+      <div className="px-6 py-4 bg-muted/20 border-t border-border flex items-center justify-between text-xs font-semibold text-muted-foreground">
+        <div className="flex items-center gap-4">
+          <span className="flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <BookOpen className="w-3.5 h-3.5" />
+            {quiz.is_dynamic ? 'Variable' : `${quiz.question_mode || 'mixed'}`}
+          </span>
+          {quiz.coin_reward && quiz.coin_reward > 0 && (
+            <span className="flex items-center gap-1.5 text-amber-500">
+              <Star className="w-3.5 h-3.5" />
+              {quiz.coin_reward}
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center group-hover:text-primary transition-colors">
+          {isCreator ? 'Gérer / Jouer' : 'Démarrer'}
+          <ArrowRight className="w-3.5 h-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+        </div>
+      </div>
+    </motion.div>
   );
 }

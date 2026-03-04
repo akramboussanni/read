@@ -26,9 +26,12 @@ func NewAdminRouter(repos *repo.Repos, quizService *quiz.QuizService, deckServic
 func (ar *AdminRouter) Routes() chi.Router {
 	r := chi.NewRouter()
 
-	// Apply admin-only middleware
+	// Apply auth and admin-only middleware
+	middleware.AddAuth(r, ar.Repos.User, ar.Repos.Token)
+	r.Use(middleware.RequireEmailConfirmed)
+	// assuming RequireAdmin is applied correctly according to codebase (looks like it's a func taking chi.Router based on `middleware.RequireAdmin(r)`)
 	middleware.RequireAdmin(r)
-	middleware.AddRatelimit(r, 30, 1*time.Minute) // 30 requests per minute for admins
+	middleware.AddRatelimit(r, 30, 1*time.Minute)
 
 	// User management
 	r.Get("/users", ar.HandleListUsers)
@@ -36,12 +39,29 @@ func (ar *AdminRouter) Routes() chi.Router {
 	r.Post("/users/{userID}/password", ar.HandleChangePassword)
 	r.Delete("/users/{userID}", ar.HandleDeleteUser)
 
-	// Quiz management
-	r.Post("/quizzes", ar.HandleCreateQuiz)
-	r.Get("/quizzes/stats", ar.HandleGetQuizStats)
-	r.Get("/quizzes/user-generated", ar.HandleListUserQuizzes)
-	r.Put("/quizzes/{quizID}", ar.HandleUpdateQuiz)
-	r.Delete("/quizzes/{quizID}", ar.HandleDeleteQuiz)
+	// Course management (replaces old quiz admin)
+	r.Route("/courses", func(r chi.Router) {
+		r.Get("/", ar.HandleListCourses)
+		r.Post("/", ar.HandleCreateCourse)
+		r.Post("/auto-generate", ar.HandleAutoGenerateCourse)
+		r.Get("/templates", ar.HandleListTemplates)
+		r.Post("/from-template", ar.HandleCreateFromTemplate)
+		r.Get("/{courseID}", ar.HandleGetCourse)
+		r.Put("/{courseID}", ar.HandleUpdateCourse)
+		r.Delete("/{courseID}", ar.HandleDeleteCourse)
+
+		// Node management
+		r.Post("/{courseID}/nodes", ar.HandleAddNode)
+		r.Put("/nodes/{nodeID}", ar.HandleUpdateNode)
+		r.Delete("/nodes/{nodeID}", ar.HandleDeleteNode)
+
+		// Edge management
+		r.Post("/{courseID}/edges", ar.HandleAddEdge)
+		r.Delete("/edges/{edgeID}", ar.HandleDeleteEdge)
+	})
+
+	// Deck listing
+	r.Get("/decks", ar.HandleListDecks)
 
 	// System statistics
 	r.Get("/stats/overview", ar.HandleGetSystemStats)

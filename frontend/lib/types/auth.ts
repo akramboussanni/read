@@ -8,6 +8,8 @@ export interface User {
   role: string;
   is_admin: boolean;
   email_confirmed: boolean;
+  active_course_id?: string;
+  coins?: number;
 }
 
 export interface RegisterRequest {
@@ -15,6 +17,7 @@ export interface RegisterRequest {
   email?: string; // Optional - only needed for quiz creation
   password: string;
   url?: string; // Optional confirmation URL
+  role?: string; // Add this
 }
 
 export interface LoginRequest {

@@ -1,0 +1,213 @@
+[
+  {
+    "name": "Création & Vie ici-bas",
+    "categories": [
+      "creation_signs",
+      "world_life"
+    ],
+    "reference": {
+      "title": "La Création & la Vie ici-bas",
+      "content": [
+        {
+          "type": "text",
+          "content": "**وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ** — 'Nous avons fait de l'eau toute chose vivante.' Ce verset a été révélé il y a 1400 ans. La biologie moderne l'a confirmé : toute cellule vivante est fondée sur l'eau. Le mot **آيَة** désigne à la fois un verset du Coran et un signe de la Création — ce n'est pas un hasard. Le ciel, l'eau, les étoiles sont des 'versets' qu'on peut lire dans le grand livre de l'univers."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "السَّمَوَاتُ",
+              "french": "Les cieux",
+              "tip": "Toujours au pluriel — 7 cieux selon la tradition"
+            },
+            {
+              "arabic": "الْأَرْضُ",
+              "french": "La terre",
+              "tip": "Souvent opposée aux cieux : السَّمَاوَاتِ وَالْأَرْضَ"
+            },
+            {
+              "arabic": "آيَةٌ",
+              "french": "Signe / verset",
+              "tip": "Double sens intentionnel : signe créé ET verset révélé"
+            },
+            {
+              "arabic": "الدُّنْيَا",
+              "french": "La vie ici-bas",
+              "tip": "De دَنِيَّة = inférieure, proche. Passage, non destination."
+            },
+            {
+              "arabic": "النُّورُ",
+              "french": "La lumière",
+              "tip": "Nom d'Allah ET titre d'une sourate. اللَّهُ نُورُ السَّمَاوَاتِ."
+            },
+            {
+              "arabic": "الشَّيْءُ",
+              "french": "La chose",
+              "tip": "كُلِّ شَيْءٍ = toute chose — ultra-fréquent dans le Coran"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**الدُّنْيَا** vient de دَنِيَّة — 'inférieure, proche'. La vie ici-bas est littéralement 'la basse'. Non pas pour nous dégoûter de vivre, mais pour rappeler qu'elle est un passage. Son opposé الْآخِرَة ('la dernière') est la destination. Tout le Coran joue sur ce contraste : ce qui est proche vs ce qui dure."
+        },
+        {
+          "type": "quran",
+          "arabic": "وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ",
+          "translation": "Nous avons fait de l'eau toute chose vivante",
+          "highlight": "الْمَاءِ",
+          "source": "Al-Anbiyâ, 21:30",
+          "context": "La prochaine fois que tu bois de l'eau, rappelle-toi : ce liquide simple est la base de toute vie sur terre. Allah le savait — et Il l'a dit. Le mot الْمَاءُ (l'eau) est une آيَة que tu portes en toi à chaque gorgée."
+        },
+        {
+          "type": "tip",
+          "title": "الدُّنْيَا vs الْآخِرَة",
+          "content": "Ce couple fondamental revient tout le long du Coran. الدُّنْيَا (proche, inférieure) = cette vie. الْآخِرَة (la dernière) = l'au-delà. L'un est réel, l'autre est éternel. Le Coran ne nous demande pas de fuir الدُّنْيَا — il nous demande de ne pas l'oublier pour الْآخِرَة."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Eschatologie",
+    "categories": [
+      "resurrection_judgment_i",
+      "resurrection_judgment_ii"
+    ],
+    "reference": {
+      "title": "La Résurrection & le Jugement",
+      "content": [
+        {
+          "type": "text",
+          "content": "Dans la Fatiha, tu récites **مَالِكِ يَوْمِ الدِّينِ** — 'Maître du Jour de la Rétribution'. 17 fois par jour, tu acknowledges qu'il y aura un Jour de Compte. Le Coran utilise plus de 70 noms pour ce Jour : يَوْمُ الْقِيَامَةِ (la Résurrection), السَّاعَة (l'Heure), الْحَاقَّة (la Réalité Inéluctable)... Chaque nom révèle une facette différente de cet événement."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "الْآخِرَةُ",
+              "french": "L'au-delà",
+              "tip": "'La dernière' — opposée à الدُّنْيَا (la proche)"
+            },
+            {
+              "arabic": "يَوْمُ الْقِيَامَةِ",
+              "french": "Le Jour de la Résurrection",
+              "tip": "De قَامَ = se lever. Tous se lèveront de leurs tombes."
+            },
+            {
+              "arabic": "الْجَنَّةُ",
+              "french": "Le Paradis",
+              "tip": "De ج-ن-ن = cacher, recouvrir. Un jardin dense et ombragé."
+            },
+            {
+              "arabic": "النَّارُ",
+              "french": "Le Feu / l'Enfer",
+              "tip": "Souvent associé à la mécréance et à l'injustice"
+            },
+            {
+              "arabic": "الْمِيزَانُ",
+              "french": "La balance",
+              "tip": "Tes actes seront pesés — littéralement, dans une balance"
+            },
+            {
+              "arabic": "الثَّوَابُ",
+              "french": "La récompense",
+              "tip": "Aucune bonne action, même minuscule, n'est perdue"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**الْجَنَّةُ** vient de ج-ن-ن = couvrir, recouvrir. Un jardin est 'couvert' de végétation — dense, frais, ombragé. Pour les premiers croyants qui vivaient dans le désert d'Arabie, l'image d'un jardin verdoyant avec des sources était le bonheur absolu qu'ils pouvaient imaginer. Allah a choisi le mot le plus évocateur pour eux — et pour nous."
+        },
+        {
+          "type": "quran",
+          "arabic": "يَوْمَ لَا تَمْلِكُ نَفْسٌ لِنَفْسٍ شَيْئًا وَالْأَمْرُ يَوْمَئِذٍ لِلَّهِ",
+          "translation": "Le jour où personne ne pourra rien pour personne — en ce jour, l'autorité appartient à Allah",
+          "highlight": "يَوْمَ",
+          "source": "Al-Infitâr, 82:19",
+          "context": "Même tes parents, même ton meilleur ami, même le prophète le plus aimé — ce jour-là, personne ne peut rien pour toi. Ce verset n'est pas là pour faire peur. Il est là pour te libérer : ne dépends que d'Allah. Agis pour Allah. Le reste, c'est يَوْمَئِذٍ لِلَّهِ — à Lui."
+        },
+        {
+          "type": "tip",
+          "title": "السَّاعَة — le secret intentionnel",
+          "content": "Allah ne révèle à personne l'heure de la Fin — ni aux anges, ni aux prophètes. Ce secret est intentionnel : l'incertitude nous pousse à être toujours prêts. Comme si السَّاعَة pouvait arriver demain. Car elle le peut."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Foi & Morale",
+    "categories": [
+      "religion_concepts",
+      "faith_unseen",
+      "actions_morality"
+    ],
+    "reference": {
+      "title": "Foi, Religion & Morale",
+      "content": [
+        {
+          "type": "text",
+          "content": "Le mot **إِيمَان** (foi) vient de أَمِنَ — 'être en sécurité, faire confiance'. Croire en arabe c'est littéralement 'trouver la sécurité'. Et **إِسْلَام** vient de سَلِمَ — être en paix, se soumettre. Même racine que السَّلَام (la paix). Foi et paix sont linguistiquement inséparables. Ce n'est pas une coïncidence — c'est une vérité inscrite dans la langue."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "الإِيمَانُ",
+              "french": "La foi",
+              "tip": "De أَمِنَ = sécurité. Croire = trouver sa sécurité en Allah"
+            },
+            {
+              "arabic": "الإِسْلَامُ",
+              "french": "La soumission",
+              "tip": "De سَلِمَ = paix. Même racine que السَّلَام !"
+            },
+            {
+              "arabic": "الْغَيْبُ",
+              "french": "L'Invisible / le caché",
+              "tip": "Les croyants y croient sans le voir — c'est la définition même de la foi"
+            },
+            {
+              "arabic": "الصَّبْرُ",
+              "french": "La patience",
+              "tip": "+90x dans le Coran. إِنَّ اللَّهَ مَعَ الصَّابِرِينَ."
+            },
+            {
+              "arabic": "التَّقْوَى",
+              "french": "La piété consciente",
+              "tip": "Conscience permanente de la présence d'Allah — +250x dans le Coran"
+            },
+            {
+              "arabic": "الْعَمَلُ",
+              "french": "L'acte / l'œuvre",
+              "tip": "الأَعْمَالُ بِالنِّيَّاتِ — les actes valent par leurs intentions"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**الصَّبْرُ** revient plus de 90 fois dans le Coran. Et Allah dit : **إِنَّ اللَّهَ مَعَ الصَّابِرِينَ** — 'Allah est AVEC ceux qui persévèrent.' Pas 'Il les récompensera' — Il est *avec* eux. Présent. Dans l'épreuve. C'est une présence, pas juste une promesse."
+        },
+        {
+          "type": "quran",
+          "arabic": "آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ",
+          "translation": "Le Messager a cru en ce qui lui a été révélé de son Seigneur, ainsi que les croyants",
+          "highlight": "آمَنَ",
+          "source": "Al-Baqara, 2:285",
+          "context": "Ce verset ouvre les deux derniers versets de la sourate Al-Baqara — ceux que le Prophète ﷺ recommandait de réciter chaque soir. Il commence par آمَنَ : 'il a cru'. Face à la révélation divine, le premier réflexe du Prophète était la foi. Avant l'analyse, avant les questions — la confiance."
+        },
+        {
+          "type": "tip",
+          "title": "التَّقْوَى — bien plus que la peur",
+          "content": "التَّقْوَى est souvent traduit par 'crainte d'Allah' mais c'est réducteur. De وَقَى = protéger. La تَقْوَى c'est se protéger soi-même en gardant Allah présent dans chaque acte. Pas de la peur — de la conscience. Une conscience douce et permanente."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  }
+]

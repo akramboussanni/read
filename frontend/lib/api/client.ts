@@ -53,10 +53,10 @@ apiClient.interceptors.response.use(
     const originalRequest: any = error.config;
 
     // Handle 401 with auto-refresh (except for refresh endpoint)
-    if (error.response?.status === 401 && 
-        !originalRequest._retry && 
-        !originalRequest.url?.includes('/auth/refresh')) {
-      
+    if (error.response?.status === 401 &&
+      !originalRequest._retry &&
+      !originalRequest.url?.includes('/auth/refresh')) {
+
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
@@ -76,17 +76,17 @@ apiClient.interceptors.response.use(
         return apiClient(originalRequest);
       } catch (refreshError) {
         processQueue(refreshError, null);
-        
+
         // Clear storage on refresh failure
         if (typeof window !== 'undefined') {
           localStorage.removeItem('auth-storage');
-          
+
           // Auto-redirect to login if on protected route
           if (isProtectedRoute()) {
             window.location.href = '/login';
           }
         }
-        
+
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

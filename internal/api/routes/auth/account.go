@@ -62,7 +62,7 @@ func (ar *AuthRouter) HandleAddEmail(w http.ResponseWriter, r *http.Request) {
 
 	// Validate email format
 	if !utils.IsValidEmail(req.Email) {
-		api.WriteBadRequest(w, "Invalid email format")
+		api.WriteBadRequest(w, "Format d'email invalide")
 		return
 	}
 
@@ -70,7 +70,7 @@ func (ar *AuthRouter) HandleAddEmail(w http.ResponseWriter, r *http.Request) {
 	if user.Email != "" && user.EmailConfirmed {
 		if req.Password == "" {
 			applog.Warn("Password required to change verified email", "userID:", user.ID)
-			api.WriteBadRequest(w, "Password confirmation required to change verified email")
+			api.WriteBadRequest(w, "Confirmation par mot de passe requise pour changer un email vérifié")
 			return
 		}
 
@@ -87,7 +87,7 @@ func (ar *AuthRouter) HandleAddEmail(w http.ResponseWriter, r *http.Request) {
 	// Check if email is already in use by another user
 	existingUser, err := ar.UserRepo.GetUserByEmail(r.Context(), req.Email)
 	if err == nil && existingUser != nil && existingUser.ID != user.ID {
-		api.WriteBadRequest(w, "Email already in use")
+		api.WriteBadRequest(w, "Email déjà utilisé")
 		return
 	}
 
@@ -111,10 +111,10 @@ func (ar *AuthRouter) HandleAddEmail(w http.ResponseWriter, r *http.Request) {
 
 	// Send confirmation email
 	expiryStr := utils.ExpiryToString(24 * 3600)
-	token, err := GenerateTokenAndSendEmail(req.Email, "confirmregister", "Email confirmation", req.Url, map[string]any{"Expiry": expiryStr, "Url": req.Url})
+	token, err := GenerateTokenAndSendEmail(req.Email, "confirmregister", "Confirmation d'email", req.Url, map[string]any{"Expiry": expiryStr, "Url": req.Url})
 	if err != nil {
 		applog.Error("Failed to send confirmation email:", err)
-		api.WriteMessage(w, 200, "message", "Email updated but confirmation email failed to send")
+		api.WriteMessage(w, 200, "message", "Email mis à jour mais l'envoi de l'email de confirmation a échoué")
 		return
 	}
 
@@ -125,5 +125,5 @@ func (ar *AuthRouter) HandleAddEmail(w http.ResponseWriter, r *http.Request) {
 	}
 
 	applog.Info("Email update initiated successfully", "userID:", user.ID, "email:", req.Email)
-	api.WriteMessage(w, 200, "message", "Verification email sent - confirm to complete email change")
+	api.WriteMessage(w, 200, "message", "Email de vérification envoyé - confirmez pour terminer le changement d'email")
 }

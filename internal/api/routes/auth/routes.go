@@ -46,6 +46,7 @@ func NewAuthRouter(userRepo *repo.UserRepo, tokenRepo *repo.TokenRepo, lockoutRe
 		middleware.AddRatelimit(r, 8, 1*time.Hour)
 		middleware.AddAuth(r, ar.UserRepo, ar.TokenRepo)
 		middleware.AddRecaptcha(r)
+		r.Use(middleware.RequireEmailConfirmed)
 		r.Post("/change-password", ar.HandleChangePassword)
 	})
 

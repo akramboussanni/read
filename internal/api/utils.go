@@ -21,32 +21,36 @@ func DecodeJSON[T any](w http.ResponseWriter, r *http.Request) (T, error) {
 	var data T
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
-		http.Error(w, "invalid request", http.StatusBadRequest)
+		http.Error(w, "requête invalide", http.StatusBadRequest)
 		return data, err
 	}
 	return data, nil
 }
 
 func WriteInternalError(w http.ResponseWriter) {
-	http.Error(w, "server error", http.StatusInternalServerError)
+	WriteMessage(w, http.StatusInternalServerError, "error", "erreur serveur")
 }
 
 func WriteInvalidCredentials(w http.ResponseWriter) {
-	http.Error(w, "invalid credentials", http.StatusUnauthorized)
+	WriteMessage(w, http.StatusUnauthorized, "error", "identifiants invalides")
 }
 
 func WriteUnauthorized(w http.ResponseWriter) {
-	http.Error(w, "unauthorized", http.StatusUnauthorized)
+	WriteMessage(w, http.StatusUnauthorized, "error", "non autorisé")
+}
+
+func WriteForbidden(w http.ResponseWriter, msg string) {
+	WriteMessage(w, http.StatusForbidden, "error", msg)
 }
 
 func WriteBadRequest(w http.ResponseWriter, msg string) {
-	http.Error(w, msg, http.StatusBadRequest)
+	WriteMessage(w, http.StatusBadRequest, "error", msg)
 }
 
 func WriteNotFound(w http.ResponseWriter, msg string) {
-	http.Error(w, msg, http.StatusNotFound)
+	WriteMessage(w, http.StatusNotFound, "error", msg)
 }
 
 func WriteError(w http.ResponseWriter, status int, msg string) {
-	http.Error(w, msg, status)
+	WriteMessage(w, status, "error", msg)
 }

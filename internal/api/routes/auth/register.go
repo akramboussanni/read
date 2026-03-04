@@ -34,7 +34,7 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 
 	if req.Username == "" || req.Password == "" {
 		applog.Warn("Missing registration fields", "username:", req.Username)
-		http.Error(w, "invalid credentials", http.StatusBadRequest)
+		http.Error(w, "identifiants invalides", http.StatusBadRequest)
 		return
 	}
 
@@ -44,13 +44,28 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 	// Validate email only if provided
 	if req.Email != "" && !utils.IsValidEmail(req.Email) {
 		applog.Warn("Invalid email format", "email:", req.Email)
-		http.Error(w, "invalid email format", http.StatusBadRequest)
+		http.Error(w, "format d'email invalide", http.StatusBadRequest)
 		return
 	}
 
 	if strings.Contains(req.Username, "@") || !utils.IsValidPassword(req.Password) {
 		applog.Warn("Invalid registration credentials", "username:", req.Username)
-		http.Error(w, "invalid credentials", http.StatusBadRequest)
+		http.Error(w, "identifiants invalides", http.StatusBadRequest)
+		return
+	}
+
+	// Role validation
+	if req.Role == "" {
+		req.Role = "student"
+	}
+	if req.Role != "student" && req.Role != "teacher" {
+		http.Error(w, "rôle invalide", http.StatusBadRequest)
+		return
+	}
+
+	// Teachers must have an email
+	if req.Role == "teacher" && req.Email == "" {
+		http.Error(w, "les enseignants doivent fournir un email pour vérification", http.StatusBadRequest)
 		return
 	}
 
@@ -63,7 +78,7 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 
 	if duplicate {
 		applog.Warn("Duplicate username registration attempt", "username:", req.Username)
-		http.Error(w, "invalid credentials", http.StatusBadRequest)
+		http.Error(w, "identifiants invalides", http.StatusBadRequest)
 		return
 	}
 
@@ -77,7 +92,7 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 		}
 		if emailDuplicate {
 			applog.Warn("Duplicate email registration attempt", "email:", req.Email)
-			http.Error(w, "email already in use", http.StatusBadRequest)
+			http.Error(w, "email déjà utilisé", http.StatusBadRequest)
 			return
 		}
 	}
@@ -90,8 +105,9 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// If no email provided, mark as confirmed (no verification needed)
-	emailConfirmed := req.Email == ""
-	user := &model.User{ID: utils.GenerateSnowflakeID(), Username: req.Username, PasswordHash: hash, Email: req.Email, CreatedAt: time.Now().UTC().Unix(), Role: "user", EmailConfirmed: emailConfirmed}
+	// EXCEPT for teachers who MUST verify their email anyway
+	emailConfirmed := req.Email == "" && req.Role != "teacher"
+	user := &model.User{ID: utils.GenerateSnowflakeID(), Username: req.Username, PasswordHash: hash, Email: req.Email, CreatedAt: time.Now().UTC().Unix(), Role: req.Role, EmailConfirmed: emailConfirmed}
 
 	if err := ar.UserRepo.CreateUser(r.Context(), user); err != nil {
 		applog.Error("Failed to create user:", err)
@@ -106,7 +122,7 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 		if confirmUrl == "" {
 			confirmUrl = config.App.FrontendCors + "/confirm-email"
 		}
-		token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Email confirmation", confirmUrl, map[string]any{"Expiry": expiryStr, "Url": confirmUrl})
+		token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Confirmation d'email", confirmUrl, map[string]any{"Expiry": expiryStr, "Url": confirmUrl})
 		if err != nil {
 			applog.Error("Failed to send confirmation email:", err)
 			// Don't fail registration if email fails, just warn
@@ -117,9 +133,9 @@ func (ar *AuthRouter) HandleRegister(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 		applog.Info("User registered successfully with email", "userID:", user.ID, "email:", user.Email)
-		api.WriteMessage(w, 200, "message", "user created - confirmation email sent")
+		api.WriteMessage(w, 200, "message", "compte créé - email de confirmation envoyé")
 	} else {
 		applog.Info("User registered successfully without email", "userID:", user.ID)
-		api.WriteMessage(w, 200, "message", "user created")
+		api.WriteMessage(w, 200, "message", "compte créé")
 	}
 }

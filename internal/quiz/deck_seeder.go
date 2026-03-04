@@ -2,9 +2,10 @@ package quiz
 
 import (
 	"context"
+	"embed"
 	"encoding/json"
 	"fmt"
-	"os"
+	"io/fs"
 	"path/filepath"
 	"strings"
 	"time"
@@ -12,28 +13,41 @@ import (
 	"github.com/akramboussanni/gocode/internal/applog"
 	"github.com/akramboussanni/gocode/internal/model"
 	"github.com/akramboussanni/gocode/internal/repo"
+	"github.com/akramboussanni/gocode/internal/utils"
 )
+
+//go:embed data/*.json
+var embeddedDecks embed.FS
+
+// SeedAllDecks is a convenience function to seed all embedded decks
+func SeedAllDecks(ctx context.Context, repos *repo.Repos) error {
+	fsys, err := fs.Sub(embeddedDecks, "data")
+	if err != nil {
+		return fmt.Errorf("failed to get decks sub-fs: %w", err)
+	}
+
+	seeder := NewUniversalDeckSeeder(repos, fsys)
+	return seeder.SeedDecks(ctx)
+}
 
 // UniversalDeckSeeder handles seeding universal decks into the database
 type UniversalDeckSeeder struct {
-	repos   *repo.Repos
-	seeder  *UniversalImporter
-	baseDir string
+	repos  *repo.Repos
+	seeder *UniversalImporter
+	dataFS fs.FS
 }
 
 // NewUniversalDeckSeeder creates a new seeder
-func NewUniversalDeckSeeder(repos *repo.Repos, baseDir string) *UniversalDeckSeeder {
+func NewUniversalDeckSeeder(repos *repo.Repos, dataFS fs.FS) *UniversalDeckSeeder {
 	return &UniversalDeckSeeder{
-		repos:   repos,
-		seeder:  NewUniversalImporter(),
-		baseDir: baseDir,
+		repos:  repos,
+		seeder: NewUniversalImporter(),
+		dataFS: dataFS,
 	}
 }
 
 // SeedDecks loads all universal deck files and seeds them into the database
 func (s *UniversalDeckSeeder) SeedDecks(ctx context.Context) error {
-	applog.Info("Starting universal deck seeding...")
-
 	files, err := s.findDeckFiles()
 	if err != nil {
 		return fmt.Errorf("failed to find deck files: %w", err)
@@ -42,13 +56,13 @@ func (s *UniversalDeckSeeder) SeedDecks(ctx context.Context) error {
 	seeded := 0
 	for _, file := range files {
 		if err := s.seedDeckFile(ctx, file); err != nil {
-			applog.Error("Failed to seed deck file %s: %v", file, err)
+			applog.Errorf("Failed to seed deck file %s: %v", file, err)
 			continue
 		}
 		seeded++
 	}
 
-	applog.Info("Successfully seeded %d deck files", seeded)
+	applog.Infof("Successfully seeded %d deck files", seeded)
 	return nil
 }
 
@@ -56,12 +70,12 @@ func (s *UniversalDeckSeeder) SeedDecks(ctx context.Context) error {
 func (s *UniversalDeckSeeder) findDeckFiles() ([]string, error) {
 	var files []string
 
-	err := filepath.Walk(s.baseDir, func(path string, info os.FileInfo, err error) error {
+	err := fs.WalkDir(s.dataFS, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
 
-		if !info.IsDir() && strings.ToLower(filepath.Ext(path)) == ".json" {
+		if !d.IsDir() && strings.ToLower(filepath.Ext(path)) == ".json" {
 			files = append(files, path)
 		}
 
@@ -73,10 +87,15 @@ func (s *UniversalDeckSeeder) findDeckFiles() ([]string, error) {
 
 // seedDeckFile loads a single deck file and stores it in the database
 func (s *UniversalDeckSeeder) seedDeckFile(ctx context.Context, filePath string) error {
-	applog.Info("Seeding deck file: %s", filePath)
+	applog.Infof("Seeding deck file: %s", filePath)
 
-	// Load and parse the deck
-	deck, err := s.seeder.ImportFromFile(filePath)
+	// Load and parse the deck from embedded FS
+	rawData, err := fs.ReadFile(s.dataFS, filePath)
+	if err != nil {
+		return fmt.Errorf("failed to read deck file: %w", err)
+	}
+
+	deck, err := s.seeder.ImportFromBytes(filePath, rawData)
 	if err != nil {
 		return fmt.Errorf("failed to parse deck file: %w", err)
 	}
@@ -88,7 +107,7 @@ func (s *UniversalDeckSeeder) seedDeckFile(ctx context.Context, filePath string)
 	}
 
 	if existing != nil {
-		applog.Info("Deck %s v%d already exists, skipping", deck.DeckKey, deck.Version)
+		applog.Infof("Deck %s v%d already exists, skipping", deck.DeckKey, deck.Version)
 		return nil
 	}
 
@@ -128,20 +147,18 @@ func (s *UniversalDeckSeeder) saveDeckToDatabase(ctx context.Context, deck *Pars
 
 // convertToDeckModel converts a ParsedDeck to a model.Deck
 func (s *UniversalDeckSeeder) convertToDeckModel(deck *ParsedDeck, filePath string) *model.Deck {
-	// Generate ID using snowflake or similar
-	// For now, we'll assume it's set elsewhere or use a simple increment
-	// In a real implementation, you'd use the snowflake ID generator
-
 	metadataJSON, _ := json.Marshal(deck.Metadata)
+	langPairJSON, _ := json.Marshal(deck.Metadata.LanguagePair)
+	supportedTypesJSON, _ := json.Marshal(deck.Metadata.SupportedQuestionTypes)
 
 	return &model.Deck{
-		ID:                     0, // Will be set by database auto-increment or snowflake
+		ID:                     utils.GenerateSnowflakeID(),
 		DeckKey:                deck.DeckKey,
 		Title:                  deck.Title,
 		Version:                deck.Version,
 		DeckType:               deck.Metadata.DeckType,
-		LanguagePair:           deck.Metadata.LanguagePair,
-		SupportedQuestionTypes: deck.Metadata.SupportedQuestionTypes,
+		LanguagePair:           string(langPairJSON),
+		SupportedQuestionTypes: string(supportedTypesJSON),
 		DefaultDirection:       "", // Removed: now handled per question
 		DeckMetadata:           string(metadataJSON),
 		SourceFile:             filepath.Base(filePath),
@@ -159,13 +176,14 @@ func (s *UniversalDeckSeeder) insertCategories(ctx context.Context, deckID int64
 		difficulty := "intermediate"
 
 		category := &model.Category{
-			ID:             0, // Will be set by database
-			DeckID:         deckID,
-			CategoryKey:    key,
-			Title:          title,
-			Difficulty:     difficulty,
-			DisplayOrder:   0,
-			CreatedAt:      time.Now().Unix(),
+			ID:               utils.GenerateSnowflakeID(),
+			DeckID:           deckID,
+			CategoryKey:      key,
+			Title:            title,
+			Difficulty:       difficulty,
+			CategoryMetadata: "{}", // Ensure valid JSON for PostgreSQL JSONB
+			DisplayOrder:     0,
+			CreatedAt:        time.Now().Unix(),
 		}
 
 		if err := s.repos.Category.Create(ctx, category); err != nil {
@@ -196,7 +214,7 @@ func (s *UniversalDeckSeeder) insertEntries(ctx context.Context, deckID int64, c
 		tagsJSON := "[]"
 
 		deckEntry := &model.DeckEntry{
-			ID:         0, // Will be set by database
+			ID:         utils.GenerateSnowflakeID(),
 			DeckID:     deckID,
 			CategoryID: categoryID,
 			EntryKey:   entry.ID,

@@ -1,0 +1,203 @@
+[
+  {
+    "name": "Verbes Trilitères D–E",
+    "categories": [
+      "verbs_form_1_d",
+      "verbs_form_1_e"
+    ],
+    "reference": {
+      "title": "Verbes Trilitères Réguliers (D–E)",
+      "content": [
+        {
+          "type": "text",
+          "content": "Les schèmes D et E de la Forme 1 complètent le tableau des verbes réguliers de base. La bonne nouvelle : une fois que tu mémorises le schème, tu sais conjuguer *tous* les verbes qui le suivent. **فَعَلَ/يَفْعَلُ** (schème D, voyelle a-a) et **فَعِلَ/يَفْعَلُ** (schème E, kasra au passé). Deux patterns. Des centaines de verbes coraniques débloqués."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "نَصَرَ",
+              "french": "Il a aidé / secouru",
+              "tip": "Racine ن-ص-ر → النَّصِير (le Protecteur, nom d'Allah)"
+            },
+            {
+              "arabic": "شَكَرَ",
+              "french": "Il a remercié",
+              "tip": "Racine ش-ك-ر → الشُّكْرُ (gratitude). إِنَّ اللَّهَ يُحِبُّ الشَّاكِرِينَ."
+            },
+            {
+              "arabic": "فَتَحَ",
+              "french": "Il a ouvert / conquis",
+              "tip": "Racine ف-ت-ح → الْفَتْحُ (la conquête — titre de la sourate 48)"
+            },
+            {
+              "arabic": "رَجَعَ",
+              "french": "Il est retourné",
+              "tip": "Racine ر-ج-ع → الرُّجُوعُ. إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ !"
+            },
+            {
+              "arabic": "حَكَمَ",
+              "french": "Il a jugé / gouverné",
+              "tip": "Racine ح-ك-م → الْحُكْمُ (le jugement), الْحَكِيمُ (le Sage)"
+            },
+            {
+              "arabic": "سَمِعَ",
+              "french": "Il a entendu",
+              "tip": "Racine س-م-ع → السَّمِيعُ (l'Audient, nom d'Allah)"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ** — tu la connais sûrement. C'est ce qu'on dit quand quelqu'un meurt. رَاجِعُونَ vient de رَجَعَ (retourner). 'Nous appartenons à Allah et c'est vers Lui que nous retournons.' Un seul verbe, décliné au pluriel actif, qui dit toute notre relation avec Allah en une phrase."
+        },
+        {
+          "type": "quran",
+          "arabic": "إِنَّ اللَّهَ يُحِبُّ الشَّاكِرِينَ",
+          "translation": "Certes, Allah aime ceux qui sont reconnaissants",
+          "highlight": "الشَّاكِرِينَ",
+          "source": "Âl-Imrân, 3:145",
+          "context": "الشَّاكِرِينَ vient de شَكَرَ (remercier). Ce qui est beau ici : ce n'est pas 'Allah récompense les reconnaissants' — c'est 'Allah les **aime**'. Le شُكْر ne fait pas que t'apporter de la baraka. Il te rapproche de Lui d'une façon que peu d'autres actes font."
+        },
+        {
+          "type": "tip",
+          "title": "Reconnais le schème D vs E",
+          "content": "Schème D : passé فَعَلَ (a-a) + présent يَفْعَلُ (a-u ou a-i). Schème E : passé فَعِلَ (a-i) + présent يَفْعَلُ (a-a). Ex : شَكَرَ/يَشْكُرُ (D) vs سَمِعَ/يَسْمَعُ (E). Avec la pratique, tu le 'sentiras' sans avoir besoin d'analyser."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Verbes Irréguliers I",
+    "categories": [
+      "verbs_form_1_doubled",
+      "verbs_form_1_weak_initial",
+      "verbs_form_1_hollow"
+    ],
+    "reference": {
+      "title": "Verbes Irréguliers — Redoublés, Initiale faible, Creux",
+      "content": [
+        {
+          "type": "text",
+          "content": "Le mot **كَانَ** (il était, il y avait) est l'un des verbes les plus fréquents du Coran. Et if est 'creux' (أَجْوَف) — sa racine est ك-و-ن, avec un وَاو au milieu qui disparaît dans certaines formes. كَانَ, يَكُونُ, كُنْ — le même verbe, la même racine, mais le و se transforme. Les verbes irréguliers ne sont pas *désordonnés* — ils suivent des règles phonétiques précises et prévisibles."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "كَانَ",
+              "french": "Il était / il y avait",
+              "tip": "Verbe creux k-w-n — parmi les + fréquents du Coran"
+            },
+            {
+              "arabic": "قَالَ",
+              "french": "Il a dit",
+              "tip": "Verbe creux q-w-l — le و devient alif → قَالَ"
+            },
+            {
+              "arabic": "رَدَّ",
+              "french": "Il a repoussé / répondu",
+              "tip": "Verbe redoublé r-d-d — les deux د fusionnent avec chadda"
+            },
+            {
+              "arabic": "وَجَدَ",
+              "french": "Il a trouvé",
+              "tip": "Verbe à initiale faible w-j-d — le و disparaît au présent : يَجِدُ"
+            },
+            {
+              "arabic": "قَامَ",
+              "french": "Il s'est levé",
+              "tip": "Verbe creux q-w-m — يَوْمُ الْقِيَامَةِ vient de là !"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**يَوْمُ الْقِيَامَةِ** — tu le connais. Mais sais-tu qu'il vient de قَامَ (se lever) ? يَوْمُ الْقِيَامَةِ = le Jour du 'levage' — le jour où tous se lèveront de leurs tombes. Ce verbe creux قَامَ, une fois que tu le connais, te donne accès à toute une famille : يَقُومُ, قِيَام, مَقَام, أَقَامَ, قَوِيم..."
+        },
+        {
+          "type": "quran",
+          "arabic": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+          "translation": "Il n'a pas engendré et Il n'a pas été engendré",
+          "highlight": "يَلِدْ",
+          "source": "Al-Ikhlâs, 112:3",
+          "context": "يَلِدْ vient de وَلَدَ (enfanter) — verbe à initiale faible, le و disparaît au présent. Et ici, Allah nie deux choses en une sourate que tu connais par cœur. La grammaire des verbes irréguliers est au cœur des théologies coraniques les plus fondamentales."
+        },
+        {
+          "type": "tip",
+          "title": "Les 3 types d'irréguliers — mémo express",
+          "content": "1. **Redoublé (مضعَّف)** : 2ème et 3ème lettre identiques → elles fusionnent avec chadda (رَدَّ). 2. **Initiale faible (مثال)** : racine commence par و → il disparaît souvent (وَجَدَ → يَجِدُ). 3. **Creux (أَجْوَف)** : lettre faible au milieu → devient une voyelle longue (قَامَ vient de ق-و-م)."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Verbes Irréguliers II",
+    "categories": [
+      "verbs_form_1_weak_final",
+      "verbs_form_1_hamzated"
+    ],
+    "reference": {
+      "title": "Verbes Irréguliers — Finale faible, Hamzatés",
+      "content": [
+        {
+          "type": "text",
+          "content": "**دَعَا اللَّهَ** — 'il a invoqué Allah'. دَعَا vient de دَ-عَ-و, avec un وَاو en finale qui devient un alif long à la fin du mot. C'est un verbe à finale faible (نَاقِص). Ce type de verbe est *massif* dans le Coran — دَعَا, هَدَى, أَتَى, تَلَا, نَجَا... Chacun suit les mêmes règles de transformation. Une fois compris, tu les reconnais tous."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "دَعَا",
+              "french": "Il a invoqué / appelé",
+              "tip": "Racine د-ع-و — la دُعَاء est appelée 'le cerveau de l'adoration'"
+            },
+            {
+              "arabic": "هَدَى",
+              "french": "Il a guidé",
+              "tip": "Racine ه-د-ي → الْهُدَى (la guidance). اهدِنَا الصِّرَاطَ الْمُسْتَقِيمَ !"
+            },
+            {
+              "arabic": "أَتَى",
+              "french": "Il est venu / arrivé",
+              "tip": "Synonyme souvent de جَاءَ — même traitement de finale faible"
+            },
+            {
+              "arabic": "سَأَلَ",
+              "french": "Il a demandé",
+              "tip": "Verbe hamzaté — وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ !"
+            },
+            {
+              "arabic": "أَمَرَ",
+              "french": "Il a ordonné / commandé",
+              "tip": "Racine أ-م-ر → الْأَمْرُ (l'ordre, l'affaire). إِنَّمَا الْأَمْرُ لِلَّهِ."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ** — 'Guide-nous vers le chemin droit.' Dans la Fatiha que tu récites 17 fois par jour. اهْدِنَا est la forme impérative de هَدَى. Tu suppliais donc Allah par un verbe à finale faible sans le savoir. La guidance (الْهِدَايَة) est la demande la plus répétée dans les prières — Allah ne se lasse pas de l'entendre."
+        },
+        {
+          "type": "quran",
+          "arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ",
+          "translation": "Et quand Mes serviteurs t'interrogent sur Moi, Je suis tout proche",
+          "highlight": "سَأَلَكَ",
+          "source": "Al-Baqara, 2:186",
+          "context": "Ce verset est unique : Allah répond Lui-même, sans passer par 'Dis-leur que...' C'est direct. قَرِيبٌ — Je suis proche. Pas 'Je les entends', pas 'Je les vois' — Je suis *proche*. سَأَلَ (demander, questionner) ouvre à une réponse divine immédiate et personnelle."
+        },
+        {
+          "type": "tip",
+          "title": "دَعَا — pas juste un mot",
+          "content": "Le Prophète ﷺ a dit : الدُّعَاءُ هُوَ الْعِبَادَةُ — 'L'invocation est l'adoration elle-même.' Pas un outil de l'adoration. L'adoration. دَعَا vient de la racine د-ع-و = appeler. Chaque fois que tu invoques Allah, tu L'appelles par Son nom, de ta bouche, de ton cœur."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  }
+]

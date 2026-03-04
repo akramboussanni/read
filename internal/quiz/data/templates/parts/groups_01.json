@@ -1,0 +1,270 @@
+[
+  {
+    "name": "Les Pronoms",
+    "categories": [
+      "pronouns_suffixes",
+      "pronouns_detached"
+    ],
+    "reference": {
+      "title": "Les Pronoms",
+      "content": [
+        {
+          "type": "text",
+          "content": "Tu récites **إِيَّاكَ نَعْبُدُ** dans la Fatiha au moins 17 fois par jour. Mais as-tu déjà regardé la fin du mot إِيَّاكَ ? Ce petit son **كَ** collé à la fin — c'est un pronom. Il veut dire 'Toi'. Sans lui, la phrase ne s'adresserait à personne. Avec lui, toute la phrase se tourne directement vers Allah. **C'était déjà de la grammaire** — tu le faisais sans le savoir."
+        },
+        {
+          "type": "text",
+          "content": "En arabe, on a deux familles de pronoms. Les **pronoms détachés** s'écrivent seuls (هُوَ, أَنَا, نَحْنُ) — comme en français. Et les **pronoms suffixes** se collent directement au mot (كَ = Toi, هُ = Son, نَا = Notre). Ces deuxièmes sont hyper-pratiques : en une seule lettre ou deux, tu changes tout le sens du mot."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "هُوَ",
+              "french": "Il",
+              "tip": "Pronom détaché — le plus fréquent du Coran"
+            },
+            {
+              "arabic": "هِيَ",
+              "french": "Elle",
+              "tip": "3ème pers. fém. sg."
+            },
+            {
+              "arabic": "هُمْ",
+              "french": "Ils",
+              "tip": "3ème pers. masc. pl."
+            },
+            {
+              "arabic": "أَنَا",
+              "french": "Je",
+              "tip": "1ère pers. sg."
+            },
+            {
+              "arabic": "نَحْنُ",
+              "french": "Nous",
+              "tip": "Allah l'utilise pour Sa majesté : نَحْنُ نَزَّلْنَا = C'est Nous qui avons révélé"
+            },
+            {
+              "arabic": "هُ",
+              "french": "Son / le / lui (masc.)",
+              "tip": "Pronom suffixe — كِتَابُهُ = Son livre"
+            },
+            {
+              "arabic": "كَ",
+              "french": "Ton / te (masc.)",
+              "tip": "إِيَّاكَ = Toi — tu le dis dans la Fatiha !"
+            },
+            {
+              "arabic": "نَا",
+              "french": "Notre / nous",
+              "tip": "رَبَّنَا = Notre Seigneur — tu le dis dans chaque du'a"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Tu vois رَبَّنَا dans tes invocations ? Ce نَا à la fin, c'est 'notre'. رَبّ = Seigneur, + نَا = notre → رَبَّنَا = Notre Seigneur. Une seule syllabe supplémentaire, et soudain on ne prie plus seul — on prie *ensemble*, au nom de toute la communauté. C'est la magie des pronoms suffixes."
+        },
+        {
+          "type": "quran",
+          "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+          "translation": "Dis : Lui est Allah, l'Unique",
+          "highlight": "هُوَ",
+          "source": "Al-Ikhlâs, 112:1",
+          "context": "Tu connais Al-Ikhlâs par cœur — on la récite après la Fatiha. Regarde le premier mot après قُلْ (Dis) : هُوَ. C'est 'Lui'. Allah parle de Lui-même dès la première syllabe. Parfois une sourate entière tient dans un pronom."
+        },
+        {
+          "type": "text",
+          "content": "هُوَ ouvre Al-Ikhlâs. نَحْنُ ouvre de nombreux versets de révélation. أَنَا est rare dans la bouche d'Allah — Il dit plutôt نَحْنُ par majesté. Commence à remarquer ces pronoms dans tes récitations, et le Coran te parlera différemment."
+        },
+        {
+          "type": "quiz",
+          "question": "رَبَّنَا veut dire ?",
+          "options": [
+            "Mon Seigneur",
+            "Ton Seigneur",
+            "Notre Seigneur",
+            "Le Seigneur"
+          ],
+          "answer": 2,
+          "explanation": "رَبَّنَا = رَبّ (Seigneur) + نَا (notre). Ce pronom suffixe pluriel transforme une invocation personnelle en prière collective. C'est pour ça que nos du'as commencent souvent par رَبَّنَا — on prie au nom de toute la umma."
+        },
+        {
+          "type": "tip",
+          "title": "Astuce : هُ, هَا, هُمْ — tous commencent par هَ",
+          "content": "Tous les pronoms de la 3ème personne commencent par la lettre هَ : هُوَ (il), هِيَ (elle), هُمْ (ils), هُنَّ (elles), هُمَا (eux deux). C'est la lettre 'h' qui les identifie — comme un code secret qui te dit 'ici on parle de quelqu'un d'absent'."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Particules Grammaticales",
+    "categories": [
+      "interrogative_particles",
+      "ownership_relation",
+      "time_conjunctions"
+    ],
+    "reference": {
+      "title": "Particules Grammaticales",
+      "content": [
+        {
+          "type": "text",
+          "content": "Imagine que tu dois décrire le lien qui unit tous les croyants. Tu pourrais dire 'les croyants sont des frères'. Bien. Maintenant ajoute un seul mot : **إِنَّمَا** الْمُؤْمِنُونَ إِخْوَةٌ. Soudain ça devient : 'les croyants ne sont QUE des frères.' Cette nuance – l'idée que leur fraternité n'est pas un détail mais leur définition absolue – tient dans un seul mot de 5 lettres. Voilà ce que les particules font au Coran."
+        },
+        {
+          "type": "text",
+          "content": "Les particules (حُرُوف) sont les petits mots invariables qui **structurent** chaque phrase : elles posent des questions (كَيْفَ = comment ?), situent dans le temps (لَمَّا = lorsque), expriment la possession (عِنْدَ = chez/auprès), restreignent (إِنَّمَا = seulement). Elles ne changent jamais de forme — une fois mémorisées, elles le restent."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "مَا",
+              "french": "Quoi ? / Ce qui / Ne pas",
+              "tip": "3 sens selon contexte — le caméléon du Coran"
+            },
+            {
+              "arabic": "كَيْفَ",
+              "french": "Comment ?",
+              "tip": "كَيْفَ حَالُكَ = Comment vas-tu ?"
+            },
+            {
+              "arabic": "لِمَاذَا",
+              "french": "Pourquoi ?",
+              "tip": "Question de cause"
+            },
+            {
+              "arabic": "لَمَّا",
+              "french": "Lorsque / quand",
+              "tip": "Conjonction temporelle dans les récits du Coran"
+            },
+            {
+              "arabic": "حَتَّى",
+              "french": "Jusqu'à ce que / afin que",
+              "tip": "حَتَّى يَأْتِيَ الْفَجْرُ = jusqu'à ce que vienne l'aurore"
+            },
+            {
+              "arabic": "عِنْدَ",
+              "french": "Chez / auprès de / quand",
+              "tip": "عِنْدَ اللَّهِ = auprès d'Allah — c'est là que ta récompense est gardée"
+            },
+            {
+              "arabic": "إِنَّمَا",
+              "french": "Seulement / ne... que",
+              "tip": "Restriction absolue — transforme une phrase en définition"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**عِنْدَ اللَّهِ** revient des dizaines de fois dans le Coran. 'Auprès d'Allah'. Pas 'avec Allah', pas 'pour Allah' — *auprès* de Lui. Cette préposition crée une image : tes bonnes actions, tes prières, ta patience — tout ça est gardé, stocké, en dépôt auprès d'Allah. Rien n'est perdu."
+        },
+        {
+          "type": "quran",
+          "arabic": "إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ",
+          "translation": "Les croyants ne sont que des frères",
+          "highlight": "إِنَّمَا",
+          "source": "Al-Hujurât, 49:10",
+          "context": "Sourate Al-Hujurât — la sourate des bonnes manières. Allah ne dit pas 'les croyants *sont* frères' mais 'ils ne sont *que* frères'. Cette restriction par إِنَّمَا dit que la fraternité n'est pas un bonus de leur foi — c'est leur nature même."
+        },
+        {
+          "type": "text",
+          "content": "Maintenant que tu connais إِنَّمَا, tu vas le repérer partout. إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ — 'Les actes ne valent que par leurs intentions.' Encore إِنَّمَا. Encore une restriction absolue. Un seul mot qui change tout."
+        },
+        {
+          "type": "tip",
+          "title": "مَا — 3 visages, 1 mot",
+          "content": "مَا peut être : (1) interrogatif → مَا هَذَا ؟ = Qu'est-ce que c'est ? (2) relatif → مَا شَاءَ اللَّهُ = ce qu'Allah a voulu (3) négatif → مَا قَالَ = Il n'a pas dit. Le contexte te guide toujours. Avec la pratique, tu le sentiras instantanément."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Prépositions",
+    "categories": [
+      "prepositions_of_place_time",
+      "prepositions_ma",
+      "general_prepositions"
+    ],
+    "reference": {
+      "title": "Les Prépositions",
+      "content": [
+        {
+          "type": "text",
+          "content": "Avant de manger, tu dis **بِسْمِ اللَّهِ**. Avant de partir, بِسْمِ اللَّهِ. Avant de lire, بِسْمِ اللَّهِ. Tu l'as dit des milliers de fois dans ta vie. Mais est-ce que tu as déjà regardé la première lettre ? **بِ** — juste un bâ avec une kasra. C'est une préposition. Elle veut dire 'au nom de', 'par', 'avec'. Cette minuscule lettre, c'est toute la basmala qui commence par elle. C'est ta première préposition arabe — et tu la connaissais déjà."
+        },
+        {
+          "type": "text",
+          "content": "Les prépositions arabes (حُرُوف الجَرّ) gouvernent le mot suivant — elles le 'tirent' vers la forme genitive. C'est pour ça qu'on dit حُرُوف الجَرّ (lettres du tirage). Elles indiquent : le lieu (فِي = dans), l'origine (مِنْ = de), la direction (إِلَى = vers), l'instrument (بِ = par/avec), la position (عَلَى = sur). Ces 5-6 prépositions couvrent déjà une grande partie du Coran."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "بِ",
+              "french": "Par / avec / au nom de",
+              "tip": "بِسْمِ اللَّهِ — LA préposition que tu connais le mieux !"
+            },
+            {
+              "arabic": "فِي",
+              "french": "Dans / en",
+              "tip": "La plus fréquente du Coran — فِي سَبِيلِ اللَّهِ = dans le chemin d'Allah"
+            },
+            {
+              "arabic": "مِنْ",
+              "french": "De / depuis / parmi",
+              "tip": "مِنَ اللَّهِ = venant d'Allah — origine divine"
+            },
+            {
+              "arabic": "إِلَى",
+              "french": "Vers / jusqu'à",
+              "tip": "إِلَى اللَّهِ تُرْجَعُونَ = vers Allah vous serez ramenés"
+            },
+            {
+              "arabic": "عَلَى",
+              "french": "Sur / contre / à propos de",
+              "tip": "عَلَى كُلِّ شَيْءٍ قَدِيرٌ = sur toute chose capable"
+            },
+            {
+              "arabic": "مَعَ",
+              "french": "Avec",
+              "tip": "إِنَّ اللَّهَ مَعَنَا = certes Allah est avec nous !"
+            },
+            {
+              "arabic": "عَنْ",
+              "french": "De / à propos de / loin de",
+              "tip": "اللَّهُ عَنْهُمْ = Allah est satisfait d'eux (عَفَا عَنْ)"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "إِلَى اللَّهِ الْمَصِيرُ — 'Vers Allah est le retour.' Trois mots. La préposition إِلَى crée une image forte : toute la vie est un voyage *vers* quelque chose. Le Coran utilise constamment إِلَى pour rappeler que nous ne faisons que passer — et que la destination est déjà fixée."
+        },
+        {
+          "type": "quran",
+          "arabic": "وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا",
+          "translation": "Cramponnez-vous tous ensemble au câble d'Allah",
+          "highlight": "بِ",
+          "source": "Âl-Imrân, 3:103",
+          "context": "Regarde la force de بِ ici. Allah ne dit pas 'prenez le câble d'Allah' — Il dit 'cramponnez-vous *au* câble d'Allah'. Ce بِ crée l'image d'une prise ferme, viscérale. La préposition transforme l'acte de tenir en acte de survie."
+        },
+        {
+          "type": "text",
+          "content": "Le 'câble d'Allah' (حَبْلُ اللَّهِ) dans ce verset, les savants disent que c'est le Coran lui-même. Et on nous demande de nous y accrocher — بِحَبْلِ اللَّهِ — ensemble, tous, جَمِيعًا. La préposition situe l'action, mais le sens spirituel va bien au-delà de la grammaire."
+        },
+        {
+          "type": "tip",
+          "title": "Mémo rapide : les 3 incontournables",
+          "content": "Si tu ne devais retenir que 3 prépositions pour démarrer : **بِ** (par/avec), **فِي** (dans), **مِنْ** (de). Elles couvrent à elles seules des centaines de versets. Commence par là, le reste viendra naturellement."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  }
+]

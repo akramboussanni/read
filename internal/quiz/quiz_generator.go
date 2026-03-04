@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -34,19 +35,25 @@ func (g *QuizGenerator) GenerateQuiz(ctx context.Context, config QuizConfig, par
 	}
 
 	for _, deck := range parsedDecks {
+		fmt.Fprintf(os.Stderr, "DEBUG: Processing deck %d. Questions in deck: %d\n", deck.DeckID, len(deck.Questions))
 		// Find the deck selection for this deck
 		var selectedCategories []string
+		found := false
 		for _, selection := range config.DeckSelections {
 			if selection.DeckID == deck.DeckID {
 				selectedCategories = selection.Categories
+				found = true
 				break
 			}
 		}
 
 		// If no selection found for this deck, skip it
-		if selectedCategories == nil {
+		if !found {
+			fmt.Fprintf(os.Stderr, "DEBUG: Deck %d not in config selections\n", deck.DeckID)
 			continue
 		}
+
+		fmt.Fprintf(os.Stderr, "DEBUG: Deck %d selected categories: %v\n", deck.DeckID, selectedCategories)
 
 		// Filter entries by categories if specified
 		var eligibleEntries []ParsedQuestion
@@ -63,6 +70,8 @@ func (g *QuizGenerator) GenerateQuiz(ctx context.Context, config QuizConfig, par
 			eligibleEntries = deck.Questions
 		}
 
+		fmt.Fprintf(os.Stderr, "DEBUG: Deck %d eligible entries found: %d\n", deck.DeckID, len(eligibleEntries))
+
 		// Add entries with their deck reference
 		for i := range eligibleEntries {
 			allEligibleEntries = append(allEligibleEntries, struct {
@@ -73,21 +82,36 @@ func (g *QuizGenerator) GenerateQuiz(ctx context.Context, config QuizConfig, par
 	}
 
 	if len(allEligibleEntries) == 0 {
+		fmt.Fprintf(os.Stderr, "DEBUG: Total eligible entries is 0. Aborting.\n")
 		return nil, fmt.Errorf("no eligible entries found for the given deck selections")
 	}
 
 	// Function to get random answers from all decks
 	getRandomAnswers := func(count int, category string) []string {
-		var answers []string
+		var sameCategoryAnswers []string
+		var otherCategoryAnswers []string
+
 		for _, deckEntry := range allEligibleEntries {
-			if deckEntry.entry.CategoryKey == category && deckEntry.entry.CorrectAnswer != "" {
-				answers = append(answers, deckEntry.entry.CorrectAnswer)
+			if deckEntry.entry.CorrectAnswer != "" {
+				if deckEntry.entry.CategoryKey == category {
+					sameCategoryAnswers = append(sameCategoryAnswers, deckEntry.entry.CorrectAnswer)
+				} else {
+					otherCategoryAnswers = append(otherCategoryAnswers, deckEntry.entry.CorrectAnswer)
+				}
 			}
 		}
-		// Shuffle and take count
-		rand.Shuffle(len(answers), func(i, j int) {
-			answers[i], answers[j] = answers[j], answers[i]
+
+		// Shuffle both
+		rand.Shuffle(len(sameCategoryAnswers), func(i, j int) {
+			sameCategoryAnswers[i], sameCategoryAnswers[j] = sameCategoryAnswers[j], sameCategoryAnswers[i]
 		})
+		rand.Shuffle(len(otherCategoryAnswers), func(i, j int) {
+			otherCategoryAnswers[i], otherCategoryAnswers[j] = otherCategoryAnswers[j], otherCategoryAnswers[i]
+		})
+
+		// Combine, prioritizing same category
+		answers := append(sameCategoryAnswers, otherCategoryAnswers...)
+
 		if len(answers) > count {
 			answers = answers[:count]
 		}
@@ -124,7 +148,7 @@ func (g *QuizGenerator) GenerateQuiz(ctx context.Context, config QuizConfig, par
 			continue // Try another
 		}
 
-		genQuestion, err := generator.Generate(deckEntry, qt, dir, getRandomAnswers)
+		genQuestion, err := generator.Generate(deckEntry, qt, dir, entryInfo.deck.Metadata, getRandomAnswers)
 		if err != nil {
 			continue // Skip this entry
 		}

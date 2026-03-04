@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Plus, Edit, Trash2, Eye } from 'lucide-react';
 
 interface UserQuiz {
-  id: number;
+  id: string;
   title: string;
   description: string;
   is_public: boolean;
@@ -30,7 +30,7 @@ export default function MyQuizzesPage() {
     try {
       setLoading(true);
       const data = await quizApi.getMyQuizzes();
-      setQuizzes(data as UserQuiz[]);
+      setQuizzes(data as unknown as UserQuiz[]);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to load quizzes');
     } finally {
@@ -38,7 +38,7 @@ export default function MyQuizzesPage() {
     }
   };
 
-  const handleDelete = async (quizId: number) => {
+  const handleDelete = async (quizId: string) => {
     if (!confirm('Are you sure you want to delete this quiz?')) {
       return;
     }

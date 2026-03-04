@@ -1,0 +1,200 @@
+[
+  {
+    "name": "Verbes Formes 2 & 3",
+    "categories": [
+      "augmented_verbs_form_2",
+      "augmented_verbs_form_2_3"
+    ],
+    "reference": {
+      "title": "Verbes Dérivés — Formes 2 & 3",
+      "content": [
+        {
+          "type": "text",
+          "content": "**عَلَّمَ الْقُرْآنَ** — 'Il a enseigné le Coran.' La sourate Ar-Rahmân s'ouvre sur deux images : الرَّحْمَٰنُ (Allah) + عَلَّمَ (a enseigné) + الْقُرْآنَ (le Coran). Trois mots. Toute la pédagogie divine. عَلَّمَ est la Forme 2 de عَلِمَ (savoir). La Forme 2 ajoute une **chadda** sur la 2ème lettre et change le sens : *savoir* → *faire savoir, enseigner*. C'est le principe du causatif."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "عَلَّمَ (ف.2)",
+              "french": "Il a enseigné",
+              "tip": "Causatif de عَلِمَ (savoir) — faire savoir à quelqu'un"
+            },
+            {
+              "arabic": "نَزَّلَ (ف.2)",
+              "french": "Il a fait descendre progressivement",
+              "tip": "Révélation progressive du Coran sur 23 ans"
+            },
+            {
+              "arabic": "كَلَّمَ (ف.2)",
+              "french": "Il a parlé à (directement)",
+              "tip": "Allah a kállama Musa directement — honneur immense"
+            },
+            {
+              "arabic": "قَاتَلَ (ف.3)",
+              "french": "Il a combattu (contre)",
+              "tip": "Réciproque de قَتَلَ — action mutuelle entre deux parties"
+            },
+            {
+              "arabic": "سَابَقَ (ف.3)",
+              "french": "Il a rivalisé / devancé",
+              "tip": "إِلَى الْخَيْرَاتِ — rivalisez vers les bonnes actions !"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "La **Forme 3** (فَاعَلَ avec alif) exprime une action **entre deux parties** — réciproque. قَتَلَ = tuer. قَاتَلَ = combattre (action des deux côtés). كَتَبَ = écrire. كَاتَبَ = correspondre avec quelqu'un. Chaque fois que tu vois une Forme 3, cherche cette idée de réciprocité ou d'interaction avec un autre."
+        },
+        {
+          "type": "quran",
+          "arabic": "عَلَّمَ الْقُرْآنَ",
+          "translation": "Il a enseigné le Coran",
+          "highlight": "عَلَّمَ",
+          "source": "Ar-Rahmân, 55:2",
+          "context": "La sourate qui dit الرَّحْمَٰنُ 'le Tout-Miséricordieux' commence par عَلَّمَ 'il a enseigné'. Allah Se présente comme un enseignant. Pas comme un monarque distant — comme Quelqu'un qui partage Sa connaissance. Et ce qu'Il enseigne en premier ? le Coran lui-même."
+        },
+        {
+          "type": "tip",
+          "title": "Forme 2 (فعَّل) — chadda = intensité ou causatif",
+          "content": "La Forme 2 s'identifie à la chadda sur la 2ème lettre de la racine : كَسَرَ (briser) → كَسَّرَ (briser en morceaux = intensif). عَلِمَ (savoir) → عَلَّمَ (enseigner = causatif). Le même schème, deux effets sémantiques différents — le contexte décide."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Verbes Formes 4 A–B",
+    "categories": [
+      "augmented_verbs_form_4_a",
+      "augmented_verbs_form_4_b"
+    ],
+    "reference": {
+      "title": "Verbes Dérivés — Forme 4 (A–B)",
+      "content": [
+        {
+          "type": "text",
+          "content": "**أَرْسَلَ** — 'il a envoyé'. Allah dit dans le Coran وَلَقَدْ أَرْسَلْنَا des dizaines de fois. À chaque fois qu'Il parle d'un prophète envoyé, c'est ce verbe. أَرْسَلَ est la Forme 4 de رَسَلَ. La **Forme 4** (أَفْعَلَ) est causative : elle transforme une action en 'faire faire'. رَسَلَ (aller vite) → أَرْسَلَ (envoyer = faire aller). C'est l'une des formes les plus puissantes de la morphologie arabe."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "أَرْسَلَ",
+              "french": "Il a envoyé",
+              "tip": "Causatif de رَسَلَ — à chaque prophète dans le Coran"
+            },
+            {
+              "arabic": "أَنْزَلَ",
+              "french": "Il a fait descendre (en une fois)",
+              "tip": "Vs نَزَّلَ (F2 = progressif). Révélation ponctuelle."
+            },
+            {
+              "arabic": "أَقَامَ",
+              "french": "Il a établi / accompli",
+              "tip": "أَقَامَ الصَّلَاةَ = accomplir la prière — expression coraniquement fixée"
+            },
+            {
+              "arabic": "أَعْطَى",
+              "french": "Il a donné",
+              "tip": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ — Sûrement Nous t'avons donné Al-Kawthar !"
+            },
+            {
+              "arabic": "أَكْرَمَ",
+              "french": "Il a honoré",
+              "tip": "وَلَقَدْ كَرَّمْنَا بَنِي آدَمَ — Nous avons honoré les fils d'Adam"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ** — tu connais cette sourate ! 'Certes, Nous t'avons donné Al-Kawthar.' أَعْطَيْنَاكَ : Forme 4 de عَطَا, à la 1ère personne du pluriel (نَا = Nous), avec le pronom suffixe كَ (Toi). Trois éléments grammaticaux dans un seul mot. C'est la beauté de l'arabe — tout est compact et précis."
+        },
+        {
+          "type": "quran",
+          "arabic": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
+          "translation": "Certes, Nous t'avons donné Al-Kawthar",
+          "highlight": "أَعْطَيْنَاكَ",
+          "source": "Al-Kawthar, 108:1",
+          "context": "La plus courte sourate du Coran — 3 versets — et pourtant un des dons les plus immenses : le fleuve du Paradis, donné au Prophète ﷺ. أَعْطَيْنَاكَ en un mot dit tout : Nous (Allah), avons donné (Forme 4), à Toi (ك). Compact. Puissant. Définitif."
+        },
+        {
+          "type": "tip",
+          "title": "أَنْزَلَ vs نَزَّلَ — nuance subtile mais importante",
+          "content": "أَنْزَلَ (Forme 4) = descendre en une seule fois ou de manière globale. نَزَّلَ (Forme 2) = descendre progressivement, par étapes. Le Coran a été نُزِّلَ (révélé progressivement sur 23 ans), mais il a aussi été أُنزِلَ (comme décret global). Les deux verbes, pour la même révélation, deux aspects différents."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Verbes Formes 4 C–D & 5 à 10",
+    "categories": [
+      "augmented_verbs_form_4_c",
+      "augmented_verbs_form_4_d",
+      "augmented_verbs_forms_5_6_7",
+      "augmented_verbs_form_8",
+      "augmented_verbs_forms_9_10"
+    ],
+    "reference": {
+      "title": "Verbes Dérivés — Formes 4C–10",
+      "content": [
+        {
+          "type": "text",
+          "content": "**إِيَّاكَ نَسْتَعِينُ** — 'C'est Toi que nous supplions d'aider'. نَسْتَعِينُ est la Forme 10. La **Forme 10** (اِسْتَفْعَلَ) exprime le fait de *demander* ou de *chercher* à obtenir quelque chose. اِسْتَعَانَ = demander de l'aide. اِسْتَغْفَرَ = demander le pardon. اِسْتَوَى = s'établir. Et tu prononces la Forme 10 dans la Fatiha au moins 17 fois par jour. Tu l'utilisais déjà."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "اِسْتَعَانَ (ف.10)",
+              "french": "Il a demandé de l'aide",
+              "tip": "إِيَّاكَ نَسْتَعِينُ — en plein dans la Fatiha !"
+            },
+            {
+              "arabic": "اِسْتَغْفَرَ (ف.10)",
+              "french": "Il a demandé pardon",
+              "tip": "De غَفَرَ (pardonner) — demander le pardon = l'istighfar"
+            },
+            {
+              "arabic": "تَكَلَّمَ (ف.5)",
+              "french": "Il a parlé / pris la parole",
+              "tip": "Réflexif de كَلَّمَ (Forme 2)"
+            },
+            {
+              "arabic": "اِجْتَمَعَ (ف.8)",
+              "french": "Il s'est réuni / rassemblé",
+              "tip": "De ج-م-ع (rassembler) — associatif et réflexif à la fois"
+            },
+            {
+              "arabic": "اِسْتَوَى (ف.10)",
+              "french": "Il s'est établi / était droit",
+              "tip": "اسْتَوَى عَلَى الْعَرْشِ = S'est établi sur le Trône"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**اِسْتَغْفِرُوا رَبَّكُمْ** — 'Demandez pardon à votre Seigneur.' L'istighfar. اِسْتَغْفَرَ = اِسْتَ (chercher à obtenir) + غَفَرَ (pardonner). Littéralement : 'chercher à se faire pardonner'. Le Prophète ﷺ faisait l'istighfar plus de 70 fois par jour. Pas parce qu'il péchait — mais parce qu'il savait que se rapprocher d'Allah passe par ce mouvement de retour constant."
+        },
+        {
+          "type": "quran",
+          "arabic": "سُبْحَانَ الَّذِي أَسْرَىٰ بِعَبْدِهِ لَيْلًا",
+          "translation": "Gloire à Celui qui a fait voyager Son serviteur de nuit",
+          "highlight": "أَسْرَىٰ",
+          "source": "Al-Isrâ, 17:1",
+          "context": "أَسْرَى est la Forme 4 de سَرَى (voyager la nuit). Causatif : 'Il a *fait* voyager'. Cette forme verbale dit que l'Isra' et le Mi'raj n'étaient pas l'initiative du Prophète ﷺ — c'est Allah qui L'a emmené. Toute la sourate Al-Isrâ tient dans cette Forme 4 du premier verset."
+        },
+        {
+          "type": "tip",
+          "title": "Le système à 10 Formes — ta clé maîtresse",
+          "content": "L'arabe a 10 formes verbales principales (أوزان). Chaque racine peut théoriquement prendre ces 10 formes. En pratique, une racine en utilise 3-5. Mais connaître les 10 formes, c'est multiplier ton vocabulaire par 5 minimum. Un investissement grammatical avec un retour infini."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  }
+]

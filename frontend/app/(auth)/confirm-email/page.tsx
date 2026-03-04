@@ -7,7 +7,9 @@ import { authApi } from '@/lib/api/auth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function ConfirmEmailPage() {
+import { Suspense } from 'react';
+
+function ConfirmEmailContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -17,9 +19,9 @@ export default function ConfirmEmailPage() {
   useEffect(() => {
     const confirmEmail = async () => {
       const token = searchParams.get('token');
-      
+
       if (!token) {
-        setError('Invalid or missing confirmation token');
+        setError('Jeton de confirmation invalide ou manquant');
         setIsLoading(false);
         return;
       }
@@ -28,7 +30,7 @@ export default function ConfirmEmailPage() {
         await authApi.confirmEmail({ token });
         setSuccess(true);
       } catch (err: any) {
-        const errorMsg = err.response?.data?.message || 'Failed to confirm email';
+        const errorMsg = err.response?.data?.message || "Échec de la confirmation de l'email";
         setError(errorMsg);
       } finally {
         setIsLoading(false);
@@ -43,9 +45,9 @@ export default function ConfirmEmailPage() {
       <div className="flex items-center justify-center min-h-screen p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle>Confirming Email</CardTitle>
+            <CardTitle>Confirmation de l'Email</CardTitle>
             <CardDescription>
-              Please wait while we verify your email...
+              Veuillez patienter pendant que nous vérifions votre email...
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -63,23 +65,23 @@ export default function ConfirmEmailPage() {
       <div className="flex items-center justify-center min-h-screen p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle>Email Confirmed!</CardTitle>
+            <CardTitle>Email Confirmé !</CardTitle>
             <CardDescription>
-              Your email has been successfully verified
+              Votre email a été vérifié avec succès
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-gray-600">
-              Your email is now verified. You can now log in and use all features.
+              Votre email est maintenant vérifié. Vous pouvez maintenant vous connecter et utiliser toutes les fonctionnalités.
             </p>
             <p className="text-sm text-gray-600 mt-2">
-              Redirecting to login page...
+              Redirection vers la page de connexion...
             </p>
           </CardContent>
           <CardFooter>
             <Link href="/login" className="w-full">
               <Button className="w-full">
-                Go to Login
+                Aller à la Connexion
               </Button>
             </Link>
           </CardFooter>
@@ -92,9 +94,9 @@ export default function ConfirmEmailPage() {
     <div className="flex items-center justify-center min-h-screen p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Confirmation Failed</CardTitle>
+          <CardTitle>Échec de la Confirmation</CardTitle>
           <CardDescription>
-            Unable to verify your email
+            Impossible de vérifier votre email
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -102,24 +104,45 @@ export default function ConfirmEmailPage() {
             {error}
           </div>
           <p className="text-sm text-gray-600">
-            {error.includes('expired') 
-              ? 'Your confirmation link has expired. Please request a new one.' 
-              : 'The confirmation link may be invalid or already used.'}
+            {error.includes('expired')
+              ? 'Votre lien de confirmation a expiré. Veuillez en demander un nouveau.'
+              : 'Le lien de confirmation est peut-être invalide ou déjà utilisé.'}
           </p>
         </CardContent>
         <CardFooter className="flex flex-col space-y-2">
           <Link href="/resend-confirmation" className="w-full">
             <Button className="w-full">
-              Resend Confirmation Email
+              Renvoyer l'Email de Confirmation
             </Button>
           </Link>
           <Link href="/login" className="w-full">
             <Button variant="outline" className="w-full">
-              Back to Login
+              Retour à la Connexion
             </Button>
           </Link>
         </CardFooter>
       </Card>
     </div>
+  );
+}
+
+export default function ConfirmEmailPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-screen p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Chargement...</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    }>
+      <ConfirmEmailContent />
+    </Suspense>
   );
 }

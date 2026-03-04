@@ -4,13 +4,14 @@ import "time"
 
 // DeckMetadata represents the metadata of a quiz deck
 type DeckMetadata struct {
-	Title                  string   `json:"title"`
-	Version                int      `json:"version"`
-	DeckType               string   `json:"deck_type"`
-	LanguagePair           []string `json:"language_pair"`
-	Description            string   `json:"description"`
-	SupportedQuestionTypes []string `json:"supported_question_types"`
-	// Removed: DefaultDirection - now handled per question
+	Title                  string            `json:"title"`
+	Version                int               `json:"version"`
+	DeckType               string            `json:"deck_type"`
+	LanguagePair           []string          `json:"language_pair"`
+	Description            string            `json:"description"`
+	SupportedQuestionTypes []string          `json:"supported_question_types"`
+	Classes                []string          `json:"classes,omitempty"`
+	CategoryTitles         map[string]string `json:"category_titles,omitempty"`
 }
 
 // Category represents a category in the deck
@@ -37,15 +38,16 @@ type DeckEntry struct {
 type UniversalDeck struct {
 	Metadata   DeckMetadata        `json:"metadata"`
 	Categories map[string]Category `json:"categories"`
+	Classes    []string            `json:"classes,omitempty"`
 	Entries    []DeckEntry         `json:"entries"`
 }
 
 // ParsedDeck is the internal representation after parsing
 type ParsedDeck struct {
-	DeckID    int64
-	DeckKey   string
-	Title     string
-	Version   int
+	DeckID     int64
+	DeckKey    string
+	Title      string
+	Version    int
 	Categories map[string]string // category key -> title
 	Questions  []ParsedQuestion
 	Metadata   DeckMetadata
@@ -74,8 +76,11 @@ const (
 type Direction string
 
 const (
-	DirectionSourceToTarget Direction = "source_to_target"
-	DirectionTargetToSource Direction = "target_to_source"
+	DirectionSourceToTarget  Direction = "source_to_target"
+	DirectionTargetToSource  Direction = "target_to_source"
+	DirectionIdentifyGrammar Direction = "identify_grammar"
+	DirectionAttachSuffix    Direction = "attach_suffix"
+	DirectionConjugate       Direction = "conjugate"
 )
 
 // GeneratedQuestion represents a generated question
@@ -97,12 +102,12 @@ type CustomQuestion struct {
 
 // QuizConfig represents the configuration for a quiz
 type QuizConfig struct {
-	DeckSelections   []DeckSelection       // Multiple deck-category selections
-	QuestionTypes    []QuestionType
-	Directions       []Direction
-	QuestionCount    int
-	Difficulty       string
-	CustomQuestions  []CustomQuestion
+	DeckSelections  []DeckSelection // Multiple deck-category selections
+	QuestionTypes   []QuestionType
+	Directions      []Direction
+	QuestionCount   int
+	Difficulty      string
+	CustomQuestions []CustomQuestion
 }
 
 // DeckSelection represents a selection of categories from a specific deck
@@ -132,4 +137,8 @@ type QuizQuestion struct {
 	UserAnswer    *string
 	IsCorrect     *bool
 	TimeSpent     *time.Duration
+	IsDynamic     bool
+	CategoryKey   string
+	CategoryID    *int64
+	DeckID        *int64
 }

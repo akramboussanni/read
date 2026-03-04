@@ -6,7 +6,8 @@ import (
 	"github.com/akramboussanni/gocode/internal/api"
 	"github.com/akramboussanni/gocode/internal/api/routes/admin"
 	"github.com/akramboussanni/gocode/internal/api/routes/auth"
-	"github.com/akramboussanni/gocode/internal/api/routes/progression"
+	"github.com/akramboussanni/gocode/internal/api/routes/classroom"
+	"github.com/akramboussanni/gocode/internal/api/routes/course"
 	"github.com/akramboussanni/gocode/internal/api/routes/quiz"
 	"github.com/akramboussanni/gocode/internal/middleware"
 	quizpkg "github.com/akramboussanni/gocode/internal/quiz"
@@ -36,14 +37,13 @@ func SetupRouter(repos *repo.Repos) http.Handler {
 
 	// Mount routers
 	r.Mount("/auth", auth.NewAuthRouter(repos.User, repos.Token, repos.Lockout))
-	r.Mount("/progression", progression.NewProgressionRouter(repos, quizService))
+	r.Mount("/courses", course.NewCourseRouter(repos, quizService))
+	r.Mount("/onboarding", course.NewOnboardingRouter(repos, quizService))
+	r.Mount("/classroom", classroom.NewClassroomRouter(repos))
 	r.Mount("/quiz", quiz.NewQuizRouter(repos, quizService))
 
 	// Admin routes (requires authentication and admin role)
-	r.Route("/admin", func(r chi.Router) {
-		middleware.AddAuth(r, repos.User, repos.Token)
-		r.Mount("/", admin.NewAdminRouter(repos, quizService, deckService).Routes())
-	})
+	r.Mount("/admin", admin.NewAdminRouter(repos, quizService, deckService).Routes())
 
 	return r
 }

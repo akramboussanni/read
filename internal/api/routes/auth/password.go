@@ -19,12 +19,12 @@ import (
 func (ar *AuthRouter) changeUserPassword(ctx context.Context, w http.ResponseWriter, user *model.User, newPassword, ip string) bool {
 	if !utils.IsValidPassword(newPassword) {
 		applog.Warn("Invalid new password format", "userID:", user.ID)
-		api.WriteMessage(w, 400, "error", "invalid password")
+		api.WriteMessage(w, 400, "error", "mot de passe invalide")
 		return false
 	}
 	if utils.ComparePassword(user.PasswordHash, newPassword) {
 		applog.Error("Same password")
-		api.WriteMessage(w, 400, "error", "same password")
+		api.WriteMessage(w, 400, "error", "même mot de passe")
 		return false
 	}
 	hash, err := utils.HashPassword(newPassword)
@@ -83,15 +83,22 @@ func (ar *AuthRouter) HandleForgotPassword(w http.ResponseWriter, r *http.Reques
 	sha := sha256.Sum256(b)
 	tokenHash := base64.URLEncoding.EncodeToString(sha[:])
 	user, err := ar.UserRepo.GetUserByResetToken(r.Context(), tokenHash)
-	if err != nil {
+	if err != nil || user == nil {
 		api.WriteInvalidCredentials(w)
+		return
+	}
+
+	// Unverified teachers cannot reset password
+	if user.Role == "teacher" && !user.EmailConfirmed {
+		applog.Warn("Unverified teacher blocked from password reset", "userID:", user.ID)
+		api.WriteForbidden(w, "Veuillez d'abord confirmer votre email pour utiliser cette fonctionnalité.")
 		return
 	}
 
 	expiry := user.PasswordResetIssuedAt + config.App.ForgotPasswordExpiry
 	if expiry < time.Now().UTC().Unix() {
 		applog.Warn("Expired password reset token", "userID:", user.ID)
-		http.Error(w, "expired token, please request a new one", http.StatusUnauthorized)
+		http.Error(w, "jeton expiré, veuillez en demander un nouveau", http.StatusUnauthorized)
 		return
 	}
 
@@ -130,8 +137,15 @@ func (ar *AuthRouter) HandleSendForgotPassword(w http.ResponseWriter, r *http.Re
 		return
 	}
 
+	// Unverified teachers cannot request password resets
+	if user.Role == "teacher" && !user.EmailConfirmed {
+		applog.Warn("Unverified teacher blocked from forgot password", "userID:", user.ID, "email:", user.Email)
+		api.WriteForbidden(w, "Veuillez d'abord confirmer votre email pour utiliser cette fonctionnalité.")
+		return
+	}
+
 	expiryStr := utils.ExpiryToString(int(config.App.ForgotPasswordExpiry))
-	token, err := GenerateTokenAndSendEmail(user.Email, "forgotpassword", "Password reset", req.Url, map[string]any{"Expiry": expiryStr, "Url": req.Url})
+	token, err := GenerateTokenAndSendEmail(user.Email, "forgotpassword", "Réinitialisation de mot de passe", req.Url, map[string]any{"Expiry": expiryStr, "Url": req.Url})
 	if err != nil {
 		applog.Error("Failed to generate token:", err)
 		api.WriteInternalError(w)
@@ -145,7 +159,7 @@ func (ar *AuthRouter) HandleSendForgotPassword(w http.ResponseWriter, r *http.Re
 	}
 
 	applog.Info("Password reset email sent", "userID:", user.ID, "email:", user.Email)
-	api.WriteMessage(w, 200, "message", "password reset sent")
+	api.WriteMessage(w, 200, "message", "réinitialisation envoyée")
 }
 
 // @Summary Change password (authenticated)

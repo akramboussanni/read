@@ -6,6 +6,7 @@ import (
 
 	"github.com/akramboussanni/gocode/config"
 	"github.com/akramboussanni/gocode/internal/api"
+	"github.com/akramboussanni/gocode/internal/applog"
 	"github.com/akramboussanni/gocode/internal/jwt"
 	"github.com/akramboussanni/gocode/internal/model"
 	"github.com/akramboussanni/gocode/internal/repo"
@@ -47,6 +48,35 @@ func JWTAuth(secret []byte, ur *repo.UserRepo, tr *repo.TokenRepo, expectedType 
 			next.ServeHTTP(w, r.WithContext(ctx))
 		})
 	}
+}
+
+func RequireTeacher(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		user, ok := utils.UserFromContext(r.Context())
+		if !ok || user.Role != "teacher" {
+			http.Error(w, "Seuls les enseignants peuvent accéder à cette section.", http.StatusForbidden)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+func RequireEmailConfirmed(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		user, ok := utils.UserFromContext(r.Context())
+		if !ok {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
+
+		if user.Role == "teacher" && !user.EmailConfirmed {
+			applog.Warn("Unverified teacher blocked", "userID:", user.ID, "username:", user.Username)
+			http.Error(w, "Veuillez vérifier votre email pour accéder à cette fonctionnalité.", http.StatusForbidden)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
 }
 
 func GetClaimsFromCookie(w http.ResponseWriter, r *http.Request, secret []byte, ur *repo.UserRepo, tr *repo.TokenRepo) *jwt.Claims {

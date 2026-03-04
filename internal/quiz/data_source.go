@@ -60,11 +60,13 @@ func (u *UniversalDataSource) Parse(rawData []byte) (*ParsedDeck, error) {
 		Categories: make(map[string]string),
 		Questions:  make([]ParsedQuestion, 0, len(deck.Entries)),
 	}
+	parsed.Metadata.Classes = deck.Classes
 
 	// Populate categories
 	for key, cat := range deck.Categories {
 		parsed.Categories[key] = cat.Title
 	}
+	parsed.Metadata.CategoryTitles = parsed.Categories
 
 	// Populate questions
 	for _, entry := range deck.Entries {

@@ -8,23 +8,25 @@ import (
 )
 
 type Repos struct {
-	User                  *UserRepo
-	Token                 *TokenRepo
-	Lockout               *LockoutRepo
-	Deck                  *DeckRepo
-	Category              *CategoryRepo
-	DeckEntry             *DeckEntryRepo
-	DeckCache             *DeckCacheRepo
-	Question              *QuestionRepo
-	QuestionOption        *QuestionOptionRepo
-	Quiz                  *QuizRepo
-	QuizCategorySelection *QuizCategorySelectionRepo
-	QuizQuestion          *QuizQuestionRepo
-	QuizSession           *QuizSessionRepo
-	QuizAttempt           *QuizAttemptRepo
-	UserAnswer            *UserAnswerRepo
-	Progression           *ProgressionRepo
-	Coin                  *CoinRepo
+	User                 *UserRepo
+	Token                *TokenRepo
+	Lockout              *LockoutRepo
+	Deck                 *DeckRepo
+	Category             *CategoryRepo
+	DeckEntry            *DeckEntryRepo
+	DeckCache            *DeckCacheRepo
+	Quiz                 *QuizRepo
+	QuestionTemplate     *QuestionTemplateRepo
+	QuizAttempt          *QuizAttemptRepo
+	AttemptQuestion      *AttemptQuestionRepo
+	UserAnswer           *UserAnswerRepo
+	Coin                 *CoinRepo
+	Course               *CourseRepo
+	CourseNode           *CourseNodeRepo
+	CourseEdge           *CourseEdgeRepo
+	Enrollment           *EnrollmentRepo
+	Classroom            *ClassroomRepo
+	AssignmentCompletion *AssignmentCompletionRepo
 }
 
 type Columns struct {
@@ -38,23 +40,25 @@ type Columns struct {
 
 func NewRepos(db *sqlx.DB) *Repos {
 	return &Repos{
-		User:                  NewUserRepo(db),
-		Token:                 NewTokenRepo(db),
-		Lockout:               NewLockoutRepo(db),
-		Deck:                  NewDeckRepo(db),
-		Category:              NewCategoryRepo(db),
-		DeckEntry:             NewDeckEntryRepo(db),
-		DeckCache:             NewDeckCacheRepo(db),
-		Question:              NewQuestionRepo(db),
-		QuestionOption:        NewQuestionOptionRepo(db),
-		Quiz:                  NewQuizRepo(db),
-		QuizCategorySelection: NewQuizCategorySelectionRepo(db),
-		QuizQuestion:          NewQuizQuestionRepo(db),
-		QuizSession:           NewQuizSessionRepo(db),
-		QuizAttempt:           NewQuizAttemptRepo(db),
-		UserAnswer:            NewUserAnswerRepo(db),
-		Progression:           NewProgressionRepo(db),
-		Coin:                  NewCoinRepo(db),
+		User:                 NewUserRepo(db),
+		Token:                NewTokenRepo(db),
+		Lockout:              NewLockoutRepo(db),
+		Deck:                 NewDeckRepo(db),
+		Category:             NewCategoryRepo(db),
+		DeckEntry:            NewDeckEntryRepo(db),
+		DeckCache:            NewDeckCacheRepo(db),
+		Quiz:                 NewQuizRepo(db),
+		QuestionTemplate:     NewQuestionTemplateRepo(db),
+		QuizAttempt:          NewQuizAttemptRepo(db),
+		AttemptQuestion:      NewAttemptQuestionRepo(db),
+		UserAnswer:           NewUserAnswerRepo(db),
+		Coin:                 NewCoinRepo(db),
+		Course:               NewCourseRepo(db),
+		CourseNode:           NewCourseNodeRepo(db),
+		CourseEdge:           NewCourseEdgeRepo(db),
+		Enrollment:           NewEnrollmentRepo(db),
+		Classroom:            NewClassroomRepo(db),
+		AssignmentCompletion: NewAssignmentCompletionRepo(db),
 	}
 }
 

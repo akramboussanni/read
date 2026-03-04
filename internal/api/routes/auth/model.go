@@ -6,6 +6,7 @@ type RegisterRequest struct {
 	Email    string `json:"email" example:"john@example.com" format:"email" description:"Optional - only needed for quiz creation"`
 	Password string `json:"password" example:"SecurePass123!" binding:"required" minLength:"8"`
 	Url      string `json:"url" example:"http://localhost:3000/confirm-email" format:"uri" description:"Optional confirmation URL for email verification"`
+	Role     string `json:"role" example:"student" description:"User role: student or teacher"`
 }
 
 // @Description User login credentials - uses username, not email

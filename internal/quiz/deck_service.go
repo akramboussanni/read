@@ -14,17 +14,17 @@ import (
 
 // DeckService manages deck loading and caching strategy
 type DeckService struct {
-	repos      *repo.Repos
-	cache      map[int64]*CachedDeck
-	cacheMux   sync.RWMutex
+	repos        *repo.Repos
+	cache        map[int64]*CachedDeck
+	cacheMux     sync.RWMutex
 	maxCacheSize int
-	cacheTTL    time.Duration
+	cacheTTL     time.Duration
 }
 
 // CachedDeck represents a deck in memory cache
 type CachedDeck struct {
-	Deck      *ParsedDeck
-	LoadedAt  time.Time
+	Deck        *ParsedDeck
+	LoadedAt    time.Time
 	AccessCount int
 }
 
@@ -33,7 +33,7 @@ func NewDeckService(repos *repo.Repos) *DeckService {
 	return &DeckService{
 		repos:        repos,
 		cache:        make(map[int64]*CachedDeck),
-		maxCacheSize: 10, // Cache up to 10 decks in memory
+		maxCacheSize: 10,               // Cache up to 10 decks in memory
 		cacheTTL:     30 * time.Minute, // Cache for 30 minutes
 	}
 }
@@ -48,6 +48,11 @@ func (s *DeckService) GetDeck(ctx context.Context, deckID int64) (*ParsedDeck, e
 
 	// Try database cache
 	if deck := s.getFromDatabaseCache(ctx, deckID); deck != nil {
+		// Ensure DeckID is set (handle potential cache inconsistencies)
+		if deck.DeckID == 0 {
+			deck.DeckID = deckID
+		}
+
 		// Store in memory cache for faster future access
 		s.storeInMemoryCache(deckID, deck)
 		applog.Info("Deck %d loaded from database cache", deckID)
@@ -117,7 +122,7 @@ func (s *DeckService) evictLRU() {
 
 	for id, cached := range s.cache {
 		if oldestTime.IsZero() || cached.AccessCount < oldestAccess ||
-		   (cached.AccessCount == oldestAccess && cached.LoadedAt.Before(oldestTime)) {
+			(cached.AccessCount == oldestAccess && cached.LoadedAt.Before(oldestTime)) {
 			oldestID = id
 			oldestTime = cached.LoadedAt
 			oldestAccess = cached.AccessCount
@@ -205,20 +210,29 @@ func (s *DeckService) loadDeckMetadata(ctx context.Context, deckID int64) (*Pars
 
 	// Convert model.Deck to ParsedDeck
 	deck := &ParsedDeck{
-		DeckID:   deckModel.ID,
-		DeckKey:  deckModel.DeckKey,
-		Title:    deckModel.Title,
-		Version:  deckModel.Version,
+		DeckID:  deckModel.ID,
+		DeckKey: deckModel.DeckKey,
+		Title:   deckModel.Title,
+		Version: deckModel.Version,
 		Metadata: DeckMetadata{
-			DeckType:               deckModel.DeckType,
-			LanguagePair:           deckModel.LanguagePair,
-			SupportedQuestionTypes: deckModel.SupportedQuestionTypes,
-			// Removed: DefaultDirection - now handled per question
+			DeckType: deckModel.DeckType,
 		},
 		Categories: make(map[string]string),
 	}
 
-	// Parse additional metadata if present
+	// Unmarshal JSON fields from database
+	if deckModel.LanguagePair != "" {
+		if err := json.Unmarshal([]byte(deckModel.LanguagePair), &deck.Metadata.LanguagePair); err != nil {
+			applog.Warn("Failed to unmarshal language pair: %v", err)
+		}
+	}
+	if deckModel.SupportedQuestionTypes != "" {
+		if err := json.Unmarshal([]byte(deckModel.SupportedQuestionTypes), &deck.Metadata.SupportedQuestionTypes); err != nil {
+			applog.Warn("Failed to unmarshal supported question types: %v", err)
+		}
+	}
+
+	// Parse additional metadata if present (may override fields)
 	if deckModel.DeckMetadata != "" {
 		if err := json.Unmarshal([]byte(deckModel.DeckMetadata), &deck.Metadata); err != nil {
 			applog.Warn("Failed to unmarshal deck metadata: %v", err)
@@ -316,8 +330,8 @@ func (s *DeckService) GetCacheStats() map[string]interface{} {
 	defer s.cacheMux.RUnlock()
 
 	return map[string]interface{}{
-		"cached_decks": len(s.cache),
-		"max_cache_size": s.maxCacheSize,
+		"cached_decks":      len(s.cache),
+		"max_cache_size":    s.maxCacheSize,
 		"cache_ttl_minutes": s.cacheTTL.Minutes(),
 	}
 }

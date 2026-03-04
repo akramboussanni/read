@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/lib/providers/theme-provider";
 import { AuthInitializer } from "@/components/auth-initializer";
 import { ConditionalHeader } from "@/components/conditional-header";
+import { EmailVerificationGate } from "@/components/email-verification-gate";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Quiz App",
-  description: "Learn and quiz yourself",
+  title: "Iqra · Apprends en t'amusant !",
+  description:
+    "Apprends et mémorise grâce à des quiz interactifs, des parcours ludiques et un suivi de progression amusant.",
 };
 
 export default function RootLayout({
@@ -26,21 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AuthInitializer>
+    <html lang="fr">
+      <body className={`${nunito.variable} antialiased`}>
+        <AuthInitializer>
+          <EmailVerificationGate>
             <ConditionalHeader />
-            {children}
-          </AuthInitializer>
-        </ThemeProvider>
+            <main className="pt-16">{children}</main>
+          </EmailVerificationGate>
+        </AuthInitializer>
       </body>
     </html>
   );

@@ -9,10 +9,10 @@ interface AuthState {
   isLoading: boolean;
   error: string | null;
   refreshTimer: NodeJS.Timeout | null;
-  
+
   // Actions
   login: (username: string, password: string) => Promise<void>;
-  register: (username: string, password: string, email?: string, url?: string) => Promise<void>;
+  register: (username: string, password: string, email?: string, url?: string, role?: string) => Promise<void>;
   logout: () => Promise<void>;
   logoutAll: () => Promise<void>;
   setUser: (user: User | null) => void;
@@ -38,7 +38,7 @@ export const useAuthStore = create<AuthState>()(
       startAutoRefresh: () => {
         const { stopAutoRefresh, refreshSession } = get();
         stopAutoRefresh(); // Clear any existing timer
-        
+
         const timer = setInterval(async () => {
           try {
             await refreshSession();
@@ -49,7 +49,7 @@ export const useAuthStore = create<AuthState>()(
             get().logout();
           }
         }, REFRESH_INTERVAL);
-        
+
         set({ refreshTimer: timer });
       },
 
@@ -95,10 +95,10 @@ export const useAuthStore = create<AuthState>()(
         }
       },
 
-      register: async (username: string, password: string, email?: string, url?: string) => {
+      register: async (username: string, password: string, email?: string, url?: string, role?: string) => {
         set({ isLoading: true, error: null });
         try {
-          await authApi.register({ username, password, email, url });
+          await authApi.register({ username, password, email, url, role });
           // After registration, need to login
           await get().login(username, password);
         } catch (error: any) {

@@ -37,11 +37,16 @@ func (ar *AuthRouter) HandleLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Try to find user by username first, then by email
 	user, err := ar.UserRepo.GetUserByUsername(r.Context(), cred.Username)
 	if err != nil || user == nil {
-		applog.Warn("Login failed: user not found or db error", "username:", cred.Username, "err:", err)
-		api.WriteInvalidCredentials(w)
-		return
+		// If not found by username, try by email
+		user, err = ar.UserRepo.GetUserByEmail(r.Context(), cred.Username)
+		if err != nil || user == nil {
+			applog.Warn("Login failed: user not found or db error", "usernameOrEmail:", cred.Username, "err:", err)
+			api.WriteInvalidCredentials(w)
+			return
+		}
 	}
 
 	lockedOut, err := ar.LockoutRepo.IsLockedOut(r.Context(), user.ID, ip)
@@ -53,7 +58,7 @@ func (ar *AuthRouter) HandleLogin(w http.ResponseWriter, r *http.Request) {
 
 	if lockedOut {
 		applog.Warn("Account locked out", "userID:", user.ID, "ip:", ip)
-		api.WriteMessage(w, 423, "error", "account locked")
+		api.WriteMessage(w, 423, "error", "compte verrouillé")
 		return
 	}
 
@@ -92,7 +97,7 @@ func (ar *AuthRouter) HandleLogin(w http.ResponseWriter, r *http.Request) {
 			}
 
 			applog.Warn("User locked out due to failed logins", "userID:", user.ID, "ip:", ip)
-			api.WriteMessage(w, 423, "error", "account locked")
+			api.WriteMessage(w, 423, "error", "compte verrouillé")
 			return
 		}
 
@@ -108,7 +113,7 @@ func (ar *AuthRouter) HandleLogin(w http.ResponseWriter, r *http.Request) {
 	utils.SetRefreshCookie(w, loginTokens.Refresh)
 
 	applog.Info("User login successful", "userID:", user.ID)
-	api.WriteJSON(w, 200, map[string]string{"message": "login successful"})
+	api.WriteJSON(w, 200, map[string]string{"message": "connexion réussie"})
 }
 
 // @Summary Refresh session cookies
@@ -164,5 +169,5 @@ func (ar *AuthRouter) HandleRefresh(w http.ResponseWriter, r *http.Request) {
 	utils.SetRefreshCookie(w, loginTokens.Refresh)
 
 	applog.Info("Refresh token successful", "userID:", user.ID)
-	api.WriteJSON(w, 200, map[string]string{"message": "tokens refreshed"})
+	api.WriteJSON(w, 200, map[string]string{"message": "jetons rafraîchis"})
 }

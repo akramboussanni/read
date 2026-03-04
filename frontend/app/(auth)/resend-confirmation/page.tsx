@@ -24,7 +24,7 @@ export default function ResendConfirmationPage() {
       await authApi.resendConfirmation({ email, url });
       setSuccess(true);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to send confirmation email');
+      setError(err.response?.data?.message || "Échec de l'envoi de l'email de confirmation");
     } finally {
       setIsLoading(false);
     }
@@ -35,24 +35,24 @@ export default function ResendConfirmationPage() {
       <div className="flex items-center justify-center min-h-screen p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle>Check Your Email</CardTitle>
+            <CardTitle>Vérifiez vos Emails</CardTitle>
             <CardDescription>
-              Confirmation email has been sent
+              L'email de confirmation a été envoyé
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-gray-600">
-              If an unconfirmed account exists with <strong>{email}</strong>, you will receive a 
-              confirmation link shortly. The link will expire in 24 hours.
+              Si un compte non confirmé existe avec <strong>{email}</strong>, vous recevrez un
+              lien de confirmation sous peu. Le lien expirera dans 24 heures.
             </p>
             <p className="text-sm text-gray-600">
-              Didn't receive the email? Check your spam folder.
+              Vous n'avez pas reçu l'email ? Vérifiez vos spams.
             </p>
           </CardContent>
           <CardFooter>
             <Link href="/login" className="w-full">
               <Button variant="outline" className="w-full">
-                Back to Login
+                Retour à la Connexion
               </Button>
             </Link>
           </CardFooter>
@@ -65,9 +65,9 @@ export default function ResendConfirmationPage() {
     <div className="flex items-center justify-center min-h-screen p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Resend Confirmation</CardTitle>
+          <CardTitle>Renvoyer la Confirmation</CardTitle>
           <CardDescription>
-            Enter your email to receive a new confirmation link
+            Entrez votre email pour recevoir un nouveau lien de confirmation
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
@@ -78,28 +78,28 @@ export default function ResendConfirmationPage() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="email">Email Address</Label>
+              <Label htmlFor="email">Adresse Email</Label>
               <Input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="john@example.com"
+                placeholder="nom@exemple.com"
                 required
                 disabled={isLoading}
               />
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full"
               disabled={isLoading}
             >
-              {isLoading ? 'Sending...' : 'Resend Confirmation'}
+              {isLoading ? 'Envoi...' : 'Renvoyer la Confirmation'}
             </Button>
             <Link href="/login" className="text-sm text-center text-blue-600 hover:underline">
-              Back to Login
+              Retour à la Connexion
             </Link>
           </CardFooter>
         </form>

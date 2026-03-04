@@ -8,7 +8,6 @@ require (
 	github.com/google/go-querystring v1.1.0
 	github.com/resend/resend-go/v2 v2.21.0
 	github.com/swaggo/http-swagger v1.3.4
-	github.com/swaggo/swag v1.16.5
 	go.uber.org/zap v1.27.0
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
@@ -25,6 +24,7 @@ require (
 	github.com/mailru/easyjson v0.9.0 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/swaggo/files v1.0.1 // indirect
+	github.com/swaggo/swag v1.16.5 // indirect
 	github.com/zeebo/xxh3 v1.0.2 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
 	golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0 // indirect

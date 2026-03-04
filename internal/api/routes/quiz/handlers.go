@@ -2,795 +2,835 @@ package quiz
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
-	"strings"
-	"time"
 
-	"github.com/akramboussanni/gocode/internal/api"
 	"github.com/akramboussanni/gocode/internal/applog"
 	"github.com/akramboussanni/gocode/internal/model"
-	quizpkg "github.com/akramboussanni/gocode/internal/quiz"
+	quizsvc "github.com/akramboussanni/gocode/internal/quiz"
 	"github.com/akramboussanni/gocode/internal/utils"
 	"github.com/go-chi/chi/v5"
 )
 
-func (qr *QuizRouter) HandleGetQuiz(w http.ResponseWriter, r *http.Request) {
-	quizIDStr := chi.URLParam(r, "quizID")
-	quizID, err := strconv.ParseInt(quizIDStr, 10, 64)
-	if err != nil {
-		api.WriteBadRequest(w, "Invalid quiz ID")
-		return
-	}
-
-	// Get quiz from database
-	quizModel, err := qr.Repos.Quiz.GetByID(r.Context(), quizID)
-	if err != nil {
-		applog.Error("Failed to get quiz:", err)
-		api.WriteNotFound(w, "Quiz not found")
-		return
-	}
-
-	// Get quiz questions
-	quizQuestions, err := qr.Repos.QuizQuestion.GetByQuizID(r.Context(), quizID)
-	if err != nil {
-		applog.Error("Failed to get quiz questions:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	// Get deck selections
-	deckSelections, err := qr.Repos.QuizCategorySelection.GetByQuizID(r.Context(), quizID)
-	if err != nil {
-		applog.Error("Failed to get deck selections:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	// Convert to API response
-	var questions []QuizQuestionResponse
-	for _, q := range quizQuestions {
-		var options []string
-		if q.Options != "" && q.Options != "[]" {
-			json.Unmarshal([]byte(q.Options), &options)
-		}
-
-		direction := ""
-		if q.Direction != nil {
-			direction = *q.Direction
-		}
-
-		questions = append(questions, QuizQuestionResponse{
-			ID:           q.ID,
-			QuestionText: q.QuestionText,
-			Options:      options,
-			QuestionType: q.QuestionType,
-			Direction:    direction,
-		})
-	}
-
-	// Build config from deck selections (simplified)
-	var deckSelectionsAPI []quizpkg.DeckSelection
-	// This is a simplified version - in reality we'd need to group by deck
-	for _, sel := range deckSelections {
-		// Get category info
-		category, err := qr.Repos.Category.GetByID(r.Context(), sel.CategoryID)
-		if err != nil {
-			continue
-		}
-		deckSelectionsAPI = append(deckSelectionsAPI, quizpkg.DeckSelection{
-			DeckID:     category.DeckID,
-			Categories: []string{category.CategoryKey},
-		})
-	}
-
-	config := quizpkg.QuizConfig{
-		DeckSelections: deckSelectionsAPI,
-		QuestionCount:  len(questions),
-	}
-
-	response := QuizDetailResponse{
-		ID:           quizModel.ID,
-		Title:        quizModel.Title,
-		Description:  quizModel.Description,
-		Config:       config,
-		Questions:    questions,
-		CurrentIndex: 0, // Not tracking progress yet
-		Progress: QuizProgress{
-			Answered:   0,
-			Total:      len(questions),
-			Percentage: 0,
-		},
-	}
-
-	api.WriteJSON(w, 200, response)
+type OptionDTO struct {
+	ID         string `json:"id"`
+	OptionText string `json:"option_text"`
 }
 
-func (qr *QuizRouter) HandleListQuizzes(w http.ResponseWriter, r *http.Request) {
-	// Get public quizzes
-	quizzes, err := qr.Repos.Quiz.GetPublicQuizzes(r.Context(), 50, 0) // Limit 50 for now
-	if err != nil {
-		applog.Error("Failed to get quizzes:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	var response []QuizListItem
-	for _, quiz := range quizzes {
-		// Count questions for this quiz
-		questions, err := qr.Repos.QuizQuestion.GetByQuizID(r.Context(), quiz.ID)
-		if err != nil {
-			applog.Error("Failed to count questions for quiz %d: %v", quiz.ID, err)
-			continue
-		}
-
-		creatorName := ""
-		if quiz.CreatedBy != nil {
-			// Get user name
-			user, err := qr.Repos.User.GetUserByID(r.Context(), *quiz.CreatedBy)
-			if err == nil {
-				creatorName = user.Username
-			}
-		}
-
-		response = append(response, QuizListItem{
-			ID:            quiz.ID,
-			Title:         quiz.Title,
-			Description:   quiz.Description,
-			CreatorName:   creatorName,
-			QuestionCount: len(questions),
-			IsPublic:      quiz.IsPublic,
-			CreatedAt:     time.Unix(quiz.CreatedAt, 0),
-		})
-	}
-
-	api.WriteJSON(w, 200, response)
+// QuestionDTO is a safe version of AttemptQuestion without the correct answer
+type QuestionDTO struct {
+	ID           string      `json:"id"`
+	QuestionText string      `json:"question_text"`
+	QuestionType string      `json:"question_type"`
+	Direction    string      `json:"direction,omitempty"`
+	Options      []OptionDTO `json:"options,omitempty"`
+	DisplayOrder int         `json:"display_order"`
+	Points       int         `json:"points"`
 }
 
-func (qr *QuizRouter) HandleCreateQuiz(w http.ResponseWriter, r *http.Request) {
-	user, ok := utils.UserFromContext(r.Context())
-	if !ok {
-		api.WriteUnauthorized(w)
-		return
+// ============================================================
+// QUIZ CRUD
+// ============================================================
+
+// ListQuizzes returns public quizzes, paginated
+func (qr *QuizRouter) ListQuizzes(w http.ResponseWriter, r *http.Request) {
+	limitStr := r.URL.Query().Get("page_size")
+	offsetStr := r.URL.Query().Get("page")
+
+	limit := 20
+	offset := 0
+	if v, err := strconv.Atoi(limitStr); err == nil && v > 0 {
+		limit = v
+	}
+	if v, err := strconv.Atoi(offsetStr); err == nil && v > 0 {
+		offset = (v - 1) * limit
 	}
 
-	req, err := api.DecodeJSON[CreateQuizRequest](w, r)
+	quizzes, err := qr.Repos.Quiz.GetPublicQuizzes(r.Context(), limit, offset)
 	if err != nil {
-		applog.Error("Failed to decode quiz request:", err)
+		quizzes = []*model.Quiz{}
+	}
+
+	response := map[string]interface{}{
+		"quizzes":   quizzes,
+		"total":     len(quizzes),
+		"page":      offset/limit + 1,
+		"page_size": limit,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// CreateQuiz creates a standalone quiz
+func (qr *QuizRouter) CreateQuiz(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+
+	var body struct {
+		Title           string `json:"title"`
+		Description     string `json:"description"`
+		IsPublic        bool   `json:"is_public"`
+		IsDynamic       bool   `json:"is_dynamic"`
+		PassPercentage  *int   `json:"pass_percentage"`
+		GivesCoins      bool   `json:"gives_coins"`
+		CoinReward      int    `json:"coin_reward"`
+		ShuffleQuestion bool   `json:"shuffle_questions"`
+
+		// Manual questions mode
+		ManualQuestions []struct {
+			QuestionText  string   `json:"question_text"`
+			CorrectAnswer string   `json:"correct_answer"`
+			Options       []string `json:"options"`
+			QuestionType  string   `json:"question_type"`
+			Direction     string   `json:"direction"`
+		} `json:"manual_questions"`
+
+		// Auto-generate mode
+		AutoGenerate *struct {
+			DeckSelections []struct {
+				DeckID     string   `json:"deck_id"`
+				Categories []string `json:"categories"`
+			} `json:"deck_selections"`
+			QuestionTypes []string `json:"question_types"`
+			Directions    []string `json:"directions"`
+			QuestionCount int      `json:"question_count"`
+		} `json:"auto_generate"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
 
-	// Validate basic requirements
-	if req.Title == "" {
-		api.WriteBadRequest(w, "Title is required")
+	if body.Title == "" {
+		http.Error(w, "Title is required", http.StatusBadRequest)
 		return
 	}
 
-	if len(req.ManualQuestions) == 0 && req.AutoGenerate == nil {
-		api.WriteBadRequest(w, "Either manual questions or auto-generation config is required")
-		return
-	}
-
-	// Validate admin-only fields
-	if req.PassPercentage != nil && !user.IsAdmin {
-		api.WriteError(w, http.StatusForbidden, "Only admins can set pass percentage")
-		return
-	}
-	if req.GivesCoins && !user.IsAdmin {
-		api.WriteError(w, http.StatusForbidden, "Only admins can enable coin rewards")
-		return
-	}
-	if req.CoinReward > 0 && !user.IsAdmin {
-		api.WriteError(w, http.StatusForbidden, "Only admins can set coin rewards")
-		return
-	}
-	if req.LevelOrder > 0 && !user.IsAdmin {
-		api.WriteError(w, http.StatusForbidden, "Only admins can set level order")
-		return
-	}
-	if req.PrerequisiteQuizID != nil && !user.IsAdmin {
-		api.WriteError(w, http.StatusForbidden, "Only admins can set prerequisite quizzes")
-		return
-	}
-	if req.IsSystem && !user.IsAdmin {
-		api.WriteError(w, http.StatusForbidden, "Only admins can create system quizzes")
-		return
-	}
-
-	// Start building the quiz questions
-	var allQuestions []quizpkg.QuizQuestion
-
-	// Process manual questions
-	for _, mq := range req.ManualQuestions {
-		question := quizpkg.QuizQuestion{
-			QuestionText:  mq.QuestionText,
-			CorrectAnswer: mq.CorrectAnswer,
-			Options:       mq.Options,
-		}
-
-		// Set question type
-		switch mq.QuestionType {
-		case "mcq":
-			question.QuestionType = quizpkg.QuestionTypeMCQ
-		case "write_word":
-			question.QuestionType = quizpkg.QuestionTypeWriteWord
-		case "translate":
-			question.QuestionType = quizpkg.QuestionTypeTranslate
-		default:
-			api.WriteBadRequest(w, "Invalid question type: "+mq.QuestionType)
-			return
-		}
-
-		// Set direction
-		switch mq.Direction {
-		case "source_to_target":
-			question.Direction = quizpkg.DirectionSourceToTarget
-		case "target_to_source":
-			question.Direction = quizpkg.DirectionTargetToSource
-		default:
-			api.WriteBadRequest(w, "Invalid direction: "+mq.Direction)
-			return
-		}
-
-		allQuestions = append(allQuestions, question)
-	}
-
-	// Process auto-generated questions if specified
-	if req.AutoGenerate != nil {
-		// Load decks for auto-generation
-		var parsedDecks []*quizpkg.ParsedDeck
-		deckMap := make(map[int64]*quizpkg.ParsedDeck)
-
-		for _, sel := range req.AutoGenerate.DeckSelections {
-			if _, exists := deckMap[sel.DeckID]; !exists {
-				deck, err := qr.DeckService.GetDeck(r.Context(), sel.DeckID)
-				if err != nil {
-					applog.Error("Failed to load deck %d: %v", sel.DeckID, err)
-					api.WriteInternalError(w)
-					return
-				}
-				parsedDecks = append(parsedDecks, deck)
-				deckMap[sel.DeckID] = deck
-			}
-		}
-
-		// Convert auto-generate config to service types
-		var deckSelections []quizpkg.DeckSelection
-		var questionTypes []quizpkg.QuestionType
-		var directions []quizpkg.Direction
-
-		for _, sel := range req.AutoGenerate.DeckSelections {
-			deckSelections = append(deckSelections, quizpkg.DeckSelection{
-				DeckID:     sel.DeckID,
-				Categories: sel.Categories,
-			})
-		}
-
-		for _, qt := range req.AutoGenerate.QuestionTypes {
-			switch qt {
-			case "mcq":
-				questionTypes = append(questionTypes, quizpkg.QuestionTypeMCQ)
-			case "write_word":
-				questionTypes = append(questionTypes, quizpkg.QuestionTypeWriteWord)
-			case "translate":
-				questionTypes = append(questionTypes, quizpkg.QuestionTypeTranslate)
-			}
-		}
-
-		for _, dir := range req.AutoGenerate.Directions {
-			switch dir {
-			case "source_to_target":
-				directions = append(directions, quizpkg.DirectionSourceToTarget)
-			case "target_to_source":
-				directions = append(directions, quizpkg.DirectionTargetToSource)
-			}
-		}
-
-		config := quizpkg.QuizConfig{
-			DeckSelections:  deckSelections,
-			QuestionTypes:   questionTypes,
-			Directions:      directions,
-			QuestionCount:   req.AutoGenerate.QuestionCount,
-			Difficulty:      req.AutoGenerate.Difficulty,
-			CustomQuestions: nil, // No custom questions for auto-generation
-		}
-
-		autoQuiz, err := qr.QuizService.CreateQuiz(r.Context(), config, parsedDecks)
-		if err != nil {
-			applog.Error("Failed to auto-generate quiz questions:", err)
-			api.WriteInternalError(w)
-			return
-		}
-
-		// Add auto-generated questions to the list
-		allQuestions = append(allQuestions, autoQuiz.Questions...)
-	}
-
-	// Create a quiz object with all questions
-	// Note: We don't need to create a Quiz object here since we're just storing the questions
-	// The Quiz struct is for runtime quiz state, not for creation
-
-	// Generate quiz ID
+	now := utils.CurrentTimestamp()
 	quizID := utils.GenerateSnowflakeID()
 
-	// Create quiz record
-	quizModel := &model.Quiz{
-		ID:                 quizID,
-		Title:              req.Title,
-		Description:        req.Description,
-		Version:            1,   // Start at version 1
-		DeckID:             nil, // Multi-deck, so no single deck
-		TimeLimit:          nil, // Always nil as requested
-		PassPercentage:     req.PassPercentage,
-		ShuffleQuestions:   true,
-		QuestionMode:       "source_to_target",
-		GivesCoins:         req.GivesCoins,
-		CoinReward:         req.CoinReward,
-		LevelOrder:         req.LevelOrder,
-		PrerequisiteQuizID: req.PrerequisiteQuizID,
-		IsPublic:           req.IsPublic,
-		IsSystem:           req.IsSystem,
-		CreatedBy:          &user.ID,
-		CreatedAt:          time.Now().Unix(),
-		IsActive:           true,
+	// Determine question mode
+	questionMode := "manual"
+	isDynamic := body.IsDynamic
+	if body.AutoGenerate != nil && len(body.AutoGenerate.DeckSelections) > 0 {
+		questionMode = "auto"
+		isDynamic = true
 	}
 
-	// Begin transaction
-	tx, err := qr.Repos.Quiz.BeginTx(r.Context())
-	if err != nil {
-		applog.Error("Failed to begin transaction:", err)
-		api.WriteInternalError(w)
-		return
+	quiz := &model.Quiz{
+		ID:               quizID,
+		Title:            body.Title,
+		Description:      body.Description,
+		PassPercentage:   body.PassPercentage,
+		ShuffleQuestions: body.ShuffleQuestion,
+		QuestionMode:     questionMode,
+		GivesCoins:       body.GivesCoins,
+		CoinReward:       body.CoinReward,
+		IsPublic:         body.IsPublic,
+		IsDynamic:        isDynamic,
+		CreatedBy:        &user.ID,
+		CreatedAt:        now,
+		IsActive:         true,
 	}
-	defer tx.Rollback()
 
-	// Create quiz
-	if err := qr.Repos.Quiz.CreateWithTx(r.Context(), tx, quizModel); err != nil {
-		applog.Error("Failed to create quiz:", err)
-		api.WriteInternalError(w)
+	if body.PassPercentage == nil {
+		pp := 70
+		quiz.PassPercentage = &pp
+	}
+
+	if err := qr.Repos.Quiz.Create(r.Context(), quiz); err != nil {
+		http.Error(w, fmt.Sprintf("Failed to create quiz: %v", err), http.StatusInternalServerError)
 		return
 	}
 
-	// Store deck selections if auto-generation was used
-	if req.AutoGenerate != nil {
-		for _, sel := range req.AutoGenerate.DeckSelections {
-			// Get categories for this deck
-			categories, err := qr.Repos.Category.GetByDeckID(r.Context(), sel.DeckID)
+	// Create question templates based on mode
+	if body.AutoGenerate != nil && len(body.AutoGenerate.DeckSelections) > 0 {
+		// Auto mode: create random_from_deck templates
+		for _, sel := range body.AutoGenerate.DeckSelections {
+			deckID, err := strconv.ParseInt(sel.DeckID, 10, 64)
 			if err != nil {
-				applog.Error("Failed to get categories for deck %d: %v", sel.DeckID, err)
-				api.WriteInternalError(w)
-				return
+				continue
 			}
 
-			// If specific categories selected, only include those
-			if len(sel.Categories) > 0 {
-				filteredCategories := make([]*model.Category, 0)
-				for _, cat := range categories {
-					for _, selCat := range sel.Categories {
-						if cat.CategoryKey == selCat {
-							filteredCategories = append(filteredCategories, cat)
-							break
-						}
+			questionTypes, _ := json.Marshal(body.AutoGenerate.QuestionTypes)
+			directions, _ := json.Marshal(body.AutoGenerate.Directions)
+
+			categories := sel.Categories
+
+			if len(categories) == 0 {
+				// If no categories passed, fetch all categories for this deck
+				dbCats, err := qr.Repos.Category.GetByDeckID(r.Context(), deckID)
+				if err == nil {
+					for _, c := range dbCats {
+						categories = append(categories, c.CategoryKey)
 					}
 				}
-				categories = filteredCategories
 			}
 
-			// Calculate question count per category
-			questionCount := req.AutoGenerate.QuestionCount / len(categories)
-			if questionCount == 0 {
-				questionCount = 1
-			}
-
-			for _, cat := range categories {
-				selection := &model.QuizCategorySelection{
-					QuizID:        quizID,
-					CategoryID:    cat.ID,
-					QuestionCount: questionCount,
+			if len(categories) > 0 {
+				// Per-category templates
+				countPerCat := body.AutoGenerate.QuestionCount / len(categories)
+				if countPerCat < 1 {
+					countPerCat = 1
 				}
-				if err := qr.Repos.QuizCategorySelection.CreateWithTx(r.Context(), tx, selection); err != nil {
-					applog.Error("Failed to create quiz category selection:", err)
-					api.WriteInternalError(w)
-					return
+				for _, catKey := range categories {
+					cat, err := qr.Repos.Category.GetByKeyAndDeckID(r.Context(), deckID, catKey)
+					if err != nil {
+						continue
+					}
+					tmpl := &model.QuestionTemplate{
+						ID:             utils.GenerateSnowflakeID(),
+						QuizID:         quizID,
+						DeckID:         &deckID,
+						CategoryID:     &cat.ID, // Now this will use the implemented query
+						QuestionTypes:  string(questionTypes),
+						Directions:     string(directions),
+						GenerationMode: "random_from_deck",
+						QuestionCount:  countPerCat,
+						CreatedAt:      now,
+					}
+					if err := qr.Repos.QuestionTemplate.Create(r.Context(), tmpl); err != nil {
+						applog.Errorf("failed to save category template %s: %v", catKey, err)
+					}
+				}
+			} else {
+				// Fallback if deck has no categories somehow
+				tmpl := &model.QuestionTemplate{
+					ID:             utils.GenerateSnowflakeID(),
+					QuizID:         quizID,
+					DeckID:         &deckID,
+					QuestionTypes:  string(questionTypes),
+					Directions:     string(directions),
+					GenerationMode: "random_from_deck",
+					QuestionCount:  body.AutoGenerate.QuestionCount,
+					CreatedAt:      now,
+				}
+				if err := qr.Repos.QuestionTemplate.Create(r.Context(), tmpl); err != nil {
+					applog.Errorf("failed to save deck template: %v", err)
 				}
 			}
 		}
-	}
-
-	// Store quiz questions
-	for i, q := range allQuestions {
-		// Convert options to JSON
-		optionsJSON := "[]"
-		if len(q.Options) > 0 {
-			if jsonData, err := json.Marshal(q.Options); err == nil {
-				optionsJSON = string(jsonData)
-			}
+	} else if len(body.ManualQuestions) > 0 {
+		// Manual mode: create a single manual template with all questions
+		manualData, _ := json.Marshal(body.ManualQuestions)
+		manualDataStr := string(manualData)
+		tmpl := &model.QuestionTemplate{
+			ID:             utils.GenerateSnowflakeID(),
+			QuizID:         quizID,
+			QuestionTypes:  `["mcq","translate","write_word"]`,
+			Directions:     `["source_to_target","target_to_source"]`,
+			GenerationMode: "manual",
+			ManualData:     &manualDataStr,
+			QuestionCount:  len(body.ManualQuestions),
+			CreatedAt:      now,
 		}
-
-		direction := ""
-		if q.Direction != "" {
-			direction = string(q.Direction)
-		}
-
-		quizQuestion := &model.QuizQuestion{
-			ID:            utils.GenerateSnowflakeID(),
-			QuizID:        quizID,
-			QuestionID:    nil, // For now, not linking to original questions
-			QuestionText:  q.QuestionText,
-			CorrectAnswer: q.CorrectAnswer,
-			Options:       optionsJSON,
-			QuestionType:  string(q.QuestionType),
-			Direction:     &direction,
-			DisplayOrder:  i + 1,
-			CreatedAt:     time.Now().Unix(),
-		}
-
-		if err := qr.Repos.QuizQuestion.CreateWithTx(r.Context(), tx, quizQuestion); err != nil {
-			applog.Error("Failed to create quiz question:", err)
-			api.WriteInternalError(w)
-			return
-		}
+		qr.Repos.QuestionTemplate.Create(r.Context(), tmpl)
 	}
 
-	// Commit transaction
-	if err := tx.Commit(); err != nil {
-		applog.Error("Failed to commit transaction:", err)
-		api.WriteInternalError(w)
-		return
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(quiz)
+}
+
+// MyQuizzes returns quizzes created by the authenticated user
+func (qr *QuizRouter) MyQuizzes(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+
+	quizzes, err := qr.Repos.Quiz.GetQuizzesByCreator(r.Context(), user.ID)
+	if err != nil || quizzes == nil {
+		quizzes = []*model.Quiz{}
 	}
 
-	// Convert to API response
-	var questions []QuizQuestionResponse
-	for _, q := range allQuestions {
-		questions = append(questions, QuizQuestionResponse{
-			ID:           q.ID,
-			QuestionText: q.QuestionText,
-			Options:      q.Options,
-			QuestionType: string(q.QuestionType),
-			Direction:    string(q.Direction),
-		})
-	}
-
-	response := QuizDetailResponse{
-		ID:           quizID,
-		Title:        req.Title,
-		Description:  req.Description,
-		Config:       quizpkg.QuizConfig{}, // Empty config for response
-		Questions:    questions,
-		CurrentIndex: 0,
-		StartedAt:    nil,
-		Progress: QuizProgress{
-			Answered:   0,
-			Total:      len(allQuestions),
-			Percentage: 0,
-		},
-	}
-
-	api.WriteJSON(w, 201, response)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(quizzes)
 }
 
-func (qr *QuizRouter) HandleUpdateQuiz(w http.ResponseWriter, r *http.Request) {
-	// For the new system, quizzes are not stored persistently
-	api.WriteMessage(w, 501, "error", "Quiz updates not supported in the new system")
-}
-
-func (qr *QuizRouter) HandleDeleteQuiz(w http.ResponseWriter, r *http.Request) {
-	// For the new system, quizzes are not stored persistently
-	api.WriteMessage(w, 501, "error", "Quiz deletion not supported in the new system")
-}
-
-func (qr *QuizRouter) HandleStartQuiz(w http.ResponseWriter, r *http.Request) {
-	// For the new system, quizzes start when created
-	api.WriteMessage(w, 501, "error", "Quiz starting not applicable in the new system")
-}
-
-func (qr *QuizRouter) HandleSubmitQuiz(w http.ResponseWriter, r *http.Request) {
-	// For the new system, answers are submitted individually
-	api.WriteMessage(w, 501, "error", "Use individual answer submission endpoints")
-}
-
-func (qr *QuizRouter) HandleCreateQuestion(w http.ResponseWriter, r *http.Request) {
-	user, ok := utils.UserFromContext(r.Context())
-	if !ok {
-		api.WriteUnauthorized(w)
-		return
-	}
-	_ = user
-
-	req, err := api.DecodeJSON[CreateQuestionRequest](w, r)
+// GetQuiz returns the quiz details and its templates
+func (qr *QuizRouter) GetQuiz(w http.ResponseWriter, r *http.Request) {
+	quizIDStr := chi.URLParam(r, "quizID")
+	quizID, err := strconv.ParseInt(quizIDStr, 10, 64)
 	if err != nil {
-		applog.Error("Failed to decode question request:", err)
+		http.Error(w, "Invalid quiz ID", http.StatusBadRequest)
 		return
 	}
 
-	if req.QuestionText == "" || req.CorrectAnswer == "" {
-		api.WriteBadRequest(w, "Question text and correct answer are required")
+	quiz, err := qr.Repos.Quiz.GetByID(r.Context(), quizID)
+	if err != nil {
+		http.Error(w, "Quiz not found", http.StatusNotFound)
 		return
 	}
 
-	// For now, just return success - custom question creation not fully implemented
-	api.WriteMessage(w, 201, "success", "Question created successfully")
+	templates, _ := qr.Repos.QuestionTemplate.GetByQuizID(r.Context(), quizID)
+
+	response := map[string]interface{}{
+		"quiz":      quiz,
+		"templates": templates,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
 }
 
-func (qr *QuizRouter) HandleListDecks(w http.ResponseWriter, r *http.Request) {
-	user, ok := utils.UserFromContext(r.Context())
-	if !ok {
-		api.WriteUnauthorized(w)
+// UpdateQuiz updates the quiz configuration
+func (qr *QuizRouter) UpdateQuiz(w http.ResponseWriter, r *http.Request) {
+	quizIDStr := chi.URLParam(r, "quizID")
+	quizID, err := strconv.ParseInt(quizIDStr, 10, 64)
+	if err != nil {
+		http.Error(w, "Invalid quiz ID", http.StatusBadRequest)
 		return
 	}
-	_ = user
 
-	// Get all decks from database
+	quiz, err := qr.Repos.Quiz.GetByID(r.Context(), quizID)
+	if err != nil {
+		http.Error(w, "Quiz not found", http.StatusNotFound)
+		return
+	}
+
+	var body struct {
+		Title            string `json:"title"`
+		Description      string `json:"description"`
+		PassPercentage   *int   `json:"pass_percentage"`
+		ShuffleQuestions *bool  `json:"shuffle_questions"`
+		QuestionMode     string `json:"question_mode"`
+		IsPublic         *bool  `json:"is_public"`
+		GivesCoins       *bool  `json:"gives_coins"`
+		CoinReward       *int   `json:"coin_reward"`
+
+		// Full template replacement
+		Templates []*model.QuestionTemplate `json:"templates"`
+
+		// Manual questions (convenience - replaces all manual templates)
+		ManualQuestions []struct {
+			QuestionText  string   `json:"question_text"`
+			CorrectAnswer string   `json:"correct_answer"`
+			Options       []string `json:"options"`
+			QuestionType  string   `json:"question_type"`
+			Direction     string   `json:"direction"`
+		} `json:"manual_questions"`
+
+		// Auto-generate config (convenience - replaces all auto templates)
+		AutoGenerate *struct {
+			DeckSelections []struct {
+				DeckID     string   `json:"deck_id"`
+				Categories []string `json:"categories"`
+			} `json:"deck_selections"`
+			QuestionTypes []string `json:"question_types"`
+			Directions    []string `json:"directions"`
+			QuestionCount int      `json:"question_count"`
+		} `json:"auto_generate"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	if body.Title != "" {
+		quiz.Title = body.Title
+	}
+	if body.Description != "" {
+		quiz.Description = body.Description
+	}
+	if body.PassPercentage != nil {
+		quiz.PassPercentage = body.PassPercentage
+	}
+	if body.ShuffleQuestions != nil {
+		quiz.ShuffleQuestions = *body.ShuffleQuestions
+	}
+	if body.QuestionMode != "" {
+		quiz.QuestionMode = body.QuestionMode
+	}
+	if body.IsPublic != nil {
+		quiz.IsPublic = *body.IsPublic
+	}
+	if body.GivesCoins != nil {
+		quiz.GivesCoins = *body.GivesCoins
+	}
+	if body.CoinReward != nil {
+		quiz.CoinReward = *body.CoinReward
+	}
+
+	if err := qr.Repos.Quiz.UpdateQuiz(r.Context(), quiz); err != nil {
+		http.Error(w, "Failed to update quiz", http.StatusInternalServerError)
+		return
+	}
+
+	now := utils.CurrentTimestamp()
+
+	// Handle template updates
+	if len(body.ManualQuestions) > 0 {
+		// Replace all templates with a single manual template
+		qr.Repos.QuestionTemplate.DeleteByQuizID(r.Context(), quizID)
+		manualData, _ := json.Marshal(body.ManualQuestions)
+		manualDataStr := string(manualData)
+		tmpl := &model.QuestionTemplate{
+			ID:             utils.GenerateSnowflakeID(),
+			QuizID:         quizID,
+			QuestionTypes:  `["mcq","translate","write_word"]`,
+			Directions:     `["source_to_target","target_to_source"]`,
+			GenerationMode: "manual",
+			ManualData:     &manualDataStr,
+			QuestionCount:  len(body.ManualQuestions),
+			CreatedAt:      now,
+		}
+		qr.Repos.QuestionTemplate.Create(r.Context(), tmpl)
+	} else if body.AutoGenerate != nil {
+		// Replace all templates with auto-generate templates
+		qr.Repos.QuestionTemplate.DeleteByQuizID(r.Context(), quizID)
+		for _, sel := range body.AutoGenerate.DeckSelections {
+			deckID, err := strconv.ParseInt(sel.DeckID, 10, 64)
+			if err != nil {
+				continue
+			}
+			questionTypes, _ := json.Marshal(body.AutoGenerate.QuestionTypes)
+			directions, _ := json.Marshal(body.AutoGenerate.Directions)
+
+			if len(sel.Categories) == 0 {
+				tmpl := &model.QuestionTemplate{
+					ID:             utils.GenerateSnowflakeID(),
+					QuizID:         quizID,
+					DeckID:         &deckID,
+					QuestionTypes:  string(questionTypes),
+					Directions:     string(directions),
+					GenerationMode: "random_from_deck",
+					QuestionCount:  body.AutoGenerate.QuestionCount,
+					CreatedAt:      now,
+				}
+				qr.Repos.QuestionTemplate.Create(r.Context(), tmpl)
+			} else {
+				countPerCat := body.AutoGenerate.QuestionCount / len(sel.Categories)
+				if countPerCat < 1 {
+					countPerCat = 1
+				}
+				for _, catKey := range sel.Categories {
+					cat, err := qr.Repos.Category.GetByKeyAndDeckID(r.Context(), deckID, catKey)
+					if err != nil {
+						continue
+					}
+					tmpl := &model.QuestionTemplate{
+						ID:             utils.GenerateSnowflakeID(),
+						QuizID:         quizID,
+						DeckID:         &deckID,
+						CategoryID:     &cat.ID,
+						QuestionTypes:  string(questionTypes),
+						Directions:     string(directions),
+						GenerationMode: "random_from_deck",
+						QuestionCount:  countPerCat,
+						CreatedAt:      now,
+					}
+					qr.Repos.QuestionTemplate.Create(r.Context(), tmpl)
+				}
+			}
+		}
+	} else if len(body.Templates) > 0 {
+		// Direct template update (raw)
+		for _, tmpl := range body.Templates {
+			qr.Repos.QuestionTemplate.Update(r.Context(), tmpl)
+		}
+	}
+
+	// Return updated quiz with templates
+	templates, _ := qr.Repos.QuestionTemplate.GetByQuizID(r.Context(), quizID)
+	response := map[string]interface{}{
+		"quiz":      quiz,
+		"templates": templates,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// DeleteQuiz soft-deletes a quiz
+func (qr *QuizRouter) DeleteQuiz(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+	quizIDStr := chi.URLParam(r, "quizID")
+	quizID, err := strconv.ParseInt(quizIDStr, 10, 64)
+	if err != nil {
+		http.Error(w, "Invalid quiz ID", http.StatusBadRequest)
+		return
+	}
+
+	quiz, err := qr.Repos.Quiz.GetByID(r.Context(), quizID)
+	if err != nil {
+		http.Error(w, "Quiz not found", http.StatusNotFound)
+		return
+	}
+
+	// Only creator or admin can delete
+	if quiz.CreatedBy != nil && *quiz.CreatedBy != user.ID && !user.IsAdmin {
+		http.Error(w, "Unauthorized", http.StatusForbidden)
+		return
+	}
+
+	if err := qr.Repos.Quiz.DeactivateQuiz(r.Context(), quizID); err != nil {
+		http.Error(w, "Failed to delete quiz", http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusNoContent)
+}
+
+// ============================================================
+// DECK BROWSING
+// ============================================================
+
+// ListDecks returns all available decks with entry counts
+func (qr *QuizRouter) ListDecks(w http.ResponseWriter, r *http.Request) {
 	decks, err := qr.Repos.Deck.GetAll(r.Context())
 	if err != nil {
-		applog.Error("Failed to get decks:", err)
-		api.WriteInternalError(w)
+		http.Error(w, "Failed to get decks", http.StatusInternalServerError)
 		return
 	}
 
-	response := make([]DeckListItem, 0, len(decks))
+	type DeckWithCounts struct {
+		*model.Deck
+		CategoryCount int `json:"category_count"`
+		QuestionCount int `json:"question_count"`
+	}
+
+	result := make([]DeckWithCounts, 0, len(decks))
 	for _, deck := range decks {
-		// Get category count for this deck
-		categories, err := qr.Repos.Category.GetByDeckID(r.Context(), deck.ID)
-		if err != nil {
-			applog.Warn("Failed to get categories for deck %d: %v", deck.ID, err)
-			continue
-		}
-
-		// Get question count for this deck
-		entries, err := qr.Repos.DeckEntry.GetByDeckID(r.Context(), deck.ID)
-		if err != nil {
-			applog.Warn("Failed to get entries for deck %d: %v", deck.ID, err)
-			continue
-		}
-
-		response = append(response, DeckListItem{
-			ID:            deck.ID,
-			DeckKey:       deck.DeckKey,
-			Title:         deck.Title,
-			CategoryCount: len(categories),
+		catCount, _ := qr.Repos.Category.CountByDeckID(r.Context(), deck.ID)
+		// Rough question count estimate
+		entries, _ := qr.Repos.DeckEntry.GetByDeckID(r.Context(), deck.ID)
+		result = append(result, DeckWithCounts{
+			Deck:          deck,
+			CategoryCount: catCount,
 			QuestionCount: len(entries),
 		})
 	}
 
-	api.WriteJSON(w, 200, response)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(result)
 }
 
-func (qr *QuizRouter) HandleGetCategories(w http.ResponseWriter, r *http.Request) {
-	user, ok := utils.UserFromContext(r.Context())
-	if !ok {
-		api.WriteUnauthorized(w)
-		return
-	}
-	_ = user
-
-	deckID, err := strconv.ParseInt(chi.URLParam(r, "deckID"), 10, 64)
+// GetDeckCategories returns categories for a specific deck
+func (qr *QuizRouter) GetDeckCategories(w http.ResponseWriter, r *http.Request) {
+	deckIDStr := chi.URLParam(r, "deckID")
+	deckID, err := strconv.ParseInt(deckIDStr, 10, 64)
 	if err != nil {
-		api.WriteBadRequest(w, "Invalid deck ID")
+		http.Error(w, "Invalid deck ID", http.StatusBadRequest)
 		return
 	}
 
-	// Get categories for the specified deck
 	categories, err := qr.Repos.Category.GetByDeckID(r.Context(), deckID)
 	if err != nil {
-		applog.Error("Failed to get categories for deck %d: %v", deckID, err)
-		api.WriteInternalError(w)
+		http.Error(w, "Failed to get categories", http.StatusInternalServerError)
 		return
 	}
 
-	response := make([]CategoryListItem, 0, len(categories))
-	for _, category := range categories {
-		// Count entries in this category
-		entries, err := qr.Repos.DeckEntry.GetByDeckAndCategoryID(r.Context(), deckID, category.ID)
-		if err != nil {
-			applog.Warn("Failed to get entries for category %d: %v", category.ID, err)
-			continue
-		}
+	// Include entry counts
+	type CategoryWithCount struct {
+		*model.Category
+		QuestionCount int `json:"question_count"`
+	}
 
-		response = append(response, CategoryListItem{
-			ID:            category.ID,
-			CategoryKey:   category.CategoryKey,
-			Title:         category.Title,
-			QuestionCount: len(entries),
+	result := make([]CategoryWithCount, 0, len(categories))
+	for _, cat := range categories {
+		count, _ := qr.Repos.DeckEntry.CountByCategoryID(r.Context(), cat.ID)
+		result = append(result, CategoryWithCount{
+			Category:      cat,
+			QuestionCount: count,
 		})
 	}
 
-	api.WriteJSON(w, 200, response)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(result)
 }
 
-func (qr *QuizRouter) HandleSubmitAnswer(w http.ResponseWriter, r *http.Request) {
-	user, ok := utils.UserFromContext(r.Context())
-	if !ok {
-		api.WriteUnauthorized(w)
+// ============================================================
+// QUESTION PREVIEW
+// ============================================================
+
+// PreviewQuestions generates sample questions for manual review
+func (qr *QuizRouter) PreviewQuestions(w http.ResponseWriter, r *http.Request) {
+	var body struct {
+		DeckSelections []quizsvc.PreviewDeckSelection `json:"deck_selections"`
+		QuestionTypes  []string                       `json:"question_types"`
+		Directions     []string                       `json:"directions"`
+		QuestionCount  int                            `json:"question_count"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
 
-	quizIDStr := chi.URLParam(r, "quizID")
-	quizID, err := strconv.ParseInt(quizIDStr, 10, 64)
+	if body.QuestionCount < 1 {
+		body.QuestionCount = 1
+	}
+	if body.QuestionCount > 50 {
+		body.QuestionCount = 50
+	}
+
+	questions, err := qr.QuizService.PreviewQuestions(r.Context(), body.DeckSelections, body.QuestionTypes, body.Directions, body.QuestionCount)
 	if err != nil {
-		api.WriteBadRequest(w, "Invalid quiz ID")
+		http.Error(w, fmt.Sprintf("Failed to generate preview: %v", err), http.StatusBadRequest)
 		return
 	}
 
-	req, err := api.DecodeJSON[SubmitAnswerRequest](w, r)
-	if err != nil {
-		applog.Error("Failed to decode answer request:", err)
-		return
-	}
-
-	// Get quiz question
-	quizQuestion, err := qr.Repos.QuizQuestion.GetByID(r.Context(), req.QuestionID)
-	if err != nil {
-		applog.Error("Failed to get quiz question:", err)
-		api.WriteNotFound(w, "Question not found")
-		return
-	}
-
-	if quizQuestion.QuizID != quizID {
-		api.WriteBadRequest(w, "Question does not belong to this quiz")
-		return
-	}
-
-	// Check if attempt exists, create if not
-	attempt, err := qr.Repos.QuizAttempt.GetByUserAndQuiz(r.Context(), user.ID, quizID)
-	if err != nil {
-		// Create new attempt
-		attemptID := utils.GenerateSnowflakeID()
-		attempt = &model.QuizAttempt{
-			ID:          attemptID,
-			UserID:      user.ID,
-			QuizID:      quizID,
-			StartedAt:   time.Now().Unix(),
-			CoinsEarned: 0,
-		}
-		if err := qr.Repos.QuizAttempt.Create(r.Context(), attempt); err != nil {
-			applog.Error("Failed to create quiz attempt:", err)
-			api.WriteInternalError(w)
-			return
-		}
-	}
-
-	// Check if answer already exists
-	existingAnswer, err := qr.Repos.UserAnswer.GetByAttemptAndQuestion(r.Context(), attempt.ID, req.QuestionID)
-	if err == nil && existingAnswer != nil {
-		api.WriteBadRequest(w, "Answer already submitted for this question")
-		return
-	}
-
-	// Validate the answer
-	isCorrect := strings.ToLower(strings.TrimSpace(req.Answer)) == strings.ToLower(strings.TrimSpace(quizQuestion.CorrectAnswer))
-
-	// Calculate points (simple: 1 for correct, 0 for incorrect)
-	pointsEarned := 0.0
-	if isCorrect {
-		pointsEarned = 1.0
-	}
-
-	// Create user answer
-	userAnswer := &model.UserAnswer{
-		ID:           utils.GenerateSnowflakeID(),
-		AttemptID:    attempt.ID,
-		QuestionID:   req.QuestionID,
-		UserAnswer:   req.Answer,
-		IsCorrect:    isCorrect,
-		PointsEarned: pointsEarned,
-		AnsweredAt:   time.Now().Unix(),
-	}
-
-	if err := qr.Repos.UserAnswer.Create(r.Context(), userAnswer); err != nil {
-		applog.Error("Failed to create user answer:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	// Calculate progress
-	totalQuestions, err := qr.Repos.QuizQuestion.CountByQuizID(r.Context(), quizID)
-	if err != nil {
-		applog.Error("Failed to count questions:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	answeredCount, err := qr.Repos.UserAnswer.CountByAttemptID(r.Context(), attempt.ID)
-	if err != nil {
-		applog.Error("Failed to count answers:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	correctCount, err := qr.Repos.UserAnswer.CountCorrectByAttemptID(r.Context(), attempt.ID)
-	if err != nil {
-		applog.Error("Failed to count correct answers:", err)
-		api.WriteInternalError(w)
-		return
-	}
-
-	percentage := float64(answeredCount) / float64(totalQuestions) * 100
-	score := float64(correctCount) / float64(totalQuestions) * 100
-
-	response := SubmitAnswerResponse{
-		IsCorrect:     isCorrect,
-		CorrectAnswer: quizQuestion.CorrectAnswer,
-		Progress: QuizProgress{
-			Answered:   answeredCount,
-			Total:      totalQuestions,
-			Percentage: percentage,
-			Correct:    correctCount,
-			Score:      score,
-		},
-	}
-
-	api.WriteJSON(w, 200, response)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(questions)
 }
 
-func (qr *QuizRouter) HandleGetQuizProgress(w http.ResponseWriter, r *http.Request) {
-	user, ok := utils.UserFromContext(r.Context())
-	if !ok {
-		api.WriteUnauthorized(w)
+// ============================================================
+// QUIZ EXECUTION
+// ============================================================
+
+// StartQuiz starts a quiz attempt
+func (qr *QuizRouter) StartQuiz(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+
+	var body struct {
+		QuizID       int64   `json:"quiz_id,string"`
+		CourseID     *string `json:"course_id,omitempty"`
+		NodeID       *string `json:"node_id,omitempty"`
+		AssignmentID *int64  `json:"assignment_id,string,omitempty"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
 
-	quizIDStr := chi.URLParam(r, "quizID")
-	quizID, err := strconv.ParseInt(quizIDStr, 10, 64)
+	attempt, questions, err := qr.QuizService.StartQuiz(r.Context(), user.ID, body.QuizID, body.CourseID, body.NodeID, body.AssignmentID)
 	if err != nil {
-		api.WriteBadRequest(w, "Invalid quiz ID")
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	// Get or create attempt
-	attempt, err := qr.Repos.QuizAttempt.GetByUserAndQuiz(r.Context(), user.ID, quizID)
-	if err != nil {
-		// No attempt yet, return zero progress
-		totalQuestions, err := qr.Repos.QuizQuestion.CountByQuizID(r.Context(), quizID)
-		if err != nil {
-			applog.Error("Failed to count questions:", err)
-			api.WriteInternalError(w)
-			return
+	// Convert questions to safe DTOs (no correct answers)
+	dtos := make([]QuestionDTO, len(questions))
+	for i, q := range questions {
+		var rawOpts []string
+		var optDTOs []OptionDTO
+		if q.Options != "" && q.Options != "null" {
+			json.Unmarshal([]byte(q.Options), &rawOpts)
+			optDTOs = make([]OptionDTO, len(rawOpts))
+			for j, optText := range rawOpts {
+				optDTOs[j] = OptionDTO{
+					ID:         strconv.Itoa(j + 1), // Simple ID based on index
+					OptionText: optText,
+				}
+			}
 		}
-
-		response := QuizProgress{
-			Answered:   0,
-			Total:      totalQuestions,
-			Percentage: 0,
-			Correct:    0,
-			Score:      0,
+		dir := ""
+		if q.Direction != nil {
+			dir = *q.Direction
 		}
-		api.WriteJSON(w, 200, response)
+		dtos[i] = QuestionDTO{
+			ID:           strconv.FormatInt(q.ID, 10),
+			QuestionText: q.QuestionText,
+			QuestionType: q.QuestionType,
+			Direction:    dir,
+			Options:      optDTOs,
+			DisplayOrder: q.DisplayOrder,
+			Points:       1,
+		}
+	}
+
+	// Get previous answers if resuming
+	// Join with attempt_questions to get the correct answer for the feedback display
+	var prevResponses []struct {
+		QuestionID    int64   `db:"question_id"`
+		UserAnswer    string  `db:"user_answer"`
+		IsCorrect     bool    `db:"is_correct"`
+		CorrectAnswer string  `db:"correct_answer"`
+		AIExplanation *string `db:"ai_explanation"`
+		PointsEarned  float64 `db:"points_earned"`
+	}
+	err = qr.Repos.Quiz.GetDB().SelectContext(r.Context(), &prevResponses, `
+		SELECT ua.question_id, ua.user_answer, ua.is_correct, aq.correct_answer, ua.ai_explanation, ua.points_earned
+		FROM user_answers ua
+		JOIN attempt_questions aq ON ua.question_id = aq.id
+		WHERE ua.attempt_id = $1
+		ORDER BY ua.answered_at
+	`, attempt.ID)
+
+	var prevAnswerDTOs []map[string]interface{}
+	if err == nil {
+		for _, a := range prevResponses {
+			dto := map[string]interface{}{
+				"question_id":    strconv.FormatInt(a.QuestionID, 10),
+				"answer":         a.UserAnswer,
+				"is_correct":     a.IsCorrect,
+				"correct_answer": a.CorrectAnswer,
+				"points_earned":  a.PointsEarned,
+			}
+			if a.AIExplanation != nil {
+				dto["ai_explanation"] = *a.AIExplanation
+			}
+			prevAnswerDTOs = append(prevAnswerDTOs, dto)
+		}
+	}
+
+	response := map[string]interface{}{
+		"attempt_id":       strconv.FormatInt(attempt.ID, 10),
+		"quiz_id":          strconv.FormatInt(attempt.QuizID, 10),
+		"questions":        dtos,
+		"previous_answers": prevAnswerDTOs,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// SubmitAnswer submits an answer for a single question
+func (qr *QuizRouter) SubmitAnswer(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+
+	var body struct {
+		AttemptID  int64  `json:"attempt_id,string"`
+		QuestionID int64  `json:"question_id,string"`
+		Answer     string `json:"answer"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
 
-	// Calculate progress
-	totalQuestions, err := qr.Repos.QuizQuestion.CountByQuizID(r.Context(), quizID)
+	answer, needsMoreDetail, err := qr.QuizService.SubmitAnswer(r.Context(), user.ID, body.AttemptID, body.QuestionID, body.Answer)
 	if err != nil {
-		applog.Error("Failed to count questions:", err)
-		api.WriteInternalError(w)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	answeredCount, err := qr.Repos.UserAnswer.CountByAttemptID(r.Context(), attempt.ID)
+	// Get the question for the correct answer
+	question, _ := qr.Repos.AttemptQuestion.GetByID(r.Context(), body.QuestionID)
+
+	response := map[string]interface{}{
+		"is_correct":        answer.IsCorrect,
+		"points_earned":     answer.PointsEarned,
+		"correct_answer":    "",
+		"needs_more_detail": needsMoreDetail,
+	}
+	if question != nil && !needsMoreDetail {
+		// Only reveal the correct answer once the question is actually locked in (not on a warning)
+		response["correct_answer"] = question.CorrectAnswer
+	}
+	if answer.AIExplanation != nil {
+		response["ai_explanation"] = *answer.AIExplanation
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// CompleteQuiz completes a quiz attempt and returns results
+func (qr *QuizRouter) CompleteQuiz(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+
+	var body struct {
+		AttemptID int64 `json:"attempt_id,string"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	result, err := qr.QuizService.CompleteQuiz(r.Context(), user.ID, body.AttemptID)
 	if err != nil {
-		applog.Error("Failed to count answers:", err)
-		api.WriteInternalError(w)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	correctCount, err := qr.Repos.UserAnswer.CountCorrectByAttemptID(r.Context(), attempt.ID)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(result)
+}
+
+// GetAttempt returns details of a completed attempt
+func (qr *QuizRouter) GetAttempt(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+	attemptIDStr := chi.URLParam(r, "attemptID")
+	attemptID, err := strconv.ParseInt(attemptIDStr, 10, 64)
 	if err != nil {
-		applog.Error("Failed to count correct answers:", err)
-		api.WriteInternalError(w)
+		http.Error(w, "Invalid attempt ID", http.StatusBadRequest)
 		return
 	}
 
-	percentage := float64(answeredCount) / float64(totalQuestions) * 100
-	score := float64(correctCount) / float64(totalQuestions) * 100
-
-	response := QuizProgress{
-		Answered:   answeredCount,
-		Total:      totalQuestions,
-		Percentage: percentage,
-		Correct:    correctCount,
-		Score:      score,
+	attempt, err := qr.Repos.QuizAttempt.GetByID(r.Context(), attemptID)
+	if err != nil {
+		http.Error(w, "Attempt not found", http.StatusNotFound)
+		return
+	}
+	if attempt.UserID != user.ID {
+		http.Error(w, "Unauthorized", http.StatusForbidden)
+		return
 	}
 
-	api.WriteJSON(w, 200, response)
+	questions, _ := qr.Repos.AttemptQuestion.GetByAttemptID(r.Context(), attemptID)
+	answers, _ := qr.Repos.UserAnswer.GetByAttemptID(r.Context(), attemptID)
+
+	response := map[string]interface{}{
+		"attempt":   attempt,
+		"questions": questions,
+		"answers":   answers,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// MyHistory returns the user's quiz history
+func (qr *QuizRouter) MyHistory(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+
+	limitStr := r.URL.Query().Get("limit")
+	limit := 20
+	if limitStr != "" {
+		if v, err := strconv.Atoi(limitStr); err == nil && v > 0 {
+			limit = v
+		}
+	}
+
+	attempts, err := qr.Repos.QuizAttempt.GetUserAttempts(r.Context(), user.ID, limit)
+	if err != nil {
+		http.Error(w, "Failed to get history", http.StatusInternalServerError)
+		return
+	}
+
+	// Enrich with quiz titles
+	type AttemptWithTitle struct {
+		*model.QuizAttempt
+		QuizTitle string `json:"quiz_title"`
+	}
+
+	var result []AttemptWithTitle
+	for _, a := range attempts {
+		quizTitle := fmt.Sprintf("Quiz %d", a.QuizID)
+		quiz, err := qr.Repos.Quiz.GetByID(r.Context(), a.QuizID)
+		if err == nil {
+			quizTitle = quiz.Title
+		}
+		result = append(result, AttemptWithTitle{
+			QuizAttempt: a,
+			QuizTitle:   quizTitle,
+		})
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(result)
+}
+
+// CompleteNode marks a generic learning node as completed for the current user.
+func (qr *QuizRouter) CompleteNode(w http.ResponseWriter, r *http.Request) {
+	user, _ := utils.UserFromContext(r.Context())
+
+	var body struct {
+		CourseID string `json:"course_id"`
+		NodeID   string `json:"node_id"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	if err := qr.QuizService.CompleteNode(r.Context(), user.ID, body.CourseID, body.NodeID); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]bool{"success": true})
 }

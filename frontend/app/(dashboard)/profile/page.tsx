@@ -24,52 +24,51 @@ export default function ProfilePage() {
   return (
     <ProtectedRoute>
       <div className="container mx-auto p-4 max-w-2xl">
-        <h1 className="text-3xl font-bold mb-6">Profile</h1>
-        
+        <h1 className="text-3xl font-bold mb-6">Profil</h1>
+
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle>Account Information</CardTitle>
-            <CardDescription>Your account details</CardDescription>
+            <CardTitle>Informations du Compte</CardTitle>
+            <CardDescription>Les détails de votre compte</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <p className="text-sm font-medium text-gray-500">Username</p>
+              <p className="text-sm font-medium text-gray-500">Nom d'utilisateur</p>
               <p className="text-lg">{user?.username}</p>
             </div>
             <div>
               <p className="text-sm font-medium text-gray-500">Email</p>
               <div className="flex items-center gap-2">
-                <p className="text-lg">{user?.email || 'Not provided'}</p>
+                <p className="text-lg">{user?.email || 'Non fourni'}</p>
                 {user?.email && (
-                  <span 
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      user.email_confirmed 
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                  <span
+                    className={`text-xs px-2 py-1 rounded-full ${user.email_confirmed
+                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                         : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                    }`}
+                      }`}
                   >
-                    {user.email_confirmed ? 'Verified' : 'Unverified'}
+                    {user.email_confirmed ? 'Vérifié' : 'Non vérifié'}
                   </span>
                 )}
               </div>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500">Role</p>
-              <p className="text-lg capitalize">{user?.role}</p>
+              <p className="text-sm font-medium text-gray-500">Rôle</p>
+              <p className="text-lg capitalize">{user?.role === 'admin' ? 'Administrateur' : user?.role}</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500">Account Created</p>
+              <p className="text-sm font-medium text-gray-500">Compte Créé le</p>
               <p className="text-lg">
-                {user?.created_at 
-                  ? new Date(user.created_at * 1000).toLocaleDateString()
-                  : 'Unknown'}
+                {user?.created_at
+                  ? new Date(user.created_at * 1000).toLocaleDateString('fr-FR')
+                  : 'Inconnu'}
               </p>
             </div>
           </CardContent>
           <CardFooter>
             <Link href="/settings" className="w-full">
               <Button variant="outline" className="w-full">
-                Edit Profile
+                Modifier le Profil
               </Button>
             </Link>
           </CardFooter>
@@ -78,29 +77,29 @@ export default function ProfilePage() {
         <Card>
           <CardHeader>
             <CardTitle>Sessions</CardTitle>
-            <CardDescription>Manage your active sessions</CardDescription>
+            <CardDescription>Gérez vos sessions actives</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-gray-600">
-              You can log out from this device or all devices where you're currently logged in.
+              Vous pouvez vous déconnecter de cet appareil ou de tous les appareils où vous êtes actuellement connecté.
             </p>
           </CardContent>
           <CardFooter className="flex gap-4">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={handleLogout}
               disabled={isLoading}
               className="flex-1"
             >
-              Logout This Device
+              Déconnexion de cet appareil
             </Button>
-            <Button 
-              variant="destructive" 
+            <Button
+              variant="destructive"
               onClick={handleLogoutAll}
               disabled={isLoading}
               className="flex-1"
             >
-              Logout All Devices
+              Déconnexion de tous les appareils
             </Button>
           </CardFooter>
         </Card>

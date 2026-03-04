@@ -9,7 +9,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function ResetPasswordPage() {
+import { Suspense } from 'react';
+
+function ResetPasswordContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [token, setToken] = useState('');
@@ -25,7 +27,7 @@ export default function ResetPasswordPage() {
     if (tokenParam) {
       setToken(tokenParam);
     } else {
-      setError('Invalid or missing reset token');
+      setError('Jeton de réinitialisation invalide ou manquant');
     }
   }, [searchParams]);
 
@@ -36,19 +38,19 @@ export default function ResetPasswordPage() {
     setIsLoading(true);
 
     if (password.length < 8) {
-      setValidationError('Password must be at least 8 characters');
+      setValidationError('Le mot de passe doit contenir au moins 8 caractères');
       setIsLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
-      setValidationError('Passwords do not match');
+      setValidationError('Les mots de passe ne correspondent pas');
       setIsLoading(false);
       return;
     }
 
     if (!token) {
-      setError('Invalid or missing reset token');
+      setError('Jeton de réinitialisation invalide ou manquant');
       setIsLoading(false);
       return;
     }
@@ -60,7 +62,7 @@ export default function ResetPasswordPage() {
         router.push('/login');
       }, 3000);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to reset password');
+      setError(err.response?.data?.message || 'Échec de la réinitialisation du mot de passe');
     } finally {
       setIsLoading(false);
     }
@@ -71,20 +73,20 @@ export default function ResetPasswordPage() {
       <div className="flex items-center justify-center min-h-screen p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle>Password Reset Successful</CardTitle>
+            <CardTitle>Réinitialisation Réussie</CardTitle>
             <CardDescription>
-              Your password has been changed
+              Votre mot de passe a été changé
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-gray-600">
-              Redirecting to login page...
+              Redirection vers la page de connexion...
             </p>
           </CardContent>
           <CardFooter>
             <Link href="/login" className="w-full">
               <Button className="w-full">
-                Go to Login
+                Aller à la Connexion
               </Button>
             </Link>
           </CardFooter>
@@ -97,9 +99,9 @@ export default function ResetPasswordPage() {
     <div className="flex items-center justify-center min-h-screen p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Reset Password</CardTitle>
+          <CardTitle>Réinitialiser le Mot de Passe</CardTitle>
           <CardDescription>
-            Enter your new password
+            Entrez votre nouveau mot de passe
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
@@ -110,7 +112,7 @@ export default function ResetPasswordPage() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="password">New Password</Label>
+              <Label htmlFor="password">Nouveau Mot de Passe</Label>
               <Input
                 id="password"
                 type="password"
@@ -122,11 +124,11 @@ export default function ResetPasswordPage() {
                 minLength={8}
               />
               <p className="text-xs text-gray-500">
-                At least 8 characters
+                Au moins 8 caractères
               </p>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm New Password</Label>
+              <Label htmlFor="confirmPassword">Confirmez le Nouveau Mot de Passe</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -140,19 +142,40 @@ export default function ResetPasswordPage() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full"
               disabled={isLoading || !token}
             >
-              {isLoading ? 'Resetting...' : 'Reset Password'}
+              {isLoading ? 'Réinitialisation...' : 'Réinitialiser le Mot de Passe'}
             </Button>
             <Link href="/login" className="text-sm text-center text-blue-600 hover:underline">
-              Back to Login
+              Retour à la Connexion
             </Link>
           </CardFooter>
         </form>
       </Card>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-screen p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Loading...</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    }>
+      <ResetPasswordContent />
+    </Suspense>
   );
 }

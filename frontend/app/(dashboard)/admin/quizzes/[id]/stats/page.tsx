@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { getQuizDetail } from '@/lib/api/quiz';
+import { quizApi } from '@/lib/api/quiz';
 import type { Quiz } from '@/lib/types/quiz';
 
 export default function QuizStatsPage() {
@@ -23,7 +23,7 @@ export default function QuizStatsPage() {
   const loadQuizStats = async () => {
     try {
       setLoading(true);
-      const data = await getQuizDetail(quizId);
+      const data = await quizApi.getQuiz(quizId);
       setQuiz(data);
     } catch (err: any) {
       setError(err.response?.data?.error || 'Failed to load quiz statistics');

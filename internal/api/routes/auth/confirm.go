@@ -58,7 +58,7 @@ func (ar *AuthRouter) HandleConfirmEmail(w http.ResponseWriter, r *http.Request)
 	expiry := user.EmailConfirmIssuedAt + config.App.EmailConfirmExpiry
 	if expiry < time.Now().UTC().Unix() {
 		applog.Warn("Expired confirmation token", "userID:", user.ID)
-		http.Error(w, "expired token, please request a new one", http.StatusUnauthorized)
+		http.Error(w, "jeton expiré, veuillez en demander un nouveau", http.StatusUnauthorized)
 		return
 	}
 
@@ -102,12 +102,12 @@ func (ar *AuthRouter) HandleResendConfirmation(w http.ResponseWriter, r *http.Re
 
 	if user.EmailConfirmed {
 		applog.Warn("Email already confirmed for resend", "userID:", user.ID)
-		http.Error(w, "email already confirmed", http.StatusBadRequest)
+		http.Error(w, "email déjà confirmé", http.StatusBadRequest)
 		return
 	}
 
 	expiryStr := utils.ExpiryToString(24 * 3600)
-	token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Email confirmation", req.Url, map[string]any{"Expiry": expiryStr, "Url": req.Url})
+	token, err := GenerateTokenAndSendEmail(user.Email, "confirmregister", "Confirmation d'email", req.Url, map[string]any{"Expiry": expiryStr, "Url": req.Url})
 	if err != nil {
 		applog.Error("Failed to send confirmation email:", err)
 		api.WriteInternalError(w)
@@ -124,5 +124,5 @@ func (ar *AuthRouter) HandleResendConfirmation(w http.ResponseWriter, r *http.Re
 	}
 
 	applog.Info("Confirmation email resent", "userID:", user.ID, "email:", user.Email)
-	api.WriteMessage(w, 200, "message", "confirmation email resent")
+	api.WriteMessage(w, 200, "message", "email de confirmation renvoyé")
 }

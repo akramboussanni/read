@@ -1,0 +1,1342 @@
+{
+  "template_version": 2,
+  "course": {
+    "title": "80% des Mots du Qour'ân",
+    "description": "Maîtrisez les 80% des mots les plus fréquents du Coran avec des leçons interactives et des quiz progressifs.",
+    "icon": "book-open",
+    "color": "#6C5CE7",
+    "is_default": true,
+    "deck_key": "80%_des_mots_du_qour'ân_-_part_2"
+  },
+  "groups": [
+    {
+      "name": "Les Pronoms",
+      "categories": [
+        "pronouns_suffixes",
+        "pronouns_detached"
+      ],
+      "reference": {
+        "title": "Les Pronoms",
+        "content": [
+          {
+            "type": "text",
+            "content": "Tu récites **إِيَّاكَ نَعْبُدُ** dans la Fatiha au moins 17 fois par jour. Mais as-tu déjà regardé la fin du mot إِيَّاكَ ? Ce petit son **كَ** collé à la fin — c'est un pronom. Il veut dire 'Toi'. Sans lui, la phrase ne s'adresserait à personne. Avec lui, toute la phrase se tourne directement vers Allah. **C'était déjà de la grammaire** — tu le faisais sans le savoir."
+          },
+          {
+            "type": "text",
+            "content": "En arabe, on a deux familles de pronoms. Les **pronoms détachés** s'écrivent seuls (هُوَ, أَنَا, نَحْنُ) — comme en français. Et les **pronoms suffixes** se collent directement au mot (كَ = Toi, هُ = Son, نَا = Notre). Ces deuxièmes sont hyper-pratiques : en une seule lettre ou deux, tu changes tout le sens du mot."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "هُوَ",
+                "french": "Il",
+                "tip": "Pronom détaché — le plus fréquent du Coran"
+              },
+              {
+                "arabic": "هِيَ",
+                "french": "Elle",
+                "tip": "3ème pers. fém. sg."
+              },
+              {
+                "arabic": "هُمْ",
+                "french": "Ils",
+                "tip": "3ème pers. masc. pl."
+              },
+              {
+                "arabic": "أَنَا",
+                "french": "Je",
+                "tip": "1ère pers. sg."
+              },
+              {
+                "arabic": "نَحْنُ",
+                "french": "Nous",
+                "tip": "Allah l'utilise pour Sa majesté : نَحْنُ نَزَّلْنَا = C'est Nous qui avons révélé"
+              },
+              {
+                "arabic": "هُ",
+                "french": "Son / le / lui (masc.)",
+                "tip": "Pronom suffixe — كِتَابُهُ = Son livre"
+              },
+              {
+                "arabic": "كَ",
+                "french": "Ton / te (masc.)",
+                "tip": "إِيَّاكَ = Toi — tu le dis dans la Fatiha !"
+              },
+              {
+                "arabic": "نَا",
+                "french": "Notre / nous",
+                "tip": "رَبَّنَا = Notre Seigneur — tu le dis dans chaque du'a"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Tu vois رَبَّنَا dans tes invocations ? Ce نَا à la fin, c'est 'notre'. رَبّ = Seigneur, + نَا = notre → رَبَّنَا = Notre Seigneur. Une seule syllabe supplémentaire, et soudain on ne prie plus seul — on prie *ensemble*, au nom de toute la communauté. C'est la magie des pronoms suffixes."
+          },
+          {
+            "type": "quran",
+            "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+            "translation": "Dis : Lui est Allah, l'Unique",
+            "highlight": "هُوَ",
+            "source": "Al-Ikhlâs, 112:1",
+            "context": "Tu connais Al-Ikhlâs par cœur — on la récite après la Fatiha. Regarde le premier mot après قُلْ (Dis) : هُوَ. C'est 'Lui'. Allah parle de Lui-même dès la première syllabe. Parfois une sourate entière tient dans un pronom."
+          },
+          {
+            "type": "text",
+            "content": "هُوَ ouvre Al-Ikhlâs. نَحْنُ ouvre de nombreux versets de révélation. أَنَا est rare dans la bouche d'Allah — Il dit plutôt نَحْنُ par majesté. Commence à remarquer ces pronoms dans tes récitations, et le Coran te parlera différemment."
+          },
+          {
+            "type": "quiz",
+            "question": "رَبَّنَا veut dire ?",
+            "options": [
+              "Mon Seigneur",
+              "Ton Seigneur",
+              "Notre Seigneur",
+              "Le Seigneur"
+            ],
+            "answer": 2,
+            "explanation": "رَبَّنَا = رَبّ (Seigneur) + نَا (notre). Ce pronom suffixe pluriel transforme une invocation personnelle en prière collective. C'est pour ça que nos du'as commencent souvent par رَبَّنَا — on prie au nom de toute la umma."
+          },
+          {
+            "type": "tip",
+            "title": "Astuce : هُ, هَا, هُمْ — tous commencent par هَ",
+            "content": "Tous les pronoms de la 3ème personne commencent par la lettre هَ : هُوَ (il), هِيَ (elle), هُمْ (ils), هُنَّ (elles), هُمَا (eux deux). C'est la lettre 'h' qui les identifie — comme un code secret qui te dit 'ici on parle de quelqu'un d'absent'."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Particules Grammaticales",
+      "categories": [
+        "interrogative_particles",
+        "ownership_relation",
+        "time_conjunctions"
+      ],
+      "reference": {
+        "title": "Particules Grammaticales",
+        "content": [
+          {
+            "type": "text",
+            "content": "Imagine que tu dois décrire le lien qui unit tous les croyants. Tu pourrais dire 'les croyants sont des frères'. Bien. Maintenant ajoute un seul mot : **إِنَّمَا** الْمُؤْمِنُونَ إِخْوَةٌ. Soudain ça devient : 'les croyants ne sont QUE des frères.' Cette nuance – l'idée que leur fraternité n'est pas un détail mais leur définition absolue – tient dans un seul mot de 5 lettres. Voilà ce que les particules font au Coran."
+          },
+          {
+            "type": "text",
+            "content": "Les particules (حُرُوف) sont les petits mots invariables qui **structurent** chaque phrase : elles posent des questions (كَيْفَ = comment ?), situent dans le temps (لَمَّا = lorsque), expriment la possession (عِنْدَ = chez/auprès), restreignent (إِنَّمَا = seulement). Elles ne changent jamais de forme — une fois mémorisées, elles le restent."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "مَا",
+                "french": "Quoi ? / Ce qui / Ne pas",
+                "tip": "3 sens selon contexte — le caméléon du Coran"
+              },
+              {
+                "arabic": "كَيْفَ",
+                "french": "Comment ?",
+                "tip": "كَيْفَ حَالُكَ = Comment vas-tu ?"
+              },
+              {
+                "arabic": "لِمَاذَا",
+                "french": "Pourquoi ?",
+                "tip": "Question de cause"
+              },
+              {
+                "arabic": "لَمَّا",
+                "french": "Lorsque / quand",
+                "tip": "Conjonction temporelle dans les récits du Coran"
+              },
+              {
+                "arabic": "حَتَّى",
+                "french": "Jusqu'à ce que / afin que",
+                "tip": "حَتَّى يَأْتِيَ الْفَجْرُ = jusqu'à ce que vienne l'aurore"
+              },
+              {
+                "arabic": "عِنْدَ",
+                "french": "Chez / auprès de / quand",
+                "tip": "عِنْدَ اللَّهِ = auprès d'Allah — c'est là que ta récompense est gardée"
+              },
+              {
+                "arabic": "إِنَّمَا",
+                "french": "Seulement / ne... que",
+                "tip": "Restriction absolue — transforme une phrase en définition"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**عِنْدَ اللَّهِ** revient des dizaines de fois dans le Coran. 'Auprès d'Allah'. Pas 'avec Allah', pas 'pour Allah' — *auprès* de Lui. Cette préposition crée une image : tes bonnes actions, tes prières, ta patience — tout ça est gardé, stocké, en dépôt auprès d'Allah. Rien n'est perdu."
+          },
+          {
+            "type": "quran",
+            "arabic": "إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ",
+            "translation": "Les croyants ne sont que des frères",
+            "highlight": "إِنَّمَا",
+            "source": "Al-Hujurât, 49:10",
+            "context": "Sourate Al-Hujurât — la sourate des bonnes manières. Allah ne dit pas 'les croyants *sont* frères' mais 'ils ne sont *que* frères'. Cette restriction par إِنَّمَا dit que la fraternité n'est pas un bonus de leur foi — c'est leur nature même."
+          },
+          {
+            "type": "text",
+            "content": "Maintenant que tu connais إِنَّمَا, tu vas le repérer partout. إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ — 'Les actes ne valent que par leurs intentions.' Encore إِنَّمَا. Encore une restriction absolue. Un seul mot qui change tout."
+          },
+          {
+            "type": "tip",
+            "title": "مَا — 3 visages, 1 mot",
+            "content": "مَا peut être : (1) interrogatif → مَا هَذَا ؟ = Qu'est-ce que c'est ? (2) relatif → مَا شَاءَ اللَّهُ = ce qu'Allah a voulu (3) négatif → مَا قَالَ = Il n'a pas dit. Le contexte te guide toujours. Avec la pratique, tu le sentiras instantanément."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Prépositions",
+      "categories": [
+        "prepositions_of_place_time",
+        "prepositions_ma",
+        "general_prepositions"
+      ],
+      "reference": {
+        "title": "Les Prépositions",
+        "content": [
+          {
+            "type": "text",
+            "content": "Avant de manger, tu dis **بِسْمِ اللَّهِ**. Avant de partir, بِسْمِ اللَّهِ. Avant de lire, بِسْمِ اللَّهِ. Tu l'as dit des milliers de fois dans ta vie. Mais est-ce que tu as déjà regardé la première lettre ? **بِ** — juste un bâ avec une kasra. C'est une préposition. Elle veut dire 'au nom de', 'par', 'avec'. Cette minuscule lettre, c'est toute la basmala qui commence par elle. C'est ta première préposition arabe — et tu la connaissais déjà."
+          },
+          {
+            "type": "text",
+            "content": "Les prépositions arabes (حُرُوف الجَرّ) gouvernent le mot suivant — elles le 'tirent' vers la forme genitive. C'est pour ça qu'on dit حُرُوف الجَرّ (lettres du tirage). Elles indiquent : le lieu (فِي = dans), l'origine (مِنْ = de), la direction (إِلَى = vers), l'instrument (بِ = par/avec), la position (عَلَى = sur). Ces 5-6 prépositions couvrent déjà une grande partie du Coran."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "بِ",
+                "french": "Par / avec / au nom de",
+                "tip": "بِسْمِ اللَّهِ — LA préposition que tu connais le mieux !"
+              },
+              {
+                "arabic": "فِي",
+                "french": "Dans / en",
+                "tip": "La plus fréquente du Coran — فِي سَبِيلِ اللَّهِ = dans le chemin d'Allah"
+              },
+              {
+                "arabic": "مِنْ",
+                "french": "De / depuis / parmi",
+                "tip": "مِنَ اللَّهِ = venant d'Allah — origine divine"
+              },
+              {
+                "arabic": "إِلَى",
+                "french": "Vers / jusqu'à",
+                "tip": "إِلَى اللَّهِ تُرْجَعُونَ = vers Allah vous serez ramenés"
+              },
+              {
+                "arabic": "عَلَى",
+                "french": "Sur / contre / à propos de",
+                "tip": "عَلَى كُلِّ شَيْءٍ قَدِيرٌ = sur toute chose capable"
+              },
+              {
+                "arabic": "مَعَ",
+                "french": "Avec",
+                "tip": "إِنَّ اللَّهَ مَعَنَا = certes Allah est avec nous !"
+              },
+              {
+                "arabic": "عَنْ",
+                "french": "De / à propos de / loin de",
+                "tip": "اللَّهُ عَنْهُمْ = Allah est satisfait d'eux (عَفَا عَنْ)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "إِلَى اللَّهِ الْمَصِيرُ — 'Vers Allah est le retour.' Trois mots. La préposition إِلَى crée une image forte : toute la vie est un voyage *vers* quelque chose. Le Coran utilise constamment إِلَى pour rappeler que nous ne faisons que passer — et que la destination est déjà fixée."
+          },
+          {
+            "type": "quran",
+            "arabic": "وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا",
+            "translation": "Cramponnez-vous tous ensemble au câble d'Allah",
+            "highlight": "بِ",
+            "source": "Âl-Imrân, 3:103",
+            "context": "Regarde la force de بِ ici. Allah ne dit pas 'prenez le câble d'Allah' — Il dit 'cramponnez-vous *au* câble d'Allah'. Ce بِ crée l'image d'une prise ferme, viscérale. La préposition transforme l'acte de tenir en acte de survie."
+          },
+          {
+            "type": "text",
+            "content": "Le 'câble d'Allah' (حَبْلُ اللَّهِ) dans ce verset, les savants disent que c'est le Coran lui-même. Et on nous demande de nous y accrocher — بِحَبْلِ اللَّهِ — ensemble, tous, جَمِيعًا. La préposition situe l'action, mais le sens spirituel va bien au-delà de la grammaire."
+          },
+          {
+            "type": "tip",
+            "title": "Mémo rapide : les 3 incontournables",
+            "content": "Si tu ne devais retenir que 3 prépositions pour démarrer : **بِ** (par/avec), **فِي** (dans), **مِنْ** (de). Elles couvrent à elles seules des centaines de versets. Commence par là, le reste viendra naturellement."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Préfixes & Particules",
+      "categories": [
+        "prefixes_particles_i",
+        "prefixes_particles_ii"
+      ],
+      "reference": {
+        "title": "Préfixes & Particules",
+        "content": [
+          {
+            "type": "text",
+            "content": "Il y a une lettre dans le Coran qui apparaît des **dizaines de milliers de fois**. Une seule lettre. **وَ**. Elle veut juste dire 'et'. Simple ? Oui — mais regarde ce qu'elle fait : وَالشَّمْسِ (Par le soleil), وَالْفَجْرِ (Par l'aurore), وَالْعَصْرِ (Par le temps). Attachée à un nom au début d'une sourate, elle devient un serment. Collée à une phrase, elle relie deux idées. Ce petit وَ structure tout le Coran."
+          },
+          {
+            "type": "text",
+            "content": "Les préfixes arabes sont des lettres ou petits mots qu'on **colle au début** d'un mot pour en changer le sens ou la fonction. سَ + verbe = futur (سَيَعْلَمُونَ = ils sauront bientôt). لَ + verbe = emphase (لَأَفْعَلَنَّ = j'aurai certainement fait). فَ + phrase = conséquence (فَادْعُوهُ = alors invoquez-Le). Maîtriser ces préfixes, c'est multiplier par 3 ta compréhension sans apprendre plus de vocabulaire."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "وَ",
+                "french": "Et / Par (serment)",
+                "tip": "La lettre la plus fréquente du Coran — وَاللَّهِ = Par Allah"
+              },
+              {
+                "arabic": "فَ",
+                "french": "Alors / donc",
+                "tip": "Conséquence — فَادْعُوهُ = alors invoquez-Le"
+              },
+              {
+                "arabic": "سَ",
+                "french": "Il va... (futur proche)",
+                "tip": "سَيَعْلَمُونَ = ils sauront bientôt (menace ou promesse)"
+              },
+              {
+                "arabic": "لَا",
+                "french": "Non / ne pas",
+                "tip": "لَا إِلَهَ إِلَّا اللَّهُ — tu le connais par cœur !"
+              },
+              {
+                "arabic": "إِنَّ",
+                "french": "Certes / en vérité",
+                "tip": "Emphase forte — إِنَّ اللَّهَ = Certes, Allah... (ce qui suit est important)"
+              },
+              {
+                "arabic": "لَ",
+                "french": "Vraiment / assurément (emphase)",
+                "tip": "لَقَدْ = Certes, vraiment — lam d'emphase"
+              },
+              {
+                "arabic": "أَ",
+                "french": "Est-ce que ?",
+                "tip": "Préfixe interrogatif — أَلَمْ تَرَ = n'as-tu pas vu ?"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**لَا إِلَهَ إِلَّا اللَّهُ** — analyse rapide. لَا = négation (pas de). إِلَه = divinité. إِلَّا = sauf/excepté. اللَّهُ = Allah. La shahada tient en 4 mots dont deux particules (لَا et إِلَّا). Sans ces deux particules grammaticales, il n'y a plus de shahada. Voilà leur importance."
+          },
+          {
+            "type": "quran",
+            "arabic": "فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ",
+            "translation": "Alors, lequel des bienfaits de votre Seigneur nierez-vous ?",
+            "highlight": "فَ",
+            "source": "Ar-Rahmân, 55:13",
+            "context": "Cette phrase revient 31 fois dans la Sourate Ar-Rahmân — tu l'as peut-être déjà entendue en récitation. À chaque fois, Allah vient de mentionner un bienfait, puis ce فَ (alors) retourne la parole et interpelle directement. C'est comme un professeur qui dit : 'alors, tu comprends ?' Sauf qu'ici c'est Allah qui pose la question."
+          },
+          {
+            "type": "text",
+            "content": "Le فَ de conséquence n'est pas que grammatical — c'est rhétorique. Il crée un rythme, une cadence. Dans cette sourate, il transforme une liste de bienfaits en dialogue entre Allah et Sa création. **Lis la sourate Ar-Rahmân** et compte les فَ — tu ne l'écouteras plus pareil après ça."
+          },
+          {
+            "type": "tip",
+            "title": "سَ vs سَوْفَ — futur proche vs futur lointain",
+            "content": "Les deux indiquent le futur mais avec une nuance : سَ (attaché au verbe) = futur proche, imminent. سَوْفَ (séparé) = futur plus lointain, incertain. Quand Allah dit سَيَعْلَمُونَ = 'ils sauront bientôt', c'est une promesse ferme et imminente."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Noms d'Allah — I",
+      "categories": [
+        "names_of_allah_attributes_i",
+        "names_of_allah_attributes_ii"
+      ],
+      "reference": {
+        "title": "Les Noms d'Allah (I)",
+        "content": [
+          {
+            "type": "text",
+            "content": "As-tu déjà réfléchi à ce fait : la Basmala dit **الرَّحْمَٰنِ الرَّحِيمِ** deux fois de suite ? Deux noms, côte à côte, qui viennent de la même racine ر-ح-م. Ce n'est pas un doublon. Ce sont deux *types* de miséricorde différents. Allah a tenu à Se présenter dès la première ligne du Coran — non pas par Sa puissance, non pas par Sa grandeur absolue — mais par Sa miséricorde. Deux fois. Ça dit quelque chose de profond sur Qui Il est."
+          },
+          {
+            "type": "text",
+            "content": "الرَّحْمَٰنُ — miséricorde universelle, immense, qui touche toute la création en ce moment même : la pluie qui tombe, l'air que tu respires, la vue que tu as. الرَّحِيمُ — miséricorde douce et durable, réservée aux croyants dans l'au-delà. L'une est large comme le ciel, l'autre est proche comme une main tendue."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "الرَّحْمَٰنُ",
+                "french": "Le Tout-Miséricordieux",
+                "tip": "Miséricorde universelle — englobe toute la création, croyant ou non"
+              },
+              {
+                "arabic": "الرَّحِيمُ",
+                "french": "Le Très-Miséricordieux",
+                "tip": "Miséricorde profonde et durable, pour les croyants dans l'au-delà"
+              },
+              {
+                "arabic": "الْعَلِيمُ",
+                "french": "L'Omniscient",
+                "tip": "Il sait ce que tu ressens là, maintenant, même sans l'avoir dit"
+              },
+              {
+                "arabic": "الْقَدِيرُ",
+                "french": "L'Omnipotent",
+                "tip": "عَلَى كُلِّ شَيْءٍ قَدِيرٌ — 'sur toute chose', sans exception"
+              },
+              {
+                "arabic": "الْحَكِيمُ",
+                "french": "Le Sage",
+                "tip": "Même ce qu'Il fait et qu'on ne comprend pas est parfaitement sage"
+              },
+              {
+                "arabic": "السَّمِيعُ",
+                "french": "L'Audient",
+                "tip": "Il entend chaque du'a — même chuchoté, même silencieux dans le cœur"
+              },
+              {
+                "arabic": "الْبَصِيرُ",
+                "french": "Le Clairvoyant",
+                "tip": "Souvent avec السَّمِيعُ dans le Coran — Il entend ET voit tout"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**الْعَلِيمُ** — Il sait. Mais pas comme nous savons. Il sait ce que tu penses en ce moment. Il sait ce que tu diras dans 10 ans. Il sait ce qui se passe au fond de la mer et dans les galaxies les plus lointaines. Et **الْقَدِيرُ** — Il peut. Sur toute chose. Ces deux noms ensemble, عَلِيمٌ قَدِيرٌ, reviennent des dizaines de fois dans le Coran. Il sait ET il peut. C'est la combinaison la plus rassurante qui soit."
+          },
+          {
+            "type": "quran",
+            "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+            "translation": "Au nom d'Allah, le Tout-Miséricordieux, le Très-Miséricordieux",
+            "highlight": "الرَّحْمَٰنِ الرَّحِيمِ",
+            "source": "Al-Fâtiha, 1:1 — aussi au début de 113 sourates sur 114",
+            "context": "Peut-être la phrase que tu récites le plus dans ta vie. 113 sourates sur 114 commencent par elle. Chaque fois que tu mange, que tu étudies, que tu conduis — بِسْمِ اللَّهِ. Allah a voulu que Sa miséricorde accompagne chacun de nos actes quotidiens."
+          },
+          {
+            "type": "text",
+            "content": "Il y a une belle histoire sur السَّمِيعُ : un compagnon demandait à voix très basse dans le fond de la mosquée et craignait de ne pas être entendu. Allah révéla : قَدْ سَمِعَ اللَّهُ — 'Allah a entendu.' (Al-Mujadala 58:1). Elle n'avait pas besoin de crier. Allah entend ce qu'on chuchote. Il entend ce qu'on ne dit même pas."
+          },
+          {
+            "type": "tip",
+            "title": "Racine ر-ح-م — toute une famille",
+            "content": "De ر-ح-م viennent : الرَّحْمَٰنُ, الرَّحِيمُ, رَحِمَ (avoir pitié), الرَّحِمُ (l'utérus — lien maternel), رَحْمَة (miséricorde, grâce). La miséricorde divine est comparée à l'amour d'une mère pour son enfant — les hadîths le disent explicitement. C'est l'image la plus forte qu'on puisse imaginer."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Noms d'Allah — II",
+      "categories": [
+        "names_of_allah_attributes_iii",
+        "superlatives",
+        "blessings_authority"
+      ],
+      "reference": {
+        "title": "Les Noms d'Allah (II) & Superlatifs",
+        "content": [
+          {
+            "type": "text",
+            "content": "**اللَّهُ أَكْبَرُ** — tu le dis au moins **94 fois** dans tes 5 prières quotidiennes. Mais as-tu analysé le mot أَكْبَرُ ? Ce n'est pas 'grand' (كَبِيرٌ). C'est **'le plus grand'** — un superlatif. Schème أَفْعَل. Allah ne dit pas simplement 'Je suis grand' — Il dit 'Je suis plus grand que tout ce que tu pourrais imaginer'. Et tu proclames ça 94 fois par jour. Maintenant que tu connais ce schème, tu vas le voir partout."
+          },
+          {
+            "type": "text",
+            "content": "Le schème **أَفْعَل** crée le superlatif: كَبِيرٌ (grand) → أَكْبَرُ (le plus grand). قَرِيبٌ (proche) → أَقْرَبُ (le plus proche). Appliqué à Allah, ces superlatifs expriment Sa perfection absolue — non pas 'très puissant' mais 'le plus puissant qui soit'. Pas de comparaison possible. Pas de rivalité. Absolu."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "أَكْبَرُ",
+                "french": "Le plus grand",
+                "tip": "اللَّهُ أَكْبَرُ — 94x par jour dans tes prières !!"
+              },
+              {
+                "arabic": "الْعَظِيمُ",
+                "french": "L'Immense",
+                "tip": "سُبْحَانَ رَبِّيَ الْعَظِيمِ — tu le dis dans la ruku' !"
+              },
+              {
+                "arabic": "الْعَزِيزُ",
+                "french": "Le Tout-Puissant / Glorieux",
+                "tip": "Celui qui ne peut être vaincu ni dominé. Gloire à Lui."
+              },
+              {
+                "arabic": "الْغَفُورُ",
+                "french": "Le Très-Pardonneur",
+                "tip": "+90x dans le Coran, souvent après une faute décrite — l'espoir est toujours là"
+              },
+              {
+                "arabic": "الْمَلِكُ",
+                "french": "Le Roi / Souverain",
+                "tip": "مَالِكِ يَوْمِ الدِّينِ — tu le récites dans la Fatiha !"
+              },
+              {
+                "arabic": "الْقَيُّومُ",
+                "french": "Le Subsistant par Lui-même",
+                "tip": "Ayat al-Kursi : الْحَيُّ الْقَيُّومُ — Il ne dort jamais, ne se fatigue jamais"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "الْغَفُورُ — 'le Très-Pardonneur'. Ce nom revient plus de 90 fois dans le Coran, et presque toujours après qu'Allah a décrit une faute, une faiblesse humaine, un moment de doute. C'est un message : peu importe ce que tu as fait, l'espoir existe. الْغَفُورُ الرَّحِيمُ — le Pardonneur, l'Aimant. Ces deux noms ensemble ferment tant de versets comme une accolade douce après un rappel sévère."
+          },
+          {
+            "type": "quran",
+            "arabic": "وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَى فَادْعُوهُ بِهَا",
+            "translation": "À Allah appartiennent les plus beaux noms : invoquez-Le par eux",
+            "highlight": "الْأَسْمَاءُ الْحُسْنَى",
+            "source": "Al-A'râf, 7:180",
+            "context": "Allah nous dit Lui-même : utilisez Mes noms pour M'appeler. Tu as peur ? يَا حَفِيظُ (Ô Gardien). Tu cherches du travail ? يَا رَزَّاقُ (Ô Pourvoyeur). Tu es perdu ? يَا هَادِي (Ô Guide). Les 99 noms sont 99 façons d'appeler Allah selon ce que tu traverses."
+          },
+          {
+            "type": "text",
+            "content": "Il y a une pratique belle et simple : chaque matin ou chaque soir, apprends un nouveau nom d'Allah. Médite son sens. Cherche-le dans un verset du Coran. En 99 jours, tu auras une relation différente avec chacune des facettes de Qui Il est."
+          },
+          {
+            "type": "tip",
+            "title": "Repère le schème أَفْعَل partout",
+            "content": "Maintenant que tu le connais : أَكْبَرُ (plus grand), أَعْظَمُ (plus immense), أَقْرَبُ (plus proche), أَحْسَنُ (plus beau). Dès que tu vois une forme qui commence par أَ et se termine par des voyelles courtes, demande-toi : superlatif de quoi ?"
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Création & Vie ici-bas",
+      "categories": [
+        "creation_signs",
+        "world_life"
+      ],
+      "reference": {
+        "title": "La Création & la Vie ici-bas",
+        "content": [
+          {
+            "type": "text",
+            "content": "**وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ** — 'Nous avons fait de l'eau toute chose vivante.' Ce verset a été révélé il y a 1400 ans. La biologie moderne l'a confirmé : toute cellule vivante est fondée sur l'eau. Le mot **آيَة** désigne à la fois un verset du Coran et un signe de la Création — ce n'est pas un hasard. Le ciel, l'eau, les étoiles sont des 'versets' qu'on peut lire dans le grand livre de l'univers."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "السَّمَوَاتُ",
+                "french": "Les cieux",
+                "tip": "Toujours au pluriel — 7 cieux selon la tradition"
+              },
+              {
+                "arabic": "الْأَرْضُ",
+                "french": "La terre",
+                "tip": "Souvent opposée aux cieux : السَّمَاوَاتِ وَالْأَرْضَ"
+              },
+              {
+                "arabic": "آيَةٌ",
+                "french": "Signe / verset",
+                "tip": "Double sens intentionnel : signe créé ET verset révélé"
+              },
+              {
+                "arabic": "الدُّنْيَا",
+                "french": "La vie ici-bas",
+                "tip": "De دَنِيَّة = inférieure, proche. Passage, non destination."
+              },
+              {
+                "arabic": "النُّورُ",
+                "french": "La lumière",
+                "tip": "Nom d'Allah ET titre d'une sourate. اللَّهُ نُورُ السَّمَاوَاتِ."
+              },
+              {
+                "arabic": "الشَّيْءُ",
+                "french": "La chose",
+                "tip": "كُلِّ شَيْءٍ = toute chose — ultra-fréquent dans le Coran"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**الدُّنْيَا** vient de دَنِيَّة — 'inférieure, proche'. La vie ici-bas est littéralement 'la basse'. Non pas pour nous dégoûter de vivre, mais pour rappeler qu'elle est un passage. Son opposé الْآخِرَة ('la dernière') est la destination. Tout le Coran joue sur ce contraste : ce qui est proche vs ce qui dure."
+          },
+          {
+            "type": "quran",
+            "arabic": "وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ",
+            "translation": "Nous avons fait de l'eau toute chose vivante",
+            "highlight": "الْمَاءِ",
+            "source": "Al-Anbiyâ, 21:30",
+            "context": "La prochaine fois que tu bois de l'eau, rappelle-toi : ce liquide simple est la base de toute vie sur terre. Allah le savait — et Il l'a dit. Le mot الْمَاءُ (l'eau) est une آيَة que tu portes en toi à chaque gorgée."
+          },
+          {
+            "type": "tip",
+            "title": "الدُّنْيَا vs الْآخِرَة",
+            "content": "Ce couple fondamental revient tout le long du Coran. الدُّنْيَا (proche, inférieure) = cette vie. الْآخِرَة (la dernière) = l'au-delà. L'un est réel, l'autre est éternel. Le Coran ne nous demande pas de fuir الدُّنْيَا — il nous demande de ne pas l'oublier pour الْآخِرَة."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Eschatologie",
+      "categories": [
+        "resurrection_judgment_i",
+        "resurrection_judgment_ii"
+      ],
+      "reference": {
+        "title": "La Résurrection & le Jugement",
+        "content": [
+          {
+            "type": "text",
+            "content": "Dans la Fatiha, tu récites **مَالِكِ يَوْمِ الدِّينِ** — 'Maître du Jour de la Rétribution'. 17 fois par jour, tu acknowledges qu'il y aura un Jour de Compte. Le Coran utilise plus de 70 noms pour ce Jour : يَوْمُ الْقِيَامَةِ (la Résurrection), السَّاعَة (l'Heure), الْحَاقَّة (la Réalité Inéluctable)... Chaque nom révèle une facette différente de cet événement."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "الْآخِرَةُ",
+                "french": "L'au-delà",
+                "tip": "'La dernière' — opposée à الدُّنْيَا (la proche)"
+              },
+              {
+                "arabic": "يَوْمُ الْقِيَامَةِ",
+                "french": "Le Jour de la Résurrection",
+                "tip": "De قَامَ = se lever. Tous se lèveront de leurs tombes."
+              },
+              {
+                "arabic": "الْجَنَّةُ",
+                "french": "Le Paradis",
+                "tip": "De ج-ن-ن = cacher, recouvrir. Un jardin dense et ombragé."
+              },
+              {
+                "arabic": "النَّارُ",
+                "french": "Le Feu / l'Enfer",
+                "tip": "Souvent associé à la mécréance et à l'injustice"
+              },
+              {
+                "arabic": "الْمِيزَانُ",
+                "french": "La balance",
+                "tip": "Tes actes seront pesés — littéralement, dans une balance"
+              },
+              {
+                "arabic": "الثَّوَابُ",
+                "french": "La récompense",
+                "tip": "Aucune bonne action, même minuscule, n'est perdue"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**الْجَنَّةُ** vient de ج-ن-ن = couvrir, recouvrir. Un jardin est 'couvert' de végétation — dense, frais, ombragé. Pour les premiers croyants qui vivaient dans le désert d'Arabie, l'image d'un jardin verdoyant avec des sources était le bonheur absolu qu'ils pouvaient imaginer. Allah a choisi le mot le plus évocateur pour eux — et pour nous."
+          },
+          {
+            "type": "quran",
+            "arabic": "يَوْمَ لَا تَمْلِكُ نَفْسٌ لِنَفْسٍ شَيْئًا وَالْأَمْرُ يَوْمَئِذٍ لِلَّهِ",
+            "translation": "Le jour où personne ne pourra rien pour personne — en ce jour, l'autorité appartient à Allah",
+            "highlight": "يَوْمَ",
+            "source": "Al-Infitâr, 82:19",
+            "context": "Même tes parents, même ton meilleur ami, même le prophète le plus aimé — ce jour-là, personne ne peut rien pour toi. Ce verset n'est pas là pour faire peur. Il est là pour te libérer : ne dépends que d'Allah. Agis pour Allah. Le reste, c'est يَوْمَئِذٍ لِلَّهِ — à Lui."
+          },
+          {
+            "type": "tip",
+            "title": "السَّاعَة — le secret intentionnel",
+            "content": "Allah ne révèle à personne l'heure de la Fin — ni aux anges, ni aux prophètes. Ce secret est intentionnel : l'incertitude nous pousse à être toujours prêts. Comme si السَّاعَة pouvait arriver demain. Car elle le peut."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Foi & Morale",
+      "categories": [
+        "religion_concepts",
+        "faith_unseen",
+        "actions_morality"
+      ],
+      "reference": {
+        "title": "Foi, Religion & Morale",
+        "content": [
+          {
+            "type": "text",
+            "content": "Le mot **إِيمَان** (foi) vient de أَمِنَ — 'être en sécurité, faire confiance'. Croire en arabe c'est littéralement 'trouver la sécurité'. Et **إِسْلَام** vient de سَلِمَ — être en paix, se soumettre. Même racine que السَّلَام (la paix). Foi et paix sont linguistiquement inséparables. Ce n'est pas une coïncidence — c'est une vérité inscrite dans la langue."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "الإِيمَانُ",
+                "french": "La foi",
+                "tip": "De أَمِنَ = sécurité. Croire = trouver sa sécurité en Allah"
+              },
+              {
+                "arabic": "الإِسْلَامُ",
+                "french": "La soumission",
+                "tip": "De سَلِمَ = paix. Même racine que السَّلَام !"
+              },
+              {
+                "arabic": "الْغَيْبُ",
+                "french": "L'Invisible / le caché",
+                "tip": "Les croyants y croient sans le voir — c'est la définition même de la foi"
+              },
+              {
+                "arabic": "الصَّبْرُ",
+                "french": "La patience",
+                "tip": "+90x dans le Coran. إِنَّ اللَّهَ مَعَ الصَّابِرِينَ."
+              },
+              {
+                "arabic": "التَّقْوَى",
+                "french": "La piété consciente",
+                "tip": "Conscience permanente de la présence d'Allah — +250x dans le Coran"
+              },
+              {
+                "arabic": "الْعَمَلُ",
+                "french": "L'acte / l'œuvre",
+                "tip": "الأَعْمَالُ بِالنِّيَّاتِ — les actes valent par leurs intentions"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**الصَّبْرُ** revient plus de 90 fois dans le Coran. Et Allah dit : **إِنَّ اللَّهَ مَعَ الصَّابِرِينَ** — 'Allah est AVEC ceux qui persévèrent.' Pas 'Il les récompensera' — Il est *avec* eux. Présent. Dans l'épreuve. C'est une présence, pas juste une promesse."
+          },
+          {
+            "type": "quran",
+            "arabic": "آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ",
+            "translation": "Le Messager a cru en ce qui lui a été révélé de son Seigneur, ainsi que les croyants",
+            "highlight": "آمَنَ",
+            "source": "Al-Baqara, 2:285",
+            "context": "Ce verset ouvre les deux derniers versets de la sourate Al-Baqara — ceux que le Prophète ﷺ recommandait de réciter chaque soir. Il commence par آمَنَ : 'il a cru'. Face à la révélation divine, le premier réflexe du Prophète était la foi. Avant l'analyse, avant les questions — la confiance."
+          },
+          {
+            "type": "tip",
+            "title": "التَّقْوَى — bien plus que la peur",
+            "content": "التَّقْوَى est souvent traduit par 'crainte d'Allah' mais c'est réducteur. De وَقَى = protéger. La تَقْوَى c'est se protéger soi-même en gardant Allah présent dans chaque acte. Pas de la peur — de la conscience. Une conscience douce et permanente."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Prophètes & Société",
+      "categories": [
+        "prophets_figures",
+        "people_roles"
+      ],
+      "reference": {
+        "title": "Prophètes & Personnages",
+        "content": [
+          {
+            "type": "text",
+            "content": "Le Coran nomme **25 prophètes** par leur nom. Mais il mentionne des centaines d'autres personnages — rois, savants, croyants ordinaires, incroyants — dont les histoires forment plus d'un tiers du texte coranique. Ces récits ne sont pas des contes. Allah dit explicitement : **لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ** — 'dans leurs récits il y a une leçon'. Chaque prophète que tu apprends à connaître te donne un outil pour ta propre vie."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "النَّبِيُّ",
+                "french": "Le prophète",
+                "tip": "Reçoit une révélation — de نَبَأَ = nouvelle, information"
+              },
+              {
+                "arabic": "الرَّسُولُ",
+                "french": "Le messager",
+                "tip": "Envoyé avec un message universel — tout رَسُول est نَبِيّ mais pas l'inverse"
+              },
+              {
+                "arabic": "الْمَلَكُ",
+                "french": "L'ange",
+                "tip": "De أَلَكَ = transmettre un message. Ils obéissent toujours."
+              },
+              {
+                "arabic": "الْعَبْدُ",
+                "french": "Le serviteur / l'esclave",
+                "tip": "عَبْدُ اللَّهِ = serviteur d'Allah — titre d'honneur dans l'Islam"
+              },
+              {
+                "arabic": "الْقَوْمُ",
+                "french": "Le peuple / la tribu",
+                "tip": "Chaque prophète est envoyé vers son قَوْم — son peuple particulier"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "La différence entre النَّبِيُّ et الرَّسُولُ est subtile mais importante. Tout رَسُول est نَبِيّ, mais pas l'inverse. Le رَسُول est envoyé avec une رِسَالَة (message) vers un peuple ou l'humanité entière. Le نَبِيّ reçoit une révélation mais sa mission peut être plus locale. إبراهيم, موسى, محمد ﷺ — des رُسُل. D'autres prophètes ont reçu la révélation sans être envoyés universellement."
+          },
+          {
+            "type": "quran",
+            "arabic": "وَلَقَدْ أَرْسَلْنَا نُوحًا إِلَىٰ قَوْمِهِ",
+            "translation": "Et en vérité, Nous avons envoyé Noé vers son peuple",
+            "highlight": "أَرْسَلْنَا",
+            "source": "Hûd, 11:25",
+            "context": "Vois la structure : Allah dit 'Nous *avons envoyé*' (أَرْسَلْنَا) — c'est Lui l'expéditeur, Noé est le messager. Et إِلَى قَوْمِهِ — 'vers SON peuple'. Chaque messager reçoit une mission précise, un peuple précis, un contexte précis. Mais le message est toujours le même : إِلَهَ واحِد."
+          },
+          {
+            "type": "tip",
+            "title": "عَبْدُ اللَّهِ — la noblesse de la servitude",
+            "content": "Dans l'Islam, être appelé عَبْدُ اللَّهِ (serviteur d'Allah) est un honneur. Allah s'adresse aux croyants par يَا عِبَادِي (Ô Mes serviteurs) — termes de proximité et d'amour. Et le Prophète ﷺ lui-même est décrit dans le Coran par ce titre en premier : وَأَنَّهُ لَمَّا قَامَ عَبْدُ اللَّهِ..."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Famille & Corps",
+      "categories": [
+        "family",
+        "body_soul"
+      ],
+      "reference": {
+        "title": "Famille, Corps & Âme",
+        "content": [
+          {
+            "type": "text",
+            "content": "Le Coran parle à l'être humain dans sa totalité — son corps, son âme, ses relations. Le mot **النَّفْسُ** (l'âme, le soi) apparaît plus de **300 fois**. Plus que أَرْضٌ (la terre), plus que جَنَّة (paradis). Pourquoi ? Parce qu'Allah s'adresse directement à *toi*, à ce qui t'habite. Et la famille — الأُسْرَة, الْأَبُ, الْأُمُّ — est abordée avec une précision et une délicatesse remarquables dans les versets coraniques."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "الْأُمُّ",
+                "french": "La mère",
+                "tip": "Le Paradis est sous ses pieds — statut inégalé dans l'Islam"
+              },
+              {
+                "arabic": "الْأَبُ",
+                "french": "Le père",
+                "tip": "Respect obligatoire — وَبِالْوَالِدَيْنِ إِحْسَانًا"
+              },
+              {
+                "arabic": "الْوَلَدُ",
+                "french": "L'enfant / le fils",
+                "tip": "Désigne la progéniture en général, masculin ou féminin"
+              },
+              {
+                "arabic": "الْقَلْبُ",
+                "french": "Le cœur",
+                "tip": "Siège de la foi et de la compréhension dans le Coran"
+              },
+              {
+                "arabic": "الرُّوحُ",
+                "french": "L'esprit / l'âme",
+                "tip": "وَيَسْأَلُونَكَ عَنِ الرُّوحِ — 'ils te questionnent sur l'esprit' — son mystère est réservé à Allah"
+              },
+              {
+                "arabic": "النَّفْسُ",
+                "french": "L'âme / le soi",
+                "tip": "+300x dans le Coran. Siège de la responsabilité morale."
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Le Coran décrit **3 états** de la نَفْس : النَّفْسُ الْأَمَّارَةُ (qui pousse au mal — l'état de base), النَّفْسُ اللَّوَّامَةُ (qui se reproche — la conscience), et النَّفْسُ الْمُطْمَئِنَّةُ (l'âme apaisée — le sommet). Cette dernière, Allah l'appelle au Paradis : يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ ارْجِعِي إِلَى رَبِّكِ رَاضِيَةً مَرْضِيَّةً. Quel appel."
+          },
+          {
+            "type": "quran",
+            "arabic": "وَوَصَّيْنَا الْإِنسَانَ بِوَالِدَيْهِ حُسْنًا",
+            "translation": "Et Nous avons enjoint à l'être humain d'être bon envers ses parents",
+            "highlight": "بِوَالِدَيْهِ",
+            "source": "Al-'Ankabût, 29:8",
+            "context": "Allah parle directement : 'Nous avons *commandé*' — c'est fort. Et قَالَ بِوَالِدَيْهِ حُسْنًا — non pas 'obéis à tes parents' mais 'sois *bon* envers eux'. حُسْنًا vient de حَسَنٌ (beau, bien). Être beau dans ta relation avec eux. La forme compte autant que l'acte."
+          },
+          {
+            "type": "tip",
+            "title": "الْقَلْبُ — le vrai récepteur",
+            "content": "Dans le Coran, c'est le قَلْب qui comprend, qui croit, qui doute ou qui se ferme — pas le cerveau. أَفَلَا تَعْقِلُونَ (ne raisonnez-vous pas ?) et أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ (ne méditent-ils pas le Coran ?) s'adressent au قَلْب autant qu'à l'intellect. La foi commence dans le cœur, pas dans la tête."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Verbes Trilitères A–C",
+      "categories": [
+        "verbs_form_1_a",
+        "verbs_form_1_b",
+        "verbs_form_1_c"
+      ],
+      "reference": {
+        "title": "Verbes Trilitères Réguliers (A–C)",
+        "content": [
+          {
+            "type": "text",
+            "content": "L'arabe est une langue de **racines**. Presque chaque mot vient d'une racine de 3 lettres. **ك-ت-ب** donne كَتَبَ (écrire), كِتَابٌ (livre), كَاتِبٌ (écrivain), مَكْتُوبٌ (écrit), كِتَابَةٌ (écriture)... Une seule racine, 5 mots différents. C'est pour ça que l'arabe est si efficace — et si beau. La Forme 1 (المجرد) est la forme de base du verbe, sans aucune augmentation."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "قَالَ",
+                "french": "Il a dit",
+                "tip": "Racine ق-و-ل — le verbe de communication le plus fréquent du Coran"
+              },
+              {
+                "arabic": "عَلِمَ",
+                "french": "Il a su / connu",
+                "tip": "Racine ع-ل-م → الْعِلْمُ (la science) — fondamental !"
+              },
+              {
+                "arabic": "كَتَبَ",
+                "french": "Il a écrit",
+                "tip": "Racine ك-ت-ب → الْكِتَابُ (le livre, le Coran)"
+              },
+              {
+                "arabic": "خَلَقَ",
+                "french": "Il a créé",
+                "tip": "Racine خ-ل-ق — seul Allah خَلَقَ vraiment"
+              },
+              {
+                "arabic": "دَخَلَ",
+                "french": "Il est entré",
+                "tip": "دَخَلَ الْجَنَّةَ = il est entré au Paradis"
+              },
+              {
+                "arabic": "عَمِلَ",
+                "french": "Il a fait / agi",
+                "tip": "Racine ع-م-ل → الْعَمَلُ (l'acte) — essentiel dans la foi"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Le verbe le plus fréquent du Coran est **قَالَ** (il a dit). Normal — le Coran est rempli de dialogues : Allah qui parle, les prophètes qui parlent, les incroyants qui répondent. Apprendre قَالَ, c'est débloquer immédiatement des centaines de versets narratifs. Et جَعَلَ (il a fait, il a rendu) est le deuxième verbe de création le plus fréquent après خَلَقَ."
+          },
+          {
+            "type": "quran",
+            "arabic": "عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ",
+            "translation": "Il a enseigné à l'être humain ce qu'il ne savait pas",
+            "highlight": "يَعْلَمْ",
+            "source": "Al-'Alaq, 96:5",
+            "context": "C'est la toute première révélation ! اقْرَأْ — lis. وَرَبُّكَ الْأَكْرَمُ الَّذِي عَلَّمَ بِالْقَلَمِ — ton Seigneur est le plus Généreux, Celui qui a enseigné par le calame. يَعْلَمْ vient de la racine ع-ل-م. La première chose qu'Allah révèle, c'est l'enseignement. La science avant tout."
+          },
+          {
+            "type": "tip",
+            "title": "Comment mémoriser une racine",
+            "content": "Pour chaque nouveau verbe, cherche sa racine (3 lettres). Puis demande-toi : quels autres mots de cette racine tu connais déjà ? Ex : tu sais الْكِتَابُ (livre) → racine ك-ت-ب → كَتَبَ (écrire), مَكْتُوبٌ (écrit), كَاتِبٌ (écrivain)... La racine, c'est le fil qui connecte des dizaines de mots."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Verbes Trilitères D–E",
+      "categories": [
+        "verbs_form_1_d",
+        "verbs_form_1_e"
+      ],
+      "reference": {
+        "title": "Verbes Trilitères Réguliers (D–E)",
+        "content": [
+          {
+            "type": "text",
+            "content": "Les schèmes D et E de la Forme 1 complètent le tableau des verbes réguliers de base. La bonne nouvelle : une fois que tu mémorises le schème, tu sais conjuguer *tous* les verbes qui le suivent. **فَعَلَ/يَفْعَلُ** (schème D, voyelle a-a) et **فَعِلَ/يَفْعَلُ** (schème E, kasra au passé). Deux patterns. Des centaines de verbes coraniques débloqués."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "نَصَرَ",
+                "french": "Il a aidé / secouru",
+                "tip": "Racine ن-ص-ر → النَّصِير (le Protecteur, nom d'Allah)"
+              },
+              {
+                "arabic": "شَكَرَ",
+                "french": "Il a remercié",
+                "tip": "Racine ش-ك-ر → الشُّكْرُ (gratitude). إِنَّ اللَّهَ يُحِبُّ الشَّاكِرِينَ."
+              },
+              {
+                "arabic": "فَتَحَ",
+                "french": "Il a ouvert / conquis",
+                "tip": "Racine ف-ت-ح → الْفَتْحُ (la conquête — titre de la sourate 48)"
+              },
+              {
+                "arabic": "رَجَعَ",
+                "french": "Il est retourné",
+                "tip": "Racine ر-ج-ع → الرُّجُوعُ. إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ !"
+              },
+              {
+                "arabic": "حَكَمَ",
+                "french": "Il a jugé / gouverné",
+                "tip": "Racine ح-ك-م → الْحُكْمُ (le jugement), الْحَكِيمُ (le Sage)"
+              },
+              {
+                "arabic": "سَمِعَ",
+                "french": "Il a entendu",
+                "tip": "Racine س-م-ع → السَّمِيعُ (l'Audient, nom d'Allah)"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ** — tu la connais sûrement. C'est ce qu'on dit quand quelqu'un meurt. رَاجِعُونَ vient de رَجَعَ (retourner). 'Nous appartenons à Allah et c'est vers Lui que nous retournons.' Un seul verbe, décliné au pluriel actif, qui dit toute notre relation avec Allah en une phrase."
+          },
+          {
+            "type": "quran",
+            "arabic": "إِنَّ اللَّهَ يُحِبُّ الشَّاكِرِينَ",
+            "translation": "Certes, Allah aime ceux qui sont reconnaissants",
+            "highlight": "الشَّاكِرِينَ",
+            "source": "Âl-Imrân, 3:145",
+            "context": "الشَّاكِرِينَ vient de شَكَرَ (remercier). Ce qui est beau ici : ce n'est pas 'Allah récompense les reconnaissants' — c'est 'Allah les **aime**'. Le شُكْر ne fait pas que t'apporter de la baraka. Il te rapproche de Lui d'une façon que peu d'autres actes font."
+          },
+          {
+            "type": "tip",
+            "title": "Reconnais le schème D vs E",
+            "content": "Schème D : passé فَعَلَ (a-a) + présent يَفْعَلُ (a-u ou a-i). Schème E : passé فَعِلَ (a-i) + présent يَفْعَلُ (a-a). Ex : شَكَرَ/يَشْكُرُ (D) vs سَمِعَ/يَسْمَعُ (E). Avec la pratique, tu le 'sentiras' sans avoir besoin d'analyser."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Verbes Irréguliers I",
+      "categories": [
+        "verbs_form_1_doubled",
+        "verbs_form_1_weak_initial",
+        "verbs_form_1_hollow"
+      ],
+      "reference": {
+        "title": "Verbes Irréguliers — Redoublés, Initiale faible, Creux",
+        "content": [
+          {
+            "type": "text",
+            "content": "Le mot **كَانَ** (il était, il y avait) est l'un des verbes les plus fréquents du Coran. Et if est 'creux' (أَجْوَف) — sa racine est ك-و-ن, avec un وَاو au milieu qui disparaît dans certaines formes. كَانَ, يَكُونُ, كُنْ — le même verbe, la même racine, mais le و se transforme. Les verbes irréguliers ne sont pas *désordonnés* — ils suivent des règles phonétiques précises et prévisibles."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "كَانَ",
+                "french": "Il était / il y avait",
+                "tip": "Verbe creux k-w-n — parmi les + fréquents du Coran"
+              },
+              {
+                "arabic": "قَالَ",
+                "french": "Il a dit",
+                "tip": "Verbe creux q-w-l — le و devient alif → قَالَ"
+              },
+              {
+                "arabic": "رَدَّ",
+                "french": "Il a repoussé / répondu",
+                "tip": "Verbe redoublé r-d-d — les deux د fusionnent avec chadda"
+              },
+              {
+                "arabic": "وَجَدَ",
+                "french": "Il a trouvé",
+                "tip": "Verbe à initiale faible w-j-d — le و disparaît au présent : يَجِدُ"
+              },
+              {
+                "arabic": "قَامَ",
+                "french": "Il s'est levé",
+                "tip": "Verbe creux q-w-m — يَوْمُ الْقِيَامَةِ vient de là !"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**يَوْمُ الْقِيَامَةِ** — tu le connais. Mais sais-tu qu'il vient de قَامَ (se lever) ? يَوْمُ الْقِيَامَةِ = le Jour du 'levage' — le jour où tous se lèveront de leurs tombes. Ce verbe creux قَامَ, une fois que tu le connais, te donne accès à toute une famille : يَقُومُ, قِيَام, مَقَام, أَقَامَ, قَوِيم..."
+          },
+          {
+            "type": "quran",
+            "arabic": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+            "translation": "Il n'a pas engendré et Il n'a pas été engendré",
+            "highlight": "يَلِدْ",
+            "source": "Al-Ikhlâs, 112:3",
+            "context": "يَلِدْ vient de وَلَدَ (enfanter) — verbe à initiale faible, le و disparaît au présent. Et ici, Allah nie deux choses en une sourate que tu connais par cœur. La grammaire des verbes irréguliers est au cœur des théologies coraniques les plus fondamentales."
+          },
+          {
+            "type": "tip",
+            "title": "Les 3 types d'irréguliers — mémo express",
+            "content": "1. **Redoublé (مضعَّف)** : 2ème et 3ème lettre identiques → elles fusionnent avec chadda (رَدَّ). 2. **Initiale faible (مثال)** : racine commence par و → il disparaît souvent (وَجَدَ → يَجِدُ). 3. **Creux (أَجْوَف)** : lettre faible au milieu → devient une voyelle longue (قَامَ vient de ق-و-م)."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Verbes Irréguliers II",
+      "categories": [
+        "verbs_form_1_weak_final",
+        "verbs_form_1_hamzated"
+      ],
+      "reference": {
+        "title": "Verbes Irréguliers — Finale faible, Hamzatés",
+        "content": [
+          {
+            "type": "text",
+            "content": "**دَعَا اللَّهَ** — 'il a invoqué Allah'. دَعَا vient de دَ-عَ-و, avec un وَاو en finale qui devient un alif long à la fin du mot. C'est un verbe à finale faible (نَاقِص). Ce type de verbe est *massif* dans le Coran — دَعَا, هَدَى, أَتَى, تَلَا, نَجَا... Chacun suit les mêmes règles de transformation. Une fois compris, tu les reconnais tous."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "دَعَا",
+                "french": "Il a invoqué / appelé",
+                "tip": "Racine د-ع-و — la دُعَاء est appelée 'le cerveau de l'adoration'"
+              },
+              {
+                "arabic": "هَدَى",
+                "french": "Il a guidé",
+                "tip": "Racine ه-د-ي → الْهُدَى (la guidance). اهدِنَا الصِّرَاطَ الْمُسْتَقِيمَ !"
+              },
+              {
+                "arabic": "أَتَى",
+                "french": "Il est venu / arrivé",
+                "tip": "Synonyme souvent de جَاءَ — même traitement de finale faible"
+              },
+              {
+                "arabic": "سَأَلَ",
+                "french": "Il a demandé",
+                "tip": "Verbe hamzaté — وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ !"
+              },
+              {
+                "arabic": "أَمَرَ",
+                "french": "Il a ordonné / commandé",
+                "tip": "Racine أ-م-ر → الْأَمْرُ (l'ordre, l'affaire). إِنَّمَا الْأَمْرُ لِلَّهِ."
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ** — 'Guide-nous vers le chemin droit.' Dans la Fatiha que tu récites 17 fois par jour. اهْدِنَا est la forme impérative de هَدَى. Tu suppliais donc Allah par un verbe à finale faible sans le savoir. La guidance (الْهِدَايَة) est la demande la plus répétée dans les prières — Allah ne se lasse pas de l'entendre."
+          },
+          {
+            "type": "quran",
+            "arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ",
+            "translation": "Et quand Mes serviteurs t'interrogent sur Moi, Je suis tout proche",
+            "highlight": "سَأَلَكَ",
+            "source": "Al-Baqara, 2:186",
+            "context": "Ce verset est unique : Allah répond Lui-même, sans passer par 'Dis-leur que...' C'est direct. قَرِيبٌ — Je suis proche. Pas 'Je les entends', pas 'Je les vois' — Je suis *proche*. سَأَلَ (demander, questionner) ouvre à une réponse divine immédiate et personnelle."
+          },
+          {
+            "type": "tip",
+            "title": "دَعَا — pas juste un mot",
+            "content": "Le Prophète ﷺ a dit : الدُّعَاءُ هُوَ الْعِبَادَةُ — 'L'invocation est l'adoration elle-même.' Pas un outil de l'adoration. L'adoration. دَعَا vient de la racine د-ع-و = appeler. Chaque fois que tu invoques Allah, tu L'appelles par Son nom, de ta bouche, de ton cœur."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Verbes Formes 2 & 3",
+      "categories": [
+        "augmented_verbs_form_2",
+        "augmented_verbs_form_2_3"
+      ],
+      "reference": {
+        "title": "Verbes Dérivés — Formes 2 & 3",
+        "content": [
+          {
+            "type": "text",
+            "content": "**عَلَّمَ الْقُرْآنَ** — 'Il a enseigné le Coran.' La sourate Ar-Rahmân s'ouvre sur deux images : الرَّحْمَٰنُ (Allah) + عَلَّمَ (a enseigné) + الْقُرْآنَ (le Coran). Trois mots. Toute la pédagogie divine. عَلَّمَ est la Forme 2 de عَلِمَ (savoir). La Forme 2 ajoute une **chadda** sur la 2ème lettre et change le sens : *savoir* → *faire savoir, enseigner*. C'est le principe du causatif."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "عَلَّمَ (ف.2)",
+                "french": "Il a enseigné",
+                "tip": "Causatif de عَلِمَ (savoir) — faire savoir à quelqu'un"
+              },
+              {
+                "arabic": "نَزَّلَ (ف.2)",
+                "french": "Il a fait descendre progressivement",
+                "tip": "Révélation progressive du Coran sur 23 ans"
+              },
+              {
+                "arabic": "كَلَّمَ (ف.2)",
+                "french": "Il a parlé à (directement)",
+                "tip": "Allah a kállama Musa directement — honneur immense"
+              },
+              {
+                "arabic": "قَاتَلَ (ف.3)",
+                "french": "Il a combattu (contre)",
+                "tip": "Réciproque de قَتَلَ — action mutuelle entre deux parties"
+              },
+              {
+                "arabic": "سَابَقَ (ف.3)",
+                "french": "Il a rivalisé / devancé",
+                "tip": "إِلَى الْخَيْرَاتِ — rivalisez vers les bonnes actions !"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "La **Forme 3** (فَاعَلَ avec alif) exprime une action **entre deux parties** — réciproque. قَتَلَ = tuer. قَاتَلَ = combattre (action des deux côtés). كَتَبَ = écrire. كَاتَبَ = correspondre avec quelqu'un. Chaque fois que tu vois une Forme 3, cherche cette idée de réciprocité ou d'interaction avec un autre."
+          },
+          {
+            "type": "quran",
+            "arabic": "عَلَّمَ الْقُرْآنَ",
+            "translation": "Il a enseigné le Coran",
+            "highlight": "عَلَّمَ",
+            "source": "Ar-Rahmân, 55:2",
+            "context": "La sourate qui dit الرَّحْمَٰنُ 'le Tout-Miséricordieux' commence par عَلَّمَ 'il a enseigné'. Allah Se présente comme un enseignant. Pas comme un monarque distant — comme Quelqu'un qui partage Sa connaissance. Et ce qu'Il enseigne en premier ? le Coran lui-même."
+          },
+          {
+            "type": "tip",
+            "title": "Forme 2 (فعَّل) — chadda = intensité ou causatif",
+            "content": "La Forme 2 s'identifie à la chadda sur la 2ème lettre de la racine : كَسَرَ (briser) → كَسَّرَ (briser en morceaux = intensif). عَلِمَ (savoir) → عَلَّمَ (enseigner = causatif). Le même schème, deux effets sémantiques différents — le contexte décide."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Verbes Formes 4 A–B",
+      "categories": [
+        "augmented_verbs_form_4_a",
+        "augmented_verbs_form_4_b"
+      ],
+      "reference": {
+        "title": "Verbes Dérivés — Forme 4 (A–B)",
+        "content": [
+          {
+            "type": "text",
+            "content": "**أَرْسَلَ** — 'il a envoyé'. Allah dit dans le Coran وَلَقَدْ أَرْسَلْنَا des dizaines de fois. À chaque fois qu'Il parle d'un prophète envoyé, c'est ce verbe. أَرْسَلَ est la Forme 4 de رَسَلَ. La **Forme 4** (أَفْعَلَ) est causative : elle transforme une action en 'faire faire'. رَسَلَ (aller vite) → أَرْسَلَ (envoyer = faire aller). C'est l'une des formes les plus puissantes de la morphologie arabe."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "أَرْسَلَ",
+                "french": "Il a envoyé",
+                "tip": "Causatif de رَسَلَ — à chaque prophète dans le Coran"
+              },
+              {
+                "arabic": "أَنْزَلَ",
+                "french": "Il a fait descendre (en une fois)",
+                "tip": "Vs نَزَّلَ (F2 = progressif). Révélation ponctuelle."
+              },
+              {
+                "arabic": "أَقَامَ",
+                "french": "Il a établi / accompli",
+                "tip": "أَقَامَ الصَّلَاةَ = accomplir la prière — expression coraniquement fixée"
+              },
+              {
+                "arabic": "أَعْطَى",
+                "french": "Il a donné",
+                "tip": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ — Sûrement Nous t'avons donné Al-Kawthar !"
+              },
+              {
+                "arabic": "أَكْرَمَ",
+                "french": "Il a honoré",
+                "tip": "وَلَقَدْ كَرَّمْنَا بَنِي آدَمَ — Nous avons honoré les fils d'Adam"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ** — tu connais cette sourate ! 'Certes, Nous t'avons donné Al-Kawthar.' أَعْطَيْنَاكَ : Forme 4 de عَطَا, à la 1ère personne du pluriel (نَا = Nous), avec le pronom suffixe كَ (Toi). Trois éléments grammaticaux dans un seul mot. C'est la beauté de l'arabe — tout est compact et précis."
+          },
+          {
+            "type": "quran",
+            "arabic": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
+            "translation": "Certes, Nous t'avons donné Al-Kawthar",
+            "highlight": "أَعْطَيْنَاكَ",
+            "source": "Al-Kawthar, 108:1",
+            "context": "La plus courte sourate du Coran — 3 versets — et pourtant un des dons les plus immenses : le fleuve du Paradis, donné au Prophète ﷺ. أَعْطَيْنَاكَ en un mot dit tout : Nous (Allah), avons donné (Forme 4), à Toi (ك). Compact. Puissant. Définitif."
+          },
+          {
+            "type": "tip",
+            "title": "أَنْزَلَ vs نَزَّلَ — nuance subtile mais importante",
+            "content": "أَنْزَلَ (Forme 4) = descendre en une seule fois ou de manière globale. نَزَّلَ (Forme 2) = descendre progressivement, par étapes. Le Coran a été نُزِّلَ (révélé progressivement sur 23 ans), mais il a aussi été أُنزِلَ (comme décret global). Les deux verbes, pour la même révélation, deux aspects différents."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    },
+    {
+      "name": "Verbes Formes 4 C–D & 5 à 10",
+      "categories": [
+        "augmented_verbs_form_4_c",
+        "augmented_verbs_form_4_d",
+        "augmented_verbs_forms_5_6_7",
+        "augmented_verbs_form_8",
+        "augmented_verbs_forms_9_10"
+      ],
+      "reference": {
+        "title": "Verbes Dérivés — Formes 4C–10",
+        "content": [
+          {
+            "type": "text",
+            "content": "**إِيَّاكَ نَسْتَعِينُ** — 'C'est Toi que nous supplions d'aider'. نَسْتَعِينُ est la Forme 10. La **Forme 10** (اِسْتَفْعَلَ) exprime le fait de *demander* ou de *chercher* à obtenir quelque chose. اِسْتَعَانَ = demander de l'aide. اِسْتَغْفَرَ = demander le pardon. اِسْتَوَى = s'établir. Et tu prononces la Forme 10 dans la Fatiha au moins 17 fois par jour. Tu l'utilisais déjà."
+          },
+          {
+            "type": "flashcards",
+            "cards": [
+              {
+                "arabic": "اِسْتَعَانَ (ف.10)",
+                "french": "Il a demandé de l'aide",
+                "tip": "إِيَّاكَ نَسْتَعِينُ — en plein dans la Fatiha !"
+              },
+              {
+                "arabic": "اِسْتَغْفَرَ (ف.10)",
+                "french": "Il a demandé pardon",
+                "tip": "De غَفَرَ (pardonner) — demander le pardon = l'istighfar"
+              },
+              {
+                "arabic": "تَكَلَّمَ (ف.5)",
+                "french": "Il a parlé / pris la parole",
+                "tip": "Réflexif de كَلَّمَ (Forme 2)"
+              },
+              {
+                "arabic": "اِجْتَمَعَ (ف.8)",
+                "french": "Il s'est réuni / rassemblé",
+                "tip": "De ج-م-ع (rassembler) — associatif et réflexif à la fois"
+              },
+              {
+                "arabic": "اِسْتَوَى (ف.10)",
+                "french": "Il s'est établi / était droit",
+                "tip": "اسْتَوَى عَلَى الْعَرْشِ = S'est établi sur le Trône"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**اِسْتَغْفِرُوا رَبَّكُمْ** — 'Demandez pardon à votre Seigneur.' L'istighfar. اِسْتَغْفَرَ = اِسْتَ (chercher à obtenir) + غَفَرَ (pardonner). Littéralement : 'chercher à se faire pardonner'. Le Prophète ﷺ faisait l'istighfar plus de 70 fois par jour. Pas parce qu'il péchait — mais parce qu'il savait que se rapprocher d'Allah passe par ce mouvement de retour constant."
+          },
+          {
+            "type": "quran",
+            "arabic": "سُبْحَانَ الَّذِي أَسْرَىٰ بِعَبْدِهِ لَيْلًا",
+            "translation": "Gloire à Celui qui a fait voyager Son serviteur de nuit",
+            "highlight": "أَسْرَىٰ",
+            "source": "Al-Isrâ, 17:1",
+            "context": "أَسْرَى est la Forme 4 de سَرَى (voyager la nuit). Causatif : 'Il a *fait* voyager'. Cette forme verbale dit que l'Isra' et le Mi'raj n'étaient pas l'initiative du Prophète ﷺ — c'est Allah qui L'a emmené. Toute la sourate Al-Isrâ tient dans cette Forme 4 du premier verset."
+          },
+          {
+            "type": "tip",
+            "title": "Le système à 10 Formes — ta clé maîtresse",
+            "content": "L'arabe a 10 formes verbales principales (أوزان). Chaque racine peut théoriquement prendre ces 10 formes. En pratique, une racine en utilise 3-5. Mais connaître les 10 formes, c'est multiplier ton vocabulaire par 5 minimum. Un investissement grammatical avec un retour infini."
+          }
+        ]
+      },
+      "quiz_reward": 20,
+      "synth_reward": 50
+    }
+  ]
+}

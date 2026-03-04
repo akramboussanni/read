@@ -3,25 +3,31 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-black transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 disabled:pointer-events-none disabled:opacity-50 active:translate-y-1',
   {
     variants: {
       variant: {
         default:
-          'bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-200 hover:-translate-y-0.5 active:translate-y-0',
+          'bg-primary text-white hover:bg-primary-hover border-b-4 border-primary-hover active:border-b-0',
         outline:
-          'border border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-800 dark:bg-black dark:hover:bg-gray-900 hover:-translate-y-0.5 active:translate-y-0',
+          'border-4 border-border bg-white text-muted-foreground hover:bg-muted hover:border-primary/30 hover:text-primary active:border-b-0 active:translate-y-1',
         ghost:
-          'hover:bg-gray-100 dark:hover:bg-gray-900 hover:-translate-y-0.5 active:translate-y-0',
-        link: 'text-blue-600 underline-offset-4 hover:underline dark:text-blue-500',
+          'hover:bg-primary-light hover:text-primary active:bg-primary-light',
+        link: 'text-primary underline-offset-4 hover:underline decoration-2',
         destructive:
-          'bg-red-600 text-white hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 hover:-translate-y-0.5 active:translate-y-0',
+          'bg-danger text-white hover:bg-red-600 border-b-4 border-red-700 active:border-b-0',
+        success:
+          'bg-success text-white hover:bg-green-600 border-b-4 border-green-700 active:border-b-0',
+        secondary:
+          'bg-secondary text-white hover:bg-secondary-hover border-b-4 border-secondary-hover active:border-b-0',
+        accent:
+          'bg-accent text-white hover:bg-accent-hover border-b-4 border-accent-hover active:border-b-0',
       },
       size: {
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 px-3',
-        lg: 'h-11 px-8',
-        icon: 'h-10 w-10',
+        default: 'h-12 px-5 py-2',
+        sm: 'h-10 px-4 text-xs',
+        lg: 'h-14 px-8 text-lg',
+        icon: 'h-12 w-12',
       },
     },
     defaultVariants: {
@@ -33,7 +39,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline' | 'ghost' | 'link' | 'destructive';
+  variant?: 'default' | 'outline' | 'ghost' | 'link' | 'destructive' | 'success' | 'secondary' | 'accent';
   size?: 'default' | 'sm' | 'lg' | 'icon';
   asChild?: boolean;
 }

@@ -1,0 +1,247 @@
+[
+  {
+    "name": "Préfixes & Particules",
+    "categories": [
+      "prefixes_particles_i",
+      "prefixes_particles_ii"
+    ],
+    "reference": {
+      "title": "Préfixes & Particules",
+      "content": [
+        {
+          "type": "text",
+          "content": "Il y a une lettre dans le Coran qui apparaît des **dizaines de milliers de fois**. Une seule lettre. **وَ**. Elle veut juste dire 'et'. Simple ? Oui — mais regarde ce qu'elle fait : وَالشَّمْسِ (Par le soleil), وَالْفَجْرِ (Par l'aurore), وَالْعَصْرِ (Par le temps). Attachée à un nom au début d'une sourate, elle devient un serment. Collée à une phrase, elle relie deux idées. Ce petit وَ structure tout le Coran."
+        },
+        {
+          "type": "text",
+          "content": "Les préfixes arabes sont des lettres ou petits mots qu'on **colle au début** d'un mot pour en changer le sens ou la fonction. سَ + verbe = futur (سَيَعْلَمُونَ = ils sauront bientôt). لَ + verbe = emphase (لَأَفْعَلَنَّ = j'aurai certainement fait). فَ + phrase = conséquence (فَادْعُوهُ = alors invoquez-Le). Maîtriser ces préfixes, c'est multiplier par 3 ta compréhension sans apprendre plus de vocabulaire."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "وَ",
+              "french": "Et / Par (serment)",
+              "tip": "La lettre la plus fréquente du Coran — وَاللَّهِ = Par Allah"
+            },
+            {
+              "arabic": "فَ",
+              "french": "Alors / donc",
+              "tip": "Conséquence — فَادْعُوهُ = alors invoquez-Le"
+            },
+            {
+              "arabic": "سَ",
+              "french": "Il va... (futur proche)",
+              "tip": "سَيَعْلَمُونَ = ils sauront bientôt (menace ou promesse)"
+            },
+            {
+              "arabic": "لَا",
+              "french": "Non / ne pas",
+              "tip": "لَا إِلَهَ إِلَّا اللَّهُ — tu le connais par cœur !"
+            },
+            {
+              "arabic": "إِنَّ",
+              "french": "Certes / en vérité",
+              "tip": "Emphase forte — إِنَّ اللَّهَ = Certes, Allah... (ce qui suit est important)"
+            },
+            {
+              "arabic": "لَ",
+              "french": "Vraiment / assurément (emphase)",
+              "tip": "لَقَدْ = Certes, vraiment — lam d'emphase"
+            },
+            {
+              "arabic": "أَ",
+              "french": "Est-ce que ?",
+              "tip": "Préfixe interrogatif — أَلَمْ تَرَ = n'as-tu pas vu ?"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**لَا إِلَهَ إِلَّا اللَّهُ** — analyse rapide. لَا = négation (pas de). إِلَه = divinité. إِلَّا = sauf/excepté. اللَّهُ = Allah. La shahada tient en 4 mots dont deux particules (لَا et إِلَّا). Sans ces deux particules grammaticales, il n'y a plus de shahada. Voilà leur importance."
+        },
+        {
+          "type": "quran",
+          "arabic": "فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ",
+          "translation": "Alors, lequel des bienfaits de votre Seigneur nierez-vous ?",
+          "highlight": "فَ",
+          "source": "Ar-Rahmân, 55:13",
+          "context": "Cette phrase revient 31 fois dans la Sourate Ar-Rahmân — tu l'as peut-être déjà entendue en récitation. À chaque fois, Allah vient de mentionner un bienfait, puis ce فَ (alors) retourne la parole et interpelle directement. C'est comme un professeur qui dit : 'alors, tu comprends ?' Sauf qu'ici c'est Allah qui pose la question."
+        },
+        {
+          "type": "text",
+          "content": "Le فَ de conséquence n'est pas que grammatical — c'est rhétorique. Il crée un rythme, une cadence. Dans cette sourate, il transforme une liste de bienfaits en dialogue entre Allah et Sa création. **Lis la sourate Ar-Rahmân** et compte les فَ — tu ne l'écouteras plus pareil après ça."
+        },
+        {
+          "type": "tip",
+          "title": "سَ vs سَوْفَ — futur proche vs futur lointain",
+          "content": "Les deux indiquent le futur mais avec une nuance : سَ (attaché au verbe) = futur proche, imminent. سَوْفَ (séparé) = futur plus lointain, incertain. Quand Allah dit سَيَعْلَمُونَ = 'ils sauront bientôt', c'est une promesse ferme et imminente."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Noms d'Allah — I",
+    "categories": [
+      "names_of_allah_attributes_i",
+      "names_of_allah_attributes_ii"
+    ],
+    "reference": {
+      "title": "Les Noms d'Allah (I)",
+      "content": [
+        {
+          "type": "text",
+          "content": "As-tu déjà réfléchi à ce fait : la Basmala dit **الرَّحْمَٰنِ الرَّحِيمِ** deux fois de suite ? Deux noms, côte à côte, qui viennent de la même racine ر-ح-م. Ce n'est pas un doublon. Ce sont deux *types* de miséricorde différents. Allah a tenu à Se présenter dès la première ligne du Coran — non pas par Sa puissance, non pas par Sa grandeur absolue — mais par Sa miséricorde. Deux fois. Ça dit quelque chose de profond sur Qui Il est."
+        },
+        {
+          "type": "text",
+          "content": "الرَّحْمَٰنُ — miséricorde universelle, immense, qui touche toute la création en ce moment même : la pluie qui tombe, l'air que tu respires, la vue que tu as. الرَّحِيمُ — miséricorde douce et durable, réservée aux croyants dans l'au-delà. L'une est large comme le ciel, l'autre est proche comme une main tendue."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "الرَّحْمَٰنُ",
+              "french": "Le Tout-Miséricordieux",
+              "tip": "Miséricorde universelle — englobe toute la création, croyant ou non"
+            },
+            {
+              "arabic": "الرَّحِيمُ",
+              "french": "Le Très-Miséricordieux",
+              "tip": "Miséricorde profonde et durable, pour les croyants dans l'au-delà"
+            },
+            {
+              "arabic": "الْعَلِيمُ",
+              "french": "L'Omniscient",
+              "tip": "Il sait ce que tu ressens là, maintenant, même sans l'avoir dit"
+            },
+            {
+              "arabic": "الْقَدِيرُ",
+              "french": "L'Omnipotent",
+              "tip": "عَلَى كُلِّ شَيْءٍ قَدِيرٌ — 'sur toute chose', sans exception"
+            },
+            {
+              "arabic": "الْحَكِيمُ",
+              "french": "Le Sage",
+              "tip": "Même ce qu'Il fait et qu'on ne comprend pas est parfaitement sage"
+            },
+            {
+              "arabic": "السَّمِيعُ",
+              "french": "L'Audient",
+              "tip": "Il entend chaque du'a — même chuchoté, même silencieux dans le cœur"
+            },
+            {
+              "arabic": "الْبَصِيرُ",
+              "french": "Le Clairvoyant",
+              "tip": "Souvent avec السَّمِيعُ dans le Coran — Il entend ET voit tout"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "**الْعَلِيمُ** — Il sait. Mais pas comme nous savons. Il sait ce que tu penses en ce moment. Il sait ce que tu diras dans 10 ans. Il sait ce qui se passe au fond de la mer et dans les galaxies les plus lointaines. Et **الْقَدِيرُ** — Il peut. Sur toute chose. Ces deux noms ensemble, عَلِيمٌ قَدِيرٌ, reviennent des dizaines de fois dans le Coran. Il sait ET il peut. C'est la combinaison la plus rassurante qui soit."
+        },
+        {
+          "type": "quran",
+          "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          "translation": "Au nom d'Allah, le Tout-Miséricordieux, le Très-Miséricordieux",
+          "highlight": "الرَّحْمَٰنِ الرَّحِيمِ",
+          "source": "Al-Fâtiha, 1:1 — aussi au début de 113 sourates sur 114",
+          "context": "Peut-être la phrase que tu récites le plus dans ta vie. 113 sourates sur 114 commencent par elle. Chaque fois que tu mange, que tu étudies, que tu conduis — بِسْمِ اللَّهِ. Allah a voulu que Sa miséricorde accompagne chacun de nos actes quotidiens."
+        },
+        {
+          "type": "text",
+          "content": "Il y a une belle histoire sur السَّمِيعُ : un compagnon demandait à voix très basse dans le fond de la mosquée et craignait de ne pas être entendu. Allah révéla : قَدْ سَمِعَ اللَّهُ — 'Allah a entendu.' (Al-Mujadala 58:1). Elle n'avait pas besoin de crier. Allah entend ce qu'on chuchote. Il entend ce qu'on ne dit même pas."
+        },
+        {
+          "type": "tip",
+          "title": "Racine ر-ح-م — toute une famille",
+          "content": "De ر-ح-م viennent : الرَّحْمَٰنُ, الرَّحِيمُ, رَحِمَ (avoir pitié), الرَّحِمُ (l'utérus — lien maternel), رَحْمَة (miséricorde, grâce). La miséricorde divine est comparée à l'amour d'une mère pour son enfant — les hadîths le disent explicitement. C'est l'image la plus forte qu'on puisse imaginer."
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  },
+  {
+    "name": "Noms d'Allah — II",
+    "categories": [
+      "names_of_allah_attributes_iii",
+      "superlatives",
+      "blessings_authority"
+    ],
+    "reference": {
+      "title": "Les Noms d'Allah (II) & Superlatifs",
+      "content": [
+        {
+          "type": "text",
+          "content": "**اللَّهُ أَكْبَرُ** — tu le dis au moins **94 fois** dans tes 5 prières quotidiennes. Mais as-tu analysé le mot أَكْبَرُ ? Ce n'est pas 'grand' (كَبِيرٌ). C'est **'le plus grand'** — un superlatif. Schème أَفْعَل. Allah ne dit pas simplement 'Je suis grand' — Il dit 'Je suis plus grand que tout ce que tu pourrais imaginer'. Et tu proclames ça 94 fois par jour. Maintenant que tu connais ce schème, tu vas le voir partout."
+        },
+        {
+          "type": "text",
+          "content": "Le schème **أَفْعَل** crée le superlatif: كَبِيرٌ (grand) → أَكْبَرُ (le plus grand). قَرِيبٌ (proche) → أَقْرَبُ (le plus proche). Appliqué à Allah, ces superlatifs expriment Sa perfection absolue — non pas 'très puissant' mais 'le plus puissant qui soit'. Pas de comparaison possible. Pas de rivalité. Absolu."
+        },
+        {
+          "type": "flashcards",
+          "cards": [
+            {
+              "arabic": "أَكْبَرُ",
+              "french": "Le plus grand",
+              "tip": "اللَّهُ أَكْبَرُ — 94x par jour dans tes prières !!"
+            },
+            {
+              "arabic": "الْعَظِيمُ",
+              "french": "L'Immense",
+              "tip": "سُبْحَانَ رَبِّيَ الْعَظِيمِ — tu le dis dans la ruku' !"
+            },
+            {
+              "arabic": "الْعَزِيزُ",
+              "french": "Le Tout-Puissant / Glorieux",
+              "tip": "Celui qui ne peut être vaincu ni dominé. Gloire à Lui."
+            },
+            {
+              "arabic": "الْغَفُورُ",
+              "french": "Le Très-Pardonneur",
+              "tip": "+90x dans le Coran, souvent après une faute décrite — l'espoir est toujours là"
+            },
+            {
+              "arabic": "الْمَلِكُ",
+              "french": "Le Roi / Souverain",
+              "tip": "مَالِكِ يَوْمِ الدِّينِ — tu le récites dans la Fatiha !"
+            },
+            {
+              "arabic": "الْقَيُّومُ",
+              "french": "Le Subsistant par Lui-même",
+              "tip": "Ayat al-Kursi : الْحَيُّ الْقَيُّومُ — Il ne dort jamais, ne se fatigue jamais"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "الْغَفُورُ — 'le Très-Pardonneur'. Ce nom revient plus de 90 fois dans le Coran, et presque toujours après qu'Allah a décrit une faute, une faiblesse humaine, un moment de doute. C'est un message : peu importe ce que tu as fait, l'espoir existe. الْغَفُورُ الرَّحِيمُ — le Pardonneur, l'Aimant. Ces deux noms ensemble ferment tant de versets comme une accolade douce après un rappel sévère."
+        },
+        {
+          "type": "quran",
+          "arabic": "وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَى فَادْعُوهُ بِهَا",
+          "translation": "À Allah appartiennent les plus beaux noms : invoquez-Le par eux",
+          "highlight": "الْأَسْمَاءُ الْحُسْنَى",
+          "source": "Al-A'râf, 7:180",
+          "context": "Allah nous dit Lui-même : utilisez Mes noms pour M'appeler. Tu as peur ? يَا حَفِيظُ (Ô Gardien). Tu cherches du travail ? يَا رَزَّاقُ (Ô Pourvoyeur). Tu es perdu ? يَا هَادِي (Ô Guide). Les 99 noms sont 99 façons d'appeler Allah selon ce que tu traverses."
+        },
+        {
+          "type": "text",
+          "content": "Il y a une pratique belle et simple : chaque matin ou chaque soir, apprends un nouveau nom d'Allah. Médite son sens. Cherche-le dans un verset du Coran. En 99 jours, tu auras une relation différente avec chacune des facettes de Qui Il est."
+        },
+        {
+          "type": "tip",
+          "title": "Repère le schème أَفْعَل partout",
+          "content": "Maintenant que tu le connais : أَكْبَرُ (plus grand), أَعْظَمُ (plus immense), أَقْرَبُ (plus proche), أَحْسَنُ (plus beau). Dès que tu vois une forme qui commence par أَ et se termine par des voyelles courtes, demande-toi : superlatif de quoi ?"
+        }
+      ]
+    },
+    "quiz_reward": 20,
+    "synth_reward": 50
+  }
+]
