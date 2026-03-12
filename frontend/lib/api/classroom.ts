@@ -20,6 +20,7 @@ export interface ClassroomAssignment {
     due_date: number;
     passing_grade: number;    // 0-100
     max_retakes: number;      // -1=unlimited, 0=no retakes, N=N retakes
+    assignment_type: 'quiz' | 'path_progress'; // homework type
     created_at: number;
     is_completed?: boolean;
     score?: number;
@@ -81,6 +82,7 @@ export const classroomApi = {
         due_date?: number;
         passing_grade?: number;
         max_retakes?: number;
+        assignment_type?: 'quiz' | 'path_progress';
     }) => {
         const response = await apiClient.post<any>(`/classroom/${classId}/assignments`, data);
         return response.data;

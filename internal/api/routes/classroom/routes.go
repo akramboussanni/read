@@ -105,19 +105,24 @@ func (cr *ClassroomRouter) CreateAssignment(w http.ResponseWriter, r *http.Reque
 	}
 
 	var body struct {
-		CourseID     string `json:"course_id"`
-		NodeID       string `json:"node_id"`
-		Title        string `json:"title"`
-		Description  string `json:"description"`
-		DueDate      int64  `json:"due_date"`
-		PassingGrade int    `json:"passing_grade"` // 0-100
-		MaxRetakes   int    `json:"max_retakes"`   // -1=unlimited
+		CourseID       string `json:"course_id"`
+		NodeID         string `json:"node_id"`
+		Title          string `json:"title"`
+		Description    string `json:"description"`
+		DueDate        int64  `json:"due_date"`
+		PassingGrade   int    `json:"passing_grade"`   // 0-100
+		MaxRetakes     int    `json:"max_retakes"`     // -1=unlimited
+		AssignmentType string `json:"assignment_type"` // 'quiz' | 'path_progress'
 	}
 	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 		http.Error(w, "Invalid body", http.StatusBadRequest)
 		return
 	}
 
+	// Default assignment type to quiz
+	if body.AssignmentType == "" {
+		body.AssignmentType = "quiz"
+	}
 	// Default passing grade to 70% if not specified
 	if body.PassingGrade == 0 {
 		body.PassingGrade = 70
@@ -128,16 +133,17 @@ func (cr *ClassroomRouter) CreateAssignment(w http.ResponseWriter, r *http.Reque
 	}
 
 	asgn := &model.ClassroomAssignment{
-		ID:           utils.GenerateID(),
-		ClassroomID:  classID,
-		CourseID:     body.CourseID,
-		NodeID:       body.NodeID,
-		Title:        body.Title,
-		Description:  body.Description,
-		DueDate:      body.DueDate,
-		PassingGrade: body.PassingGrade,
-		MaxRetakes:   body.MaxRetakes,
-		CreatedAt:    time.Now().Unix(),
+		ID:             utils.GenerateID(),
+		ClassroomID:    classID,
+		CourseID:       body.CourseID,
+		NodeID:         body.NodeID,
+		Title:          body.Title,
+		Description:    body.Description,
+		DueDate:        body.DueDate,
+		PassingGrade:   body.PassingGrade,
+		MaxRetakes:     body.MaxRetakes,
+		AssignmentType: body.AssignmentType,
+		CreatedAt:      time.Now().Unix(),
 	}
 
 	if err := cr.repos.Classroom.CreateAssignment(r.Context(), asgn); err != nil {
@@ -167,6 +173,22 @@ func (cr *ClassroomRouter) GetStudentAssignmentDetail(w http.ResponseWriter, r *
 	asgn, err := cr.repos.Classroom.GetAssignmentByID(r.Context(), asgnID)
 	if err != nil || asgn.ClassroomID != id {
 		http.Error(w, "Assignment not found", http.StatusNotFound)
+		return
+	}
+
+	// Path-progress: completion comes from enrollment, no quiz questions to show
+	if asgn.AssignmentType == "path_progress" {
+		enrollment, err := cr.repos.Enrollment.GetByUserAndCourse(r.Context(), studentID, asgn.CourseID)
+		completed := err == nil && nodeInCompleted(enrollment.CompletedNodes, asgn.NodeID)
+		json.NewEncoder(w).Encode(map[string]interface{}{
+			"attempt_count":     0,
+			"attempt":           nil,
+			"questions":         []interface{}{},
+			"answers":           []interface{}{},
+			"passed_assignment": completed,
+			"passing_grade":     asgn.PassingGrade,
+			"assignment_type":   "path_progress",
+		})
 		return
 	}
 

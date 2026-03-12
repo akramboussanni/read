@@ -27,30 +27,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 
-function formatDueDate(ts: number): string {
-    if (!ts) return '';
-    const d = new Date(ts * 1000);
-    return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
-}
-
-function getDueStatus(ts: number, isCompleted: boolean): 'completed' | 'overdue' | 'upcoming' | 'none' {
-    if (isCompleted) return 'completed';
-    if (!ts) return 'none';
-    const now = Date.now() / 1000;
-    if (ts < now) return 'overdue';
-    return 'upcoming';
-}
-
-function getDaysLeft(ts: number): string {
-    if (!ts) return '';
-    const now = Date.now() / 1000;
-    const diff = ts - now;
-    const days = Math.ceil(diff / 86400);
-    if (days < 0) return `${Math.abs(days)}j en retard`;
-    if (days === 0) return "Aujourd'hui !";
-    if (days === 1) return 'Demain';
-    return `${days}j restants`;
-}
+import { ClassAssignmentCard, formatDueDate, getDueStatus, getDaysLeft } from '@/components/dashboard/class-assignment-card';
 
 export default function ClassroomDetailPage() {
     const { id } = useParams() as { id: string };
@@ -86,6 +63,7 @@ export default function ClassroomDetailPage() {
     // Assignment form settings
     const [assignmentPassingGrade, setAssignmentPassingGrade] = useState(70);
     const [assignmentMaxRetakes, setAssignmentMaxRetakes] = useState(-1); // -1 = unlimited
+    const [assignmentType, setAssignmentType] = useState<'quiz' | 'path_progress'>('quiz');
     const [editingAsgn, setEditingAsgn] = useState<any | null>(null); // null = create, object = edit
     const [confirmDelete, setConfirmDelete] = useState<any | null>(null); // assignment to delete
 
@@ -97,6 +75,7 @@ export default function ClassroomDetailPage() {
         setAssignmentDueDate('');
         setAssignmentPassingGrade(70);
         setAssignmentMaxRetakes(-1);
+        setAssignmentType('quiz');
         setEditingAsgn(null);
     };
 
@@ -302,7 +281,7 @@ export default function ClassroomDetailPage() {
                     {/* OVERVIEW CONTENT */}
                     <TabsContent value="overview" className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <Card className="fun-card border-accent/20 md:col-span-2">
+                            <Card className="fun-card border-accent/20 md:col-span-3">
                                 <CardHeader>
                                     <CardTitle className="text-xl font-black flex items-center gap-2">
                                         <Info className="w-5 h-5 text-teal-600" />
@@ -326,30 +305,6 @@ export default function ClassroomDetailPage() {
                                     </div>
                                 </CardContent>
                             </Card>
-
-                            <Card className="fun-card border-orange-200 bg-orange-50/30">
-                                <CardHeader>
-                                    <CardTitle className="text-xl font-black text-orange-700 flex items-center gap-2">
-                                        <Trophy className="w-5 h-5" /> Top Apprentis
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent className="space-y-3">
-                                    {data.students?.slice(0, 3).map((s: any, i: number) => (
-                                        <div key={s.id} className="flex items-center justify-between p-3 bg-white rounded-xl border border-orange-100 shadow-sm">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center font-black text-orange-700 text-xs">
-                                                    #{i + 1}
-                                                </div>
-                                                <span className="font-bold text-sm">{s.username}</span>
-                                            </div>
-                                            <span className="text-[10px] font-black uppercase text-orange-500 tracking-wider">Champion</span>
-                                        </div>
-                                    ))}
-                                    {(!data.students || data.students.length === 0) && (
-                                        <p className="text-center py-4 text-xs font-bold text-orange-400 uppercase tracking-widest italic">Attendre les recrues...</p>
-                                    )}
-                                </CardContent>
-                            </Card>
                         </div>
                     </TabsContent>
 
@@ -366,167 +321,16 @@ export default function ClassroomDetailPage() {
 
                         <div className="space-y-4">
                             {data.assignments?.length > 0 ? (
-                                data.assignments.map((asgn: any) => {
-                                    const dueStatus = getDueStatus(asgn.due_date, asgn.is_completed);
-                                    return (
-                                        <Card key={asgn.id} className={cn(
-                                            "fun-card overflow-hidden group transition-all",
-                                            dueStatus === 'completed' && "border-green-200 bg-green-50/20",
-                                            dueStatus === 'overdue' && !isTeacher && "border-red-200 bg-red-50/20",
-                                        )}>
-                                            <CardContent className="p-0">
-                                                <div className="flex flex-col sm:flex-row">
-                                                    {/* Status sidebar */}
-                                                    <div className={cn(
-                                                        "w-full sm:w-24 border-r border-border flex flex-col items-center justify-center p-4 gap-1",
-                                                        dueStatus === 'completed' && "bg-green-50 border-green-200",
-                                                        dueStatus === 'overdue' && "bg-red-50 border-red-200",
-                                                        dueStatus === 'upcoming' && "bg-orange-50/50 border-orange-100",
-                                                        dueStatus === 'none' && "bg-muted/30",
-                                                    )}>
-                                                        {dueStatus === 'completed' ? (
-                                                            <>
-                                                                <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                                                <span className="text-[10px] font-black uppercase text-green-700 whitespace-nowrap">Fait ✓</span>
-                                                            </>
-                                                        ) : dueStatus === 'overdue' ? (
-                                                            <>
-                                                                <AlertCircle className="w-6 h-6 text-red-500" />
-                                                                <span className="text-[10px] font-black uppercase text-red-600 whitespace-nowrap">En retard</span>
-                                                            </>
-                                                        ) : (
-                                                            <>
-                                                                <CalendarClock className="w-6 h-6 text-orange-500" />
-                                                                <span className="text-[10px] font-black uppercase text-orange-600 whitespace-nowrap">À faire</span>
-                                                            </>
-                                                        )}
-                                                    </div>
-
-                                                    {/* Content */}
-                                                    <div className="flex-1 p-5 flex flex-col gap-3">
-                                                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                                                            <div className="space-y-1.5">
-                                                                <h3 className="text-lg font-black group-hover:text-primary transition-colors">{asgn.title}</h3>
-                                                                <div className="flex flex-wrap items-center gap-3 text-sm">
-                                                                    <span className="flex items-center gap-1.5 text-muted-foreground font-semibold">
-                                                                        <BookOpen className="w-3.5 h-3.5" />
-                                                                        {asgn.course_name || asgn.course_id}
-                                                                    </span>
-                                                                    {asgn.node_title && (
-                                                                        <span className="text-muted-foreground font-medium">
-                                                                            → {asgn.node_title}
-                                                                        </span>
-                                                                    )}
-                                                                </div>
-                                                                {asgn.description && (
-                                                                    <p className="text-sm text-slate-500 font-medium">{asgn.description}</p>
-                                                                )}
-                                                            </div>
-
-                                                            {/* Right side: Actions */}
-                                                            <div className="flex items-center gap-2 shrink-0">
-                                                                {asgn.is_completed && !isTeacher && asgn.score_percent !== undefined && (
-                                                                    <div className={cn(
-                                                                        "flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 text-xs font-black",
-                                                                        asgn.score_percent >= (asgn.passing_grade ?? 70)
-                                                                            ? "text-green-700 bg-green-50 border-green-200"
-                                                                            : "text-red-700 bg-red-50 border-red-200"
-                                                                    )}>
-                                                                        {asgn.score_percent >= (asgn.passing_grade ?? 70)
-                                                                            ? <CheckCircle2 className="w-4 h-4" />
-                                                                            : <XCircle className="w-4 h-4" />}
-                                                                        {Math.round(asgn.score_percent)}%
-                                                                        {asgn.score_percent < (asgn.passing_grade ?? 70) && (
-                                                                            <span className="opacity-70">(min {asgn.passing_grade ?? 70}%)</span>
-                                                                        )}
-                                                                    </div>
-                                                                )}
-                                                                <Button variant="outline" onClick={async () => {
-                                                                    try {
-                                                                        const fullC = await courseApi.getCourse(asgn.course_id);
-                                                                        const n = fullC.nodes?.find(x => x.id === asgn.node_id);
-                                                                        if (n && n.node_type === 'quiz') {
-                                                                            const conf = JSON.parse(n.quiz_config || '{}');
-                                                                            if (conf.quiz_id) {
-                                                                                router.push(`/quizzes/${conf.quiz_id}?courseId=${asgn.course_id}&nodeId=${asgn.node_id}&asgnId=${asgn.id}`);
-                                                                                return;
-                                                                            }
-                                                                        }
-                                                                        alert("Désolé, impossible d'ouvrir ce quizz directement.");
-                                                                    } catch (e) {
-                                                                        console.error("Failed to fetch course to redirect", e);
-                                                                    }
-                                                                }} className="rounded-xl border-primary/20 text-primary font-bold hover:bg-primary-50 transition-all">
-                                                                    <PlayCircle className="mr-2 w-4 h-4" /> {isTeacher ? "Aperçu" : asgn.is_completed ? "Refaire" : "Go"}
-                                                                </Button>
-
-                                                                {isTeacher && (
-                                                                    <>
-                                                                        <Button variant="outline" onClick={() => fetchStats(asgn.id, asgn)} className="rounded-xl border-teal-200 text-teal-700 bg-teal-50 hover:bg-teal-100 transition-all">
-                                                                            <BarChart3 className="mr-2 w-4 h-4" /> Stats
-                                                                        </Button>
-                                                                        <Button variant="outline" size="icon" onClick={() => openEditDrawer(asgn)} className="rounded-xl border-slate-200 text-slate-600 hover:bg-slate-100 transition-all" title="Modifier">
-                                                                            <Pencil className="w-4 h-4" />
-                                                                        </Button>
-                                                                        <Button variant="outline" size="icon" onClick={() => setConfirmDelete(asgn)} className="rounded-xl border-red-200 text-red-500 hover:bg-red-50 transition-all" title="Supprimer">
-                                                                            <Trash2 className="w-4 h-4" />
-                                                                        </Button>
-                                                                    </>
-                                                                )}
-                                                            </div>
-                                                        </div>
-
-                                                        {/* Footer row: due date + completion stats + retakes info */}
-                                                        <div className="flex flex-wrap items-center gap-4 pt-2 border-t border-border/50">
-                                                            {asgn.due_date > 0 && (
-                                                                <div className={cn(
-                                                                    "flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-lg",
-                                                                    dueStatus === 'completed' && "text-green-700 bg-green-100",
-                                                                    dueStatus === 'overdue' && "text-red-600 bg-red-100",
-                                                                    dueStatus === 'upcoming' && "text-orange-600 bg-orange-100",
-                                                                )}>
-                                                                    <Calendar className="w-3 h-3" />
-                                                                    {formatDueDate(asgn.due_date)}
-                                                                    {dueStatus !== 'completed' && (
-                                                                        <span className="ml-1 opacity-75">({getDaysLeft(asgn.due_date)})</span>
-                                                                    )}
-                                                                </div>
-                                                            )}
-                                                            {isTeacher && asgn.completed_count !== undefined && (
-                                                                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">
-                                                                    <Users className="w-3 h-3" />
-                                                                    {asgn.completed_count}/{asgn.total_students} complétés
-                                                                </div>
-                                                            )}
-                                                            {/* Passing grade badge */}
-                                                            <div className="flex items-center gap-1.5 text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-1 rounded-lg">
-                                                                <Trophy className="w-3 h-3" />
-                                                                Seuil: {asgn.passing_grade ?? 70}%
-                                                            </div>
-                                                            {/* Retakes badge */}
-                                                            {!isTeacher && (
-                                                                <div className="flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg">
-                                                                    <RefreshCw className="w-3 h-3" />
-                                                                    {asgn.max_retakes === -1
-                                                                        ? 'Reprises illimitées'
-                                                                        : asgn.max_retakes === 0
-                                                                            ? 'Pas de reprise'
-                                                                            : `${asgn.max_retakes} reprise${asgn.max_retakes > 1 ? 's' : ''}`}
-                                                                </div>
-                                                            )}
-                                                            {asgn.is_completed && asgn.completed_at > 0 && !isTeacher && (
-                                                                <div className="flex items-center gap-1.5 text-xs font-bold text-green-600 bg-green-50 px-2.5 py-1 rounded-lg">
-                                                                    <CheckCircle2 className="w-3 h-3" />
-                                                                    Terminé le {formatDueDate(asgn.completed_at)}
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </CardContent>
-                                        </Card>
-                                    );
-                                })
+                                data.assignments.map((asgn: any) => (
+                                    <ClassAssignmentCard
+                                        key={asgn.id}
+                                        assignment={asgn}
+                                        isTeacher={isTeacher}
+                                        onStats={fetchStats}
+                                        onEdit={openEditDrawer}
+                                        onDelete={setConfirmDelete}
+                                    />
+                                ))
                             ) : (
                                 <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-muted/10">
                                     <Clock className="w-12 h-12 text-muted-foreground mx-auto mb-4 opacity-30" />
@@ -791,29 +595,66 @@ export default function ClassroomDetailPage() {
                                 ) : (
                                     // Create mode: course/node picker
                                     !selectedCourse ? (
-                                        data.courses?.length > 0 ? (
-                                            data.courses.map((course: any) => (
-                                                <div
-                                                    key={course.id}
-                                                    onClick={() => setSelectedCourse(course)}
-                                                    className="p-4 rounded-2xl border-2 cursor-pointer transition-all flex items-center gap-4 border-border hover:border-primary/40 bg-muted/20"
-                                                >
-                                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white shadow-sm font-black text-xl border-b-2" style={{ color: course.color, borderColor: `${course.color}44` }}>
-                                                        {course.title.charAt(0).toUpperCase()}
-                                                    </div>
-                                                    <div>
-                                                        <p className="font-black text-sm">{course.title}</p>
-                                                        <p className="text-xs text-muted-foreground italic">{course.description ? course.description.slice(0, 40) + '...' : 'Pas de description'}</p>
-                                                    </div>
+                                        <>
+                                            {/* Assignment type picker */}
+                                            <div className="space-y-2">
+                                                <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Type de devoir</label>
+                                                <div className="grid grid-cols-2 gap-2">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => { setAssignmentType('quiz'); setSelectedNodeId(''); }}
+                                                        className={cn(
+                                                            'flex flex-col items-center justify-center gap-1.5 p-3 rounded-xl border-2 font-bold text-sm transition-all',
+                                                            assignmentType === 'quiz'
+                                                                ? 'bg-primary text-white border-primary'
+                                                                : 'bg-white text-muted-foreground border-border hover:border-primary/40'
+                                                        )}
+                                                    >
+                                                        <PlayCircle className="w-5 h-5" />
+                                                        Quiz
+                                                        <span className={cn('text-[9px] font-semibold leading-tight text-center', assignmentType === 'quiz' ? 'text-white/80' : 'text-muted-foreground/70')}>Faire un quiz du cours</span>
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => { setAssignmentType('path_progress'); setSelectedNodeId(''); }}
+                                                        className={cn(
+                                                            'flex flex-col items-center justify-center gap-1.5 p-3 rounded-xl border-2 font-bold text-sm transition-all',
+                                                            assignmentType === 'path_progress'
+                                                                ? 'bg-primary text-white border-primary'
+                                                                : 'bg-white text-muted-foreground border-border hover:border-primary/40'
+                                                        )}
+                                                    >
+                                                        <ChevronRight className="w-5 h-5" />
+                                                        Parcours
+                                                        <span className={cn('text-[9px] font-semibold leading-tight text-center', assignmentType === 'path_progress' ? 'text-white/80' : 'text-muted-foreground/70')}>Atteindre une étape du cours</span>
+                                                    </button>
                                                 </div>
-                                            ))
-                                        ) : (
-                                            <div className="p-6 border-2 border-dashed border-red-200 bg-red-50 rounded-2xl text-center">
-                                                <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
-                                                <p className="font-bold text-red-700">Aucun parcours lié !</p>
-                                                <p className="text-sm text-red-600/80 mt-1">Va dans l&apos;onglet &quot;Parcours&quot; pour en ajouter un avant de donner des devoirs.</p>
                                             </div>
-                                        )
+
+                                            {data.courses?.length > 0 ? (
+                                                data.courses.map((course: any) => (
+                                                    <div
+                                                        key={course.id}
+                                                        onClick={() => setSelectedCourse(course)}
+                                                        className="p-4 rounded-2xl border-2 cursor-pointer transition-all flex items-center gap-4 border-border hover:border-primary/40 bg-muted/20"
+                                                    >
+                                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white shadow-sm font-black text-xl border-b-2" style={{ color: course.color, borderColor: `${course.color}44` }}>
+                                                            {course.title.charAt(0).toUpperCase()}
+                                                        </div>
+                                                        <div>
+                                                            <p className="font-black text-sm">{course.title}</p>
+                                                            <p className="text-xs text-muted-foreground italic">{course.description ? course.description.slice(0, 40) + '...' : 'Pas de description'}</p>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <div className="p-6 border-2 border-dashed border-red-200 bg-red-50 rounded-2xl text-center">
+                                                    <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
+                                                    <p className="font-bold text-red-700">Aucun parcours lié !</p>
+                                                    <p className="text-sm text-red-600/80 mt-1">Va dans l&apos;onglet &quot;Parcours&quot; pour en ajouter un avant de donner des devoirs.</p>
+                                                </div>
+                                            )}
+                                        </>
                                     ) : (
                                         <div className="space-y-4">
                                             <Button variant="ghost" onClick={() => setSelectedCourse(null)} className="pl-0 text-muted-foreground -ml-2">
@@ -834,25 +675,45 @@ export default function ClassroomDetailPage() {
                                             {selectedCourseFull ? (
                                                 <div className="space-y-4 pt-4 border-t border-border">
                                                     <div className="space-y-2">
-                                                        <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Sélectionner un Quiz dans ce parcours</label>
-                                                        <select
-                                                            value={selectedNodeId}
-                                                            onChange={e => {
-                                                                setSelectedNodeId(e.target.value);
-                                                                const node = selectedCourseFull.nodes?.find(n => n.id === e.target.value);
-                                                                if (node) setAssignmentTitle(`Devoir: ${node.title}`);
-                                                            }}
-                                                            className="w-full h-12 rounded-xl border border-input bg-white px-3 font-semibold text-sm shadow-sm"
-                                                        >
-                                                            <option value="">-- Choisir un quiz --</option>
-                                                            {selectedCourseFull.nodes?.filter(n => n.node_type === 'quiz').map(n => (
-                                                                <option key={n.id} value={n.id}>{n.title}</option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
+                                                                <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                                                                    {assignmentType === 'path_progress'
+                                                                        ? 'Étape cible dans ce parcours'
+                                                                        : 'Sélectionner un Quiz dans ce parcours'}
+                                                                </label>
+                                                                <select
+                                                                    value={selectedNodeId}
+                                                                    onChange={e => {
+                                                                        setSelectedNodeId(e.target.value);
+                                                                        const node = selectedCourseFull.nodes?.find(n => n.id === e.target.value);
+                                                                        if (node) setAssignmentTitle(
+                                                                            assignmentType === 'path_progress'
+                                                                                ? `Parcours: atteindre "${node.title}"`
+                                                                                : `Devoir: ${node.title}`
+                                                                        );
+                                                                    }}
+                                                                    className="w-full h-12 rounded-xl border border-input bg-white px-3 font-semibold text-sm shadow-sm"
+                                                                >
+                                                                    <option value="">
+                                                                        {assignmentType === 'path_progress' ? '-- Choisir une étape cible --' : '-- Choisir un quiz --'}
+                                                                    </option>
+                                                                    {(assignmentType === 'path_progress'
+                                                                        ? selectedCourseFull.nodes?.filter(n => n.node_type !== 'start')
+                                                                        : selectedCourseFull.nodes?.filter(n => n.node_type === 'quiz')
+                                                                    )?.map(n => (
+                                                                        <option key={n.id} value={n.id}>
+                                                                            {assignmentType === 'path_progress' ? `[${n.node_type}] ` : ''}{n.title}
+                                                                        </option>
+                                                                    ))}
+                                                                </select>
+                                                                {assignmentType === 'path_progress' && (
+                                                                    <p className="text-[10px] text-muted-foreground font-semibold">
+                                                                        L&apos;élève devra progresser dans le parcours jusqu&apos;à atteindre cette étape.
+                                                                    </p>
+                                                                )}
+                                                            </div>
 
-                                                    {selectedNodeId && (
-                                                        <>
+                                                            {selectedNodeId && (
+                                                                <>
                                                             <div className="space-y-2">
                                                                 <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Titre du Devoir</label>
                                                                 <input
@@ -924,10 +785,10 @@ export default function ClassroomDetailPage() {
                                                                     </div>
                                                                 )}
                                                             </div>
-                                                        </>
-                                                    )}
-                                                </div>
-                                            ) : (
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                    ) : (
                                                 <div className="py-8 flex flex-col items-center justify-center gap-2">
                                                     <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin" />
                                                     <p className="text-xs font-bold text-muted-foreground animate-pulse">Chargement des étapes...</p>
@@ -970,6 +831,7 @@ export default function ClassroomDetailPage() {
                                                     due_date: dueDateTs,
                                                     passing_grade: assignmentPassingGrade,
                                                     max_retakes: assignmentMaxRetakes,
+                                                    assignment_type: assignmentType,
                                                 });
                                             }
                                             setIsAssigning(false);
@@ -1074,10 +936,23 @@ export default function ClassroomDetailPage() {
                                         <span className="text-xs text-slate-400">{studentDetail.attempt_count} tentative{studentDetail.attempt_count > 1 ? 's' : ''}</span>
                                     </div>
                                 )}
-                                {!studentDetail.attempt && <p className="text-sm text-slate-400 font-semibold">Pas encore soumis.</p>}
+                                {!studentDetail.attempt && studentDetail.assignment_type !== 'path_progress' && (
+                                    <p className="text-sm text-slate-400 font-semibold">Pas encore soumis.</p>
+                                )}
                             </div>
                             {studentDetailLoading ? (
                                 <div className="py-4 flex justify-center"><div className="w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin" /></div>
+                            ) : studentDetail.assignment_type === 'path_progress' ? (
+                                <div className={cn(
+                                    'mt-4 p-5 rounded-2xl border-2 text-center font-bold',
+                                    studentDetail.passed_assignment
+                                        ? 'bg-green-50 border-green-200 text-green-800'
+                                        : 'bg-slate-50 border-slate-200 text-slate-500'
+                                )}>
+                                    {studentDetail.passed_assignment
+                                        ? '✓ L\'élève a atteint l\'étape cible dans ce parcours.'
+                                        : 'L\'élève n\'a pas encore atteint l\'étape cible.'}
+                                </div>
                             ) : (
                                 <div className="space-y-3 max-h-[50vh] overflow-y-auto custom-scrollbar pr-2">
                                     {(studentDetail.questions ?? []).map((q: any, i: number) => {

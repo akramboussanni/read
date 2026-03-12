@@ -172,19 +172,42 @@ func (cr *ClassroomRouter) GetClassDetails(w http.ResponseWriter, r *http.Reques
 			dto.NodeTitle = node.Title
 		}
 
-		// Count total completions for this assignment
-		completions, _ := cr.repos.AssignmentCompletion.ListByAssignment(r.Context(), a.ID)
-		dto.CompletedCount = len(completions)
+		if a.AssignmentType == "path_progress" {
+			// Count how many students have that node in their completed_nodes
+			count := 0
+			for _, st := range students {
+				enrollment, err := cr.repos.Enrollment.GetByUserAndCourse(r.Context(), st.ID, a.CourseID)
+				if err == nil && nodeInCompleted(enrollment.CompletedNodes, a.NodeID) {
+					count++
+				}
+			}
+			dto.CompletedCount = count
 
-		// Check current user's completion status
-		if user != nil {
-			completion, err := cr.repos.AssignmentCompletion.GetByAssignmentAndStudent(r.Context(), a.ID, user.ID)
-			if err == nil && completion != nil {
-				dto.IsCompleted = true
-				dto.Score = completion.Score
-				dto.MaxScore = completion.MaxScore
-				dto.ScorePercent = completion.Percentage
-				dto.CompletedAt = completion.CompletedAt
+			// Check current user
+			if user != nil {
+				enrollment, err := cr.repos.Enrollment.GetByUserAndCourse(r.Context(), user.ID, a.CourseID)
+				if err == nil && nodeInCompleted(enrollment.CompletedNodes, a.NodeID) {
+					dto.IsCompleted = true
+					dto.Score = 100
+					dto.MaxScore = 100
+					dto.ScorePercent = 100
+				}
+			}
+		} else {
+			// Count total completions for this assignment
+			completions, _ := cr.repos.AssignmentCompletion.ListByAssignment(r.Context(), a.ID)
+			dto.CompletedCount = len(completions)
+
+			// Check current user's completion status
+			if user != nil {
+				completion, err := cr.repos.AssignmentCompletion.GetByAssignmentAndStudent(r.Context(), a.ID, user.ID)
+				if err == nil && completion != nil {
+					dto.IsCompleted = true
+					dto.Score = completion.Score
+					dto.MaxScore = completion.MaxScore
+					dto.ScorePercent = completion.Percentage
+					dto.CompletedAt = completion.CompletedAt
+				}
 			}
 		}
 		asgnDtos = append(asgnDtos, dto)
@@ -263,27 +286,43 @@ func (cr *ClassroomRouter) GetAssignmentStats(w http.ResponseWriter, r *http.Req
 		CompletedAt int64   `json:"completed_at,omitempty"`
 	}
 
-	// Build a map of completions for quick lookup
-	completions, _ := cr.repos.AssignmentCompletion.ListByAssignment(r.Context(), asgnID)
-	completionMap := make(map[int64]*model.AssignmentCompletion)
-	for _, c := range completions {
-		completionMap[c.StudentID] = c
-	}
-
 	stats := make([]StudentStat, 0, len(students))
-	for _, st := range students {
-		stat := StudentStat{
-			StudentID: st.ID,
-			Username:  st.Username,
+
+	if asgn.AssignmentType == "path_progress" {
+		// Completion = node appears in enrollment's completed_nodes
+		for _, st := range students {
+			stat := StudentStat{StudentID: st.ID, Username: st.Username}
+			enrollment, err := cr.repos.Enrollment.GetByUserAndCourse(r.Context(), st.ID, asgn.CourseID)
+			if err == nil && nodeInCompleted(enrollment.CompletedNodes, asgn.NodeID) {
+				stat.IsCompleted = true
+				stat.Score = 100
+				stat.MaxScore = 100
+				stat.Percentage = 100
+			}
+			stats = append(stats, stat)
 		}
-		if c, ok := completionMap[st.ID]; ok {
-			stat.IsCompleted = true
-			stat.Score = c.Score
-			stat.MaxScore = c.MaxScore
-			stat.Percentage = c.Percentage
-			stat.CompletedAt = c.CompletedAt
+	} else {
+		// Build a map of completions for quick lookup
+		completions, _ := cr.repos.AssignmentCompletion.ListByAssignment(r.Context(), asgnID)
+		completionMap := make(map[int64]*model.AssignmentCompletion)
+		for _, c := range completions {
+			completionMap[c.StudentID] = c
 		}
-		stats = append(stats, stat)
+
+		for _, st := range students {
+			stat := StudentStat{
+				StudentID: st.ID,
+				Username:  st.Username,
+			}
+			if c, ok := completionMap[st.ID]; ok {
+				stat.IsCompleted = true
+				stat.Score = c.Score
+				stat.MaxScore = c.MaxScore
+				stat.Percentage = c.Percentage
+				stat.CompletedAt = c.CompletedAt
+			}
+			stats = append(stats, stat)
+		}
 	}
 
 	json.NewEncoder(w).Encode(stats)
@@ -434,4 +473,22 @@ func (cr *ClassroomRouter) DeleteAssignment(w http.ResponseWriter, r *http.Reque
 	}
 
 	w.WriteHeader(http.StatusNoContent)
+}
+
+// nodeInCompleted checks whether nodeID is present in a JSON-encoded array of node IDs
+// (the completed_nodes field of user_enrollments).
+func nodeInCompleted(completedNodesJSON, nodeID string) bool {
+	if completedNodesJSON == "" || completedNodesJSON == "null" || completedNodesJSON == "[]" {
+		return false
+	}
+	var ids []string
+	if err := json.Unmarshal([]byte(completedNodesJSON), &ids); err != nil {
+		return false
+	}
+	for _, id := range ids {
+		if id == nodeID {
+			return true
+		}
+	}
+	return false
 }

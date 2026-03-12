@@ -81,8 +81,8 @@ func (r *ClassroomRepo) Update(ctx context.Context, class *model.Classroom) erro
 
 func (r *ClassroomRepo) CreateAssignment(ctx context.Context, asgn *model.ClassroomAssignment) error {
 	_, err := r.db.NamedExecContext(ctx, `
-        INSERT INTO classroom_assignments (id, classroom_id, course_id, node_id, title, description, due_date, passing_grade, max_retakes, created_at)
-        VALUES (:id, :classroom_id, :course_id, :node_id, :title, :description, :due_date, :passing_grade, :max_retakes, :created_at)
+        INSERT INTO classroom_assignments (id, classroom_id, course_id, node_id, title, description, due_date, passing_grade, max_retakes, assignment_type, created_at)
+        VALUES (:id, :classroom_id, :course_id, :node_id, :title, :description, :due_date, :passing_grade, :max_retakes, :assignment_type, :created_at)
     `, asgn)
 	return err
 }

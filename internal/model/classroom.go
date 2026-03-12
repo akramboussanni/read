@@ -17,16 +17,17 @@ type ClassroomStudent struct {
 }
 
 type ClassroomAssignment struct {
-	ID           int64  `json:"id,string" db:"id"`
-	ClassroomID  int64  `json:"classroom_id,string" db:"classroom_id"`
-	CourseID     string `json:"course_id" db:"course_id"`
-	NodeID       string `json:"node_id" db:"node_id"`
-	Title        string `json:"title" db:"title"`
-	Description  string `json:"description" db:"description"`
-	DueDate      int64  `json:"due_date" db:"due_date"`
-	PassingGrade int    `json:"passing_grade" db:"passing_grade"` // 0-100, percentage required to pass
-	MaxRetakes   int    `json:"max_retakes" db:"max_retakes"`     // -1=unlimited, 0=no retakes, N=N retakes allowed
-	CreatedAt    int64  `json:"created_at" db:"created_at"`
+	ID             int64  `json:"id,string" db:"id"`
+	ClassroomID    int64  `json:"classroom_id,string" db:"classroom_id"`
+	CourseID       string `json:"course_id" db:"course_id"`
+	NodeID         string `json:"node_id" db:"node_id"`
+	Title          string `json:"title" db:"title"`
+	Description    string `json:"description" db:"description"`
+	DueDate        int64  `json:"due_date" db:"due_date"`
+	PassingGrade   int    `json:"passing_grade" db:"passing_grade"`     // 0-100, percentage required to pass
+	MaxRetakes     int    `json:"max_retakes" db:"max_retakes"`         // -1=unlimited, 0=no retakes, N=N retakes allowed
+	AssignmentType string `json:"assignment_type" db:"assignment_type"` // 'quiz' | 'path_progress'
+	CreatedAt      int64  `json:"created_at" db:"created_at"`
 }
 
 type ClassroomCourse struct {

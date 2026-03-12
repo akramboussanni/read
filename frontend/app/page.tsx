@@ -7,10 +7,11 @@ import { useAuthStore } from '@/lib/store/auth-store';
 import { courseApi } from '@/lib/api/course';
 import { Course, CourseNode, CourseStatus } from '@/lib/types/course';
 import { Button } from '@/components/ui/button';
-import { BookOpen, ChevronRight, GraduationCap, Compass, Trophy, Flame, BarChart3, Plus, Calendar, CheckCircle2, AlertCircle, PlayCircle, Users, Clock, LayoutDashboard } from 'lucide-react';
+import { BookOpen, ChevronRight, GraduationCap, Compass, Trophy, Flame, Plus, CheckCircle2, Users, LayoutDashboard } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { CourseFlowGraph } from '@/components/course/course-flow-graph';
+import { ClassDashboard } from '@/components/dashboard/class-dashboard';
 import {
   Dialog,
   DialogContent,
@@ -236,184 +237,12 @@ export default function Home() {
     <div className="h-screen flex flex-col bg-background text-foreground overflow-hidden pt-16">
 
       {classData && viewMode === 'dashboard' ? (
-        <div className="flex-1 overflow-y-auto w-full max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-8">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-1">
-              <p className="text-sm font-black text-primary uppercase tracking-widest flex items-center gap-2">
-                <Users className="w-4 h-4" /> Ma Classe
-              </p>
-              <h1 className="text-4xl font-black tracking-tight">{classData.classroom.name}</h1>
-              <p className="text-muted-foreground font-semibold">
-                Voici ton tableau de bord. Regarde tes devoirs et continue ton parcours !
-              </p>
-            </div>
-
-            {activeCourse && (
-              <Button
-                onClick={() => setViewMode('course')}
-                className="shrink-0 h-14 px-6 text-lg font-black bg-primary text-white rounded-2xl border-b-4 border-primary-hover hover:-translate-y-1 active:translate-y-0 transition-all flex items-center gap-2"
-              >
-                Parcours: {activeCourse.title} <ChevronRight className="w-5 h-5" />
-              </Button>
-            )}
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content: Assignments */}
-            <div className="lg:col-span-2 space-y-6">
-              <h2 className="text-2xl font-black flex items-center gap-3">
-                <Calendar className="w-6 h-6 text-primary" /> Devoirs à faire
-              </h2>
-
-              <div className="space-y-4">
-                {classData.assignments?.length > 0 ? (
-                  classData.assignments.map((asgn: any) => {
-                    const now = Date.now() / 1000;
-                    const isOverdue = asgn.due_date > 0 && asgn.due_date < now && !asgn.is_completed;
-                    const daysLeft = asgn.due_date > 0 ? Math.ceil((asgn.due_date - now) / 86400) : null;
-                    return (
-                      <Card key={asgn.id} className={`fun-card overflow-hidden group border-2 transition-colors ${asgn.is_completed ? 'border-green-200 bg-green-50/20' : isOverdue ? 'border-red-200 bg-red-50/20' : 'border-border hover:border-primary/40'}`}>
-                        <CardContent className="p-0">
-                          <div className="flex flex-col sm:flex-row">
-                            <div className={`w-full sm:w-20 border-r border-border flex flex-col items-center justify-center p-4 ${asgn.is_completed ? 'bg-green-50' : isOverdue ? 'bg-red-50' : 'bg-orange-50/50'}`}>
-                              {asgn.is_completed ? (
-                                <>
-                                  <CheckCircle2 className="w-6 h-6 text-green-600 mb-1" />
-                                  <span className="text-[10px] font-black uppercase text-green-700 whitespace-nowrap">Fait ✓</span>
-                                </>
-                              ) : isOverdue ? (
-                                <>
-                                  <AlertCircle className="w-6 h-6 text-red-500 mb-1" />
-                                  <span className="text-[10px] font-black uppercase text-red-600 whitespace-nowrap">Retard</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Clock className="w-6 h-6 text-orange-500 mb-1" />
-                                  <span className="text-[10px] font-black uppercase text-orange-600 whitespace-nowrap">À faire</span>
-                                </>
-                              )}
-                            </div>
-                            <div className="flex-1 p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                              <div className="space-y-1.5">
-                                <h3 className="text-lg font-black text-slate-800">{asgn.title}</h3>
-                                <p className="text-sm text-muted-foreground font-semibold flex items-center gap-2">
-                                  <BookOpen className="w-3.5 h-3.5" /> {asgn.course_name || `Parcours #${asgn.course_id}`}
-                                  {asgn.node_title && <span className="text-slate-400">→ {asgn.node_title}</span>}
-                                </p>
-                                {asgn.due_date > 0 && (
-                                  <div className={`flex items-center gap-1.5 text-xs font-bold w-fit px-2 py-0.5 rounded-md ${asgn.is_completed ? 'text-green-600 bg-green-100' : isOverdue ? 'text-red-600 bg-red-100' : 'text-orange-600 bg-orange-100'}`}>
-                                    <Calendar className="w-3 h-3" />
-                                    {new Date(asgn.due_date * 1000).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-                                    {!asgn.is_completed && daysLeft !== null && (
-                                      <span className="opacity-75">
-                                        ({daysLeft < 0 ? `${Math.abs(daysLeft)}j retard` : daysLeft === 0 ? "Aujourd'hui" : `${daysLeft}j`})
-                                      </span>
-                                    )}
-                                  </div>
-                                )}
-                              </div>
-                              <div className="flex items-center gap-3">
-                                {asgn.is_completed ? (
-                                  <div className="flex items-center gap-1.5 text-green-600 bg-green-50 px-3 py-1.5 rounded-xl border-2 border-green-200">
-                                    <CheckCircle2 className="w-4 h-4" />
-                                    <span className="text-xs font-black uppercase">{asgn.score_percent ? `${Math.round(asgn.score_percent)}%` : 'Fait'}</span>
-                                  </div>
-                                ) : (
-                                  <Button onClick={async () => {
-                                    try {
-                                      const fullC = await courseApi.getCourse(asgn.course_id);
-                                      const n = fullC.nodes?.find(x => x.id === asgn.node_id);
-                                      if (n && n.node_type === 'quiz') {
-                                        const conf = JSON.parse(n.quiz_config || '{}');
-                                        if (conf.quiz_id) {
-                                          router.push(`/quizzes/${conf.quiz_id}?courseId=${asgn.course_id}&nodeId=${asgn.node_id}&asgnId=${asgn.id}`);
-                                          return;
-                                        }
-                                      }
-                                      alert("Impossible d'ouvrir ce devoir directement.");
-                                    } catch (e) { console.error(e); }
-                                  }} className="font-black bg-primary text-white rounded-xl shadow-md border-b-2 border-primary-hover h-10 px-5">
-                                    <PlayCircle className="w-4 h-4 mr-2" /> Go
-                                  </Button>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    );
-                  })
-                ) : (
-                  <div className="py-16 text-center border-2 border-dashed border-border rounded-3xl bg-muted/10">
-                    <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-4 opacity-50" />
-                    <h3 className="text-xl font-bold text-slate-500">Aucun devoir en cours</h3>
-                    <p className="text-sm text-muted-foreground font-medium">Bon travail, tu es à jour !</p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Sidebar: Ranking & Active Course */}
-            <div className="space-y-6">
-              {activeCourse && (
-                <Card className="fun-card border-primary/20 bg-primary/5">
-                  <CardHeader className="pb-3 border-b border-primary/10 bg-white">
-                    <CardTitle className="text-sm font-black uppercase tracking-widest text-primary flex items-center gap-2">
-                      <Flame className="w-4 h-4" /> Mon Parcours
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-5 space-y-4 bg-white/50">
-                    <div className="flex justify-between items-center text-sm font-bold">
-                      <span className="text-slate-600">Progression</span>
-                      <span className="text-primary tabular-nums">{progressPct}%</span>
-                    </div>
-                    <div className="w-full h-3 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${progressPct}%` }}
-                        transition={{ duration: 0.8 }}
-                        className="h-full rounded-full bg-primary"
-                      />
-                    </div>
-                    <Button onClick={() => {
-                      setViewMode('course');
-                    }} className="w-full font-black text-sm bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors h-12 rounded-xl">
-                      Voir la carte du parcours
-                    </Button>
-                  </CardContent>
-                </Card>
-              )}
-
-              <Card className="fun-card border-orange-200 bg-orange-50/30">
-                <CardHeader>
-                  <CardTitle className="text-lg font-black text-orange-700 flex items-center gap-2">
-                    <Trophy className="w-5 h-5" /> Top Classe
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {classData.students?.slice(0, 5).map((s: any, i: number) => (
-                    <div key={s.id} className="flex items-center justify-between p-3 bg-white rounded-xl border border-orange-100 shadow-sm relative overflow-hidden group">
-                      <div className="absolute inset-0 bg-orange-50 translate-x-full group-hover:translate-x-0 transition-transform" />
-                      <div className="relative flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center font-black text-orange-700 text-xs shadow-inner">
-                          #{i + 1}
-                        </div>
-                        <span className="font-bold text-sm text-slate-800">{s.username}</span>
-                      </div>
-                      {s.username === user?.username && (
-                        <span className="relative text-[10px] font-black uppercase text-primary tracking-wider bg-primary/10 px-2 py-0.5 rounded-md">Toi</span>
-                      )}
-                    </div>
-                  ))}
-                  {(!classData.students || classData.students.length === 0) && (
-                    <p className="text-center py-4 text-xs font-bold text-orange-400">Aucun élève trouvé.</p>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
+        <ClassDashboard
+          classData={classData}
+          activeCourse={activeCourse}
+          progressPct={progressPct}
+          onViewCourse={() => setViewMode('course')}
+        />
       ) : activeCourse ? (
         <>
           {/* Course Header */}
